@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Mayor Mystery NEW VERSION.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Mayor Mystery NEW VERSION" startnode="9" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+<tw-storydata name="Mayor Mystery NEW VERSION" startnode="156" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400&display=swap');
 
@@ -18,6 +18,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500&display=swap');
 
 tw-story[tags~="title"] tw-passage {
 	min-width:150%;
@@ -72,6 +74,26 @@ html {
 
 body {
 	background-color: black;
+}
+
+a:link {
+	color:#b963bf 
+}
+
+a:visited {
+	color:#b963bf 
+}
+
+a:hover {
+	color:#f2b9f6 
+}
+
+a.visited:hover {
+	color:#f2b9f6 
+}
+
+a:active {
+	color:#ffc5ef
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="The Beginning" tags="" position="1202,176" size="100,100">(if:$testing is &quot;NA&quot;)[Let&#39;s begin, shall we?]
 \(if:$testing is &quot;FAIL1&quot;)[Alright, here we go. Remember, pay attention this time.]
 \(if:$testing is &quot;FAIL2&quot;)[Here we go.]
@@ -1150,20 +1172,28 @@ The librarian types into her computer, &quot;Sorry, Jed. That book is so old it&
 
 (if:$FUN is 13)[[[Look at Computer-&gt;Fun BBTA]]
 ]
-\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="81" name="Bookshelves" tags="" position="521,2130" size="100,100">You walk over to the library&#39;s bookshelves. The library has a very small selection, filling only about two and a half bookshelves worth.
+\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="81" name="Bookshelves" tags="" position="521,2130" size="100,100">(set:_book2 to &quot;//[[Magic Recliner Couches-&gt;Book 2]]//&quot;)
+\You walk over to the library&#39;s bookshelves. The library has a very small selection, filling only about two and a half bookshelves worth.
 \(if: $wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;library&quot;)[
 
 You see a woman looking at another bookshelf. &quot;Is there anyone around to help?&quot; you hear her say.]
 
 (if:$josefineStore is &quot;known&quot; and $INV does not contain &quot;book series&quot;)[//[[The Adventures of Charles Howard and the Formidable Fruitcake-&gt;Book Series]]//
 ]
-\//[[Magic Recliner Couches-&gt;Book 2]]//
+\_book2
 //[[Starch &amp; Crinkle Visit the Big City-&gt;Book 3]]//
 //[[What to do if the World is Ending-&gt;Book 1]]//
+//[[Vela-&gt;Book 4]]//
 (if: $wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;library&quot;)[[[Help the Woman-&gt;SuperJed Library]]
 ]
-\[[Exit-&gt;Library]] </tw-passagedata><tw-passagedata pid="82" name="Book 1" tags="" position="522,2405" size="100,100">You pull out //What to do if the World is Ending// and read the first page.
+\[[Exit-&gt;Library]] 
 
+&lt;!-- //[[Magic Recliner Couches-&gt;Book 2]]// --&gt;</tw-passagedata><tw-passagedata pid="82" name="Book 1" tags="" position="522,2405" size="100,100">=&gt;&lt;=
+(font:&quot;Unbounded&quot;)+(size:2)[What to do if the World is Ending]
+(font:&quot;Times New Roman&quot;)+(size:1.2)[by Reuben Griffiths]
+
+&lt;==&gt;
+---
 (font:&quot;Libre Baskerville&quot;)[
 \If you&#39;re reading this book, then that means that you think the world is about to end, or the world is literally about to end. But don&#39;t worry. This book will guide you through the three simple steps to help you prepare for the end.
 
@@ -1179,8 +1209,12 @@ You see a woman looking at another bookshelf. &quot;Is there anyone around to he
 You gather all 4 of the books, and take them to the front desk, where the librarian then checks you out.
 
 [[Continue Looking-&gt;Bookshelves]] 
-[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="84" name="Book 2" tags="" position="524,2542" size="100,100">You pull out //Magic Recliner Couches// and begin reading.
+[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="84" name="Book 2" tags="" position="524,2542" size="100,100">=&gt;&lt;=
+(font:&quot;Unbounded&quot;)+(size:2)[Magic Recliner Couches]
+(font:&quot;Times New Roman&quot;)+(size:1.2)[by Bread McApple]
 
+&lt;==
+---
 (font:&quot;Libre Baskerville&quot;)[
 \###COLD WAS THE NIGHT. I WAS STABBED.
 “Wait; If you got stabbed, how are you alive writing this story?” you may ask. Well, let me tell you a story called “I survived.” 
@@ -1338,8 +1372,14 @@ Current funds: $$MONEY
 \(else:)[
 \You open up another paint bucket and quickly repaint. It was quite difficult considering that the other coat hasn&#39;t fully dried yet, but it was all worth it when the walls finally became a beautiful shade of $wallColor.]
 
-[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="96" name="Book 3" tags="" position="527,2682" size="100,100">You pull out //Starch &amp; Crinkle Visit the Big City// and begin reading.
+[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="96" name="Book 3" tags="" position="523,2682" size="100,100">=&gt;&lt;=
+(font:&quot;Unbounded&quot;)[
+\(size:2)[Starch &amp; Crinkle]
+(size:1.4)[Visit the Big City]]
+(font:&quot;Times New Roman&quot;)+(size:1.2)[by Nicole Di Bisceglie]
 
+&lt;==
+---
 (font:&quot;Libre Baskerville&quot;)[
 \Starch and Crinkle, equally known as Arruga y Chuño, are not exactly known for having the craziest adventures. They live within an abandoned room of a 2-star hotel with their cat Porche, and occasionally hang out with their family friend Yeyé in the trailer park.
 
@@ -2127,6 +2167,8 @@ By Blue Cat and Green Guy
 \(set: $haircuts to 0)
 \(set: $boscoMayhem to (a:)) 
 \(set: $sequelProgress to (a:))
+\(set: $SKILLS to (a:))
+\(set: $skillPoints to 6)
 \
 \(if:$visitsJedsToilet is 8 or $visitsJedsToilet is 11)[(set: $visitsJedsToilet to 9)](else:)[(set: $visitsJedsToilet to 0)]
 \(set: $visitsCoffeeMaker to 0)
@@ -2228,14 +2270,144 @@ Jed explains to Del the (color:#ff0000)[Mayor Mystery] that he has been informed
 
 [[Exit-&gt;Jed&#39;s Apartment 2]]] </tw-passagedata><tw-passagedata pid="167" name="Jed&#39;s Bathroom 2" tags="" position="4821,3754" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:(history:) contains &quot;Flush 2&quot;)[//There is nothing to do here.//](else:)[There is nothing to do here.]
 
-[[Flush the Toilet-&gt;Flush 2]]
+(if:(history:) contains &quot;Flush 2&quot;)[[[Flush the Toilet-&gt;Too Poor]]](else:)[[[Flush the Toilet-&gt;Flush 2]]]
 [[Exit-&gt;Jed&#39;s Apartment 2]]</tw-passagedata><tw-passagedata pid="168" name="Flush 2" tags="" position="4826,3902" size="100,100">(font:&quot;Roboto Mono&quot;)[Due to high abuse of the toilet feature in the previous game, we have removed it from this game.]
 
-[[Continue-&gt;Jed&#39;s Bathroom 2]] </tw-passagedata><tw-passagedata pid="169" name="City Hall 2" tags="" position="5096,3499" size="100,200">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="170" name="Hardware Store 2" tags="" position="5766,3499" size="100,200">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="171" name="Burgerocity 2" tags="" position="5439,3497" size="100,200">&quot;Hey Jed, hey Del,&quot; the owner says. &quot;Here to buy some food before I shut down shop?&quot;
+[[Continue-&gt;Jed&#39;s Bathroom 2]] </tw-passagedata><tw-passagedata pid="169" name="City Hall 2" tags="" position="5096,3499" size="100,200">(set:$visitsCityHall to it + 1)
+\(if: $visitsCityHall is 1)[
+\Jed and Del enter the Webster Groves City Hall. It&#39;s a wacky building. The room you&#39;re standing in is nothing short of luxurious, with lots of decorations and a lot more open space. It&#39;s also home to the great (color:#ff0000)[Mayor Mystery] you two have been tasked to solve.
+
+Oddly, in what is a very open and spacious room, you can only see one other person. The mayor&#39;s secretary is sitting at her desk, secetarying away. She is completely enveloped in her computer screen, almost frantically typing and scrolling. Maybe she&#39;s busy gaming? She hasn&#39;t even noticed that you&#39;ve come in.]
+\(else:)[
+\You&#39;re inside the City Hall. (if:$visitsSecretary is 0)[The secretary is still focused on her computer.](else:)[The secretary does the (either:&quot;griddy&quot;,&quot;default dance&quot;,&quot;orange justice&quot;,&quot;floss&quot;,&quot;Gangnam Style dance&quot;,&quot;distraction dance&quot;).]]
+
+[[Talk to the Secretary-&gt;Talk to Secretary 2]]
+[[Exit-&gt;Sequel Town]]</tw-passagedata><tw-passagedata pid="170" name="Hardware Store 2" tags="" position="5766,3499" size="100,200">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="171" name="Burgerocity 2" tags="" position="5439,3497" size="100,200">&quot;Hey Jed, hey Del,&quot; the owner says. &quot;Here to buy some food before I shut down shop?&quot;
 \(set:$previousPassage to (passage:)&#39;s name)
 
+[[Purchase Food-&gt;Burgerocity Counter 2]]
 [[Talk to Owner-&gt;Burgerocity Owner 2]]
-[[Exit-&gt;Sequel Town]]</tw-passagedata><tw-passagedata pid="172" name="Burgerocity Owner 2" tags="" position="5440,3766" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Exit-&gt;Sequel Town]]</tw-passagedata><tw-passagedata pid="172" name="Burgerocity Owner 2" tags="" position="5440,3766" size="100,100">(set:$sequelProgress to it + (a:&quot;burgerocity&quot;))
+\&quot;Why the want to shut down shop all the sudden?&quot; Jed asks. &quot;And why so soon?&quot;
+
+&quot;Yeah,&quot; Del adds, &quot;I ated a burger like, one day ago.&quot;
+
+The owner leans forward. &quot;If anyone asks, you never heard this. I was told not to tell anyone.&quot;
+
+&quot;What happened?&quot; Jed asks.
+
+&quot;It was the mayor,&quot; the owner explains. &quot;He shut down my business just this morning. He told me he has deconstruction plans starting //tonight//.&quot;
+
+&quot;Oh no! Is there anything I can do to help you? That sounds too sudden to be ethical or legal...&quot;
+
+&quot;Yeah, that sounds sus!&quot; Del screams. &quot;Like Among Us (2018)!&quot;
+
+&quot;If you wanna talk to the people at City Hall, be my guest. I don&#39;t like it either but I&#39;m not gonna be the one to disrespect Mayor Dixon, y&#39;know?&quot;
+
+&quot;Don&#39;t worry. I&#39;ll get to the bottom of this.&quot; 
+
+&quot;Hey, you mean //we//, right?&quot; Del wimps.
+
+&quot;Right, yeah, of course.&quot; Jed adds.
+
+[[Continue-&gt;Burgerocity 2]] </tw-passagedata><tw-passagedata pid="173" name="Burgerocity Counter 2" tags="" position="5439,3908" size="100,100">(font:&quot;Roboto Mono&quot;)[To ensure players do not ruin themselves financially, we have disabled the ability to purchase food. Do not worry, Jed and Del are fictional characters, and as such, do not require food to survive.]
+
+Current funds: $$MONEY
+
+[[Cheeseburger - $2-&gt;Too Poor]]
+[[The Bifurcated Burger - $4-&gt;Too Poor]]
+[[The Behemoth - $6-&gt;Too Poor]]
+[[The Burgerocity - $9-&gt;Too Poor]]
+[[Fries - $1-&gt;Too Poor]]
+[[Soda - $1-&gt;Too Poor]]
+
+[[Exit-&gt;Burgerocity 2]] </tw-passagedata><tw-passagedata pid="174" name="Talk to Secretary 2" tags="" position="5097,3757" size="100,100">(set:$visitsSecretary to it + 1)(set:$sequelProgress to it + (a:&quot;secretary&quot;))
+\(if:$visitsSecretary is 1)[
+\Jed and Del (either:&quot;sashay&quot;,&quot;swagger&quot;,&quot;strut&quot;,&quot;flounce&quot;,&quot;swank&quot;,&quot;prance&quot;,&quot;stride&quot;,&quot;slide&quot;,&quot;gambol&quot;,&quot;romp&quot;,&quot;hoof it&quot;,&quot;frolic&quot;,&quot;cavort&quot;,&quot;caracole&quot;) up to the secretary&#39;s desk. Your steps echo through the room, however, she still stays focused. &quot;Yo wassup,&quot; Jed says.
+
+&quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been doing work-related things, and definitely not playing Fortnite (2017).&quot; She stops speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;So you got my letter,&quot; she says.
+
+&quot;Yes, we did. What&#39;s going on? What are we going to do?&quot;
+
+&quot;Mayor Dixon communicates to th- these people in a secret room downstairs. However, that floor is on high security, meaning only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
+
+&quot;Oh my goodness gracious,&quot; Del shouts, &quot;we&#39;re gonna be the Mario brothers! Okay, I want to be Luigi, so you can be Mario!&quot;
+
+&quot;I&#39;ve got two nametags for each of you, one is like a fake business tag, and the other marks you as a city hall visitor. All you need to do is participate in capitalism by going next door to the hardware store and getting some tools.&quot;
+
+&quot;Will do,&quot; Jed states. &quot;I love participating in free-market capitalism. Gotta be one of the economic systems.&quot;
+
+[[Continue-&gt;City Hall 2]]] 
+\(else:)[
+\(if:$sequelProgress contains &quot;tools&quot;)[
+\Jed and Del (either:&quot;sashay&quot;,&quot;swagger&quot;,&quot;strut&quot;,&quot;flounce&quot;,&quot;swank&quot;,&quot;prance&quot;,&quot;stride&quot;,&quot;slide&quot;,&quot;gambol&quot;,&quot;romp&quot;,&quot;hoof it&quot;,&quot;frolic&quot;,&quot;cavort&quot;,&quot;caracole&quot;) up to the secretary. &quot;We&#39;re ready to go!&quot; Del exclaims.
+
+&quot;Alrighty then!&quot; The secretary gets up from her desk. &quot;Just follow me and we&#39;ll... Oh, Jed! We can&#39;t go yet!&quot;
+
+&quot;Why not?&quot;
+
+&quot;You haven&#39;t even spent any of your skill points yet! You should definitely do that before we leave.&quot;
+
+[[Spend Skill Points-&gt;Skill Tree 2]]](else:)[
+\Jed and Del (either:&quot;sashay&quot;,&quot;swagger&quot;,&quot;strut&quot;,&quot;flounce&quot;,&quot;swank&quot;,&quot;prance&quot;,&quot;stride&quot;,&quot;slide&quot;) up to the secretary. &quot;We&#39;re ready to go!&quot; Del exclaims.
+
+&quot;No you&#39;re not,&quot; the secretary states dryly.
+
+&quot;Oh yeah,&quot; Jed says.
+
+[[Continue-&gt;City Hall 2]]]]</tw-passagedata><tw-passagedata pid="175" name="Skill Tree 2" tags="" position="5099,3902" size="100,100">(if:visits is 1)[(set:$skillPoints to 6)(set:$SKILLS to (a:))]
+\Remaining Skill Points: $skillPoints
+
+(if:$skillPoints is 0)[[[Continue-&gt;Elevator 2]]](else:)[
+\(if:$SKILLS contains any of (a:&quot;pocs&quot;,&quot;fh&quot;) and $SKILLS does not contain &quot;bhk&quot;)[(link-reveal-goto: &quot;Beginner&#39;s Hypnotism Kit&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;bhk&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains any of (a:&quot;pi&quot;,&quot;tap&quot;) and $SKILLS does not contain &quot;c&quot;)[(link-reveal-goto: &quot;Chestplate&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;c&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;ryfb&quot; and $SKILLS does not contain &quot;ctot&quot;)[(link-reveal-goto: &quot;Count to One Thousand&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;ctot&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS does not contain &quot;dss&quot;)[(link-reveal-goto: &quot;Do Some Stretches&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;dss&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;dss&quot; and $SKILLS does not contain &quot;dkys&quot;)[(link-reveal-goto: &quot;Double Knot Your Shoes&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;dkys&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS does not contain &quot;eanm&quot;)[(link-reveal-goto: &quot;Eat a Nice Meal&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;eanm&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains any of (a:&quot;dkys&quot;,&quot;qf&quot;) and $SKILLS does not contain &quot;ee&quot;)[(link-reveal-goto: &quot;Emergency Eject&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;ee&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;ryfb&quot; and $SKILLS does not contain &quot;fowucya&quot;)[(link-reveal-goto: &quot;Find Out Which Undertale Character You Are&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;fowucya&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;gah&quot; and $SKILLS does not contain &quot;fh&quot;)[(link-reveal-goto: &quot;Funny Hat&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;fh&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS does not contain &quot;gah&quot;)[(link-reveal-goto: &quot;Get a Haircut&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;gah&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;eanm&quot; and $SKILLS does not contain &quot;pi&quot;)[(link-reveal-goto: &quot;Poison Immunity&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;pi&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;gah&quot; and $SKILLS does not contain &quot;pocs&quot;)[(link-reveal-goto: &quot;Put on Cool Shades&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;pocs&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;dss&quot; and $SKILLS does not contain &quot;qf&quot;)[(link-reveal-goto: &quot;Quieter Footsteps&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;qf&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS does not contain &quot;ryfb&quot;)[(link-reveal-goto: &quot;Read Your First Book&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;ryfb&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains any of (a:&quot;fowucya&quot;,&quot;ctot&quot;) and $SKILLS does not contain &quot;ee&quot;)[(link-reveal-goto: &quot;Read Your Second Book&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;rysb&quot;))(set:$skillPoints to it - 1)]
+]
+\(if:$SKILLS contains &quot;eanm&quot; and $SKILLS does not contain &quot;tap&quot;)[(link-reveal-goto: &quot;Take a Powernap&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;tap&quot;))(set:$skillPoints to it - 1)]]
+\]</tw-passagedata><tw-passagedata pid="176" name="Elevator 2" tags="" position="5102,4044" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="177" name="Book 4" tags="" position="525,2821.5" size="100,100">=&gt;&lt;=
+(font:&quot;Unbounded&quot;)+(size:2)[Vela]
+(font:&quot;Times New Roman&quot;)+(size:1.2)[by &lt;a href=&quot;https://asnev.neocities.org/journal#vela&quot; target=&quot;_blank&quot;&gt;asnev&lt;/a&gt;]
+
+&lt;==
+---
+(font:&quot;Times New Roman&quot;)[
+\sometimes it can be difficult to cultivate bread. your bread crops aren’t fairing well right now and there’s not much choice in the matter. you thought about finding solution after solution for your predicament. none will work, and those were made obvious with your experience. you decided that it’s not so bad. there’s nothing to cry over when other people with their plants are also going to face the same widespread problem. it’s inevitable, really. you feel like you should be feeling regret and frustration for having spent a not at all insignificant amount of time honing your craft on panimintology and kalimistronomy only to be dealt with the expected outcome that everybody expected: failure. but… you decided to contemplate life for a bit on this moment.
+
+the windy breeze feels fresh. unusually fresh. you can smell hints of lime from the experimental lime vine hybrid plant you planted a few months ago at the other side of the garden. general green scented fumes followed along to complement the olfactory orchestra. you can see Vela frolicking, hopping in and out of the field of Jili sunflowers you and your colleagues planted and cared for together to finish your complementary project studies. a little trampling won’t hurt them, they’re quite resilient as plants go. it’s all beautiful. just like the Panskrelah breed of cultivatable bread you tried growing, they are all but permanent, swishing in the breeze as their internal clock ticks towards their end time. when these technologies were first unveiled for the world to see, people were furious for the very nature of their impermanence. for the first few decades, they didn’t take in on the action and simply stuck to their traditional ways of planting and managing agriculture. stuck to ancient and comparatively barbaric methods. you and your partners then stepped in and proved the world how incredibly beneficial this new technology can be for everyone, despite its shortcomings. companies stepped in, new research gets published every other day, everyone is raving on and on about it online, and the global economy changed drastically. everyone seemed content for a while.
+
+of course, now seeing Specimen Zero slowly rotting away in front of your eyes can still be quite heartbreaking. it’s a secret to nobody, everyone was made clear that this tech cannot last long, and a permanent solution still needs to be made in order to satisfy the world’s needs. a permanent solution where people are still puzzled by the lack of progress. you know how much the world will be in flames in the following week or two. you stood still amongst the greenery and blueery around you. Vela still looks busy with her motorized tennis ball bouncing all over the places.
+
+despite all of this, you still felt hope. you’ve gone this far with a lot of success, and you’re feeling lucky. a little bit. okay, nevermind that, it’s less luck and more… something? what is this feeling? reassurance? no, not really. not very optimistic but, also not pessimistic either. you know that it’ll take a while for things to cool back down again and for people to band together again as a group to tackle a problem as a collective. you know how not easy that is to execute. during the press conference for your team’s newest findings, it’s as if the audience in front is already discussing about segregating itself into a group of advocates, and another group of contrarians. but you’re not gonna give up now. you forgot how to do that a long time ago. you better do something, anything. even if the result is a failure, we can at the very least culminate our findings and further learn from our actions. to perpetually improve.
+
+you stopped contemplating and whistled to catch the attention of Vela. she was more than happy to switch her attention into playing with you now.]
+
+[[Continue-&gt;Bookshelves]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
