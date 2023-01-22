@@ -2282,7 +2282,10 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 \You&#39;re inside the City Hall. (if:$visitsSecretary is 0)[The secretary is still focused on her computer.](else:)[The secretary does the (either:&quot;griddy&quot;,&quot;default dance&quot;,&quot;orange justice&quot;,&quot;floss&quot;,&quot;Gangnam Style dance&quot;,&quot;distraction dance&quot;).]]
 
 [[Talk to the Secretary-&gt;Talk to Secretary 2]]
-[[Exit-&gt;Sequel Town]]</tw-passagedata><tw-passagedata pid="170" name="Hardware Store 2" tags="" position="5766,3499" size="100,200">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="171" name="Burgerocity 2" tags="" position="5439,3497" size="100,200">&quot;Hey Jed, hey Del,&quot; the owner says. &quot;Here to buy some food before I shut down shop?&quot;
+[[Exit-&gt;Sequel Town]]</tw-passagedata><tw-passagedata pid="170" name="Hardware Store 2" tags="" position="5766,3499" size="100,200">You&#39;re inside the Town Square Hardware Store. It feels strangely cold.
+
+[[Purchase Items-&gt;Buy Hardware 2]]
+[[Exit-&gt;Sequel Town]]</tw-passagedata><tw-passagedata pid="171" name="Burgerocity 2" tags="" position="5439,3497" size="100,200">&quot;Hey Jed, hey Del,&quot; the owner says. &quot;Here to buy some food before I shut down shop?&quot;
 \(set:$previousPassage to (passage:)&#39;s name)
 
 [[Purchase Food-&gt;Burgerocity Counter 2]]
@@ -2390,7 +2393,15 @@ Current funds: $$MONEY
 \(if:$SKILLS contains any of (a:&quot;fowucya&quot;,&quot;ctot&quot;) and $SKILLS does not contain &quot;ee&quot;)[(link-reveal-goto: &quot;Read Your Second Book&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;rysb&quot;))(set:$skillPoints to it - 1)]
 ]
 \(if:$SKILLS contains &quot;eanm&quot; and $SKILLS does not contain &quot;tap&quot;)[(link-reveal-goto: &quot;Take a Powernap&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;tap&quot;))(set:$skillPoints to it - 1)]]
-\]</tw-passagedata><tw-passagedata pid="176" name="Elevator 2" tags="" position="5102,4044" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="177" name="Book 4" tags="" position="525,2821.5" size="100,100">=&gt;&lt;=
+\]</tw-passagedata><tw-passagedata pid="176" name="Elevator 2" tags="" position="5102,4044" size="100,100">With his new set of skills, Jed felt ready to take on the (color:#ff0000)[Mayor Mystery]. The secretary handed Jed and Del their name tags, labelded &quot;Mario Mario&quot; and &quot;Luigi Mario.&quot; The secretary gets up from her desk and gestures for Jed and Del to follow her. You all go through the two large double doors on the right side of the room.
+
+The doors lead into a long hallway with an elevator at the end. Throughout the hallway, there are exactly 27 security guards walking around. Del starts to feel a little uneasy, but Jed consoles him.
+
+The two of you arrive at the elevator, and six security guards are standing beside it - three on each side. The guards stare the three of you down while you enter the elevator, but they don&#39;t say anything. The elevator doors close and you can feel a slight sense of relief. The secretary presses a button and the elevator starts to go downwards.
+
+&quot;That was the easy part,&quot; the secretary explains. &quot;Once we get downstairs, there&#39;s a door tucked away behind the elevator. That&#39;s where we need to go.&quot;
+
+[[Continue-&gt;City Hall Basement 2]]</tw-passagedata><tw-passagedata pid="177" name="Book 4" tags="" position="525,2821" size="100,100">=&gt;&lt;=
 (font:&quot;Unbounded&quot;)+(size:2)[Vela]
 (font:&quot;Times New Roman&quot;)+(size:1.2)[by &lt;a href=&quot;https://asnev.neocities.org/journal#vela&quot; target=&quot;_blank&quot;&gt;asnev&lt;/a&gt;]
 
@@ -2407,7 +2418,29 @@ despite all of this, you still felt hope. you’ve gone this far with a lot of s
 
 you stopped contemplating and whistled to catch the attention of Vela. she was more than happy to switch her attention into playing with you now.]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata></tw-storydata>
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="178" name="Buy Hardware 2" tags="" position="5774,3767" size="100,100">&quot;You need it, we got it.&quot; the clerk boasts.
+
+Current funds: $$MONEY
+
+(if:$INV does not contain &quot;wrench&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Steel Pipe Wrench - $20&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wrench&quot;))(set:$sequelProgress to it + &quot;tools&quot;)(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;wrench&quot;)[Steel Pipe Wrench - Sold Out](else:)[[[Steel Pipe Wrench - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$sequelProgress to it + &quot;tools&quot;)(set:$MONEY to it - 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$sequelProgress to it + &quot;tools&quot;)(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
+
+[[Exit-&gt;Hardware Store 2]] </tw-passagedata><tw-passagedata pid="179" name="City Hall Basement 2" tags="" position="5102,4194" size="100,100">Jed, Del, and the secretary have arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no partcular fashion.
+
+[[Elevator-&gt;Elevator Back 2]]
+(if:(history:) contains &quot;Maintenance Room 2&quot;)[[[Maintenance Room-&gt;Too Poor]]](else:)[[[Maintenance Room-&gt;Maintenance Room 2]]]
+[[Secret Room-&gt;Secret Room 2]]</tw-passagedata><tw-passagedata pid="180" name="Elevator Back 2" tags="" position="4956,4269" size="100,100">You turn around to call for the elevator, but the secretary stops you.
+
+&quot;Jed, you better turn yourself around right.&quot; the secretary says. &quot;When I said there&#39;s no going back, there&#39;s no going back. We gucci?&quot;
+
+[[Continue-&gt;City Hall Basement 2]] </tw-passagedata><tw-passagedata pid="181" name="Maintenance Room 2" tags="" position="5258,4275" size="100,100">(font:&quot;Roboto Mono&quot;)[(if:(history:) contains &quot;Flush 2&quot;)[
+\Nice try. But we blocked this one too.](else:)[
+\Due to high abuse of the toilet feature in the previous game, we have removed it from this game.]
+
+[[Continue-&gt;City Hall Basement 2]] </tw-passagedata><tw-passagedata pid="182" name="Secret Room 2" tags="" position="5107,4337" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
