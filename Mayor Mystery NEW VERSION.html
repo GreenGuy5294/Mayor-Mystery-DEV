@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Mayor Mystery NEW VERSION.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Mayor Mystery NEW VERSION" startnode="156" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+<tw-storydata name="Mayor Mystery NEW VERSION" startnode="9" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400&display=swap');
 
@@ -153,7 +153,6 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 \(if:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$FUN to (random:1,$maxfun))
 \(if:$FUN is $previousFun)[(set:$FUN to (random:1,$maxfun))]]
 \(set:$previousFun to $FUN)
-\(if:$ENDINGS&#39;s length is 12 and $forcedletter is false)[(set:$forcedletter to true)(set:$FUN to 4)]
 \(set:$LOC to &quot;East Side&quot;)
 \(if:$FUN is 3)[(set:$MONEY to (random:490,510))](else:)[(set:$MONEY to (random:110,130))]
 \(if:$FUN is 8 and $MAILBOX is &quot;empty&quot;)[(set:$MAILBOX to &quot;lightsaber&quot;)]
@@ -207,10 +206,11 @@ By Blue Cat and Green Guy
 \(set: $incomingMail to &quot;empty&quot;)
 \(set: $wallColor to &quot;grey&quot;)
 \(set: $CLOSET to (a:))
-\(set: $forcedletter to false)
 \(set: $tickets to 0)
 \(set: $gotToilet to false)
 \(set: $sequel to true)
+\(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0))
+\(set: $mayorFights to (a:))
 \]
 \(set: $toilets to (a:))
 \(set: $testing to &quot;NA&quot;)
@@ -322,16 +322,22 @@ Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m s
 \(if:$INV contains &quot;paint&quot;)[
 [[Paint the Walls-&gt;Paint Apartment]]]
 [[Exit-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1372,618" size="100,100">(font:&quot;Kaushan Script&quot;)[
-\(if:$FUN is 4)[###Dear Webster Groves citizen,
-Something big is about to happen inside Webster Groves. Something that challenges our way of living. Something dangerous. Please, you must evacuate. Take a train and get out of town, ASAP.
+\(if:$FUN is 4)[###Dear Jed Winchester,
+ALIENS. THEY&#39;RE REAL.
 
-Sincerely,
-An anonymous insider]
+I know it sounds unreal, but you have to believe me. I heard the mayor talk to them. I heard them talk back. Either he&#39;s acting strange or I&#39;m acting strange, and I&#39;m not acting strange. 
+
+I need your help. We //have// to get to the bottom of this.
+
+Attatched to the back of this letter is a key. Keep it. Dispose of the letter as soon as possible. We don&#39;t want to leave a paper trail.
+
+Thanks,
+An anonymous help-seeker]
 \(else-if:$FUN is 10)[###Dear Jed Winchester,
 Please meet me at the city hall.
 
 Thanks,
-An anonymous help-seeker,]
+An anonymous help-seeker]
 \(else-if:$FUN is 12)[(font:&quot;Schoolbell&quot;)[
 \###Dear Jed Winchester,
 Weve been teying to reach you about your car&#39;s extended warranty. You should of received a noteice in the mail about you&#39;re cars extended warrenty eligabilety. Sinse we&#39;ve not gotten a response, we&#39;re giving you a final curtesy letter before we close out your file. Please call us to be removed and placed on our do not mail list. To speak to some one about possiblely extending your vehicles warrenty, call 202-555-0161.
@@ -345,8 +351,10 @@ Thanks,
 An anonymous help-seeker]]
 \(set: $INV to it + (a:&quot;letter&quot;))
 
-Jed folded the letter and put it in his pocket.
-\(if:$MAILBOX is not &quot;empty&quot;)[ He then looked in his mailbox again and saw something else pushed further back.]
+(cond:$FUN is 4,&quot;Jed took the key off of the letter, and then put the letter in his pocket.&quot;,&quot;Jed folded the letter and put it in his pocket.&quot;)
+\(if:$MAILBOX is not &quot;empty&quot;)[
+
+He then looked in his mailbox again and saw something else pushed further back.]
 
 [[Return Home-&gt;Jed&#39;s Apartment]]
 [[Go to Town-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="16" name="East Side of Town" tags="" position="683,1214" size="200,200">You&#39;re in the East Side of Webster Groves. (cond:$wearing is &quot;3d glasses&quot;,&quot;Everything looks so cool in 3D...&quot;,&quot;The weather feels very nice today!&quot;)
@@ -398,26 +406,26 @@ Jed folded the letter and put it in his pocket.
 [[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="23" name="Flush Toilet" tags="" position="1101,2286" size="100,100">(set:$visitsJedsToilet to it + 1)
 \(unless:$toilets contains &quot;JedsApartment&quot;)[(set:$toilets to it + (a:&quot;JedsApartment&quot;))]
 \(if:$visitsJedsToilet is 1)[
-\You flush the toilet.]
+\You flush the toilet.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 2)[
-\You flush the toilet again.]
+\You flush the toilet again.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 3)[
-\You flush the toilet another time. Surprise surprise, nothing special happens.]
+\You flush the toilet another time. Surprise surprise, nothing special happens.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 4)[
-\Why do you keep flushing the toilet? Are you trying to run up your water bill, because if so you&#39;re succeeding.]
+\Why do you keep flushing the toilet? Are you trying to run up your water bill, because if so you&#39;re succeeding.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 5 or $visitsJedsToilet is 6)[
-\Jed, please stop flushing the toilet. I&#39;m serious.]
+\Jed, please stop flushing the toilet. I&#39;m serious.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 7)[
-\Wow, I thought saying the same thing twice would make you stop. You&#39;re clearly just here to flush the toilet and that&#39;s it. Are you trying to get the toilet ending? Sorry buddy, that&#39;s off limits. Go on now.]
+\Wow, I thought saying the same thing twice would make you stop. You&#39;re clearly just here to flush the toilet and that&#39;s it. Are you trying to get the toilet ending? Sorry buddy, that&#39;s off limits. Go on now.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 8)[
-\Jed, I didn&#39;t want to have to do this but you leave me no choice. I&#39;m going to break the link to this passage. No more toilet flushing for you, mister.
+\Jed, I didn&#39;t want to have to do this but you leave me no choice. I&#39;m going to break the link to this passage. No more toilet flushing for you, mister.(set:$STATS&#39;s 6th to it + 1)
 \(set:$toiletEnding to true)]
 \(if:$visitsJedsToilet is 9)[
 \(font:&quot;Raleway&quot;)If you somehow see this text please let me know, this is not supposed to show up at all!]
 \(if:$visitsJedsToilet is 10)[
-\You flush the toilet.]
+\You flush the toilet.(set:$STATS&#39;s 6th to it + 1)]
 \(if:$visitsJedsToilet is 11)[
-\Ha! I&#39;m kidding. Did you really think I would let you do all this again? Oh, no no no. I&#39;m cutting it short. I just wanted to lead you on a little before I did it. Bye bye!
+\Ha! I&#39;m kidding. Did you really think I would let you do all this again? Oh, no no no. I&#39;m cutting it short. I just wanted to lead you on a little before I did it. Bye bye!(set:$STATS&#39;s 6th to it + 1)
 \(set:$toiletEnding to true)]
 
 [[Continue-&gt;Jed&#39;s Bathroom]]</tw-passagedata><tw-passagedata pid="24" name="Train Ticket Warning" tags="" position="1450,2282" size="100,100">Hey Jed, sorry for the &quot;divine interuption,&quot; but I couldn&#39;t help but notice you left your bedroom without grabbing the train pass. Did I not point it out clearly enough? Anyway, I just wanted to let you know that this ticket is pretty helpful; you&#39;re not going to be able to do a lot of travelling without it!
@@ -439,6 +447,8 @@ Jed folded the letter and put it in his pocket.
 \(if:$wearing is &quot;none&quot;)[&#39;&#39;Everyday Clothes - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Everyday Clothes&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;none&quot;)]]
 \(unless:$hatgone)[
 (if:$wearing is &quot;hat&quot;)[&#39;&#39;Flamboyant Hat - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Flamboyant Hat&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hat&quot;)]]]
+\(if:$CLOSET contains &quot;ghost&quot;)[
+(if:$wearing is &quot;ghost&quot;)[&#39;&#39;Ghost Costume - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Ghost Costume&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;ghost&quot;)]]]
 \(if:$CLOSET contains &quot;hoodie&quot;)[
 (if:$wearing is &quot;hoodie&quot;)[&#39;&#39;Green Hoodie - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Green Hoodie&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hoodie&quot;)]]]
 \(if:$CLOSET contains &quot;plumber outfit&quot;)[
@@ -466,9 +476,11 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 ]
 \[[Exit-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="30" name="Throw Away Letter" tags="" position="1284,2683" size="100,100">Jed why did you do that? I know you get a lot of junk mail but this isn&#39;t that. Do you really not want to participate in my story? (if:$testing is &quot;FAIL2&quot;)[No, you obviously don&#39;t considering you failed those tests at the beginning of the game.] I see how it is.
 \(set:$INV to it - (a:&quot;letter&quot;))
+\(set:$STATS&#39;s 2nd to it + 1)
 
 [[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="31" name="Throw Away Hat" tags="" position="1282,2833" size="100,100">Jed no! The hat! Oh, it was such a magnificant hat. You really did look amazing in it. How I&#39;ll miss you, hat. Maybe another time, Jed can see that he was wrong about you.
 \(set:$hatgone to true)(set:$wearing to &quot;none&quot;)
+\(set:$STATS&#39;s 2nd to it + 1)
 
 [[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="32" name="Coffee Maker" tags="" position="1278,2419" size="100,100">(set:$visitsCoffeeMaker to it + 1)
 \(if:$visitsCoffeeMaker is 1)[
@@ -545,6 +557,7 @@ The buildings around you are all on fire; some are completely destroyed. You can
 
 Jed was at a loss of words. Jed wondered what could have caused all of this. An entire string of events leading to catastrophe that he had no idea about. Of course, there was no way that Jed would&#39;ve known that all of this could have been prevented if he had just kept the letter.
 \(unless:$ENDINGS contains &quot;Neglect&quot;)[(set:$ENDINGS to it + (a:&quot;Neglect&quot;))]
+\(set:$STATS&#39;s 1st to it + 1)
 
 [[The End-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="38" name="Library" tags="" position="515,1562" size="100,200">You&#39;re inside the Webster Groves Public Library.
 \(set:$previousPassage to (passage:)&#39;s name)
@@ -646,7 +659,8 @@ Jacob, Quirb, Theep, Thurm
 \(else:)[
 \Hello player. So this is a bit akward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with 3 options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
 
-[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="49" name="Train Ride" tags="" position="3150,796" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
+[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="49" name="Train Ride" tags="" position="3150,796" size="100,100">(set:$STATS&#39;s 7th to it + 1)
+\(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
 \During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity&#39;s last day, so it would be a missed opportunity if the owner didn&#39;t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn&#39;t see any during his ride. The weather&#39;s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don&#39;t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they&#39;ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She&#39;s not new to Webster Groves, however, since she used to (cond: $josefineStore is &#39;unknown&#39;,&#39;have a job&#39;,&#39;own a business&#39;) here.&quot;,&quot;Jed wondered if he could ever get a job at Bosco&#39;s Family Food Store, the supermarket next to his apartment complex. On one hand, it wouldn&#39;t be that hard of a job, he&#39;d get to talk to people a lot, and it&#39;s a very short walk from his place to the store. However, the store&#39;s current owner, John Bosco, has developed a slight distaste of Jed. As far as Jed knows, he hasn&#39;t done anything that would warrant this kind of disdain (a disdain that he&#39;s not even aware of), but the owner simply doesn&#39;t like his over-the-top personality.&quot;,&quot;Jed realized he has never been inside the Webster Groves City Hall(cond:$visitsCityHall &gt; 0,&#39; before today&#39;,&#39;&#39;). The building is of course open to the public, but he had simply never thought to enter it, nor had a reason to enter it. But now with the letter he got this morning talking about evil and distrustful people inside City Hall, I think it&#39;s safe to say Jed (cond:$visitsCityHall &gt; 0,&#39;had&#39;,&#39;has&#39;) a pretty good reason for visiting. Its interior has popped up in some conversations with friends: its gigantic size, the beautiful columns, the art on the roof, and the large maze-like structure of its hallways. Would it be wrong to ask for some kind of tour?&quot;,&quot;Jed thought about the computer lab inside the town library. The computers have been out of order for quite a while. Despite this, sometimes when Jed enters the computer lab, he can see stuff on one of the screens, however it&#39;s usually something frozen. Do the computers actually work, and someone&#39;s just been freezing them on command and lying they&#39;re out of order? Or are they so broken that they just show random things whenever they feel like it?&quot;,&quot;Jed thought about the criminal gang in West Side that he keeps hearing about. They&#39;re mostly known for mugging people that are unfortunate enough to cross paths with them. He then began to wonder how much being a mugger pays. You could get lucky and get someone who carries lots of money, but recently there are less and less people who ever carry cash at all. Imagine being a mugger for a living, but constantly mugging people who don&#39;t carry cash! The mugging economy must be going downhill compared to the past.&quot;,&quot;Jed looked around the train car he was in. (cond:$wearing is &#39;3d glasses&#39;,&#39;It looked absolutely incredible in 3D.&#39;,&#39;For some reason, it looked nicer than the other ones he’s been in before.&#39;) The seats were pretty, and also very comfy. There were also tables in between the seats, something Jed knows that only a few of the train cars have. Along with the great landscape view that can be seen through the big glass windows, this ride was very enjoyable.&quot;)
 \(live:1s)[(if:time &gt; 10s)[
 
@@ -659,7 +673,7 @@ $traintext
 
 &quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;(if:$wearing is &quot;hat&quot;)[Nice hat,&quot; she says. &quot;Did you get my letter?&quot;](else:)[So you got my letter,&quot; she says.]
 
-(if:$INV contains &quot;letter&quot;)[&quot;Yes, I did.](else:)[&quot;Uh... yeah... I did...] What&#39;s going on? What are we going to do?&quot;
+(if:$INV does not contain &quot;letter&quot; and $FUN is not 4)[&quot;Uh... yeah... I did...](else:)[&quot;Yes, I did.] What&#39;s going on? What are we going to do?&quot;
 
 &quot;Mayor Dixon communicates to th- these people in a secret room downstairs. However, that floor is on high security, meaning only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
 
@@ -674,7 +688,7 @@ $traintext
 
 She looks at you confused. She looks around the room to make sure no one is here. &quot;I&#39;m sorry, I just- you got my letter, right?&quot;
 
-&quot;Of course.(if:$INV does not contain &quot;letter&quot;)[..]&quot;
+&quot;Of course.(if:$INV does not contain &quot;letter&quot; and $FUN is not 4)[..]&quot;
 
 &quot;Well, I&#39;m just surprised because my plan was that we&#39;re going to sneak into the basement by disguising you as a plumber. But it looks like you got the look. Well, once we go downstairs there&#39;s no going back. Do you have everything you need? You&#39;ll need some kind of blunt weapon.&quot;
 
@@ -782,6 +796,7 @@ Feel free to rest in my waiting room for as long as you need!
 \&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;
 
 Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsWaitingRoom &lt; 1000)[/5](if:$visitsWaitingRoom &gt; 999)[/???]]
+[[View Statistics-&gt;Stats Page]]
 \(if:$TestSkip and $TestFinish &gt; 3)[
 
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Disabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to false)]]
@@ -805,10 +820,11 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 
 Current funds: $$MONEY
 
-(if:$CLOSET does not contain &quot;hoodie&quot; and $MONEY &gt;= 30)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Green Hoodie - $30&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;hoodie&quot;))(set:$MONEY to it - 30)]](else:)[(if:$CLOSET contains &quot;hoodie&quot;)[Green Hoodie - Owned](else:)[[[Green Hoodie - $30-&gt;Too Poor]]]]
-(if:$CLOSET does not contain &quot;plumber outfit&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Navy Blue Button-Up - $15&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)]](else:)[(if:$CLOSET contains &quot;plumber outfit&quot;)[Navy Blue Button-Up - Owned](else:)[[[Navy Blue Button-Up - $15-&gt;Too Poor]]]]
-(if:$CLOSET does not contain &quot;ski mask&quot; and $MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Ski Mask - $10&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;ski mask&quot;))(set:$MONEY to it - 10)]](else:)[(if:$CLOSET contains &quot;ski mask&quot;)[Ski Mask - Owned](else:)[[[Ski Mask - $10-&gt;Too Poor]]]]
-(if:$CLOSET does not contain &quot;cape&quot; and $MONEY &gt;= 109)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Superhero Cape - $109&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;cape&quot;))(set:$MONEY to it - 109)]](else:)[(if:$CLOSET contains &quot;cape&quot;)[Superhero Cape - Owned](else:)[[[Superhero Cape - $109-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;ghost&quot; and $MONEY &gt;= 25)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Ghost Costume - $25&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;ghost&quot;))(set:$MONEY to it - 25)(set:$STATS&#39;s 3rd to it + 25)]](else:)[(if:$CLOSET contains &quot;ghost&quot;)[Ghost Costume - Owned](else:)[[[Ghost Costume - $25-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;hoodie&quot; and $MONEY &gt;= 30)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Green Hoodie - $30&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;hoodie&quot;))(set:$MONEY to it - 30)(set:$STATS&#39;s 3rd to it + 30)]](else:)[(if:$CLOSET contains &quot;hoodie&quot;)[Green Hoodie - Owned](else:)[[[Green Hoodie - $30-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;plumber outfit&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Navy Blue Button-Up - $15&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)(set:$STATS&#39;s 3rd to it + 15)]](else:)[(if:$CLOSET contains &quot;plumber outfit&quot;)[Navy Blue Button-Up - Owned](else:)[[[Navy Blue Button-Up - $15-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;ski mask&quot; and $MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Ski Mask - $10&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;ski mask&quot;))(set:$MONEY to it - 10)(set:$STATS&#39;s 3rd to it + 10)]](else:)[(if:$CLOSET contains &quot;ski mask&quot;)[Ski Mask - Owned](else:)[[[Ski Mask - $10-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;cape&quot; and $MONEY &gt;= 109)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Superhero Cape - $109&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;cape&quot;))(set:$MONEY to it - 109)(set:$STATS&#39;s 3rd to it + 109)]](else:)[(if:$CLOSET contains &quot;cape&quot;)[Superhero Cape - Owned](else:)[[[Superhero Cape - $109-&gt;Too Poor]]]]
 
 [[Return-&gt;Clothing Store]]</tw-passagedata><tw-passagedata pid="57" name="Plumber Shortcut" tags="" position="5185,1974" size="100,100">(set:$visitPlumber to true)
 \&quot;Hmmm,&quot; the clerk thinks. They look at you for a few seconds. &quot;Yes, I can see it... You&#39;ll be able to pull this off, and I know just what you need.&quot;
@@ -823,7 +839,7 @@ The clerk goes back to the clothing selection and comes back with a navy blue bu
 \(else:)[
 \|option&gt;[
 \(link:&quot;\&quot;I&#39;ll take it!\&quot;&quot;)[(replace:?option)[
-\(set:$CLOSET to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)
+\(set:$CLOSET to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)(set:$STATS&#39;s 3rd to it + 15)
 \&quot;There you go! Glad I could help.&quot;
 
 [[Continue-&gt;Clothing Store]]]]
@@ -831,22 +847,22 @@ The clerk goes back to the clothing selection and comes back with a navy blue bu
 
 Current funds: $$MONEY
 
-(if:$INV does not contain &quot;wrench&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Steel Pipe Wrench - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wrench&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;wrench&quot;)[Steel Pipe Wrench - Sold Out](else:)[[[Steel Pipe Wrench - $20-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$MONEY to it - 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
-(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
+(if:$INV does not contain &quot;wrench&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Steel Pipe Wrench - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wrench&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)]](else:)[(if:$INV contains &quot;wrench&quot;)[Steel Pipe Wrench - Sold Out](else:)[[[Steel Pipe Wrench - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$MONEY to it - 5)(set:$STATS&#39;s 3rd to it + 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)(set:$STATS&#39;s 3rd to it + 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)(set:$STATS&#39;s 3rd to it + 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
 
 [[Exit-&gt;Hardware Store]] </tw-passagedata><tw-passagedata pid="59" name="Burgerocity Counter" tags="" position="4536,1842" size="100,100">Current funds: $$MONEY
 
-(if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Cheeseburger - $2&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 2)]](else:)[[[Cheeseburger - $2-&gt;Too Poor]]]
-(if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Bifurcated Burger - $4&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 4)]](else:)[[[The Bifurcated Burger - $4-&gt;Too Poor]]]
-(if:$MONEY &gt;= 6)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Behemoth - $6&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 6)]](else:)[[[The Behemoth - $6-&gt;Too Poor]]]
-(if:$MONEY &gt;= 9)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Burgerocity - $9&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 9)]](else:)[[[The Burgerocity - $9-&gt;Too Poor]]]
+(if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Cheeseburger - $2&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 2)(set:$STATS&#39;s 3rd to it + 2)]](else:)[[[Cheeseburger - $2-&gt;Too Poor]]]
+(if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Bifurcated Burger - $4&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 4)(set:$STATS&#39;s 3rd to it + 4)]](else:)[[[The Bifurcated Burger - $4-&gt;Too Poor]]]
+(if:$MONEY &gt;= 6)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Behemoth - $6&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 6)(set:$STATS&#39;s 3rd to it + 6)]](else:)[[[The Behemoth - $6-&gt;Too Poor]]]
+(if:$MONEY &gt;= 9)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Burgerocity - $9&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 9)(set:$STATS&#39;s 3rd to it + 9)]](else:)[[[The Burgerocity - $9-&gt;Too Poor]]]
 \(if:$FUN is 2)[
-(if:$MONEY &gt;= 14)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Big Boy - $14&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 14)]](else:)[[[The Big Boy - $14-&gt;Too Poor]]]]
-(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;fries&quot;))(set:$MONEY to it - 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
-(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;soda&quot;))(set:$MONEY to it - 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 14)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Big Boy - $14&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 14)(set:$STATS&#39;s 3rd to it + 14)]](else:)[[[The Big Boy - $14-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;fries&quot;))(set:$MONEY to it - 1)(set:$STATS&#39;s 3rd to it + 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;soda&quot;))(set:$MONEY to it - 1)(set:$STATS&#39;s 3rd to it + 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
 
 [[Exit-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="60" name="Going Downstairs" tags="" position="2648,2133" size="100,100">The secretary hands you two name tags: one has a fake name and fake plumbing business, and one labels you as a City Hall visitor. The secretary then gets up from her desk and gestures for you to follow her. You go through the two large double doors on the right side of the room.
 
@@ -872,9 +888,20 @@ The two of you arrive at the elevator, and two security guards are standing besi
 
 &quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
 
-You reach into your pocket and pull out the letter. Indeed, taped to the back, is a small silver key. You take it off and open up the door...
+You reach into your pocket and pull out the letter. Indeed, taped to the back, is a small silver key. (if:$FUN is 4)[
+
+&quot;Hey, woah woah woah!&quot; the secretary says. &quot;You were supposed to get rid of that letter!&quot;
+
+&quot;Oh, oops. Too late now.&quot; ]You take (cond:$FUN is 4,&quot;the key off the letter&quot;,&quot;it off&quot;) and open up the door...
 
 [[Continue-&gt;City Hall Confrontation]]]
+\(else:)[
+\(if:$FUN is 4)[
+\You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
+
+&quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
+
+You reach into your pocket and pull out the small, silver key. You take it and open up the door...]
 \(else:)[
 \You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
 
@@ -890,7 +917,8 @@ The two of you start to walk around towards the front of the elevator. But befor
 
 &quot;This is a restricted area. Only certified persons are allowed.&quot; They rip off your plumber nametag. &quot;We know about your little setup. You two are under arrest for fraud and trespassing.&quot;
 
-[[Continue-&gt;Trespassing Ending]]]</tw-passagedata><tw-passagedata pid="65" name="City Hall Toilet" tags="" position="2725,2535" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
+[[Continue-&gt;Trespassing Ending]]]]</tw-passagedata><tw-passagedata pid="65" name="City Hall Toilet" tags="" position="2725,2535" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
+\(set:$STATS&#39;s 6th to it + 1)
 \(set: $toilets to it + (a:&quot;CityHall&quot;))
 \(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.
 
@@ -901,6 +929,7 @@ The two of you start to walk around towards the front of the elevator. But befor
 &quot;Looks like we&#39;ll have to call a real plumber once this is over,&quot; the secretary quips.]
 
 [[Continue-&gt;City Hall Maintanence Room]] </tw-passagedata><tw-passagedata pid="66" name="Trespassing Ending" tags="" position="2359,2684" size="200,100">(unless:$ENDINGS contains &quot;Trespassing&quot;)[(set:$ENDINGS to it + (a:&quot;Trespassing&quot;))]
+\(set:$STATS&#39;s 1st to it + 1)
 \Next thing you know, you&#39;re inside a holding cell. &quot;We&#39;ll be back to you in a couple hours,&quot; the guards tell you.
 
 A couple hours pass, and nothing happens.
@@ -942,6 +971,7 @@ Jed, you do realize you actually had a third option, right? You saw that didn&#3
 The two guards grab you by your arms and drag you out of the room.
 
 [[Continue-&gt;Trespassing Ending]] </tw-passagedata><tw-passagedata pid="69" name="Evil Ending" tags="" position="2857,2677" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
+\(set:$STATS&#39;s 1st to it + 1)
 \Jed... what have you done? 
 
 &quot;I knew you&#39;d come to your senses, Jed,&quot; the mayor says. &quot;Together we are going to rule this earth.&quot;
@@ -968,18 +998,18 @@ There you go, Jed. Was that worth it?
 
 [[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="70" name="Fight!" tags="" position="2867,2852" size="100,100">Alright, Jed. We&#39;re about to go into a - dare I say - //epic// fight scene. But first, we&#39;re going to need to choose a weapon! What do you choose?
 
-(if:$INV contains all of (a:&quot;burger&quot;,&quot;soda&quot;,&quot;fries&quot;))[(link-reveal-goto:&quot;Burgerocity Meal Combo&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;meal combo&quot;)]
+(if:$INV contains all of (a:&quot;burger&quot;,&quot;soda&quot;,&quot;fries&quot;))[(link-reveal-goto:&quot;Burgerocity Meal Combo&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;meal combo&quot;)(unless:$mayorFights contains &quot;meal combo&quot;)[(set:$mayorFights to it + (a:&quot;meal combo&quot;))]]
 ]
-\(if:$INV contains &quot;crowbar&quot;)[(link-reveal-goto:&quot;Crowbar&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;crowbar&quot;)]
+\(if:$INV contains &quot;crowbar&quot;)[(link-reveal-goto:&quot;Crowbar&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;crowbar&quot;)(unless:$mayorFights contains &quot;crowbar&quot;)[(set:$mayorFights to it + (a:&quot;crowbar&quot;))]]
 ]
-\(if:$INV contains &quot;nerf gun&quot;)[(link-reveal-goto:&quot;Foam-Dart Gun&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;nerf gun&quot;)]
+\(if:$INV contains &quot;nerf gun&quot;)[(link-reveal-goto:&quot;Foam-Dart Gun&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;nerf gun&quot;)(unless:$mayorFights contains &quot;nerf gun&quot;)[(set:$mayorFights to it + (a:&quot;nerf gun&quot;))]]
 ]
-\(link-reveal-goto:&quot;Good Ol&#39; Fisticuffs&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;fists&quot;)]
-(if:$INV contains &quot;hammer&quot;)[(link-reveal-goto:&quot;Hammer&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;hammer&quot;)]
+\(link-reveal-goto:&quot;Good Ol&#39; Fisticuffs&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;fists&quot;)(unless:$mayorFights contains &quot;fists&quot;)[(set:$mayorFights to it + (a:&quot;fists&quot;))]]
+(if:$INV contains &quot;hammer&quot;)[(link-reveal-goto:&quot;Hammer&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;hammer&quot;)(unless:$mayorFights contains &quot;hammer&quot;)[(set:$mayorFights to it + (a:&quot;hammer&quot;))]]
 ]
-\(if:$INV contains &quot;wrench&quot;)[(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)]
+\(if:$INV contains &quot;wrench&quot;)[(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)(unless:$mayorFights contains &quot;wrench&quot;)[(set:$mayorFights to it + (a:&quot;wrench&quot;))]]
 ]
-\(if:$INV contains &quot;lightsaber&quot;)[(link-reveal-goto:&quot;Strange Device&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;lightsaber&quot;)]
+\(if:$INV contains &quot;lightsaber&quot;)[(link-reveal-goto:&quot;Strange Device&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;lightsaber&quot;)(unless:$mayorFights contains &quot;lightsaber&quot;)[(set:$mayorFights to it + (a:&quot;lightsaber&quot;))]]
 ]</tw-passagedata><tw-passagedata pid="71" name="The City Hall Fight" tags="" position="2868,3011" size="100,100">(if:$weapon is &quot;meal combo&quot;)[You pull out one of Burgerocity&#39;s signature burgers and shove it into the right guard&#39;s mouth. The mayor steps back, while the second guard jumps towards you. You smack them across the head with your order of fries and they fall down.
 
 &quot;I choose option 3!&quot; you yell.
@@ -1285,6 +1315,7 @@ Ted shuts the door on you.
 At long last, your life dream had been completed. Jed&#39;s Jams was open for business.
 
 [[Continue-&gt;Capitalism Ending]] </tw-passagedata><tw-passagedata pid="90" name="Capitalism Ending" tags="" position="3662,2007" size="200,100">(unless:$ENDINGS contains &quot;Capitalism&quot;)[(set:$ENDINGS to it + (a:&quot;Capitalism&quot;))]
+\(set:$STATS&#39;s 1st to it + 1)
 \5 long days passed.
 
 No one&#39;s bought anything. No one&#39;s even came into the store. And it&#39;s not like you didn&#39;t advertise it! You told many people about it: your neighbors, random people in the supermarket, random people on the train, random people that happened to walk by your shop, and more.
@@ -1331,20 +1362,20 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;Oh crap,&quot; you reply, &quot;I left it at home!&quot;
 
-&quot;We can just sell you a ticket if you&#39;d like.(if:$FUN is 7)[ We&#39;re running a special promotion where our train passes are 50% today!]&quot;
+&quot;We can just sell you a ticket if you&#39;d like.(if:$FUN is 7)[ We&#39;re running a special promotion where our train passes are 75% off today!]&quot;
 
 Current funds: $$MONEY
 
-(if:$MONEY &gt;= 10)[(link-reveal-goto: &quot;Train Ticket - $10&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train ticket&quot;))(set:$MONEY to it - 10)(set:$justSoldTicket to true)]](else:)[[[Train Ticket - $10-&gt;Too Poor]]]
-(if:$FUN is 7)[(if:$MONEY &gt;= 40)[(link-reveal-goto: &quot;Train Pass - $40&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 40)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $40-&gt;Too Poor]]]](else:)[(if:$MONEY &gt;= 80)[(link-reveal-goto: &quot;Train Pass - $80&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 80)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $80-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 10)[(link-reveal-goto: &quot;Train Ticket - $10&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train ticket&quot;))(set:$MONEY to it - 10)(set:$STATS&#39;s 3rd to it + 10)(set:$justSoldTicket to true)]](else:)[[[Train Ticket - $10-&gt;Too Poor]]]
+(if:$FUN is 7)[(if:$MONEY &gt;= 20)[(link-reveal-goto: &quot;Train Pass - $40&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $20-&gt;Too Poor]]]](else:)[(if:$MONEY &gt;= 80)[(link-reveal-goto: &quot;Train Pass - $80&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 80)(set:$STATS&#39;s 3rd to it + 80)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $80-&gt;Too Poor]]]]
 (if:$LOC is &quot;East Side&quot;)[[[&quot;Nevermind&quot;-&gt;East Side of Town]]](if:$LOC is &quot;Town Square&quot;)[[[&quot;Nevermind&quot;-&gt;Town Square]]](if:$LOC is &quot;West Side&quot;)[[[&quot;Nevermind&quot;-&gt;West Side of Town]]]]
 \(else:)[
-\&quot;Hey Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! What&#39;d you need? (if:$FUN is 7)[Remember, our train passes are half price today!]
+\&quot;Hey Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! What&#39;d you need? (if:$FUN is 7)[Remember, our train passes are quarter price today!]
 
 Current funds: $$MONEY
 
-(if:$MONEY &gt;= 10)[(link-reveal-goto: &quot;Train Ticket - $10&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train ticket&quot;))(set:$MONEY to it - 10)(set:$justSoldTicket to true)]](else:)[[[Train Ticket - $10-&gt;Too Poor]]]
-(if:$FUN is 7)[(if:$MONEY &gt;= 40)[(link-reveal-goto: &quot;Train Pass - $40&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 40)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $40-&gt;Too Poor]]]](else:)[(if:$MONEY &gt;= 80)[(link-reveal-goto: &quot;Train Pass - $80&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 80)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $80-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 10)[(link-reveal-goto: &quot;Train Ticket - $10&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train ticket&quot;))(set:$MONEY to it - 10)(set:$STATS&#39;s 3rd to it + 10)(set:$justSoldTicket to true)]](else:)[[[Train Ticket - $10-&gt;Too Poor]]]
+(if:$FUN is 7)[(if:$MONEY &gt;= 20)[(link-reveal-goto: &quot;Train Pass - $40&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $20-&gt;Too Poor]]]](else:)[(if:$MONEY &gt;= 80)[(link-reveal-goto: &quot;Train Pass - $80&quot;,&quot;Train Station&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 80)(set:$STATS&#39;s 3rd to it + 80)(set:$justSoldTicket to true)]](else:)[[[Train Pass - $80-&gt;Too Poor]]]]
 (if:$LOC is &quot;East Side&quot;)[[[&quot;Nevermind&quot;-&gt;East Side of Town]]](if:$LOC is &quot;Town Square&quot;)[[[&quot;Nevermind&quot;-&gt;Town Square]]](if:$LOC is &quot;West Side&quot;)[[[&quot;Nevermind&quot;-&gt;West Side of Town]]]]]
 \(else:)[
 \(if:$visitsTrainStation is 1)[
@@ -1363,7 +1394,9 @@ Current funds: $$MONEY
 ]
 \(unless:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&quot;West Side&quot;,&quot;Train Ride&quot;)[(set:$LOC to &quot;West Side&quot;)(set:$justSoldTicket to false)(if:$INV contains &quot;train ticket&quot;)[(set:$INV to it - (a:&quot;train ticket&quot;))]]
 ]
-\(if:($ENDINGS&#39;s length &gt;= 3 and $ENDINGS does not contain &quot;Glitch&quot;) or ($ENDINGS&#39;s length &gt;= 3 and $FUN is 4))[[[&quot;Are there any trains going out of town?&quot;-&gt;Out of Town]]
+\(if:$ENDINGS&#39;s length &gt; 6 and $ENDINGS does not contain &quot;Glitch&quot;)[[[&quot;Are there any trains going out of town?&quot;-&gt;Out of Town]]
+]
+\(if:$ENDINGS&#39;s length &gt; 6 and $ENDINGS contains &quot;Glitch&quot;)[[[Bloomhurst Lake-&gt;Out of Town]]
 ]
 \(if:$LOC is &quot;East Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;East Side of Town&quot;)[(set:$justSoldTicket to false)]]
 \(if:$LOC is &quot;Town Square&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;Town Square&quot;)[(set:$justSoldTicket to false)]]
@@ -1378,9 +1411,11 @@ Current funds: $$MONEY
 \(set:$INV to _a2&#39;s 2ndtolast)
 \(set:$wallColor to (a:&quot;vermilion&quot;,&quot;gamboge&quot;,&quot;glaucous&quot;,&quot;ginerline&quot;,&quot;smalt&quot;,&quot;coquelicot&quot;,&quot;eburnean&quot;,&quot;skobeloff&quot;,&quot;wenge&quot;,&quot;zaffre&quot;,&quot;puce&quot;,&quot;falu&quot;,&quot;incarnadine&quot;,&quot;pervenche&quot;,&quot;Green-Guy-green&quot;,&quot;Blue-Cat-blue&quot;,&quot;sang-de-boeuf&quot;,&quot;sinoper&quot;,&quot;watchet&quot;)&#39;s random)
 \(if:$visitsPaint is 1)[
-\You decide that the grey walls of your apartment needed a change. You open up the buckets of paint you bought at the hardware store and start painting your walls. You splash paint on quite a few things, but it&#39;s all worth it when the walls finally become a beautiful shade of $wallColor.]
+\You decide that the grey walls of your apartment needed a change. You open up the buckets of paint you bought at the hardware store and start painting your walls. You splash paint on quite a few things, but it&#39;s all worth it when the walls finally become a beautiful shade of $wallColor.
+\(set:$STATS&#39;s 8th to it + 1)]
 \(else:)[
-\You open up another paint bucket and quickly repaint. It was quite difficult considering that the other coat hasn&#39;t fully dried yet, but it was all worth it when the walls finally became a beautiful shade of $wallColor.]
+\You open up another paint bucket and quickly repaint. It was quite difficult considering that the other coat hasn&#39;t fully dried yet, but it was all worth it when the walls finally became a beautiful shade of $wallColor.
+\(set:$STATS&#39;s 8th to it + 1)]
 
 [[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="96" name="Book 3" tags="" position="523,2682" size="100,100">=&gt;&lt;=
 (font:&quot;Unbounded&quot;)[
@@ -1429,10 +1464,11 @@ Current funds: $$MONEY
 [[70&quot; Smart TV - $599-&gt;Too Poor]]
 [[30&quot; Stove - $1,299-&gt;Too Poor]]
 (if:$visitsGang is 2 and $INV does not contain &quot;toaster&quot;)[[[18&quot; Toaster - $4,999 (Steal)-&gt;Steal Toaster]]](else:)[[18&quot; Toaster - $4,999-&gt;Too Poor]]
-(if:$INV does not contain &quot;vr headset&quot; and $MONEY &gt;= 399)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;VR Headset - $399&quot;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;vr headset&quot;))(set:$MONEY to it - 399)]](else:)[(if:$INV contains &quot;vr headset&quot;)[VR Headset - Owned](else:)[[[VR Headset - $399-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;vr headset&quot; and $MONEY &gt;= 399)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;VR Headset - $399&quot;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;vr headset&quot;))(set:$MONEY to it - 399)(set:$STATS&#39;s 3rd to it + 399)]](else:)[(if:$INV contains &quot;vr headset&quot;)[VR Headset - Owned](else:)[[[VR Headset - $399-&gt;Too Poor]]]]
 [[27&quot; Washer &amp; Dryer Set - $699-&gt;Too Poor]]
 
-[[Exit-&gt;Electronics Store]] </tw-passagedata><tw-passagedata pid="99" name="Train Ride Bloomhurst Lake" tags="" position="3454,653" size="100,100">During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity&#39;s last day, so it would be a missed opportunity if the owner didn&#39;t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn&#39;t see any during his ride. The weather&#39;s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don&#39;t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they&#39;ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She&#39;s not new to Webster Groves, however, since she used to (cond: $josefineStore is &#39;unknown&#39;,&#39;have a job&#39;,&#39;own a business&#39;) here.&quot;,&quot;Jed wondered if he could ever get a job at Bosco&#39;s Family Food Store, the supermarket next to his apartment complex. On one hand, it wouldn&#39;t be that hard of a job, he&#39;d get to talk to people a lot, and it&#39;s a very short walk from his place to the store. However, the store&#39;s current owner, John Bosco, has developed a slight distaste of Jed. As far as Jed knows, he hasn&#39;t done anything that would warrant this kind of disdain (a disdain that he&#39;s not even aware of), but the owner simply doesn&#39;t like his over-the-top personality.&quot;,&quot;Jed realized he has never been inside the Webster Groves City Hall(cond:$visitsCityHall &gt; 0,&#39; before today&#39;,&#39;&#39;). The building is of course open to the public, but he had simply never thought to enter it, nor had a reason to enter it. But now with the letter he got this morning talking about evil and distrustful people inside City Hall, I think it&#39;s safe to say Jed (cond:$visitsCityHall &gt; 0,&#39;had&#39;,&#39;has&#39;) a pretty good reason for visiting. Its interior has popped up in some conversations with friends: its gigantic size, the beautiful columns, the art on the roof, and the large maze-like structure of its hallways. Would it be wrong to ask for some kind of tour?&quot;,&quot;Jed thought about the computer lab inside the town library. The computers have been out of order for quite a while. Despite this, sometimes when Jed enters the computer lab, he can see stuff on one of the screens, however it&#39;s usually something frozen. Do the computers actually work, and someone&#39;s just been freezing them on command and lying they&#39;re out of order? Or are they so broken that they just show random things whenever they feel like it?&quot;,&quot;Jed thought about the criminal gang in West Side that he keeps hearing about. They&#39;re mostly known for mugging people that are unfortunate enough to cross paths with them. He then began to wonder how much being a mugger pays. You could get lucky and get someone who carries lots of money, but recently there are less and less people who ever carry cash at all. Imagine being a mugger for a living, but constantly mugging people who don&#39;t carry cash! The mugging economy must be going downhill compared to the past.&quot;,&quot;Jed looked around the train car he was in. (cond:$wearing is &#39;3d glasses&#39;,&#39;It looked absolutely incredible in 3D.&#39;,&#39;For some reason, it looked nicer than the other ones he’s been in before.&#39;) The seats were pretty, and also very comfy. There were also tables in between the seats, something Jed knows that only a few of the train cars have. Along with the great landscape view that can be seen through the big glass windows, this ride was very enjoyable.&quot;)
+[[Exit-&gt;Electronics Store]] </tw-passagedata><tw-passagedata pid="99" name="Train Ride Bloomhurst Lake" tags="" position="3454,653" size="100,100">(set:$STATS&#39;s 7th to it + 1)
+\During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity&#39;s last day, so it would be a missed opportunity if the owner didn&#39;t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn&#39;t see any during his ride. The weather&#39;s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don&#39;t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they&#39;ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She&#39;s not new to Webster Groves, however, since she used to (cond: $josefineStore is &#39;unknown&#39;,&#39;have a job&#39;,&#39;own a business&#39;) here.&quot;,&quot;Jed wondered if he could ever get a job at Bosco&#39;s Family Food Store, the supermarket next to his apartment complex. On one hand, it wouldn&#39;t be that hard of a job, he&#39;d get to talk to people a lot, and it&#39;s a very short walk from his place to the store. However, the store&#39;s current owner, John Bosco, has developed a slight distaste of Jed. As far as Jed knows, he hasn&#39;t done anything that would warrant this kind of disdain (a disdain that he&#39;s not even aware of), but the owner simply doesn&#39;t like his over-the-top personality.&quot;,&quot;Jed realized he has never been inside the Webster Groves City Hall(cond:$visitsCityHall &gt; 0,&#39; before today&#39;,&#39;&#39;). The building is of course open to the public, but he had simply never thought to enter it, nor had a reason to enter it. But now with the letter he got this morning talking about evil and distrustful people inside City Hall, I think it&#39;s safe to say Jed (cond:$visitsCityHall &gt; 0,&#39;had&#39;,&#39;has&#39;) a pretty good reason for visiting. Its interior has popped up in some conversations with friends: its gigantic size, the beautiful columns, the art on the roof, and the large maze-like structure of its hallways. Would it be wrong to ask for some kind of tour?&quot;,&quot;Jed thought about the computer lab inside the town library. The computers have been out of order for quite a while. Despite this, sometimes when Jed enters the computer lab, he can see stuff on one of the screens, however it&#39;s usually something frozen. Do the computers actually work, and someone&#39;s just been freezing them on command and lying they&#39;re out of order? Or are they so broken that they just show random things whenever they feel like it?&quot;,&quot;Jed thought about the criminal gang in West Side that he keeps hearing about. They&#39;re mostly known for mugging people that are unfortunate enough to cross paths with them. He then began to wonder how much being a mugger pays. You could get lucky and get someone who carries lots of money, but recently there are less and less people who ever carry cash at all. Imagine being a mugger for a living, but constantly mugging people who don&#39;t carry cash! The mugging economy must be going downhill compared to the past.&quot;,&quot;Jed looked around the train car he was in. (cond:$wearing is &#39;3d glasses&#39;,&#39;It looked absolutely incredible in 3D.&#39;,&#39;For some reason, it looked nicer than the other ones he’s been in before.&#39;) The seats were pretty, and also very comfy. There were also tables in between the seats, something Jed knows that only a few of the train cars have. Along with the great landscape view that can be seen through the big glass windows, this ride was very enjoyable.&quot;)
 \(live:1s)[(if:time &gt; 10s)[
 
 Hey, Jed, I don&#39;t think that you should&#39;ve gotten on this train. I didn&#39;t say anything earlier because it hadn&#39;t clicked for me yet, but now I think I remember what Bloomhurst Lake is. And I don&#39;t think what we&#39;re going to see is going to be pretty.]
@@ -1471,11 +1507,11 @@ But now that makes me wonder, how was the ticket seller able to access this area
 
 Curent Funds: $$MONEY
 
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Cat - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Dog - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Ferret - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Hamster - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Rabbit - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Cat - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Dog - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Ferret - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Hamster - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Rabbit - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
 
 [[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="104" name="BL Apartments" tags="" position="6749,1529" size="100,100">&#96;(if:$resident)[&quot;Welcome back, Jed,&quot; the man at the counter says.]
 \(else:)[You walk up to the apartment complex. It looks simlar to the one you live in back to Wesbter Groves. When you get to the doors you notice that there is a keycard scanner next to the front door. Perhaps you can find a way to get in...&#96;
@@ -1493,7 +1529,7 @@ Curent Funds: $$MONEY
 [[Enter the door on the left-&gt;Stanley Parable Reference]]
 [[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="107" name="Glitch Ending" tags="" position="6433,1623" size="200,100">Double-click this passage to edit it.
 \(set:$ENDINGS to it + (a:&quot;Glitch&quot;))
-\(live:0.1s)[(if:time&gt;4s)[(go-to:&quot;Waiting Room Entrance&quot;)]]
+\(live:0.1s)[(if:time&gt;10s)[(go-to:&quot;Waiting Room Entrance&quot;)]]
 
 Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="1402,3251" size="100,100">(set:$visitsMegaToilet to it + 1)
 \(if:$visitsMegaToilet is 1)[Oh, so now that I&#39;ve stopped you from flushing your own toilet, you&#39;re gonna go and flush someone else&#39;s toilet? You&#39;re that petty?]
@@ -1512,6 +1548,7 @@ There&#39;s only two more to go after this one. Godspeed, Jed!]
 
 [[Flush the Toilet-&gt;Mega-Toilet]] </tw-passagedata><tw-passagedata pid="109" name="Mega-Toilet" tags="" position="1403,3399" size="100,100">You flush the toilet.
 \(if:$toilets does not contain $previousPassage)[(set:$toilets to it + (a:$previousPassage))]
+\(set:$STATS&#39;s 6th to it + 1)
 
 (link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="110" name="The Final Flush" tags="" position="3189,2676" size="100,100">You flush the toilet. And...
 
@@ -1523,7 +1560,8 @@ Well this is a big giant let down.
 
 Oh well, let&#39;s go defeat the mayor... or whatever...
 
-[[Continue-&gt;The Toilet Ending]] </tw-passagedata><tw-passagedata pid="111" name="The Toilet Ending" tags="" position="3140,2836" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
+[[Continue-&gt;The Toilet Ending]] 
+\(set:$STATS&#39;s 6th to it + 1)</tw-passagedata><tw-passagedata pid="111" name="The Toilet Ending" tags="" position="3140,2836" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
 \(font:&quot;Raleway&quot;)[As the narrator started to mope, Jed and the secretary walked out of the maintenance room. Jed and the narrator are both upset, while the secretary is just confused. How would Jed explain to her what was happening? Would she ever be able to understand? Would the concept of a &quot;toilet ending&quot; ever make sense to her? Would the process of explaining the Toilet Ending give her an existential crisis?
 
 However, moments later, the room began to shake. &quot;This is it!&quot; the narrator cried. The toilet inside the maintenance room began to grow. Jed and the secretary looked back, and saw it begin to take up the entire room. They ran to the elevator and pushed the button to go up, but the door quickly opened and revealed four security guards. 
@@ -1714,12 +1752,13 @@ You know Jed, you could&#39;ve gotten away from this entire scenario if you just
 
 Current funds: $$MONEY
 
-(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Loaf of Bread - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;bread&quot;))(set:$MONEY to it - 1)]](else:)[[[Loaf of Bread - $1-&gt;Too Poor]]]
-(if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Milk - $4&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;milk&quot;))(set:$MONEY to it - 4)]](else:)[[[Milk - $4-&gt;Too Poor]]]
-(if:$MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Pasta - $5&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;pasta&quot;))(set:$MONEY to it - 5)]](else:)[[[Pre-Made Pasta - $5-&gt;Too Poor]]]
-(if:$INV does not contain &quot;cereal&quot; and $MONEY &gt;= 8)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - $8&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;cereal&quot;))(set:$MONEY to it - 8)]](else:)[(if:$INV contains &quot;cereal&quot;)[WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - Sold Out](else:)[[[WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - $8-&gt;Too Poor]]]]
-(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Instant Ramen - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;ramen&quot;))(set:$MONEY to it - 1)]](else:)[[[Instant Ramen - $1-&gt;Too Poor]]]
-(if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Lunch Sandwich - $2&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;sandwich&quot;))(set:$MONEY to it - 2)]](else:)[[[Pre-Made Lunch Sandwich - $2-&gt;Too Poor]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Loaf of Bread - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;bread&quot;))(set:$MONEY to it - 1)(set:$STATS&#39;s 3rd to it + 1)]](else:)[[[Loaf of Bread - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Milk - $4&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;milk&quot;))(set:$MONEY to it - 4)(set:$STATS&#39;s 3rd to it + 4)]](else:)[[[Milk - $4-&gt;Too Poor]]]
+(if:$MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Pasta - $5&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;pasta&quot;))(set:$MONEY to it - 5)(set:$STATS&#39;s 3rd to it + 5)]](else:)[[[Pre-Made Pasta - $5-&gt;Too Poor]]]
+(if:$INV does not contain &quot;cereal&quot; and $MONEY &gt;= 8)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - $8&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;cereal&quot;))(set:$MONEY to it - 8)(set:$STATS&#39;s 3rd to it + 8)]](else:)[(if:$INV contains &quot;cereal&quot;)[WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - Sold Out](else:)[[[WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - $8-&gt;Too Poor]]]]
+(if:(current-date:) contains &quot;Oct&quot;)[(if:$MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Halloween Candy - $5&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;candy&quot;))(set:$MONEY to it - 5)(set:$STATS&#39;s 3rd to it + 5)]](else:)[[[Halloween Candy - $5-&gt;Too Poor]]]](else:)[(if:$MONEY &gt;= 3)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Candy - $3&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;candy&quot;))(set:$MONEY to it - 3)(set:$STATS&#39;s 3rd to it + 3)]](else:)[[[Candy - $3-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Instant Ramen - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;ramen&quot;))(set:$MONEY to it - 1)(set:$STATS&#39;s 3rd to it + 1)]](else:)[[[Instant Ramen - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Lunch Sandwich - $2&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;sandwich&quot;))(set:$MONEY to it - 2)(set:$STATS&#39;s 3rd to it + 2)]](else:)[[[Pre-Made Lunch Sandwich - $2-&gt;Too Poor]]]
 
 (if:$wearing is &quot;vest&quot;)[[[Break Room-&gt;Bosco Break Room]]
 ]
@@ -1784,11 +1823,11 @@ Well Jed, here we are! Just down those stairs, you will meet the narrator. Let&#
 Current funds: $$MONEY
 Current tokens: $tokens
 
-(if:$MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;5 Tokens - $10&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 5)(set:$MONEY to it - 10)(set:$visitsTokens to it - 1)]](else:)[[[5 Tokens - $10-&gt;Too Poor]]]
-(if:$MONEY &gt;= 25)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;15 Tokens - $25&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 15)(set:$MONEY to it - 25)(set:$visitsTokens to it - 1)]](else:)[[[15 Tokens - $25-&gt;Too Poor]]]
-(if:$MONEY &gt;= 50)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;40 Tokens - $50&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 40)(set:$MONEY to it - 50)(set:$visitsTokens to it - 1)]](else:)[[[40 Tokens - $50-&gt;Too Poor]]]
-(if:$MONEY &gt;= 80)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;100 Tokens - $80&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 100)(set:$MONEY to it - 80)(set:$visitsTokens to it - 1)]](else:)[[[100 Tokens - $80-&gt;Too Poor]]]
-(if:$MONEY &gt;= 250)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;500 Tokens - $250&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 500)(set:$MONEY to it - 250)(set:$visitsTokens to it - 1)]](else:)[[[500 Tokens - $250-&gt;Too Poor]]]
+(if:$MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;5 Tokens - $10&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 5)(set:$MONEY to it - 10)(set:$STATS&#39;s 3rd to it + 10)(set:$visitsTokens to it - 1)]](else:)[[[5 Tokens - $10-&gt;Too Poor]]]
+(if:$MONEY &gt;= 25)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;15 Tokens - $25&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 15)(set:$MONEY to it - 25)(set:$STATS&#39;s 3rd to it + 25)(set:$visitsTokens to it - 1)]](else:)[[[15 Tokens - $25-&gt;Too Poor]]]
+(if:$MONEY &gt;= 50)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;40 Tokens - $50&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 40)(set:$MONEY to it - 50)(set:$STATS&#39;s 3rd to it + 50)(set:$visitsTokens to it - 1)]](else:)[[[40 Tokens - $50-&gt;Too Poor]]]
+(if:$MONEY &gt;= 80)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;100 Tokens - $80&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 100)(set:$MONEY to it - 80)(set:$STATS&#39;s 3rd to it + 80)(set:$visitsTokens to it - 1)]](else:)[[[100 Tokens - $80-&gt;Too Poor]]]
+(if:$MONEY &gt;= 250)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;500 Tokens - $250&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 500)(set:$MONEY to it - 250)(set:$STATS&#39;s 3rd to it + 250)(set:$visitsTokens to it - 1)]](else:)[[[500 Tokens - $250-&gt;Too Poor]]]
 
 [[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="128" name="Arcade Games" tags="" position="2990,2140" size="100,100">(if:$wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;arcade&quot;)[You enter the games area of the arcade. You see a boy playing a 2-player game by himself. &quot;Ugh, I need help to beat this!&quot; he complains.](else:)[A little fun to help relieve stress won&#39;t hurt, right? Let&#39;s just be sure not to spend too much time in here, we do have a mission to finish.]
 
@@ -1821,13 +1860,13 @@ Current tickets: $tickets
 (live:0.1s)[(if:time &lt; 5s)[(either:&quot;JACKPOT! You won 500 tickets! Congrats!&quot;,&quot;You won 200 tickets! Awesome!&quot;,&quot;You won 100 tickets! Pretty good!&quot;,&quot;You won 50 tickets! Not bad!&quot;,&quot;You won 20 tickets. Could be worse.&quot;,&quot;You won 5 tickets... ouch...&quot;)](else:)[
 \(if:$wheelresult is 1)[JACKPOT! You won 500 tickets! Congrats!](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[You won 200 tickets! Awesome!](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[You won 100 tickets! Pretty good!](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[You won 50 tickets! Not bad!](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[You won 20 tickets. Could be worse.](if:$wheelresult &gt; 45)[You won 5 tickets... ouch...]
 
-(link-reveal-goto:&quot;Continue&quot;,&quot;Arcade Games&quot;)[(if:$wheelresult is 1)[(set:$tickets to it + 500)](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[(set:$tickets to it + 200)](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[(set:$tickets to it + 100)](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[(set:$tickets to it + 50)](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[(set:$tickets to it + 20)](if:$wheelresult &gt; 45)[(set:$tickets to it + 5)]](stop:)]]</tw-passagedata><tw-passagedata pid="131" name="Arcade Fishing Game" tags="" position="2995,2420" size="100,100">(set:$tokens to it - 4)
+(link-reveal-goto:&quot;Continue&quot;,&quot;Arcade Games&quot;)[(if:$wheelresult is 1)[(set:$tickets to it + 500)(set:$STATS&#39;s 5th to it + 500)](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[(set:$tickets to it + 200)(set:$STATS&#39;s 5th to it + 200)](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[(set:$tickets to it + 100)(set:$STATS&#39;s 5th to it + 100)](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[(set:$tickets to it + 50)(set:$STATS&#39;s 5th to it + 50)](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[(set:$tickets to it + 20)(set:$STATS&#39;s 5th to it + 20)](if:$wheelresult &gt; 45)[(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]](stop:)]]</tw-passagedata><tw-passagedata pid="131" name="Arcade Fishing Game" tags="" position="2995,2420" size="100,100">(set:$tokens to it - 4)
 \Alright Jed, pay attention, you have to reel in the fish at the right time.(set:$isFish to false)
 
 |fish&gt;[(live:0.5s)[(if:(random:1,20) is 1)[(set:$isFish to true)DO IT, JED! DO IT NOW!](else:)[(set:$isFish to false)Keep waiting...]]
 
 (link:&quot;Reel In&quot;)[(replace:?fish)[
-\(if:$isFish)[(if:(random:1,15) is 1)[Congratulations! You reeled in a giant fish and got 300 tickets!(set:$tickets to it + 300)](else:)[Congrats! You got the fish and got 150 tickets!(set:$tickets to it + 150)]](else:)[Sorry, Jed. You didn&#39;t reel in at the correct time. You only get 5 tickets...(set:$tickets to it + 5)]
+\(if:$isFish)[(if:(random:1,15) is 1)[Congratulations! You reeled in a giant fish and got 300 tickets!(set:$tickets to it + 300)(set:$STATS&#39;s 5th to it + 300)](else:)[Congrats! You got the fish and got 150 tickets!(set:$tickets to it + 150)(set:$STATS&#39;s 5th to it + 150)]](else:)[Sorry, Jed. You didn&#39;t reel in at the correct time. You only get 5 tickets...(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]
 
 [[Continue-&gt;Arcade Games]]]]]</tw-passagedata><tw-passagedata pid="132" name="Arcade Buy Bear" tags="" position="3162,1998" size="100,100">(set:$INV to it + (a:&quot;bear&quot;))(set:$tickets to it - 2500)
 \&quot;Here you go, Jed!&quot; the arcade worker says. &quot;The giant bear! Good job getting enough tickets!&quot; They hand you the bear. &quot;I don&#39;t know what you plan on doing this with, but I&#39;m sure anyone you gave this to would instantly become your best friend!&quot;
@@ -1873,7 +1912,7 @@ You take a closer look at the vest Ted gave you. It looks exactly like the purpl
 &#39;&#39;MASH HERE&#39;&#39;
 
 Time&#39;s up! You won (print:$clicks * 5) tickets!
-\(set:$tickets to it + ($clicks * 5))
+\(set:$tickets to it + ($clicks * 5))(set:$STATS&#39;s 5th to it + ($clicks * 5))
 
 [[Continue-&gt;Arcade Games]]]]</tw-passagedata><tw-passagedata pid="137" name="Rafael Outfit" tags="" position="1651,2550" size="100,100">You ask Rafael how he likes your outfit.
 
@@ -1900,7 +1939,8 @@ Time&#39;s up! You won (print:$clicks * 5) tickets!
 &quot;Yes, actually!&quot;
 
 &quot;Haha, good one Jed!]](if:$wearing is &quot;cape&quot;)[
-\Wow, that cape looks awesome! You&#39;re a real superhero now! SuperJed!]&quot;
+\Wow, that cape looks awesome! You&#39;re a real superhero now! SuperJed!](if:$wearing is &quot;ghost&quot;)[
+\(cond:(current-date:) contains &quot;Oct 31&quot;,&quot;Classic. Can&#39;t go wrong with a good ghost costume. Here, have some candy!&quot;,&quot;Ooh spooky! You look like you&#39;re going to haunt me!&quot;)]&quot;
 
 [[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="138" name="Bosco Break Room" tags="" position="137,2004" size="100,100">(set:$visitsBreakRoom to it + 1)
 \(if:$visitsBreakRoom is 1)[
@@ -1940,7 +1980,8 @@ Time&#39;s up! You won (print:$clicks * 5) tickets!
 
 &quot;I&#39;m SuperJed!&quot;
 
-&quot;Hmmm.]&quot;
+&quot;Hmmm.](if:$wearing is &quot;ghost&quot;)[
+\(cond:(current-date:) contains &quot;Oct 31&quot;,&quot;Oh what the heck, it&#39;s Halloween. Here, take a lollipop and get out, ya rascal.&quot;,&quot;It&#39;s not Halloween, kid. I&#39;m sure you have enough money to just go buy some candy.&quot;)]&quot;
 
 [[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="140" name="Josefine Outfit" tags="" position="1962,2554" size="100,100">You ask Josefine how she likes your outfit.
 
@@ -1970,7 +2011,8 @@ Time&#39;s up! You won (print:$clicks * 5) tickets!
 &quot;No reason...](if:$wearing is &quot;cape&quot;)[
 \Could it be... I haven&#39;t seen you in a //long// time...&quot;
 
-&quot;That&#39;s right! SuperJed to the rescue!]&quot;
+&quot;That&#39;s right! SuperJed to the rescue!](if:$wearing is &quot;ghost&quot;)[
+\(cond:(current-date:) contains &quot;Oct 31&quot;,&quot;That&#39;s a pretty budget costume, Jed. I expected more from you. Have some candy, but you better have a better costume next year.&quot;,&quot;What is this, your Halloween costume? C&#39;mon Jed, you can do better. You&#39;ve got time, haha!&quot;)]&quot;
 
 [[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="141" name="Narrator" tags="" position="9391,1899" size="200,200">(set: $visitsNarrator to it + 1)
 \(if:$visitsNarrator is 1)[
@@ -2051,7 +2093,7 @@ The barber then shaves all your hair off. You are now bald.]
 [[Continue-&gt;Barber Shop]]]]
 \(else:)[&quot;Jed, I can&#39;t give you a haircut. You&#39;re bald.&quot;
 
-[[Continue-&gt;Barber Shop]]]</tw-passagedata><tw-passagedata pid="148" name="SuperJed Barber" tags="" position="4844,1992" size="100,100">(set:$citizensHelped to it + (a:&quot;barber&quot;))(set:$lastLocation to &quot;barber shop&quot;)
+[[Continue-&gt;Barber Shop]]]</tw-passagedata><tw-passagedata pid="148" name="SuperJed Barber" tags="" position="4832,2008" size="100,100">(set:$citizensHelped to it + (a:&quot;barber&quot;))(set:$lastLocation to &quot;barber shop&quot;)
 \&quot;I&#39;ll help you!&quot; you shout to the man. You run over to him. &quot;SuperJed to the rescue!&quot;
 
 &quot;Finally,&quot; the man says. &quot;I&#39;ve been waiting all day. I&#39;d just like to trim my beard a bit. It&#39;s gotten a bit too rowdy.&quot;
@@ -2061,6 +2103,7 @@ Jed has never been a barber. He shaves every morning, so he had absolutely no ex
 What, were you expecting something more standoffish? It was his first time trimming, give him a break.
 
 (if:$citizensHelped&#39;s length is 3)[[[Continue-&gt;SuperJed Ending]]](else:)[[[Continue-&gt;Barber Shop]]]</tw-passagedata><tw-passagedata pid="149" name="SuperJed Ending" tags="" position="3344,2207" size="200,100">(unless:$ENDINGS contains &quot;SuperJed&quot;)[(set:$ENDINGS to it + (a:&quot;SuperJed&quot;))]
+\(set:$STATS&#39;s 1st to it + 1)
 \While you leave, a person comes running into the $lastLocation. &quot;SuperJed!&quot; they shout. &quot;We need your help!&quot;
 
 You follow them outside to see that the sky has turned a dark red, and buildings are being destroyed throughout town. &quot;You have to help us SuperJed!&quot; someone says to you.
@@ -2085,16 +2128,16 @@ The two of you then play the game as best you can. Level after level, enemy afte
 
 (if:$citizensHelped&#39;s length is 3)[[[Continue-&gt;SuperJed Ending]]](else:)[[[Continue-&gt;Arcade Games]]]</tw-passagedata><tw-passagedata pid="151" name="Arcade Muncher Game" tags="" position="3170,2421" size="100,100">(set:$tokens to it - 1)(set:$visitsTokenMuncher to it + 1)
 \You insert a token into the Token Muncher. 
-\(if:$visitsTokenMuncher &lt;= 3)[It only gives you 5 tickets.(set:$tickets to it + 5)]
-\(if:$visitsTokenMuncher is 4)[This time it gives you 10 tickets.(set:$tickets to it + 10)]
-\(if:$visitsTokenMuncher is 5)[It then gives you 20 tickets. Why is it giving more tickets all of the sudden?(set:$tickets to it + 20)]
-\(if:$visitsTokenMuncher is 6)[It then give you 40 tickets. Is it going to keep ramping it up like this?(set:$tickets to it + 40)]
-\(if:$visitsTokenMuncher is 7)[It then gives you 80 tickets. Keep going, Jed! You&#39;re going to get a lot more soon!(set:$tickets to it + 80)]
-\(if:$visitsTokenMuncher is 8)[It then gives you 160 tickets. Let&#39;s hope this machine doesn&#39;t break!(set:$tickets to it + 160)]
-\(if:$visitsTokenMuncher is 9)[The machine gives you 320 tickets. Uh oh, I might&#39;ve jinxed us, I think it&#39;s starting to shake.(set:$tickets to it + 320)]
-\(if:$visitsTokenMuncher is 10)[It then gives you 640 tickets. It&#39;s starting to shake more.(set:$tickets to it + 640)]
-\(if:$visitsTokenMuncher is 11)[The machine gives you 1,280 tickets. It starts shaking even more.(set:$tickets to it + 1280)]
-\(if:$visitsTokenMuncher is 12)[The machine gives you 2,520 tickets, and then promptly sets on fire. After a few seconds, the fire is out but the machine is permanently damaged.(set:$tickets to it + 2520)]
+\(if:$visitsTokenMuncher &lt;= 3)[It only gives you 5 tickets.(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]
+\(if:$visitsTokenMuncher is 4)[This time it gives you 10 tickets.(set:$tickets to it + 10)(set:$STATS&#39;s 5th to it + 10)]
+\(if:$visitsTokenMuncher is 5)[It then gives you 20 tickets. Why is it giving more tickets all of the sudden?(set:$tickets to it + 20)(set:$STATS&#39;s 5th to it + 20)]
+\(if:$visitsTokenMuncher is 6)[It then give you 40 tickets. Is it going to keep ramping it up like this?(set:$tickets to it + 40)(set:$STATS&#39;s 5th to it + 40)]
+\(if:$visitsTokenMuncher is 7)[It then gives you 80 tickets. Keep going, Jed! You&#39;re going to get a lot more soon!(set:$tickets to it + 80)(set:$STATS&#39;s 5th to it + 80)]
+\(if:$visitsTokenMuncher is 8)[It then gives you 160 tickets. Let&#39;s hope this machine doesn&#39;t break!(set:$tickets to it + 160)(set:$STATS&#39;s 5th to it + 160)]
+\(if:$visitsTokenMuncher is 9)[The machine gives you 320 tickets. Uh oh, I might&#39;ve jinxed us, I think it&#39;s starting to shake.(set:$tickets to it + 320)(set:$STATS&#39;s 5th to it + 320)]
+\(if:$visitsTokenMuncher is 10)[It then gives you 640 tickets. It&#39;s starting to shake more.(set:$tickets to it + 640)(set:$STATS&#39;s 5th to it + 640)]
+\(if:$visitsTokenMuncher is 11)[The machine gives you 1,280 tickets. It starts shaking even more.(set:$tickets to it + 1280)(set:$STATS&#39;s 5th to it + 1280)]
+\(if:$visitsTokenMuncher is 12)[The machine gives you 2,520 tickets, and then promptly sets on fire. After a few seconds, the fire is out but the machine is permanently damaged.(set:$tickets to it + 2520)(set:$STATS&#39;s 5th to it + 2520)]
 \(if:$visitsTokenMuncher &gt; 12)[(set:$tokens to it + 1)The machine has blown up. Putting a token inside of it would not be the brightest idea.]
 
 [[Continue-&gt;Arcade Games]] </tw-passagedata><tw-passagedata pid="152" name="Supermarket Mayhem" tags="" position="140,2158" size="100,100">You&#39;re inside the main area of Bosco&#39;s Family Food Store. (if:$boscoMayhem&#39;s length &lt; 2)[You don&#39;t see John Bosco around anywhere...](if:$boscoMayhem&#39;s length is 2)[John Bosco has spotted you and you can hear him walking towards you.]
@@ -2436,11 +2479,11 @@ you stopped contemplating and whistled to catch the attention of Vela. she was m
 
 Current funds: $$MONEY
 
-(if:$INV does not contain &quot;wrench&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Steel Pipe Wrench - $20&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wrench&quot;))(set:$sequelProgress to it + (a:&quot;tools&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;wrench&quot;)[Steel Pipe Wrench - Sold Out](else:)[[[Steel Pipe Wrench - $20-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$sequelProgress to it + (a:&quot;tools&quot;))(set:$MONEY to it - 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$sequelProgress to it + (a:&quot;tools&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
-(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
+(if:$INV does not contain &quot;wrench&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Steel Pipe Wrench - $20&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wrench&quot;))(set:$sequelProgress to it + (a:&quot;tools&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)]](else:)[(if:$INV contains &quot;wrench&quot;)[Steel Pipe Wrench - Sold Out](else:)[[[Steel Pipe Wrench - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$sequelProgress to it + (a:&quot;tools&quot;))(set:$MONEY to it - 5)(set:$STATS&#39;s 3rd to it + 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$sequelProgress to it + (a:&quot;tools&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)(set:$STATS&#39;s 3rd to it + 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)(set:$STATS&#39;s 3rd to it + 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
 
 [[Exit-&gt;Hardware Store 2]] </tw-passagedata><tw-passagedata pid="179" name="City Hall Basement 2" tags="" position="5102,4194" size="100,100">Jed, Del, and the secretary have arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no partcular fashion.
 
@@ -2538,12 +2581,27 @@ Del and the secretary are in the middle of fighting some of the security guards 
 
 City hall then explodes. 
 
-[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="188" name="Sequel End" tags="" position="5265,4488" size="100,100">(font:&quot;Roboto Mono&quot;)[
+[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="188" name="Sequel End" tags="" position="5227,4491" size="200,100">(font:&quot;Roboto Mono&quot;)[
 \This is the end of the current sequel content. More will come with future updates.
 
 Please provide feedback of the sequel using &lt;a href=&quot;https://forms.gle/KEhGQv4p3jrLycRJ9&quot; target=&quot;_blank&quot;&gt;this Google form&lt;/a&gt;. We appreciate your feedback on (color:#ff0000)[Mayor Mystery 2]. Your comments are meaningful to us, and integral to the development of this sequel.]
 
-[[Continue-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
+[[Continue-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="189" name="Stats Page" tags="" position="3363,3574" size="100,100">(font:&quot;Raleway&quot;)[&lt;u&gt;The Paper of Amazing Statistics&lt;/u&gt;
+
+Times Played: $visitsWaitingRoom
+(cond:$STATS&#39;s 1st is 0,&quot;?????:&quot;,&quot;Alien Invasions:&quot;) (print:$STATS&#39;s 1st)
+(cond:$STATS&#39;s 2nd is 0,&quot;?????:&quot;,&quot;Items Thrown Away:&quot;) (print:$STATS&#39;s 2nd)
+(cond:$STATS&#39;s 3rd is 0,&quot;?????:&quot;,&quot;Money Spent:&quot;) (print:$STATS&#39;s 3rd)
+Outfits Owned: (print:$CLOSET&#39;s length + 2)/10
+(cond:$STATS&#39;s 4th is 0,&quot;?????:&quot;,&quot;Pets Adopted:&quot;) (print:$STATS&#39;s 4th)
+(cond:$STATS&#39;s 4th is 0,&quot;?????:&quot;,&quot;Room Paintings:&quot;) (print:$STATS&#39;s 8th)
+(cond:$STATS&#39;s 5th is 0,&quot;?????:&quot;,&quot;Tickets Earned:&quot;) (print:$STATS&#39;s 5th)
+(cond:$STATS&#39;s 6th is 0,&quot;?????:&quot;,&quot;Toilet Flushes:&quot;) (print:$STATS&#39;s 6th)
+(cond:$STATS&#39;s 7th is 0,&quot;?????:&quot;,&quot;Train Rides:&quot;) (print:$STATS&#39;s 7th)
+(cond:$mayorFights&#39;s length is 0,&quot;?????:&quot;,&quot;Unique Mayor Fights:&quot;) (print:$mayorFights&#39;s length)/7
+\]
+
+[[Return-&gt;Waiting Room]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
