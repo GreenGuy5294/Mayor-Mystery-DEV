@@ -332,7 +332,8 @@ I need your help. We //have// to get to the bottom of this.
 Attatched to the back of this letter is a key. Keep it. Dispose of the letter as soon as possible. We don&#39;t want to leave a paper trail.
 
 Thanks,
-An anonymous help-seeker]
+An anonymous help-seeker
+\(set: $INV to it + (a:&quot;key&quot;))]
 \(else-if:$FUN is 10)[###Dear Jed Winchester,
 Please meet me at the city hall.
 
@@ -351,7 +352,7 @@ Thanks,
 An anonymous help-seeker]]
 \(set: $INV to it + (a:&quot;letter&quot;))
 
-(cond:$FUN is 4,&quot;Jed took the key off of the letter, and then put the letter in his pocket.&quot;,&quot;Jed folded the letter and put it in his pocket.&quot;)
+(cond:$FUN is 4,&quot;Jed took the key off of the letter, and then put them in his pocket.&quot;,&quot;Jed folded the letter and put it in his pocket.&quot;)
 \(if:$MAILBOX is not &quot;empty&quot;)[
 
 He then looked in his mailbox again and saw something else pushed further back.]
@@ -470,11 +471,21 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 
 [[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="29" name="Trash Can" tags="" position="1282,2548" size="100,100">This is a trash can. You throw trash in it. What are we doing here?
 
-(if:$INV contains &quot;letter&quot;)[[[Throw Away Letter-&gt;Throw Away Letter]]
+(if:$wearing is &quot;hat&quot;)[[[Throw Away Hat-&gt;Throw Away Hat]]
 ]
-\(if:$wearing is &quot;hat&quot;)[[[Throw Away Hat-&gt;Throw Away Hat]]
+\(if:$INV contains &quot;key&quot;)[[[Throw Away Key-&gt;Throw Away Key]]
 ]
-\[[Exit-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="30" name="Throw Away Letter" tags="" position="1284,2683" size="100,100">Jed why did you do that? I know you get a lot of junk mail but this isn&#39;t that. Do you really not want to participate in my story? (if:$testing is &quot;FAIL2&quot;)[No, you obviously don&#39;t considering you failed those tests at the beginning of the game.] I see how it is.
+\(if:$INV contains &quot;letter&quot;)[[[Throw Away Letter-&gt;Throw Away Letter]]
+]
+\[[Exit-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="30" name="Throw Away Letter" tags="" position="1284,2683" size="100,100">(if:$FUN is 4)[
+\(if:$INV contains &quot;key&quot;)[
+\Good job, Jed. Now the aliens won&#39;t be able to track you.
+
+You see how that doesn&#39;t really make sense? Oh well, doesn&#39;t matter too much. As long as you have the key!]
+\(else:)[
+\Oh, now the letter too? Sure, just throw that away. Not even as blunt of a hook as &quot;ALIENS, THEY&#39;RE REAL!&quot; can make you participate in my story? I see how it is.]]
+\(else:)[
+\Jed why did you do that? I know you get a lot of junk mail but this isn&#39;t that. Do you really not want to participate in my story? (if:$testing is &quot;FAIL2&quot;)[No, you obviously don&#39;t considering you failed those tests at the beginning of the game.] I see how it is.]
 \(set:$INV to it - (a:&quot;letter&quot;))
 \(set:$STATS&#39;s 2nd to it + 1)
 
@@ -534,8 +545,8 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 
 &quot;Let me know when you do! Oh, but be careful over in West Side. I heard there&#39;s some bad people on the loose.&quot;
 
-[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="36" name="Sleep" tags="" position="1456,2690" size="100,100">(unless:$INV contains &quot;letter&quot;)[
-\Jed? Did you just throw away the letter and go back to bed? Do you have no consideration for this world? This story? This adventure? I created this just for you, and you decide to throw it all away? I simply cannot understand. (if:$testing is &quot;FAIL2&quot;)[Did you even care at all from the start?]
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="36" name="Sleep" tags="" position="1456,2690" size="100,100">(if:($FUN is 4 and $INV does not contain &quot;key&quot;) or ($FUN is not 4 and $INV does not contain &quot;letter&quot;))[
+\Jed? Did you just throw away the (cond:$FUN is 4,&quot;key&quot;,&quot;letter&quot;) and go back to bed? Do you have no consideration for this world? This story? This adventure? I created this just for you, and you decide to throw it all away? I simply cannot understand. (if:$testing is &quot;FAIL2&quot;)[Did you even care at all from the start?]
 
 I see how it is. Go along, Jed. Watch what happens when you decide to neglect the story. See what good it does for you.
 
@@ -883,7 +894,7 @@ The two of you arrive at the elevator, and two security guards are standing besi
 [[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="63" name="City Hall Maintanence Room" tags="" position="2566,2539" size="100,100">(if:$visitsMegaToilet is 9)[The final bathroom. It&#39;s all come to this. Whatever happens, Jed, don&#39;t forget the amazing time we had together flushing all those toilets. Whatever happens next can&#39;t be better than that.](else:)[You go into the maintenance room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.]
 
 (if:$visitsMegaToilet is 9)[[[Flush the Toilet-&gt;The Final Flush]]](else:)[[[Flush the Toilet-&gt;City Hall Toilet]]]
-[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="64" name="City Hall Secret Room" tags="" position="2650,2679" size="100,100">(if:$INV contains &quot;letter&quot;)[
+[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="64" name="City Hall Secret Room" tags="" position="2650,2679" size="100,100">(if:$INV contains &quot;letter&quot; and ($INV contains &quot;key&quot; or $FUN is not 4))[
 \You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
 
 &quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
@@ -901,7 +912,17 @@ You reach into your pocket and pull out the letter. Indeed, taped to the back, i
 
 &quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
 
-You reach into your pocket and pull out the small, silver key. You take it and open up the door...]
+(if:$INV contains &quot;key&quot;)[You reach into your pocket and pull out the small, silver key. You take it and open up the door...]
+\(else:)[
+\&quot;Oh, sorry,&quot; you explain. &quot;I threw that away.&quot;
+
+The secretary just stares at you. &quot;WHAT!?&quot; she cries. &quot;You were only supposed to throw away the letter! Okay then, let&#39;s just... uh... let&#39;s just go back upstairs. I guess.&quot;
+
+The two of you start to walk around towards the front of the elevator. But before you can press one of the buttons, the doors open up, revealing four security guards. They grab you in pairs and take you into the elevator.
+
+&quot;This is a restricted area. Only certified persons are allowed.&quot; They rip off your plumber nametag. &quot;We know about your little setup. You two are under arrest for fraud and trespassing.&quot;
+
+[[Continue-&gt;Trespassing Ending]]]]
 \(else:)[
 \You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
 
@@ -2601,7 +2622,18 @@ Outfits Owned: (print:$CLOSET&#39;s length + 2)/10
 (cond:$mayorFights&#39;s length is 0,&quot;?????:&quot;,&quot;Unique Mayor Fights:&quot;) (print:$mayorFights&#39;s length)/7
 \]
 
-[[Return-&gt;Waiting Room]] </tw-passagedata></tw-storydata>
+[[Return-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="190" name="Throw Away Key" tags="" position="1161,2686" size="100,100">(if:$INV contains &quot;letter&quot;)[
+\Jed, you fool! You were supposed to throw away the letter, not the key! There&#39;s no way you could&#39;ve made that mistake, unless-
+
+You did this on purpose, didn&#39;t you? Why? It would&#39;ve been cool! You could&#39;ve fought the mayor! Oh well, your loss.]
+\(else:)[
+\What? The key too? Jed, you were only supposed to throw away the letter! There&#39;s no way you could&#39;ve made that mistake unless-
+
+You did this on purpose didn&#39;t you? Not even as blunt of a hook as &quot;ALIENS, THEY&#39;RE REAL!&quot; can make you participate in my story? I see how it is.]
+\(set:$INV to it - (a:&quot;key&quot;))
+\(set:$STATS&#39;s 2nd to it + 1)
+
+[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
