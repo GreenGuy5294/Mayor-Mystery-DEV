@@ -255,6 +255,8 @@ By Blue Cat and Green Guy
 \(else:)[
 \(if:$TestFinish is 3)[[[Start-&gt;More Tests?]]]
 \(else:)[[[Start-&gt;The Beginning]]]]
+\(if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J2&quot;)[
+[[Save &amp; Load-&gt;Save/Load]]]
 [[About-&gt;About]]
 [[Exit-&gt;Exit]]</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="1716,318" size="100,100">You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
@@ -706,7 +708,13 @@ YOU GOT THE TOILET ENDING! I&#39;M SO PROUD OF YOU!
 
 Your execution was simply flawless. Of course, with an ending so perfect, he was initially upset that I would add such a thing to the game, but I&#39;m glad to see his feelings changed by the time you got to the last toilet.
 
-Well, as always, you&#39;re free to hang out until you&#39;re ready to go. You deserve it this time, buddy!(if:$ENDINGS&#39;s length is 5)[
+Well, as always, you&#39;re free to hang out until you&#39;re ready to go. You deserve it this time, buddy!
+\(if:$ENDINGS&#39;s length is 3)[
+
+By the way, I have a secret for you. You definately earned it after that ending. I think - I&#39;m like 95% sure on this - there are 5 endings in this game. I know, it doesn&#39;t seem like a lot but after looking around a bit that&#39;s all that I could find.
+
+That seems like an achievable number! I believe in you!]
+\(if:$ENDINGS&#39;s length is 5)[
 
 Oh, and looks like that was ending #5. Does that mean you win? Who knows. There&#39;s still plenty of stuff to do out there. Maybe there&#39;s even more endings? But I was so sure there were only 5 endings... 
 
@@ -781,7 +789,9 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Enabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to true)]]
 
-(if:($ENDINGS&#39;s length &gt; 2 and (random:1,15) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10))[[[Restart-&gt;Title Screen 2]]](else:)[[[Restart-&gt;Title Screen]]]</tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="1461,1862" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
+(if:($ENDINGS&#39;s length &gt; 2 and (random:1,15) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10))[[[Restart-&gt;Title Screen 2]]](else:)[[[Restart-&gt;Title Screen]]]
+\(unless:$sequel)[
+[[Restart Sequel-&gt;Title Screen 2]]] </tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="1461,1862" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
 \(if:$MAILBOX is &quot;deed&quot;)[You reach into your mailbox and find a letter signed from Josefine. You open it up, and inside is the deed to the empty store in Town Square.
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
 \(if:$MAILBOX is &quot;lightsaber&quot;)[You reach into your mailbox and find a strange device. It&#39;s a small cylindrical shape with a button on the side. You press it and... nothing happens. Must be busted.
@@ -2227,7 +2237,7 @@ This came as quite the surprise to Jed. Jed was just there last night, and the p
 
 [[Open the Letter-&gt;Letter2]]</tw-passagedata><tw-passagedata pid="162" name="Letter2" tags="" position="5070,2941" size="100,100">(set:$previousPassage to (passage:)&#39;s name)
 \(font:&quot;Kaushan Script&quot;)[###Dear Jed Winchester,
-I have a bit of a (color:#ff0000)[Mayor Mystery]. Last night, during his usual mayoring time, he made an agreement with some group that would give him &quot;great power.&quot; Based on people&#39;s behaviors recently I don&#39;t trust anyone inside city hall - that&#39;s why I am writing to you, Jed Winchester. I&#39;m trying to figure this out on my own, but maybe with your help, Jed Winchester, we can solve this (color:#ff0000)[Mayor Mystery].
+I have a bit of a (color:#ff0000)[Mayor Mystery]. I can&#39;t remember the last time I slept more than 8 hours. The mayor keeps going into the basement and yelling about things. I&#39;ve had to pick up a hobby to help pass the time when I should be sleeping. I need your help. That&#39;s why I am writing to you, Jed Winchester. I&#39;m trying to figure this out on my own, but maybe with your help, Jed Winchester, we can solve this (color:#ff0000)[Mayor Mystery].
 
 Thanks,
 An anonymous help-seeker]
@@ -2332,7 +2342,7 @@ Current funds: $$MONEY
 
 &quot;Yes, we did. What&#39;s going on? What are we going to do?&quot;
 
-&quot;Mayor Dixon communicates to th- these people in a secret room downstairs. However, that floor is on high security, meaning only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
+&quot;Mayor Dixon has been going on wacky ramblings down in the basement. His yelling is keeping me up at night, it&#39;s quite uncanny. However, that floor is on high security, meaning only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
 
 &quot;Oh my goodness gracious,&quot; Del shouts, &quot;we&#39;re gonna be the Mario brothers! Okay, I want to be Luigi, so you can be Mario!&quot;
 
@@ -2393,13 +2403,17 @@ Current funds: $$MONEY
 \(if:$SKILLS contains any of (a:&quot;fowucya&quot;,&quot;ctot&quot;) and $SKILLS does not contain &quot;ee&quot;)[(link-reveal-goto: &quot;Read Your Second Book&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;rysb&quot;))(set:$skillPoints to it - 1)]
 ]
 \(if:$SKILLS contains &quot;eanm&quot; and $SKILLS does not contain &quot;tap&quot;)[(link-reveal-goto: &quot;Take a Powernap&quot;,&quot;Skill Tree 2&quot;)[(set:$SKILLS to it + (a:&quot;tap&quot;))(set:$skillPoints to it - 1)]]
-\]</tw-passagedata><tw-passagedata pid="176" name="Elevator 2" tags="" position="5102,4044" size="100,100">With his new set of skills, Jed felt ready to take on the (color:#ff0000)[Mayor Mystery]. The secretary handed Jed and Del their name tags, labelded &quot;Mario Mario&quot; and &quot;Luigi Mario.&quot; The secretary gets up from her desk and gestures for Jed and Del to follow her. You all go through the two large double doors on the right side of the room.
+\]</tw-passagedata><tw-passagedata pid="176" name="Elevator 2" tags="" position="5102,4044" size="100,100">(cond:$SKILLS contains &quot;tap&quot;,&quot;Feeling well-rested and equipped with&quot;,&quot;With&quot;) his new set of skills, Jed felt ready to take on the (color:#ff0000)[Mayor Mystery]. The secretary handed Jed and Del their name tags, labeled &quot;Mario Mario&quot; and &quot;Luigi Mario(cond:$SKILLS contains &quot;fowucya&quot;,&#39;,&quot; however, Jed was upset that she didn\&#39;t make him a tag that said &quot;Frisk Undertale.&quot;&#39;,&#39;.&quot;&#39;) The secretary gets up from her desk and gestures for Jed and Del to follow her. You all go through the two large double doors on the right side of the room.
 
-The doors lead into a long hallway with an elevator at the end. Throughout the hallway, there are exactly 27 security guards walking around. Del starts to feel a little uneasy, but Jed consoles him.
+The doors lead into a long hallway with an elevator at the end. Throughout the hallway were exactly 27 security guards walking around. Del starts to feel a little uneasy, but Jed consoles him. (if:$SKILLS contains &quot;ctot&quot;)[&quot;Just take a deep breath and count to one thousand. It worked for me!&quot;]
 
-The two of you arrive at the elevator, and six security guards are standing beside it - three on each side. The guards stare the three of you down while you enter the elevator, but they don&#39;t say anything. The elevator doors close and you can feel a slight sense of relief. The secretary presses a button and the elevator starts to go downwards.
+(cond:$SKILLS contains &quot;dkys&quot;,&quot;Thanks to double-knotting his shoes, Jed was able to walk down the hallway and experience no trips whatsoever.&quot;,&quot;While walking down the hallway, Jed trips and falls&quot; + (cond:$SKILLS contains &quot;pocs&quot;,&quot;, which almost breaks his sunglasses.&quot;,&quot;.&quot;) + &quot; Wow, you really should&#39;ve tied those better, Jed.&quot;)
 
-&quot;That was the easy part,&quot; the secretary explains. &quot;Once we get downstairs, there&#39;s a door tucked away behind the elevator. That&#39;s where we need to go.&quot;
+The three of you arrive at the elevator, and six security guards are standing beside it - three on each side. The guards stare the three of you down while you enter the elevator(cond:$SKILLS contains &quot;fh&quot;,&quot;. \&quot;Nice hat,\&quot; one of them remarks.&quot;,&quot;, but they don&#39;t say anything.&quot;) The elevator doors close and you can feel a slight sense of relief. The secretary presses a button and the elevator starts to go downwards.
+
+&quot;That was the easy part,&quot; the secretary explains. &quot;Once we get downstairs, there&#39;s a door tucked away behind the elevator. That&#39;s where we need to go.&quot;(if:$SKILLS contains &quot;ryfb&quot;)[
+
+&quot;Did you know that (either:&quot;elevators used to be called &#39;rising rooms?&#39;&quot;,&quot;in Germany, it would take three years to become an elevator operator?&quot;,&quot;before elevators were invented, higher floors would be cheaper than lower floors?&quot;)&quot; Jed randomly states. &quot;I learned about it in this book that I read.&quot; The others return a blank stare.] 
 
 [[Continue-&gt;City Hall Basement 2]]</tw-passagedata><tw-passagedata pid="177" name="Book 4" tags="" position="525,2821" size="100,100">=&gt;&lt;=
 (font:&quot;Unbounded&quot;)+(size:2)[Vela]
@@ -2432,15 +2446,104 @@ Current funds: $$MONEY
 
 [[Elevator-&gt;Elevator Back 2]]
 (if:(history:) contains &quot;Maintenance Room 2&quot;)[[[Maintenance Room-&gt;Too Poor]]](else:)[[[Maintenance Room-&gt;Maintenance Room 2]]]
-[[Secret Room-&gt;Secret Room 2]]</tw-passagedata><tw-passagedata pid="180" name="Elevator Back 2" tags="" position="4956,4269" size="100,100">You turn around to call for the elevator, but the secretary stops you.
+[[Secret Room-&gt;Secret Room 2]]</tw-passagedata><tw-passagedata pid="180" name="Elevator Back 2" tags="" position="4952,4190" size="100,100">You turn around to call for the elevator, but the secretary stops you.
 
 &quot;Jed, you better turn yourself around right.&quot; the secretary says. &quot;When I said there&#39;s no going back, there&#39;s no going back. We gucci?&quot;
 
-[[Continue-&gt;City Hall Basement 2]] </tw-passagedata><tw-passagedata pid="181" name="Maintenance Room 2" tags="" position="5258,4275" size="100,100">(font:&quot;Roboto Mono&quot;)[(if:(history:) contains &quot;Flush 2&quot;)[
+[[Continue-&gt;City Hall Basement 2]] </tw-passagedata><tw-passagedata pid="181" name="Maintenance Room 2" tags="" position="4950,4337" size="100,100">(font:&quot;Roboto Mono&quot;)[(if:(history:) contains &quot;Flush 2&quot;)[
 \Nice try. But we blocked this one too.](else:)[
-\Due to high abuse of the toilet feature in the previous game, we have removed it from this game.]
+\Due to high abuse of the toilet feature in the previous game, we have removed it from this game.]]
 
-[[Continue-&gt;City Hall Basement 2]] </tw-passagedata><tw-passagedata pid="182" name="Secret Room 2" tags="" position="5107,4337" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Continue-&gt;City Hall Basement 2]] </tw-passagedata><tw-passagedata pid="182" name="Secret Room 2" tags="" position="5105,4337" size="100,100">Jed, Del, and the secretary all walk behind the elevator, and //quelle suprise//, the three of you can just barely make out a door. It&#39;s painted to match the color of the wall, but there&#39;s a piece of paper taped to it that reads &quot;NOT A SECRET LAIR.&quot; 
+
+&quot;Open sesame!&quot; Del yells at the door. It has no effect.(if:$SKILLS contains &quot;bhk&quot;)[
+
+&quot;Let me try something,&quot; Jed says. He pulls out a pocket watch and begins to swing it in front of the door. &quot;You will open up to us...&quot; This continues for about 5 minutes until he gives up.]  
+
+&quot;I found the key to the door last night,&quot; the secretary says. &quot;It&#39;s taped to the back of the letter I gave you.&quot;
+
+&quot;Hmm, what an interesting place to hide it,&quot; Jed remarks. &quot;You&#39;re lucky I didn&#39;t throw away this letter!&quot; 
+
+&quot;Alright, you wanna do that? You wanna go this route? You&#39;d have to be pretty nonobservant to not notice the key. It would make the letter heavier, and you&#39;d be able to feel it on the back. Secondly, if I held on to the key, there is a high probability that it could&#39;ve been found and taken back.&quot;
+
+&quot;Okay, sorry. My bad.&quot; Jed takes the key off of the letter and opens up the door...
+
+[[Continue-&gt;Confrontation 2]]</tw-passagedata><tw-passagedata pid="183" name="Save/Load" tags="" position="1429,40" size="100,100">(font:&quot;Raleway&quot;)[(either:&quot;You know, you should be lucky. There were people in the past who could never save their Mayor Mystery game in their lifetime.&quot;,&quot;(cond:visits is 1,&#39;Here to load you save, huh? Be sure to come back soon. Specifically next Teusday. I’m not gonna spoil anything.&#39;,&#39;Here to save your game, huh? Be sure to come back soon. Specifically next Teusday. I’m not gonna spoil anything.&#39;)&quot;,&quot;Good morning, Jed! Don&#39;t worry, I totally haven&#39;t touched your save data! Wink!&quot;,&quot;Jed, this is very important. Don&#39;t alter your save data after midnight. It spoils the cookies if you do that, and then the game refuses to eat them.&quot;,&quot;Did I ever tell you the story of the man who tried to manage his save data, but then his computer exploded? Well, let&#39;s just say you might want to be careful.&quot;)]
+
+(unless:(history:) contains &quot;The Beginning&quot;)[(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J2&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
+]
+\(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link: &quot;Load Game&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]
+]
+\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="184" name="Confrontation 2" tags="" position="5108,4490" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut? It looks good.&#39;,&#39;&quot;&#39;)
+
+&quot;HOW&#39;DJA KNOW WE WERE HERE?&quot; Del screams.
+
+&quot;(cond:$SKILLS contains &quot;qf&quot;,&quot;Well first I was waiting to hear footsteps, but I never heard any of those for some reason. Fortunately for me &quot;,&quot;First I listened for your footsteps, and then &quot;)you guys stood outside the door arguing for a couple of minutes.&quot;
+
+The mayor then snaps his fingers, and guards enter the room, taking away Del and the secretary. &quot;AVENGE US, JED!!!&quot; Del cries.
+
+(cond:$SKILLS contains &quot;pocs&quot;,&quot;Jed pushes up his sunglasses and strikes a cool pose. &quot;,&quot;&quot;)&quot;You just made a big mistake,&quot; Jed asserts. (cond:$SKILLS contains &quot;rysb&quot;,&#39;&quot;You\&#39;re about to get impeached. I learned what that is from a book I just read earlier.&quot;&#39;,&#39;&quot;Your days of mayoring are over.&quot;&#39;)
+
+&quot;Jed, perhaps there&#39;s been a misunderstanding. Come sit down, have a drink. I&#39;ll explain what I&#39;ve been up to.&quot; (if:$SKILLS contains &quot;eanm&quot;)[
+
+&quot;Actually, I just had a drink with the meal I just ate.&quot;
+
+&quot;Who cares? Just sit down and let me exposition dump.&quot;]
+
+[[Sit Down-&gt;Dinner 2]]</tw-passagedata><tw-passagedata pid="185" name="Dinner 2" tags="" position="5263,4044" size="100,100">Jed sits down across from the mayor. &quot;You better have a darn good explanation for this.&quot; He takes a big sip of the drink.
+
+&quot;Taste good?&quot; the mayor asks.
+
+&quot;Sure.&quot;
+\(if:$SKILLS contains &quot;pi&quot;)[
+
+&quot;Even with the POISON I added?&quot;
+
+&quot;Even if there was poison, I&#39;m immune to it.&quot;
+
+&quot;Oh, um, I mean- that was just a joke. Anyway...&quot; ]
+\(else:)[
+
+&quot;Good.&quot; ]The mayor leans forward. &quot;Listen, Jed, who doesn&#39;t love a good (color:#ff0000)[sequel]? Taking something old and making it new again. It&#39;s the way of life. That&#39;s why I&#39;m tearing down Burgerocity to make way for Burgerocity 2!&quot;
+
+&quot;Okay, that doesn&#39;t seem so bad.&quot;
+
+&quot;The difference is that the burgers contain a secret chemical. And when I press this button&quot; - the mayor turns around and points at a big red button on the wall - &quot;everyone who has eaten a burger will turn into a burger monster!&quot;
+
+&quot;What?&quot;
+
+&quot;Sorry, I&#39;m evil. LOL.&quot;
+
+&quot;Then as the protagonist of this story, I have no choice but to fight you!&quot;
+
+[[Continue-&gt;Fight 2]]</tw-passagedata><tw-passagedata pid="186" name="Fight 2" tags="" position="5263,4194" size="100,100">Jed stands up and pushes the table out of the way. &quot;Let&#39;s do this!&quot; he shouts. (if:$SKILLS contains &quot;dss&quot;)[&quot;Man, it&#39;s a good thing I did some stretches earlier.&quot;]
+
+The mayor puts out a first and begins running towards Jed. (cond:$SKILLS contains &quot;c&quot;,&quot;Jed does not react. The mayor hits Jed&#39;s chestplate, which causes the mayor to grab his hand in pain.&quot;,&quot;Jed, however, has ample time to react, and slowly moves out of the way.&quot;)
+
+&quot;How did you dodge my extreme attack?&quot; the mayor yells, bumfuzzled.
+
+&quot;I&#39;m just that good at fighting.&quot; Jed then slaps the mayor across the face.  He then pulls out a water gun and begins spraying it at the mayor. 
+
+&quot;Hey, be careful!&quot; the mayor exclaims. &quot;The equipment in this room is very sensitive to water!&quot;
+
+Jed then begins pointing the water gun at all the electronics in the room. Sparks begin to fly, and the room begins to fill up with smoke. 
+
+&quot;Looks like we mayored too many mysteries.&quot; Jed quickly runs out the door. 
+
+Del and the secretary are in the middle of fighting some of the security guards that dragged them out of the room. (if:$SKILLS contains &quot;ee&quot;)[Jed grabs onto Del and the secretary. &quot;EMERGENCY EJECT!&quot; He pushes a button on his belt, and the three of them fly straight upwards, breaking through the ceiling and layers of ground above them.](else:)[&quot;C&#39;mon, let&#39;s go!&quot; Jed yells. The secretary and Del follow Jed into the elevator, and they go back to the ground floor as fast as they can.]
+
+[[Continue-&gt;The End 2]]</tw-passagedata><tw-passagedata pid="187" name="The End 2" tags="" position="5265,4338" size="100,100">Jed, Del, and the secretary (cond:$SKILLS contains &quot;ee&quot;,&quot;pop out of the floor and begin to &quot;,&quot;&quot;)run out of the city hall as fast as they can. (cond:$SKILLS contains &quot;dkys&quot;,&quot;Gosh, imagine if you tripped now due to not tying your shoes well. That would&#39;ve been awful.&quot;,&quot;&quot;) Once outside, they turn around and look at the city hall, which is emminating smoke.
+
+&quot;Wow, that was really wacky!&quot; Del exclaims. &quot;(cond:$SKILLS contains &quot;ee&quot;,&quot;I&#39;m glad you had that emergency eject to g-&quot;,&quot;I&#39;m glad we were able to get out of there so qui-&quot;)&quot;
+
+City hall then explodes. 
+
+[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="188" name="Sequel End" tags="" position="5265,4488" size="100,100">(font:&quot;Roboto Mono&quot;)[
+\This is the end of the current sequel content. More will come with future updates.
+
+Please provide feedback of the sequel using &lt;a href=&quot;https://forms.gle/KEhGQv4p3jrLycRJ9&quot;&gt;this Google form&lt;/a&gt;. We appreciate your feedback on (color:#ff0000)[Mayor Mystery 2]. Your comments are meaningful to us, and integral to the development of this sequel.]
+
+[[Continue-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
