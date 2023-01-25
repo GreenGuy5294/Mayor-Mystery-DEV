@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Mayor Mystery NEW VERSION.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Mayor Mystery NEW VERSION" startnode="9" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+<tw-storydata name="Mayor Mystery NEW VERSION" startnode="9" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="0.6" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400&display=swap');
 
@@ -20,6 +20,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
 tw-story[tags~="title"] tw-passage {
 	min-width:150%;
@@ -149,13 +151,14 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option2 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option2 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option2 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option2 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option2 is 4)[[[_fail4-&gt;Test2 Failed]]]
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
-&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1086,614" size="200,100">(set:$maxfun to 14)
+&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1086,614" size="200,100">(set:$maxfun to 15)
 \(if:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$FUN to (random:1,$maxfun))
 \(if:$FUN is $previousFun)[(set:$FUN to (random:1,$maxfun))]]
 \(set:$previousFun to $FUN)
 \(set:$LOC to &quot;East Side&quot;)
 \(if:$FUN is 3)[(set:$MONEY to (random:490,510))](else:)[(set:$MONEY to (random:110,130))]
 \(if:$FUN is 8 and $MAILBOX is &quot;empty&quot;)[(set:$MAILBOX to &quot;lightsaber&quot;)]
+\(if:$FUN is 15 and $MAILBOX is &quot;empty&quot;)[(set:$MAILBOX to &quot;gameshow&quot;)]
 \Jed woke up from his bed feeling (either:&quot;slightly dazed&quot;,&quot;ready for a new day&quot;,&quot;well rested&quot;,&quot;extraordinarily normal&quot;,&quot;quite giddy&quot;). He hopped out of bed and went on to get ready for the day. (either:&quot;As he was pouring himself a cup of coffee,&quot;,&quot;When he finally got out of the bathroom,&quot;,&quot;As he shuffled along in his living room,&quot;,&quot;While he was unfruitfully looking for his left shoe,&quot;) Jed noticed the (if:$FUN is 1 or 6)[advertisement](else:)[news story] on his TV.
 
 (if:$FUN is 1)[&quot;Do you have computer issue? Do you have PC or computer who has issue? We can fix PC who has issue, or computer that has issue. Our product is good. AreWebsite.com. Because We™️&quot;
@@ -165,7 +168,7 @@ Jed currently does not own a computer, but he made a vow that when he did get hi
 After fantasizing about antiviruses, Jed walked out of his apartment and went to check his mail on the way. When he did, he found a strange letter written to him from an unknown sender.]
 \(else-if:$FUN is 6)[&quot;Do you feel insignificant? Do you want to help out others? Introducing the Be-Your-Own-Superhero Cape, a dazzling cape made from real superhero felt, that will make you //truly feel// like a superhero! It only costs $109! Get it now at your local clothing store!&quot;
 
-What malarkey. Of course, as the intro to the game clearly states, Jed is already well known as a sort of &quot;superhero.&quot; This cape is just a waste of money. I mean, come on, $109? Buying that would leave you with just $(print:$MONEY - 109).
+What malarkey. Of course, as the intro to the game clearly states, Jed is already well known as a sort of &quot;superhero.&quot; This cape is just a waste of money. I mean, come on, $109? Buying that would leave you with just $(print:$MONEY - 109). (if:$CLOSET contains &quot;cape&quot;)[Oh, you already have it? Why would you waste your money on that?]
 
 After watching the obnoxious ad, Jed walked out of his apartment and went to check his mail on the way. When he did, he found a strange letter written to him from an unkown sender.]
 \(else-if:$FUN is 9)[&quot;Good morning Webster Groves,&quot; the reporter said. &quot;There has been yet another case of trouble happening in the west side of town. A small criminal group is roaming the area, mugging citizens. Until this group is found, be cautious walking alone in dark areas.&quot;
@@ -209,8 +212,9 @@ By Blue Cat and Green Guy
 \(set: $tickets to 0)
 \(set: $gotToilet to false)
 \(set: $sequel to true)
-\(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0))
+\(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
 \(set: $mayorFights to (a:))
+\(set: $stanley to false)
 \]
 \(set: $toilets to (a:))
 \(set: $testing to &quot;NA&quot;)
@@ -353,12 +357,12 @@ An anonymous help-seeker]]
 \(set: $INV to it + (a:&quot;letter&quot;))
 
 (cond:$FUN is 4,&quot;Jed took the key off of the letter, and then put them in his pocket.&quot;,&quot;Jed folded the letter and put it in his pocket.&quot;)
-\(if:$MAILBOX is not &quot;empty&quot;)[
+\(if:$MAILBOX is not &quot;empty&quot;)[He then looked in his mailbox again and saw something else pushed further back.
 
-He then looked in his mailbox again and saw something else pushed further back.]
+[[Continue-&gt;Mailboxes]]](else:)[
 
 [[Return Home-&gt;Jed&#39;s Apartment]]
-[[Go to Town-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="16" name="East Side of Town" tags="" position="683,1214" size="200,200">You&#39;re in the East Side of Webster Groves. (cond:$wearing is &quot;3d glasses&quot;,&quot;Everything looks so cool in 3D...&quot;,&quot;The weather feels very nice today!&quot;)
+[[Go to Town-&gt;East Side of Town]]]</tw-passagedata><tw-passagedata pid="16" name="East Side of Town" tags="" position="683,1214" size="200,200">You&#39;re in the East Side of Webster Groves. (cond:$wearing is &quot;3d glasses&quot;,&quot;Everything looks so cool in 3D...&quot;,&quot;The weather feels very nice today!&quot;)
 
 [[Apartment Complex-&gt;The Apartment Complex]] 
 [[Supermarket-&gt;Bosco&#39;s Family Food Store]] 
@@ -659,7 +663,9 @@ Written and Developed by Blue Cat Productions and Green Guy.
 
 Illustrations by Wiz.
 
-Created for the Beepbox Discord Text Adventure Event.
+Originally created for the Beepbox Discord Text Adventure Event.
+v1.0 released on July 9, 2022.
+v1.1 released on Poo poo pee pee, 2023.
 
 Special thanks to
 Jacob, Quirb, Theep, Thurm
@@ -724,7 +730,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="3143,3309" size="200,200">(set:$visitsWaitingRoom to it + 1)
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="3143,3309" size="200,200">(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot; and not $gotToilet)[
 \YOU DID IT!(set:$gotToilet to true)
@@ -815,19 +821,19 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Enabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to true)]]
 
-(if:($ENDINGS&#39;s length &gt; 2 and (random:1,15) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10))[[[Restart-&gt;Title Screen 2]]](else:)[[[Restart-&gt;Title Screen]]]
+(if:($ENDINGS&#39;s length &gt; 2 and (random:1,10) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10))[[[Restart-&gt;Title Screen 2]]](else:)[[[Restart-&gt;Title Screen]]]
 \(unless:$sequel)[
 [[Restart Sequel-&gt;Title Screen 2]]] </tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="1461,1862" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
 \(if:$MAILBOX is &quot;deed&quot;)[You reach into your mailbox and find a letter signed from Josefine. You open it up, and inside is the deed to the empty store in Town Square.
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
 \(if:$MAILBOX is &quot;lightsaber&quot;)[You reach into your mailbox and find a strange device. It&#39;s a small cylindrical shape with a button on the side. You press it and... nothing happens. Must be busted.
 \(set:$INV to it + (a:&quot;lightsaber&quot;))(set:$MAILBOX to &quot;empty&quot;)]
-\(if:$MAILBOX is &quot;cape&quot;)[You reach into your mailbox and find a superhero cape. Maybe with this you can finally achieve your dream and become SuperJed, helper of people!
-\(set:$INV to it + (a:&quot;cape&quot;))(set:$MAILBOX to &quot;empty&quot;)]
-\(if:$MAILBOX is &quot;plumber outfit&quot;)[You reach into your mailbox and find a navy blue button-up shirt. It looks like something a mechanic would wear.
-\(set:$INV to it + (a:&quot;plumber outfit&quot;))(set:$MAILBOX to &quot;empty&quot;)]
+\(if:$MAILBOX is &quot;gameshow&quot;)[You reach into your mailbox and find another letter, this one is ornate with a fancy stamp on it. You open it an it simply reads &quot;Do you want to play a game?&quot; with checkboxes underneath.
 
-[[Continue-&gt;The Apartment Complex]] </tw-passagedata><tw-passagedata pid="56" name="Clothing Selection" tags="" position="5185,1831" size="100,100">&quot;We have some of the best clothing in Webster Groves. Take your pick.&quot;
+(if:$MAILBOX is &quot;gameshow&quot;)[[[Yes-&gt;Gameshow Intro]]
+[[No-&gt;Reject Gameshow]]
+\(set:$MAILBOX to &quot;empty&quot;)]
+\(else:)[[[Continue-&gt;The Apartment Complex]]]</tw-passagedata><tw-passagedata pid="56" name="Clothing Selection" tags="" position="5185,1831" size="100,100">&quot;We have some of the best clothing in Webster Groves. Take your pick.&quot;
 
 Current funds: $$MONEY
 
@@ -837,7 +843,7 @@ Current funds: $$MONEY
 (if:$CLOSET does not contain &quot;ski mask&quot; and $MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Ski Mask - $10&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;ski mask&quot;))(set:$MONEY to it - 10)(set:$STATS&#39;s 3rd to it + 10)]](else:)[(if:$CLOSET contains &quot;ski mask&quot;)[Ski Mask - Owned](else:)[[[Ski Mask - $10-&gt;Too Poor]]]]
 (if:$CLOSET does not contain &quot;cape&quot; and $MONEY &gt;= 109)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Superhero Cape - $109&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;cape&quot;))(set:$MONEY to it - 109)(set:$STATS&#39;s 3rd to it + 109)]](else:)[(if:$CLOSET contains &quot;cape&quot;)[Superhero Cape - Owned](else:)[[[Superhero Cape - $109-&gt;Too Poor]]]]
 
-[[Return-&gt;Clothing Store]]</tw-passagedata><tw-passagedata pid="57" name="Plumber Shortcut" tags="" position="5185,1974" size="100,100">(set:$visitPlumber to true)
+[[Return-&gt;Clothing Store]]	</tw-passagedata><tw-passagedata pid="57" name="Plumber Shortcut" tags="" position="5185,1974" size="100,100">(set:$visitPlumber to true)
 \&quot;Hmmm,&quot; the clerk thinks. They look at you for a few seconds. &quot;Yes, I can see it... You&#39;ll be able to pull this off, and I know just what you need.&quot;
 
 The clerk goes back to the clothing selection and comes back with a navy blue button-up shirt. &quot;Sometimes simple is best. And this shirt will only cost you $15. What do you say?&quot;
@@ -2092,7 +2098,7 @@ Alright, then. If you two are done, I&#39;ll teleport you back to the start. Gam
 (unless:$MONEY &lt; 20)[|haircut&gt;[Current funds: $$MONEY
 
 (link:&#39;&quot;Yes&quot;&#39;)[(replace:?haircut)[
-\(set:$haircuts to it + 1)(set:$MONEY to it - 20)
+\(set:$haircuts to it + 1)(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)(set:$STATS&#39;s 10th to it + 1)
 \(if:$haircuts is 1)[&quot;Yes.&quot;
 
 The barber gives you an all-around trim. You usually have your hair relatively short, so it just became even shorter.]
@@ -2114,7 +2120,7 @@ The barber then shaves all your hair off. You are now bald.]
 [[Continue-&gt;Barber Shop]]]]
 \(else:)[&quot;Jed, I can&#39;t give you a haircut. You&#39;re bald.&quot;
 
-[[Continue-&gt;Barber Shop]]]</tw-passagedata><tw-passagedata pid="148" name="SuperJed Barber" tags="" position="4832,2008" size="100,100">(set:$citizensHelped to it + (a:&quot;barber&quot;))(set:$lastLocation to &quot;barber shop&quot;)
+[[Continue-&gt;Barber Shop]]]</tw-passagedata><tw-passagedata pid="148" name="SuperJed Barber" tags="" position="4846,1996" size="100,100">(set:$citizensHelped to it + (a:&quot;barber&quot;))(set:$lastLocation to &quot;barber shop&quot;)
 \&quot;I&#39;ll help you!&quot; you shout to the man. You run over to him. &quot;SuperJed to the rescue!&quot;
 
 &quot;Finally,&quot; the man says. &quot;I&#39;ve been waiting all day. I&#39;d just like to trim my beard a bit. It&#39;s gotten a bit too rowdy.&quot;
@@ -2270,12 +2276,14 @@ By Blue Cat and Green Guy
 
 Whenever you are ready to begin, click the link below.]
 
-[[Begin-&gt;Start3]]</tw-passagedata><tw-passagedata pid="158" name="About2" tags="" position="5031,2574" size="100,100">=&gt;&lt;=
-Written and Developed by Blue Cat Productions and Green Guy.
+[[Begin-&gt;Start3]]</tw-passagedata><tw-passagedata pid="158" name="About2" tags="" position="5029.333333333334,2577.3333333333335" size="100,100">=&gt;&lt;=
+Written and Developed by Harrison Buffington and Delaney Stroud. 
+Mayor Mystery Written and Developed by Blue Cat Productions and Green Guy.
 
-Illustrations by Wiz.
+New Graphic Design by Ettie Rupp.
+Original Illustrations by Wiz.
 
-Created for the Beepbox Discord Text Adventure Event.
+Mayor Mystery for the Beepbox Discord Text Adventure Event.
 
 Special thanks to
 Jacob, Quirb, Theep, Thurm
@@ -2432,7 +2440,7 @@ Current funds: $$MONEY
 
 &quot;Oh yeah,&quot; Jed says.
 
-[[Continue-&gt;City Hall 2]]]]</tw-passagedata><tw-passagedata pid="175" name="Skill Tree 2" tags="" position="5099,3902" size="100,100">(if:visits is 1)[(set:$skillPoints to 6)(set:$SKILLS to (a:))]
+[[Continue-&gt;City Hall 2]]]]</tw-passagedata><tw-passagedata pid="175" name="Skill Tree 2" tags="" position="5099,3902" size="100,100">(if:visits is 1)[(set:$skillPoints to 8)(set:$SKILLS to (a:))]
 \Remaining Skill Points: $skillPoints
 
 (if:$skillPoints is 0)[[[Continue-&gt;Elevator 2]]](else:)[
@@ -2609,20 +2617,21 @@ Please provide feedback of the sequel using &lt;a href=&quot;https://forms.gle/K
 
 [[Continue-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="189" name="Stats Page" tags="" position="3363,3574" size="100,100">(font:&quot;Raleway&quot;)[&lt;u&gt;The Paper of Amazing Statistics&lt;/u&gt;
 
-Times Played: $visitsWaitingRoom
+Times Played: (print:$STATS&#39;s 9th)
 (cond:$STATS&#39;s 1st is 0,&quot;?????:&quot;,&quot;Alien Invasions:&quot;) (print:$STATS&#39;s 1st)
+(cond:$STATS&#39;s 10th is 0,&quot;?????:&quot;,&quot;Haircuts:&quot;) (print:$STATS&#39;s 10th)
 (cond:$STATS&#39;s 2nd is 0,&quot;?????:&quot;,&quot;Items Thrown Away:&quot;) (print:$STATS&#39;s 2nd)
 (cond:$STATS&#39;s 3rd is 0,&quot;?????:&quot;,&quot;Money Spent:&quot;) (print:$STATS&#39;s 3rd)
 Outfits Owned: (print:$CLOSET&#39;s length + 2)/11
 (cond:$STATS&#39;s 4th is 0,&quot;?????:&quot;,&quot;Pets Adopted:&quot;) (print:$STATS&#39;s 4th)
-(cond:$STATS&#39;s 4th is 0,&quot;?????:&quot;,&quot;Room Paintings:&quot;) (print:$STATS&#39;s 8th)
+(cond:$STATS&#39;s 8th is 0,&quot;?????:&quot;,&quot;Room Paintings:&quot;) (print:$STATS&#39;s 8th)
 (cond:$STATS&#39;s 5th is 0,&quot;?????:&quot;,&quot;Tickets Earned:&quot;) (print:$STATS&#39;s 5th)
 (cond:$STATS&#39;s 6th is 0,&quot;?????:&quot;,&quot;Toilet Flushes:&quot;) (print:$STATS&#39;s 6th)
 (cond:$STATS&#39;s 7th is 0,&quot;?????:&quot;,&quot;Train Rides:&quot;) (print:$STATS&#39;s 7th)
 (cond:$mayorFights&#39;s length is 0,&quot;?????:&quot;,&quot;Unique Mayor Fights:&quot;) (print:$mayorFights&#39;s length)/7
 \]
 
-[[Return-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="190" name="Throw Away Key" tags="" position="1161,2686" size="100,100">(if:$INV contains &quot;letter&quot;)[
+[[Return-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="190" name="Throw Away Key" tags="" position="1143,2685" size="100,100">(if:$INV contains &quot;letter&quot;)[
 \Jed, you fool! You were supposed to throw away the letter, not the key! There&#39;s no way you could&#39;ve made that mistake, unless-
 
 You did this on purpose, didn&#39;t you? Why? It would&#39;ve been cool! You could&#39;ve fought the mayor! Oh well, your loss.]
@@ -2633,7 +2642,21 @@ You did this on purpose didn&#39;t you? Not even as blunt of a hook as &quot;ALI
 \(set:$INV to it - (a:&quot;key&quot;))
 \(set:$STATS&#39;s 2nd to it + 1)
 
-[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata></tw-storydata>
+[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="191" name="Gameshow Intro" tags="" position="167.66666666666652,3258.666666666667" size="100,100">Jed ticks the box marked &quot;yes.&quot; Suddenly, Jed finds himself in a live gameshow set, with a host and a studio audience.
+
+&quot;Hello, everyone!&quot; the host announces. &quot;Welcome to &#39;&#39;Mayor Mystery Mystery&#39;&#39;!! Today, we have the one and only Jed Winchester!&quot;
+
+The crowd goes absolutely wild. They start chanting your name: &quot;Jed! Jed! Jed! Jed!&quot;
+
+&quot;Here&#39;s how the game works, kid. I&#39;m going to ask you a series of questions. Each one is worth more than the other. If you can get all of them correct, you&#39;ll go home with $500 dollars. Are you ready?&quot;
+
+(link-reveal-goto:&#39;&quot;Yes!&quot;&#39;,&quot;Gameshow Start&quot;)[(set:$prevAnswer to &quot;yes&quot;)]
+(link-reveal-goto:&#39;&quot;No...&quot;&#39;,&quot;Gameshow Start&quot;)[(set:$prevAnswer to &quot;no&quot;)]</tw-passagedata><tw-passagedata pid="192" name="Reject Gameshow" tags="" position="1462.6666666666667,2000.3333333333333" size="100,100">Jed ticks the box marked &quot;No.&quot; Suddenly, the letter crumples in on itself and completely dissapears.
+
+Jed, did you see that? What the heck just happened?
+
+[[Continue-&gt;The Apartment Complex]] </tw-passagedata><tw-passagedata pid="193" name="Gameshow Start" tags="" position="310,3255.8333333333335" size="100,100">(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;Okay, here we go...&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway! Here we go...&#39;)
+\(set:$question to (a:[(link-reveal-goto:&quot;One&quot;)[]],[(link-reveal-goto:&quot;Two&quot;)[]],[(link-reveal-goto:&quot;Three&quot;)[]],[(link-reveal-goto:&quot;Four&quot;)[]]))</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
