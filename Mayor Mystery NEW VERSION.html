@@ -224,7 +224,7 @@ By Blue Cat and Green Guy
 \(set: $sequel to true)
 \(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
 \(set: $mayorFights to (a:))
-\(set: $STANLEY to false)
+\(set: $STANLEY to true) &lt;!--DEBUG--&gt;
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0)
 \(set: $sidequests to (a:))
@@ -404,10 +404,8 @@ An anonymous help-seeker]]
 [[Hardware Store-&gt;Hardware Store]]
 [[Empty Store-&gt;Empty Store]]
 [[Arcade-&gt;Arcade]]
-\(if:$STATS&#39;s 9th &gt; 2 and &lt; 10)[
+\(if:$STATS&#39;s 9th &gt; 2)[
 [[Construction Zone-&gt;Construction Area]]]
-\(if:$STATS&#39;s 9th &gt; 9 and (history:) does not contain &quot;No Construction&quot; and (history:) contains &quot;Construction Area&quot;)[
-[[Construction Zone-&gt;No Construction]]]
 [[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="18" name="West Side of Town" tags="" position="6119,1322" size="200,200">You&#39;re in the West Side of Webster Groves. (cond:$wearing is &quot;3d glasses&quot;,&quot;Everything looks so cool in 3D...&quot;,&quot;For some reason the sky looks darker then the rest of the town.&quot;)
 
 [[Burgerocity]]
@@ -1625,7 +1623,7 @@ Curent Funds: $$MONEY
 
 (if:$STANLEY is false and $ENDINGS contains &quot;Glitch&quot;)[[[Enter the door on the left-&gt;Add Stanley]]](else:)[[[Enter the door on the left-&gt;Too Poor]]]
 [[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="107" name="Glitch Ending" tags="" position="7321,1763" size="200,100">Double-click this passage to edit it.
-\(set:$ENDINGS to it + (a:&quot;Glitch&quot;))
+\(unless:$ENDINGS contains &quot;Glitch&quot;)[(set:$ENDINGS to it + (a:&quot;Glitch&quot;))]
 \(live:0.1s)[(if:time&gt;10s)[(go-to:&quot;Waiting Room Entrance&quot;)]]
 
 Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="3076,3343" size="100,100">(set:$visitsMegaToilet to it + 1)
@@ -1818,7 +1816,7 @@ Surprisingly, there doesn&#39;t seem to be much back here other than a large amo
 
 After you exit the store you take a moment to inspect the toaster. It is indeed a normal toaster.
 
-[[Continue-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="120" name="Gang Ending" tags="" position="6801,2139" size="200,100">(set:$ENDINGS to it + (a:&quot;Gang&quot;))
+[[Continue-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="120" name="Gang Ending" tags="" position="6801,2139" size="200,100">(unless:$ENDINGS contains &quot;Gang&quot;)[(set:$ENDINGS to it + (a:&quot;Gang&quot;))]
 \&quot;Do you got the goods?&quot; the short one asks.
 
 You hold up the toaster. &quot;You know it!&quot;
@@ -2143,7 +2141,7 @@ How strange...
 
 This place is how I communicate with this world; the place that allows me to make changes and narrate Jed&#39;s actions. I&#39;m not here physically, I&#39;m in &quot;another world&quot; you could say.
 
-(font:&quot;Raleway&quot;)[[[Back-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="145" name="The End" tags="" position="9788,2266" size="100,100">(font:&quot;Raleway&quot;)[That&#39;s everything!]
+(font:&quot;Raleway&quot;)[[[Back-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="145" name="The End" tags="" position="9743,2262.6666666666665" size="200,100">(font:&quot;Raleway&quot;)[That&#39;s everything!]
 
 Alright, then. If you two are done, I&#39;ll teleport you back to the start. Game Master, if you can, please make sure that this doesn&#39;t happen again.
 \(unless:$ENDINGS contains &quot;Narrator&quot;)[(set:$ENDINGS to it + (a:&quot;Narrator&quot;))]
@@ -2315,6 +2313,7 @@ By Blue Cat and Green Guy
 \(set: $sequelProgress to (a:))
 \(set: $SKILLS to (a:))
 \(set: $skillPoints to 6)
+\(set: $nextFun to 0)
 \
 \(if:$visitsJedsToilet is 8 or $visitsJedsToilet is 11)[(set: $visitsJedsToilet to 9)](else:)[(set: $visitsJedsToilet to 0)]
 \(set: $visitsCoffeeMaker to 0)
@@ -3139,8 +3138,9 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
 (link-reveal-goto: $curQ&#39;s 2nd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 2)]
 (link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
-(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="226" name="Construction Area" tags="" position="4910,1574" size="100,100">(set:_dialogue to (a:&quot;&quot;,&quot;&quot;,&quot;in a week&quot;,&quot;in 6 days&quot;,&quot;in 5 days&quot;,&quot;in 4 days&quot;,&quot;in 3 days&quot;,&quot;in a couple days&quot;,&quot;tomorrow&quot;))
-\Jed walks up to a construction zone.
+(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="226" name="Construction Area" tags="" position="4941.666666666667,1720.6666666666667" size="100,200">(if: $STAT&#39;s 9th &lt; 10)[
+\(set:_dialogue to (a:&quot;&quot;,&quot;&quot;,&quot;in a week&quot;,&quot;in 6 days&quot;,&quot;in 5 days&quot;,&quot;in 4 days&quot;,&quot;in 3 days&quot;,&quot;in a couple days&quot;,&quot;tomorrow&quot;))
+\Jed walks up to the construction zone.
 
 &quot;Careful, stranger,&quot; warns the foreman, &quot;don&#39;t get too close!&quot;
 
@@ -3148,9 +3148,11 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 
 &quot;We&#39;re working on something. Come back (print:($STAT&#39;s 9th) of _dialogue) and you&#39;ll see.
 
-[[Continue-&gt;Town Square]] </tw-passagedata><tw-passagedata pid="227" name="No Construction" tags="" position="5051,1573" size="100,100">Jed, what are you talking about? &quot;Construction Zone?&quot; There&#39;s no construction zone here.
+[[Continue-&gt;Town Square]]]
+\(else:)[
+\Jed walks up to the construction zone, and noticed that all of the workers were gone. What could it mean? The construction was supposed to be finished by now.
 
-What? You were supposed to wait a week and then something would be here? No, sorry, doesn&#39;t look like.</tw-passagedata><tw-passagedata pid="228" name="Hardware Bald" tags="" position="4236,2283" size="100,100">(set:$INV to it + (a:&quot;bald card&quot;))
+[[Exit-&gt;Town Square]]]</tw-passagedata><tw-passagedata pid="227" name="Hardware Bald" tags="" position="4236,2283" size="100,100">(set:$INV to it + (a:&quot;bald card&quot;))
 \&quot;Hey buddy, before you go,&quot; the clerk says, &quot;I swear I&#39;ve seen you before with hair. That a new look?&quot;
 
 &quot;Yeah,&quot; Jed replies. &quot;I&#39;m bald now.&quot;
@@ -3161,7 +3163,7 @@ Jed flipped over the card and started reading the back. &quot;To get to the meet
 
 Jed put the card in the pocket and walked out of the hardware store.
 
-[[Continue-&gt;Town Square]] </tw-passagedata><tw-passagedata pid="229" name="Book 5" tags="" position="1335,2536" size="100,100">=&gt;&lt;=
+[[Continue-&gt;Town Square]] </tw-passagedata><tw-passagedata pid="228" name="Book 5" tags="" position="1335,2536" size="100,100">=&gt;&lt;=
 (font:&quot;Unbounded&quot;)+(size:2)[Greg and Ron]
 (font:&quot;Times New Roman&quot;)+(size:1.2)[by Sharmaine Henning]
 
@@ -3186,10 +3188,10 @@ Greg and Ron went to the barber shop together. Greg went up to the counter and c
 
 &quot;Okay,&quot; Peter said. ]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="230" name="Pull the Book" tags="" position="1340,2402" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="231" name="Find Cash Stash" tags="" position="2227,2954" size="100,100">(set:$INV to it + (a:&quot;cash stash&quot;))(set:$MONEY to it + 50)
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="229" name="Pull the Book" tags="" position="1340,2402" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="230" name="Find Cash Stash" tags="" position="2227,2954" size="100,100">(set:$INV to it + (a:&quot;cash stash&quot;))(set:$MONEY to it + 50)
 \Jed looked around the room for his cash stash. Normally he keeps it in a lockbox in his cabinet, but seeing as he ate it this morning, he had to look around his room. Eventually he found the lockbox under his bed. He grabbed it and inputted the code 2845, which caused it to open up. Inside was a roll of $50. Make sure not to waste this too, Jed.
 
-[[Continue-&gt;Jed&#39;s Bedroom]] </tw-passagedata><tw-passagedata pid="232" name="Book 6" tags="" position="1336,2671" size="100,100">=&gt;&lt;=
+[[Continue-&gt;Jed&#39;s Bedroom]] </tw-passagedata><tw-passagedata pid="231" name="Book 6" tags="" position="1336,2671" size="100,100">=&gt;&lt;=
 (font:&quot;Unbounded&quot;)+(size:2)[The Woman and the Lilac]
 (font:&quot;Times New Roman&quot;)+(size:1.2)[by &lt;a href=&quot;https://lipamanka.github.io/stories/the-woman-and-the-lilac&quot; target=&quot;_blank&quot;&gt;Seán&lt;/a&gt;]
 
@@ -3216,7 +3218,7 @@ Seasons passed, and she wept and mourned and grew alongside them. Finally, the c
 
 The two of them swore that if they were to ever find another person who could talk to flowers, they would tell each other.]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="233" name="Rafael Sidequest" tags="" position="2449,2953" size="100,100">(if:$rafaelQuest does not contain &quot;step1&quot;)[
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="232" name="Rafael Sidequest" tags="" position="2449,2953" size="100,100">(if:$rafaelQuest does not contain &quot;step1&quot;)[
 \(set:$rafaelQuest to it + (a:&quot;step1&quot;))
 \&quot;Do you have a sidequest for me?&quot; you asks Rafael.
 
@@ -3280,7 +3282,7 @@ Jed puts his hand on Rafael&#39;s shoulder. &quot;I will not let you down.&quot;
 
 &quot;Well, you know what they say about assumptions. Don&#39;t do it.&quot;]
 
-[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="234" name="Sunglasses Ending" tags="" position="2410,3255" size="200,100">You start to walk away from Rafael, content you have completed his sidequest.
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="233" name="Sunglasses Ending" tags="" position="2410,3255" size="200,100">You start to walk away from Rafael, content you have completed his sidequest.
 
 Rafael turns around to walk into his apartment. However, he trips and falls, breaking his sunglasses. Suddenly, they start glowing and beeping.
 
@@ -3291,7 +3293,7 @@ Rafael turns around to walk into his apartment. However, he trips and falls, bre
 The sunglasses then explode, causing an absolutely gigantic amount of destruction. The explosion was massive, in fact, that Webster Groves ceased to exist. The entire town has been wiped off the face of the earth.
 \(unless:$ENDINGS contains &quot;Sunglasses&quot;)[(set:$ENDINGS to it + (a:&quot;Sunglasses&quot;))]
 
-[[The End-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="235" name="Rafael Sunglasses" tags="" position="2450,3101" size="100,100">You pull out the bright green sunglasses you found in the trash at Bosco&#39;s. &quot;Are these it?&quot; you ask Rafael.
+[[The End-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="234" name="Rafael Sunglasses" tags="" position="2450,3101" size="100,100">You pull out the bright green sunglasses you found in the trash at Bosco&#39;s. &quot;Are these it?&quot; you ask Rafael.
 
 &quot;Yes, they are!&quot; he shouts. &quot;Where were they?&quot;
 
@@ -3299,7 +3301,7 @@ The sunglasses then explode, causing an absolutely gigantic amount of destructio
 
 &quot;Awesome, thank you Jed!&quot;
 
-[[Continue-&gt;Sunglasses Ending]] </tw-passagedata><tw-passagedata pid="236" name="Barber Shop Sunglasses" tags="" position="5818,2264" size="100,100">(if:$rafaelQuest does not contain &quot;step2&quot;)[
+[[Continue-&gt;Sunglasses Ending]] </tw-passagedata><tw-passagedata pid="235" name="Barber Shop Sunglasses" tags="" position="5818,2264" size="100,100">(if:$rafaelQuest does not contain &quot;step2&quot;)[
 \(set:$rafaelQuest to it + (a:&quot;step2&quot;))
 \You walk up to the barber at the front desk. &quot;Have you seen a pair of light green sunglasses around?&quot; you ask. &quot;My friend lost a pair here a few days ago.&quot;
 
@@ -3315,7 +3317,7 @@ The sunglasses then explode, causing an absolutely gigantic amount of destructio
 
 &quot;They should be at Tactical Bold, I sent them over there.&quot;]
 
-[[Continue-&gt;Barber Shop]]</tw-passagedata><tw-passagedata pid="237" name="Clothing Store Sunglasses" tags="" position="6175,2415" size="100,100">(if:$rafaelQuest does not contain &quot;step3&quot;)[
+[[Continue-&gt;Barber Shop]]</tw-passagedata><tw-passagedata pid="236" name="Clothing Store Sunglasses" tags="" position="6175,2415" size="100,100">(if:$rafaelQuest does not contain &quot;step3&quot;)[
 \(set:$rafaelQuest to it + (a:&quot;step3&quot;))
 \You walk up to the clothing store clerk. &quot;I was looking for a pair of bright green sunglasses that one of my friends lost at the barber shop, and the barber says that he gave them to you.&quot;
 
@@ -3331,7 +3333,7 @@ The sunglasses then explode, causing an absolutely gigantic amount of destructio
 
 &quot;I sent them over to the Town Square Hardware Store.&quot;]
 
-[[Continue-&gt;Clothing Store]] </tw-passagedata><tw-passagedata pid="238" name="Hardware Store Sunglasses" tags="" position="4235,2416" size="100,100">(if:$rafaelQuest does not contain &quot;step4&quot;)[
+[[Continue-&gt;Clothing Store]] </tw-passagedata><tw-passagedata pid="237" name="Hardware Store Sunglasses" tags="" position="4235,2416" size="100,100">(if:$rafaelQuest does not contain &quot;step4&quot;)[
 \(set:$rafaelQuest to it + (a:&quot;step4&quot;))
 \You walk up to the hardware store clerk. &quot;I was looking for a pair of bright green sunglasses that one of my friends lost, the clothing store guy says he sent it your way.&quot;
 
@@ -3355,7 +3357,7 @@ The sunglasses then explode, causing an absolutely gigantic amount of destructio
 
 &quot;I mean, I dunno. But if she ever did it would be those! Haha...&quot;]
 
-[[Continue-&gt;Hardware Store]] </tw-passagedata><tw-passagedata pid="239" name="Library Sunglasses" tags="" position="1344,1957" size="100,100">(if:$rafaelQuest does not contain &quot;step5&quot;)[
+[[Continue-&gt;Hardware Store]] </tw-passagedata><tw-passagedata pid="238" name="Library Sunglasses" tags="" position="1344,1957" size="100,100">(if:$rafaelQuest does not contain &quot;step5&quot;)[
 \(set:$rafaelQuest to it + (a:&quot;step5&quot;))
 \You walk up to the librarian. &quot;I was looking for a pair of bright green sunglasses that one of my friends lost, the hardware store clerk says he sent it over here.&quot;
 
@@ -3371,7 +3373,7 @@ The sunglasses then explode, causing an absolutely gigantic amount of destructio
 
 &quot;I gave them to the cashiers over at Bosco&#39;s.&quot;]
 
-[[Continue-&gt;Library]] </tw-passagedata><tw-passagedata pid="240" name="Bosco&#39;s Sunglasses" tags="" position="933,2118" size="100,100">(if:$rafaelQuest does not contain &quot;step6&quot;)[
+[[Continue-&gt;Library]] </tw-passagedata><tw-passagedata pid="239" name="Bosco&#39;s Sunglasses" tags="" position="933,2118" size="100,100">(if:$rafaelQuest does not contain &quot;step6&quot;)[
 \(set:$rafaelQuest to it + (a:&quot;step6&quot;))(set:$INV to it + (a:&quot;bombglasses&quot;))
 \You walk up to the customer service desk. &quot;I was looking for a pair of bright green sunglasses that one of my friends lost, the librarian said she brought them here.&quot;
 
@@ -3381,13 +3383,13 @@ The manager walks around the corner to check some spot out of sight. You look do
 \(else:)[
 \&quot;Sorry sir,&quot; the manager says, &quot;I didn&#39;t find what you were describing in our lost and found.&quot;]
 
-[[Continue-&gt;Bosco&#39;s Family Food Store]] </tw-passagedata><tw-passagedata pid="241" name="Gas Station" tags="" position="6495,1723" size="100,200">You walk into Gasology, the West Side gas station.
+[[Continue-&gt;Bosco&#39;s Family Food Store]] </tw-passagedata><tw-passagedata pid="240" name="Gas Station" tags="" position="6495,1723" size="100,200">You walk into Gasology, the West Side gas station. It feels a little wet in here...
 
 [[Checkout-&gt;Gas Station Checkout]]
 [[Lottery Machine-&gt;Lotto Machine]]
 \(if:$toiletEnding)[
 [[Bathroom-&gt;Gas Station Bathroom]]]
-[[Exit-&gt;West Side of Town]] </tw-passagedata><tw-passagedata pid="242" name="Lotto Machine" tags="" position="6498,2128" size="100,100">You walk up to the lotto machine. Here you can print off scratch tickets that you can cash out at the register. Next to the lotto machine is a framed photograph of a man.
+[[Exit-&gt;West Side of Town]] </tw-passagedata><tw-passagedata pid="241" name="Lotto Machine" tags="" position="6498,2128" size="100,100">You walk up to the lotto machine. Here you can print off scratch tickets that you can cash out at the register. Next to the lotto machine is a framed photograph of a man.
 
 Current funds: $$MONEY
 
@@ -3397,7 +3399,7 @@ Current funds: $$MONEY
 (if:$MONEY &gt;= 10)[[[$10 Ticket-&gt;Ticket 10]]](else:)[[[$10 Ticket-&gt;Too Poor]]]
 (if:$MONEY &gt;= 30)[[[$30 Ticket-&gt;Ticket 30]]](else:)[[[$30 Ticket-&gt;Too Poor]]]
 
-[[Exit-&gt;Gas Station]] </tw-passagedata><tw-passagedata pid="243" name="Gas Station Bathroom" tags="" position="6498,2266" size="100,100">(if:$gasStationPurchase)[
+[[Exit-&gt;Gas Station]] </tw-passagedata><tw-passagedata pid="242" name="Gas Station Bathroom" tags="" position="6498,2266" size="100,100">(if:$gasStationPurchase)[
 \You go into the gas station&#39;s bathroom, and...
 
 There&#39;s no toilet in here. There&#39;s just a hole in the ground where the toilet should be. 
@@ -3410,7 +3412,7 @@ You start to walk towards the gas station bathroom but the cashier shouts at you
 
 &quot;Hey, can&#39;t you read?&quot; she nags. &quot;Paying customers only!&quot;]
 
-[[Continue-&gt;Gas Station]] </tw-passagedata><tw-passagedata pid="244" name="Gas Station Checkout" tags="" position="6498,1980" size="100,100">&quot;How ya doin&#39;, Jed?&quot; the cashier greets.
+[[Continue-&gt;Gas Station]] </tw-passagedata><tw-passagedata pid="243" name="Gas Station Checkout" tags="" position="6498,1980" size="100,100">&quot;How ya doin&#39;, Jed?&quot; the cashier greets.
 
 Current funds: $$MONEY
 
@@ -3422,9 +3424,9 @@ Current funds: $$MONEY
 (if:$MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Coffee - $5&quot;,&quot;Gas Station Checkout&quot;)[(set:$INV to it + (a:&quot;coffee&quot;))(set:$MONEY to it - 5)(set:$STATS&#39;s 3rd to it + 5)(set:$gasStationPurchase to true)]](else:)[[[Coffee - $5-&gt;Too Poor]]]
 (if:$MONEY &gt;= 7)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Big Slushie - $7&quot;,&quot;Gas Station Checkout&quot;)[(set:$INV to it + (a:&quot;slushie&quot;))(set:$MONEY to it - 7)(set:$STATS&#39;s 3rd to it + 7)(set:$gasStationPurchase to true)]](else:)[[[Big Slushie - $7-&gt;Too Poor]]]
 
-[[Exit-&gt;Gas Station]] </tw-passagedata><tw-passagedata pid="245" name="Lotto Photo" tags="" position="6639,2263" size="100,100">You look at the photo framed next to the lottery machine. It&#39;s a picture of a man, but he looks like he was photographed unwillingly. Underneath, it says &quot;WG&#39;s Biggest Gambler: $150.&quot;
+[[Exit-&gt;Gas Station]] </tw-passagedata><tw-passagedata pid="244" name="Lotto Photo" tags="" position="6639,2263" size="100,100">You look at the photo framed next to the lottery machine. It&#39;s a picture of a man, but he looks like he was photographed unwillingly. Underneath, it says &quot;WG&#39;s Biggest Gambler: $150.&quot;
 
-[[Continue-&gt;Lotto Machine]] </tw-passagedata><tw-passagedata pid="246" name="Ticket 1" tags="" position="6502,2391" size="100,100">(set:$ticketCost to 1)
+[[Continue-&gt;Lotto Machine]] </tw-passagedata><tw-passagedata pid="245" name="Ticket 1" tags="" position="6502,2391" size="100,100">(set:$ticketCost to 1)
 \(set:$winned to (a:))
 \(set:$MONEY to it - $ticketCost)
 \(set:$STATS&#39;s 3rd to it + $ticketCost)
@@ -3434,6 +3436,7 @@ Current funds: $$MONEY
 \(set:$winning to its 1stto3rd)
 \(set:$lottoNum to (shuffled:...(range:1,30)))
 \(set:$lottoNum to its 1stto6th)
+\(if:$lottoSpendings &gt; 150)[(goto:&quot;Lotto Intervention&quot;)]
 \You purchase a $$ticketCost ticket from the machine. Getting one match gets your money back, two gives you triple back, and three gives you tenfold! 
 
 The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2nd), and (print:$winning&#39;s 3rd).
@@ -3465,7 +3468,7 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winningTickets to it + ($ticketCost * 10))
 \(set:$STATS&#39;s 11th to it + ($ticketCost * 10))]
 
-(if:$lottoSpendings &gt; 150)[[[Continue-&gt;Lotto Intervention]]](else:)[[[Continue-&gt;Lotto Machine]]]]]]]</tw-passagedata><tw-passagedata pid="247" name="Ticket 5" tags="" position="6635,2393" size="100,100">(set:$ticketCost to 5)
+[[Continue-&gt;Lotto Machine]]]]]]</tw-passagedata><tw-passagedata pid="246" name="Ticket 5" tags="" position="6635,2393" size="100,100">(set:$ticketCost to 5)
 \(set:$winned to (a:))
 \(set:$MONEY to it - $ticketCost)
 \(set:$STATS&#39;s 3rd to it + $ticketCost)
@@ -3475,6 +3478,7 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winning to its 1stto3rd)
 \(set:$lottoNum to (shuffled:...(range:1,30)))
 \(set:$lottoNum to its 1stto6th)
+\(if:$lottoSpendings &gt; 150)[(goto:&quot;Lotto Intervention&quot;)]
 \You purchase a $$ticketCost ticket from the machine. Getting one match gets your money back, two gives you triple back, and three gives you tenfold! 
 
 The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2nd), and (print:$winning&#39;s 3rd).
@@ -3506,7 +3510,7 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winningTickets to it + ($ticketCost * 10))
 \(set:$STATS&#39;s 11th to it + ($ticketCost * 10))]
 
-(if:$lottoSpendings &gt; 150)[[[Continue-&gt;Lotto Intervention]]](else:)[[[Continue-&gt;Lotto Machine]]]]]]]</tw-passagedata><tw-passagedata pid="248" name="Ticket 10" tags="" position="6502,2521" size="100,100">(set:$ticketCost to 10)
+[[Continue-&gt;Lotto Machine]]]]]]</tw-passagedata><tw-passagedata pid="247" name="Ticket 10" tags="" position="6502,2521" size="100,100">(set:$ticketCost to 10)
 \(set:$winned to (a:))
 \(set:$MONEY to it - $ticketCost)
 \(set:$STATS&#39;s 3rd to it + $ticketCost)
@@ -3516,6 +3520,7 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winning to its 1stto3rd)
 \(set:$lottoNum to (shuffled:...(range:1,30)))
 \(set:$lottoNum to its 1stto6th)
+\(if:$lottoSpendings &gt; 150)[(goto:&quot;Lotto Intervention&quot;)]
 \You purchase a $$ticketCost ticket from the machine. Getting one match gets your money back, two gives you triple back, and three gives you tenfold! 
 
 The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2nd), and (print:$winning&#39;s 3rd).
@@ -3547,7 +3552,7 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winningTickets to it + ($ticketCost * 10))
 \(set:$STATS&#39;s 11th to it + ($ticketCost * 10))]
 
-(if:$lottoSpendings &gt; 150)[[[Continue-&gt;Lotto Intervention]]](else:)[[[Continue-&gt;Lotto Machine]]]]]]]</tw-passagedata><tw-passagedata pid="249" name="Ticket 30" tags="" position="6637,2523" size="100,100">(set:$ticketCost to 30)
+[[Continue-&gt;Lotto Machine]]]]]]</tw-passagedata><tw-passagedata pid="248" name="Ticket 30" tags="" position="6637,2523" size="100,100">(set:$ticketCost to 30)
 \(set:$winned to (a:))
 \(set:$MONEY to it - $ticketCost)
 \(set:$STATS&#39;s 3rd to it + $ticketCost)
@@ -3557,6 +3562,7 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winning to its 1stto3rd)
 \(set:$lottoNum to (shuffled:...(range:1,30)))
 \(set:$lottoNum to its 1stto6th)
+\(if:$lottoSpendings &gt; 150)[(goto:&quot;Lotto Intervention&quot;)]
 \You purchase a $$ticketCost ticket from the machine. Getting one match gets your money back, two gives you triple back, and three gives you tenfold! 
 
 The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2nd), and (print:$winning&#39;s 3rd).
@@ -3588,7 +3594,19 @@ The three numbers to get are (print:$winning&#39;s 1st), (print:$winning&#39;s 2
 \(set:$winningTickets to it + ($ticketCost * 10))
 \(set:$STATS&#39;s 11th to it + ($ticketCost * 10))]
 
-(if:$lottoSpendings &gt; 150)[[[Continue-&gt;Lotto Intervention]]](else:)[[[Continue-&gt;Lotto Machine]]]]]]]</tw-passagedata><tw-passagedata pid="250" name="Lotto Intervention" tags="" position="6504,2666" size="100,100">[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="251" name="Cash Tickets" tags="" position="6638,1986" size="100,100">(set:$visitsTickets to it + 1)
+[[Continue-&gt;Lotto Machine]]]]]]</tw-passagedata><tw-passagedata pid="249" name="Lotto Intervention" tags="" position="6504,2666" size="100,100">As you try to purchase the lottery ticket, an alarm pops out of the top of the lotto machine and goes off.
+
+&quot;What&#39;s happening?&quot; Jed cries out.
+
+&quot;Woah woah woah,&quot; the cashier says, &quot;how much money did you put into that machine?&quot;
+
+&quot;$$lottoSpendings...&quot;
+
+&quot;Oh no. Okay, follow me.&quot;
+
+The cashier walks out of the counter and turns off the lottery machine alarm. She then walks you towards the employee backroom.
+
+[[Continue-&gt;Lotto Backroom]]</tw-passagedata><tw-passagedata pid="250" name="Cash Tickets" tags="" position="6638,1986" size="100,100">(set:$visitsTickets to it + 1)
 \(if:$visitsTickets is 1)[&quot;Never really took you for a gambling man, Jed,&quot; the cashier says. 
 
 She scans all of your winning tickets. &quot;Looks like your total came to $$winningTickets. Hope you didn&#39;t spend any more than that!&quot;]
@@ -3597,7 +3615,29 @@ She scans all of your winning tickets. &quot;Looks like your total came to $$win
 She scans all of your winning tickets. &quot;Looks like your total came to $$winningTickets. Hope you didn&#39;t spend any more than that!&quot;]
 \(set:$MONEY to it + $winningTickets)(set:$winningTickets to 0)
 
-[[Continue-&gt;Gas Station Checkout]] </tw-passagedata></tw-storydata>
+[[Continue-&gt;Gas Station Checkout]] </tw-passagedata><tw-passagedata pid="251" name="Lotto Backroom" tags="" position="6642.333333333333,2667.6666666666665" size="100,100">You walk into the backroom and see (cond:$STANLEY,&quot;Rafael, Josefine, and Stanley&quot;,&quot;Rafael and Josefine&quot;) standing in the room.
+
+&quot;Hey Jed,&quot; Rafael explains, &quot;don&#39;t worry. We&#39;re here to help you.&quot;
+
+&quot;We know it&#39;s not your fault,&quot; Josefine says, &quot;we&#39;re just concerned about you and your financial security.&quot;
+\(if:$STANLEY)[
+
+(font:&quot;HKNova&quot;)[&quot;Yes,&quot; said Stanley, &quot;it can be easy to be sucked into the magic of gambling. However, gambling is very, very bad.&quot;]]
+
+&quot;Jed, you done messed up,&quot; the cashier says, &quot;now //you&#39;re// Webster Groves&#39; biggest gambler.&quot; She pulls out her phone and takes a picture of you.
+
+[[Continue-&gt;Gambling Ending]]</tw-passagedata><tw-passagedata pid="252" name="Gambling Ending" tags="" position="6527.333333333333,2811" size="200,100">(unless:$ENDINGS contains &quot;Gambling&quot;)[(set:$ENDINGS to it + (a:&quot;Gambling&quot;))]
+\A group of guards runs into the employee backroom. &quot;You&#39;re coming with us, sir!&quot; they shout. They pull up your arms and drag you out of the gas station into a helicopter.
+
+&quot;Where am I going? Whare are you taking me?&quot; you cry out.
+
+&quot;Don&#39;t worry sir,&quot; one of the guards explains, &quot;you&#39;re going to the best gambling correctional facility the United States has to offer.&quot;
+
+&quot;HELP!!!&quot; you scream. &quot;JOSEFINE! (cond:$STANLEY,&quot;RAFAEL! STANLEY!&quot;,&quot;RAFAEL!&quot;) ANYBODY!&quot;
+
+The helicopter lifts off the ground and takes flight... bye bye Jed...
+
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
