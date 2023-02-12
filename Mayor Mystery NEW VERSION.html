@@ -206,7 +206,7 @@ I&#39;ll make you a deal. One last chance to show me whether or not you want to 
 By Blue Cat and Green Guy
 \(if:visits is 1)[
 \(set: $ENDINGS to (a:))
-\(set: $FUN to 0)
+\(set: $FUN to 15)
 \(set: $MAILBOX to &quot;empty&quot;)
 \(set: $TestFinish to 0)
 \(set: $TestSkip to false)
@@ -224,7 +224,7 @@ By Blue Cat and Green Guy
 \(set: $sequel to true)
 \(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
 \(set: $mayorFights to (a:))
-\(set: $STANLEY to true) &lt;!--DEBUG--&gt;
+\(set: $STANLEY to false)
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0)
 \(set: $sidequests to (a:))
@@ -382,7 +382,7 @@ An anonymous help-seeker]]
 \(set: $INV to it + (a:&quot;letter&quot;))
 
 (cond:$FUN is 4,&quot;Jed took the key off of the letter, and then put them in his pocket.&quot;,&quot;Jed folded the letter and put it in his pocket.&quot;)
-\(if:$MAILBOX is not &quot;empty&quot;)[He then looked in his mailbox again and saw something else pushed further back.
+\(if:$MAILBOX is not &quot;empty&quot;)[ He then looked in his mailbox again and saw something else pushed further back.
 
 [[Continue-&gt;Mailboxes]]](else:)[
 
@@ -885,11 +885,11 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
 \(if:$MAILBOX is &quot;lightsaber&quot;)[You reach into your mailbox and find a strange device. It&#39;s a small cylindrical shape with a button on the side. You press it and... nothing happens. Must be busted.
 \(set:$INV to it + (a:&quot;lightsaber&quot;))(set:$MAILBOX to &quot;empty&quot;)]
-\(if:$MAILBOX is &quot;gameshow&quot;)[You reach into your mailbox and find another letter, this one is ornate with a fancy stamp on it. You open it, and it simply reads &quot;Do you want to play a game?&quot; with checkboxes underneath.
+\(if:$MAILBOX is &quot;gameshow&quot;)[You reach into your mailbox and find another letter, this one is ornate with a fancy stamp on it. You open it, and it simply reads &quot;Do you want to play a game?&quot; with checkboxes underneath.]
 
 (if:$MAILBOX is &quot;gameshow&quot;)[[[Yes-&gt;Gameshow Intro]]
 [[No-&gt;Reject Gameshow]]
-\(set:$MAILBOX to &quot;empty&quot;)]]
+\(set:$MAILBOX to &quot;empty&quot;)]
 \(else-if:$escapadeArrow contains &quot;paint&quot; and does not contain &quot;seen&quot;)[
 \[[Continue-&gt;Notice Arrow]]
 \(set:$prevPassage to &quot;complex&quot;)]
@@ -2607,7 +2607,7 @@ Current funds: $$MONEY
 
 [[Continue-&gt;Confrontation 2]]</tw-passagedata><tw-passagedata pid="183" name="Save/Load" tags="" position="2117,172" size="100,100">(font:&quot;Raleway&quot;)[(either:&quot;You know, you should be lucky. There were people in the past who could never save their Mayor Mystery game in their lifetime.&quot;,&quot;(cond:visits is 1,&#39;Here to load you save, huh? Be sure to come back soon. Specifically next Teusday. I’m not gonna spoil anything.&#39;,&#39;Here to save your game, huh? Be sure to come back soon. Specifically next Teusday. I’m not gonna spoil anything.&#39;)&quot;,&quot;Good morning, Jed! Don&#39;t worry, I totally haven&#39;t touched your save data! Wink!&quot;,&quot;Jed, this is very important. Don&#39;t alter your save data after midnight. It spoils the cookies if you do that, and then the game refuses to eat them.&quot;,&quot;Did I ever tell you the story of the man who tried to manage his save data, but then his computer exploded? Well, let&#39;s just say you might want to be careful.&quot;)]
 
-(unless:(history:) contains &quot;The Beginning&quot;)[(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J2&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
+(if:(history:) contains &quot;The Beginning&quot;)[(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J2&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
 ]
 \(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link: &quot;Load Game&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]
 ]
