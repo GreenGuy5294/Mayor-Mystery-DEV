@@ -2141,7 +2141,7 @@ How strange...
 
 This place is how I communicate with this world; the place that allows me to make changes and narrate Jed&#39;s actions. I&#39;m not here physically, I&#39;m in &quot;another world&quot; you could say.
 
-(font:&quot;Raleway&quot;)[[[Back-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="145" name="The End" tags="" position="9743,2262.6666666666665" size="200,100">(font:&quot;Raleway&quot;)[That&#39;s everything!]
+(font:&quot;Raleway&quot;)[[[Back-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="145" name="The End" tags="" position="9743,2262" size="200,100">(font:&quot;Raleway&quot;)[That&#39;s everything!]
 
 Alright, then. If you two are done, I&#39;ll teleport you back to the start. Game Master, if you can, please make sure that this doesn&#39;t happen again.
 \(unless:$ENDINGS contains &quot;Narrator&quot;)[(set:$ENDINGS to it + (a:&quot;Narrator&quot;))]
@@ -3138,7 +3138,7 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
 (link-reveal-goto: $curQ&#39;s 2nd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 2)]
 (link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
-(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="226" name="Construction Area" tags="" position="4941.666666666667,1720.6666666666667" size="100,200">(if: $STAT&#39;s 9th &lt; 10)[
+(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="226" name="Construction Area" tags="" position="4941,1720" size="100,200">(if: $STAT&#39;s 9th &lt; 10)[
 \(set:_dialogue to (a:&quot;&quot;,&quot;&quot;,&quot;in a week&quot;,&quot;in 6 days&quot;,&quot;in 5 days&quot;,&quot;in 4 days&quot;,&quot;in 3 days&quot;,&quot;in a couple days&quot;,&quot;tomorrow&quot;))
 \Jed walks up to the construction zone.
 
@@ -3188,7 +3188,9 @@ Greg and Ron went to the barber shop together. Greg went up to the counter and c
 
 &quot;Okay,&quot; Peter said. ]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="229" name="Pull the Book" tags="" position="1340,2402" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="230" name="Find Cash Stash" tags="" position="2227,2954" size="100,100">(set:$INV to it + (a:&quot;cash stash&quot;))(set:$MONEY to it + 50)
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="229" name="Pull the Book" tags="" position="1340,2402" size="100,100">This doesn&#39;t do anything at the moment lol
+
+[[Return-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="230" name="Find Cash Stash" tags="" position="2227,2954" size="100,100">(set:$INV to it + (a:&quot;cash stash&quot;))(set:$MONEY to it + 50)
 \Jed looked around the room for his cash stash. Normally he keeps it in a lockbox in his cabinet, but seeing as he ate it this morning, he had to look around his room. Eventually he found the lockbox under his bed. He grabbed it and inputted the code 2845, which caused it to open up. Inside was a roll of $50. Make sure not to waste this too, Jed.
 
 [[Continue-&gt;Jed&#39;s Bedroom]] </tw-passagedata><tw-passagedata pid="231" name="Book 6" tags="" position="1336,2671" size="100,100">=&gt;&lt;=
@@ -3615,7 +3617,7 @@ She scans all of your winning tickets. &quot;Looks like your total came to $$win
 She scans all of your winning tickets. &quot;Looks like your total came to $$winningTickets. Hope you didn&#39;t spend any more than that!&quot;]
 \(set:$MONEY to it + $winningTickets)(set:$winningTickets to 0)
 
-[[Continue-&gt;Gas Station Checkout]] </tw-passagedata><tw-passagedata pid="251" name="Lotto Backroom" tags="" position="6642.333333333333,2667.6666666666665" size="100,100">You walk into the backroom and see (cond:$STANLEY,&quot;Rafael, Josefine, and Stanley&quot;,&quot;Rafael and Josefine&quot;) standing in the room.
+[[Continue-&gt;Gas Station Checkout]] </tw-passagedata><tw-passagedata pid="251" name="Lotto Backroom" tags="" position="6642,2667" size="100,100">You walk into the backroom and see (cond:$STANLEY,&quot;Rafael, Josefine, and Stanley&quot;,&quot;Rafael and Josefine&quot;) standing in the room.
 
 &quot;Hey Jed,&quot; Rafael explains, &quot;don&#39;t worry. We&#39;re here to help you.&quot;
 
@@ -3626,7 +3628,7 @@ She scans all of your winning tickets. &quot;Looks like your total came to $$win
 
 &quot;Jed, you done messed up,&quot; the cashier says, &quot;now //you&#39;re// Webster Groves&#39; biggest gambler.&quot; She pulls out her phone and takes a picture of you.
 
-[[Continue-&gt;Gambling Ending]]</tw-passagedata><tw-passagedata pid="252" name="Gambling Ending" tags="" position="6527.333333333333,2811" size="200,100">(unless:$ENDINGS contains &quot;Gambling&quot;)[(set:$ENDINGS to it + (a:&quot;Gambling&quot;))]
+[[Continue-&gt;Gambling Ending]]</tw-passagedata><tw-passagedata pid="252" name="Gambling Ending" tags="" position="6527,2811" size="200,100">(unless:$ENDINGS contains &quot;Gambling&quot;)[(set:$ENDINGS to it + (a:&quot;Gambling&quot;))]
 \A group of guards runs into the employee backroom. &quot;You&#39;re coming with us, sir!&quot; they shout. They pull up your arms and drag you out of the gas station into a helicopter.
 
 &quot;Where am I going? Whare are you taking me?&quot; you cry out.
