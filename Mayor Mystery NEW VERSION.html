@@ -159,6 +159,7 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
 &lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(set:$maxfun to 16)
+\(if:$escapadeArrow contains &quot;ready&quot;)[(set:$escapadeArrow to it + (a:&quot;paint&quot;))]
 \(unless:$nextFun is 0)[
 \(set:$FUN to $nextFun)(set:$nextFun to 0)] 
 \(else:)[
@@ -1796,7 +1797,9 @@ Oh well, let&#39;s go defeat the mayor... or whatever...
 
 [[Continue-&gt;The Toilet Ending]] 
 \(set:$STATS&#39;s 6th to it + 1)</tw-passagedata><tw-passagedata pid="111" name="The Toilet Ending" tags="" position="4029,3039" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
-\(font:&quot;Raleway&quot;)[As the narrator started to mope, Jed and the secretary walked out of the maintenance room. Jed and the narrator are both upset, while the secretary is just confused. How would Jed explain to her what was happening? Would she ever be able to understand? Would the concept of a &quot;toilet ending&quot; ever make sense to her? Would the process of explaining the Toilet Ending give her an existential crisis?
+\(font:&quot;Raleway&quot;)[
+\(unless:$wearing is &quot;icloak&quot;)[
+\As the narrator started to mope, Jed and the secretary walked out of the maintenance room. Jed and the narrator are both upset, while the secretary is just confused. How would Jed explain to her what was happening? Would she ever be able to understand? Would the concept of a &quot;toilet ending&quot; ever make sense to her? Would the process of explaining the Toilet Ending give her an existential crisis?
 
 However, moments later, the room began to shake. &quot;This is it!&quot; the narrator cried. The toilet inside the maintenance room began to grow. Jed and the secretary looked back, and saw it begin to take up the entire room. They ran to the elevator and pushed the button to go up, but the door quickly opened and revealed four security guards. 
 
@@ -1807,6 +1810,17 @@ However, moments later, the room began to shake. &quot;This is it!&quot; the nar
 The guards stare at Jed for a second, but then invite Jed and the secretary into the elevator. After an awkward ride upwards, the six run out of the elevator, ushering for others to follow them.
 
 A commotion has begin around city hall. People began gathering around, wondering what the noise was. After a minute or two, the toilet grew so large that it completely destroyed City Hall. Once there was nothing left, it stopped growing.]
+\(else:)[As the narrator started to mope, Jed walked out of the maintenance room, upset. Questions began to pop up in their minds. Was the toilet ending even a real thing? Was this all for naught? Was the real toilet ending the friends we made along the way?
+
+However, moments later, the room began to shake. &quot;This is it!&quot; the narrator cried. The toilet inside the maintenance room began to grow. Jed looked back, and saw it begin to take up the entire room. He ran to the elevator and pushed the button to go up, but the door quickly opened and revealed four security guards. 
+
+&quot;What are you doing down here?&quot; they shout. &quot;This is a restricted area! We know about your dress-up plans!&quot;
+
+&quot;Look!&quot; Jed yells, pointing at the growing toilet. &quot;We have to get out of here before we get crushed!&quot;
+
+The guards stare at Jed for a second, but then invite him into the elevator. After an awkward ride upwards, the five run out of the elevator, ushering for others to follow them.
+
+A commotion has begin around city hall. People began gathering around, wondering what the noise was. After a minute or two, the toilet grew so large that it completely destroyed City Hall. Once there was nothing left, it stopped growing.]]
 
 [[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="112" name="Fun BBTA" tags="" position="1250,2100" size="100,100">You walk up to the computer and see a story written on the screen.
 
@@ -2092,9 +2106,9 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 (if:$CLOSET does not contain &quot;3d glasses&quot; and $tickets &gt;= 150)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;3D Glasses - 150 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;3d glasses&quot;))(set:$tickets to it - 150)]](else:)[(if:$CLOSET contains &quot;3d glasses&quot;)[3D Glasses - Owned](else:)[[[3D Glasses - 150 Tickets-&gt;Too Poor]]]]
 (if:$CLOSET does not contain &quot;visor&quot; and $tickets &gt;= 300)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Rainbow Visor - 300 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;visor&quot;))(set:$tickets to it - 300)]](else:)[(if:$CLOSET contains &quot;visor&quot;)[Rainbow Visor - Owned](else:)[[[Rainbow Visor - 300 Tickets-&gt;Too Poor]]]]
 (if:$INV does not contain &quot;nerf gun&quot; and $tickets &gt;= 750)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Foam-Dart Gun - 750 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$INV to it + (a:&quot;nerf gun&quot;))(set:$tickets to it - 750)]](else:)[(if:$INV contains &quot;nerf gun&quot;)[Foam-Dart Gun - Sold Out](else:)[[[Foam-Dart Gun - 750 Tickets-&gt;Too Poor]]]]
-(if:$CLOSET does not contain &quot;bomber jacket&quot; and $tickets &gt;= 1000)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bomber Jacket - 1000 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;bomber jacket&quot;))(set:$tickets to it - 1000)]](else:)[(if:$CLOSET contains &quot;bomber jacket&quot;)[Bomber Jacket - Owned](else:)[[[Bomber Jacket - 1000 Tickets-&gt;Too Poor]]]]
-(if:$CLOSET does not contain &quot;icloak&quot; and $tickets &gt;= 2500)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - 2500 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;iclock&quot;))(set:$tickets to it - 2500)]](else:)[(if:$CLOSET contains &quot;icloak&quot;)[WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - Owned](else:)[[[WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - 2500 Tickets-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;bear&quot; and $tickets &gt;= 2500)[[[Giant Stuffed Teddy Bear - 2500 Tickets-&gt;Arcade Buy Bear]]](else:)[(if:$INV contains &quot;bear&quot;)[Giant Stuffed Teddy Bear - Sold Out](else:)[[[Giant Stuffed Teddy Bear - 2500 Tickets-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;bomber jacket&quot; and $tickets &gt;= 1000)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bomber Jacket - 1,000 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;bomber jacket&quot;))(set:$tickets to it - 1000)]](else:)[(if:$CLOSET contains &quot;bomber jacket&quot;)[Bomber Jacket - Owned](else:)[[[Bomber Jacket - 1,000 Tickets-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;icloak&quot; and $tickets &gt;= 2500)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - 2,500 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;icloak&quot;))(set:$tickets to it - 2500)]](else:)[(if:$CLOSET contains &quot;icloak&quot;)[WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - Owned](else:)[[[WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - 2,500 Tickets-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;bear&quot; and $tickets &gt;= 2500)[[[Giant Stuffed Teddy Bear - 2,500 Tickets-&gt;Arcade Buy Bear]]](else:)[(if:$INV contains &quot;bear&quot;)[Giant Stuffed Teddy Bear - Sold Out](else:)[[[Giant Stuffed Teddy Bear - 2,500 Tickets-&gt;Too Poor]]]]
 
 [[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="130" name="Arcade Wheel Game" tags="" position="3880,2418" size="100,100">(set:$tokens to it - 5)(set:$wheelresult to (random:1,50))
 \You spin the Giganto Big Wheel and...
@@ -2108,7 +2122,7 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 |fish&gt;[(live:0.5s)[(if:(random:1,20) is 1)[(set:$isFish to true)DO IT, JED! DO IT NOW!](else:)[(set:$isFish to false)Keep waiting...]]
 
 (link:&quot;Reel In&quot;)[(replace:?fish)[
-\(if:$isFish)[(if:(random:1,15) is 1)[Congratulations! You reeled in a giant fish and got 300 tickets!(set:$tickets to it + 300)(set:$STATS&#39;s 5th to it + 300)](else:)[Congrats! You got the fish and got 150 tickets!(set:$tickets to it + 150)(set:$STATS&#39;s 5th to it + 150)]](else:)[Sorry, Jed. You didn&#39;t reel in at the correct time. You only get 5 tickets...(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]
+\(if:$isFish)[(if:(random:1,15) is 2)[Congratulations! You reeled in a giant fish and got 300 tickets!(set:$tickets to it + 300)(set:$STATS&#39;s 5th to it + 300)](else:)[Congrats! You got the fish and got 150 tickets!(set:$tickets to it + 150)(set:$STATS&#39;s 5th to it + 150)]](else:)[Sorry, Jed. You didn&#39;t reel in at the correct time. You only get 5 tickets...(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]
 
 [[Continue-&gt;Arcade Games]]]]]</tw-passagedata><tw-passagedata pid="132" name="Arcade Buy Bear" tags="" position="4038,2133" size="100,100">(set:$INV to it + (a:&quot;bear&quot;))(set:$tickets to it - 2500)
 \&quot;Here you go, Jed!&quot; the arcade worker says. &quot;The giant bear! Good job getting enough tickets!&quot; They hand you the bear. &quot;I don&#39;t know what you plan on doing this with, but I&#39;m sure anyone you gave this to would instantly become your best friend!&quot;
@@ -2117,7 +2131,7 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 
 &quot;Wow,&quot; he gasps, &quot;that&#39;s huge.&quot;
 
-&quot;Yeah, it cost me 2500 tickets. Did you want it?&quot;
+&quot;Yeah, it cost me 2,500 tickets. Did you want it?&quot;
 
 &quot;Hmmm, I appreciate the offer but I don&#39;t really have anywhere to put it. Thank you, though!&quot;
 
@@ -2126,7 +2140,7 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 
 &quot;Good for you,&quot; Ted grunts. He then turns and starts walking back into his apartment.
 
-&quot;It cost me 2500 tickets. Did you want it?&quot;
+&quot;It cost me 2,500 tickets. Did you want it?&quot;
 
 He stops, then turns his head back to you. &quot;You serious?&quot;
 
@@ -2140,7 +2154,7 @@ You take a closer look at the vest Ted gave you. It looks exactly like the purpl
 
 &quot;Oh my gosh!&quot; she exclaims, &quot;It&#39;s so cute!&quot;
 
-&quot;Yeah, it cost me 2500 tickets. Did you want it?&quot;
+&quot;Yeah, it cost me 2,500 tickets. Did you want it?&quot;
 
 &quot;My girlfriend has been wanting something like that but... I don&#39;t want to take yours! I&#39;ll just go to the arcade and get my own! I&#39;ve been meaning to go back there someday, so here&#39;s a good excuse. But thank you for offering!&quot;
 
@@ -2711,7 +2725,7 @@ Current funds: $$MONEY
 
 The doors lead into a long hallway with an elevator at the end. Throughout the hallway were exactly 27 security guards walking around. Del starts to feel a little uneasy, but Jed consoles him. (if:$SKILLS contains &quot;ctot&quot;)[&quot;Just take a deep breath and count to one thousand. It worked for me!&quot;]
 
-(cond:$SKILLS contains &quot;dkys&quot;,&quot;Thanks to double-knotting his shoes, Jed was able to walk down the hallway and experience no trips whatsoever.&quot;,&quot;While walking down the hallway, Jed trips and falls&quot; + (cond:$SKILLS contains &quot;pocs&quot;,&quot;, which almost breaks his sunglasses.&quot;,&quot;.&quot;) + &quot; Wow, you really should&#39;ve tied those better, Jed.&quot;)
+(cond:$SKILLS contains &quot;dkys&quot;,&quot;Thanks to double-knotting his shoes, Jed was able to walk down the hallway and experience no trips whatsoever.&quot;,&quot;While walking down the hallway, Jed trips and falls&quot; + (cond:$SKILLS contains &quot;pocs&quot;,&quot;, which almost breaks his sunglasses.&quot;,&quot;.&quot;) + &quot; Wow, you really should&#39;ve tied those shoes better, Jed.&quot;)
 
 The three of you arrive at the elevator, and six security guards are standing beside it - three on each side. The guards stare the three of you down while you enter the elevator(cond:$SKILLS contains &quot;fh&quot;,&quot;. \&quot;Nice hat,\&quot; one of them remarks.&quot;,&quot;, but they don&#39;t say anything.&quot;) The elevator doors close and you can feel a slight sense of relief. The secretary presses a button and the elevator starts to go downwards.
 
@@ -2778,7 +2792,7 @@ Current funds: $$MONEY
 ]
 \(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]]
 ]
-\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="184" name="Confrontation 2" tags="" position="5625,4450" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut? It looks good.&#39;,&#39;&quot;&#39;)
+\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="184" name="Confrontation 2" tags="" position="5625,4450" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut? It looks good.&quot;&#39;,&#39;&quot;&#39;)
 
 &quot;HOW&#39;DJA KNOW WE WERE HERE?&quot; Del screams.
 
@@ -3018,7 +3032,7 @@ Jed just returned a blank stare at Stanley.
 
 (font:&quot;HKNova&quot;)[&quot;What a beaut!&quot; exclaimed Stanley. &quot;Truly a work of art.&quot;]
 
-&quot;Yeah, it cost me 2500 tickets. Did you want it?&quot;
+&quot;Yeah, it cost me 2,500 tickets. Did you want it?&quot;
 
 (font:&quot;HKNova&quot;)[&quot;Alas, I cannot,&quot; remorsed Stanley. &quot;My heart is with another inanimate object.&quot;]
 
@@ -3106,7 +3120,7 @@ The entire complex was instantly eliminated in a huge chocolate-scented explosio
 
 [[Continue-&gt;The Apartment Complex]] </tw-passagedata><tw-passagedata pid="206" name="Stanley Paint" tags="" position="2850,3150" size="100,100">(set:_a2 to (rotated-to: where it is &quot;paint&quot;,...$INV))
 \(set:$INV to _a2&#39;s 2ndtolast)
-\(set:$escapadeArrow to it + (a:&quot;paint&quot;))
+\(set:$escapadeArrow to it + (a:&quot;ready&quot;))
 \(set:$sidequests to it + (a:&quot;Stanley&quot;))
 \Jed handed Stanley the bucket of paint. 
 
@@ -3122,7 +3136,7 @@ The entire complex was instantly eliminated in a huge chocolate-scented explosio
 (if:$prevPassage is &quot;home&quot;)[[[Continue-&gt;Jed&#39;s Apartment]]](else-if:$prevPassage is &quot;town&quot;)[[[Continue-&gt;East Side of Town]]](else:)[[[Continue-&gt;The Apartment Complex]]]</tw-passagedata><tw-passagedata pid="208" name="Button Area" tags="" position="400,1700" size="100,200">(if:visits is 1)[Jed followed the Arrow™. It eventually led him to a small building. This is a building that you&#39;ve noticed before, but never actually been inside. There are no markings on the outside to indicate what would be inside the building, for all you knew it was someone&#39;s home. But now it&#39;s almost like you&#39;re being invited in a way.
 
 Despite better judgements, Jed carefuly went inside the building. The building consists of one white room, with a plaque in the middle. The back wall is filled with 16 randomly colored buttons.
-\(set:$escapadeArrow to it + &quot;arrow&quot;)] 
+\(set:$escapadeArrow to it + (a:&quot;arrow&quot;))] 
 \(else:)[You&#39;re now inside the button building. (either:&quot;It&#39;s quite cozy in here.&quot;,&quot;You hear what sounds like a very faint choir.&quot;,&quot;It&#39;s almost relaxing being in this room.&quot;,&quot;This must be theraputic to some people.&quot;)]
 
 [[Read the Plaque-&gt;Button Plaque]]
@@ -3841,11 +3855,12 @@ Jed, did you seriously think there would be a bathroom here in this alleyway? Of
 [[Continue-&gt;Dark Alleyway]] </tw-passagedata><tw-passagedata pid="254" name="Porta Potty" tags="" position="4944,1986" size="100,100">(set:$visitsPortAPotty to it + 1)
 \(if:$visitsPortAPotty is 1)[Alright, well, they don&#39;t really have a bathroom here per say, but they do have a porta potty. It&#39;d be gross to go in there, so let&#39;s just g-
 
-&quot;Do you guys mind if I use your porta potty?&quot; you ask the foreman.
+(if:$STATS&#39;s 9th &lt; 7)[&quot;Do you guys mind if I use your porta potty?&quot; you ask the foreman.
 
 &quot;Knock yourself out, bub,&quot; the forman says.
 
-Jed... I don&#39;t even know what to say.
+Jed... I don&#39;t even know what to say.]
+\(else:)[Jed, where are you going? Oh my goodness, are you going to the porta potty? I.. I don&#39;t even know what to say.]
 
 You walk into the porta potty. It&#39;s just a normal porta potty, i.e. there is no flushing.]
 \(else:)[You go back into the porta potty. Nope, still no flushing.]
@@ -3966,7 +3981,7 @@ Wow. What a rip off.
 ]
 \(link-reveal-goto:&quot;Call Josefine&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;josefine&quot;)]
 \(if:(history:) contains &quot;City Hall Confrontation&quot;)[
-(link-reveal-goto:&quot;Call Mayor Dixon&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;dixon&quot;)]]
+(link-reveal-goto:&quot;Call Mayor Dixon&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;mayor&quot;)]]
 (link-reveal-goto:&quot;Call Rafael&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;rafael&quot;)]
 (link-reveal-goto:&quot;Call Random Number&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;random&quot;)]
 \(if:$STANLEY)[
@@ -4229,9 +4244,9 @@ You then quickly hang up.]
 
 &quot;How much are you charging for these?&quot;
 
-&quot;25 thousand.&quot;
+&quot;(v6m:)[$25K].&quot;
 
-&quot;Yeah, I&#39;m gonna have to pass, have a good day.&quot; The mayor then hangs up]]
+&quot;Yeah, I&#39;m gonna have to pass, have a good day.&quot; The mayor then hangs up.]]
 \(else-if:$prankPerson is &quot;rafael&quot;)[
 \(if:$prankTopic is &quot;food&quot;)[&quot;Sorry, I don&#39;t think I ever put in an order today...&quot;
 
@@ -4304,7 +4319,7 @@ No, Jed, this is all wrong. You were supposed to go buy a disguise and //then// 
 \(else:)[==
 \You walk behind the elevator and see a door. You can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
 
-You then remember (if:$FUN is 4)[The key you got in the mail earlier today. You take it out of your pocket and open up the door...](else:)[The letter you got earlier today. You take it out of your pocket, and there&#39;s a small silver key on the back. You take it off and open up the door...]
+You then remember (if:$FUN is 4)[the key you got in the mail earlier today. You take it out of your pocket and open up the door...](else:)[the letter you got earlier today. You take it out of your pocket, and there&#39;s a small silver key on the back. You take it off and open up the door...]
 
 [[Continue-&gt;CH Confrontation Cloak]]</tw-passagedata><tw-passagedata pid="292" name="CH Maintanence Room Cloak" tags="" position="3400,2300" size="100,100">(if:$visitsMegaToilet is 9)[Oh, the whole invisiblity cloak thing made me forget about the toilet ending. I thought you were going to try and cheese the story here. Oh well, here we are. The final bathroom. It&#39;s all come to this. Whatever happens, Jed, don&#39;t forget the amazing time we had together flushing all those toilets. Whatever happens next can&#39;t be better than that.](else:)[You go into the maintenance room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.]
 
