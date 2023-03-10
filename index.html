@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Mayor Mystery NEW VERSION.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Mayor Mystery NEW VERSION" startnode="9" creator="Twine" creator-version="2.6.1" format="Harlowe" format-version="3.3.4" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+<tw-storydata name="Mayor Mystery NEW VERSION" startnode="9" creator="Twine" creator-version="2.6.1" format="Harlowe" format-version="3.3.4" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400&display=swap');
 
@@ -1914,7 +1914,7 @@ Ted smirks. &quot;Alright then. Since you moved in, I knew I would never like yo
 
 &quot;You do you.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="117" name="The Gang" tags="" position="6800,1950" size="100,100">(if:$visitsGang is 0 and $storeCardQuest does not contain &quot;ask&quot; and $wearing is not &quot;cape&quot;)[
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="117" name="The Gang" tags="" position="6800,1950" size="100,100">(if:($visitsGang is 0) and ($storeCardQuest does not contain &quot;ask&quot;) and ($wearing is not &quot;cape&quot;))[
 \(set:$visitsGang to 1)
 \(if:$MONEY &gt; 0)[
 \&quot;Well, well, well,&quot; you hear a voice say from further down the alley, &quot;woulda look at who we got here. It&#39;s Mista Goody-Two-Shoes!&quot; Three people then walk out of the darkness: a short person, a tall person, and a third person. &quot;Get his money.&quot;
@@ -4099,7 +4099,7 @@ Current funds: $$MONEY
 (if:$FUN is 7)[(if:$MONEY &gt;= 20)[(link-reveal-goto: &#39;Train Pass - $20&#39;,&quot;Train Ride Options&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)]](else:)[[[Train Pass - $20-&gt;Too Poor]]]
 \(unless:$anomalies contains &quot;pass deal&quot;)[(set:$anomalies to it + (a:&quot;pass deal&quot;))]]
 \(else:)[(if:$MONEY &gt;= 80)[(link-reveal-goto: &#39;Train Pass - $80&#39;,&quot;Train Ride Options&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 80)(set:$STATS&#39;s 3rd to it + 80)]](else:)[[[Train Pass - $80-&gt;Too Poor]]]]
-[[&quot;Nevermind&quot;-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="267" name="Gang Empty" tags="" position="6950,1950" size="100,100">(if:$mugged or $ticketPowers is not &quot;unvisited&quot;)[You walk back to where the gang was, but it doesn&#39;t look like anyone is here.](else:)[You walk down the dark alleyway and... and then...
+[[&quot;Nevermind&quot;-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="267" name="Gang Empty" tags="" position="6950,1950" size="100,100">(if:($mugged) or ($ticketPowers is not &quot;unvisited&quot;))[You walk back to where the gang was, but it doesn&#39;t look like anyone is here.](else:)[You walk down the dark alleyway and... and then...
 
 Hmm... okay usually when you go down this alleyway there&#39;s a criminal gang that attacks you, steals your money, etc. etc. I guess you got lucky?]
 
@@ -4794,7 +4794,7 @@ You see a small ticket slowly drop down in front of you. It has a picture of a b
 \You walk down the dark alleyway where you heard the voice. You try to listen for it again, but you don&#39;t hear it.
 
 [[Continue-&gt;Dark Alleyway]]]</tw-passagedata><tw-passagedata pid="322" name="Take Ticket" tags="" position="6800,2250" size="100,100">&quot;Thank you,&quot; you say to the gang. &quot;I will use this wisely.&quot; You grab the ticket off of the table. You then, somewhat awkwardly, walk out of the dark alleyway.
-\(set:$ticketPowers to &quot;ticket&quot;)(set:$INV to it + (a:&quot;ticket&quot;))
+\(set:$ticketPowers to &quot;ticket&quot;)(set:$INV to it + (a:&quot;power ticket&quot;))
 
 You exit the alleyway, confused. What just happened? What were those people doing? Why did they confuse you for someone else? Despite all of the confusion, it seems that Jed stayed morbidly curious about what the ticket entailed. 
 
