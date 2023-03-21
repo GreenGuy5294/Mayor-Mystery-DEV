@@ -1820,11 +1820,9 @@ Curent Funds: $(if:$MONEY &gt; 999 or $MONEY &lt; -999)[(digit-format:&quot;###,
 [[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="107" name="Glitch Ending" tags="" position="7300,1700" size="200,100">Double-click this passage to edit it.
 \(unless:$ENDINGS contains &quot;Glitch&quot;)[(set:$ENDINGS to it + (a:&quot;Glitch&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Glitch&quot;))
-\(live:0.1s)[(if:time&gt;10s)[(go-to:&quot;Waiting Room Entrance&quot;)]]
+\(live:0.1s)[(if:time&gt;10s)[(t8n-arrive: &quot;instant&quot;)(t8n-depart: &quot;instant&quot;)(goto:&quot;Waiting Room Entrance&quot;)]]
 
-Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!
-
-[[DEBUG LINK-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="3000,3500" size="100,100">(set:$visitsMegaToilet to it + 1)
+Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="3000,3500" size="100,100">(set:$visitsMegaToilet to it + 1)
 \(if:$visitsMegaToilet is 1)[Oh, so now that I&#39;ve stopped you from flushing your own toilet, you&#39;re gonna go and flush someone else&#39;s toilet? You&#39;re that petty?]
 \(if:$visitsMegaToilet is 2)[Again? Are you really going to go from building to building just so that you can flush the toilet? You&#39;re not even using it! You don&#39;t need to use it; we&#39;re in a fictional game world where no one has to use the bathroom!]
 \(if:$visitsMegaToilet is 3)[Oh no. I know what you&#39;re doing. I thought I got rid of this ending. It shouldn&#39;t be possible. Well, //shouldn&#39;t// being the key word here.]
@@ -3065,7 +3063,7 @@ Buster looks at Jed&#39;s warm, friendly smile. There were a few seconds of sile
 Jed picked up Buster and did a big spin with him. Together, they ran off into the woods, never seen by anyone from Webster Groves ever again.&quot;)
 \(if:time&gt;5s)[(goto:&quot;Add Stanley 2&quot;)]]</tw-passagedata><tw-passagedata pid="195" name="Add Stanley 2" tags="" position="7750,1500" size="100,100">(set:$STANLEY to true)
 (set:$STATS&#39;s 9th to it + 1)
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(goto:&quot;Title Screen&quot;)</tw-passagedata><tw-passagedata pid="196" name="Stanley&#39;s Apartment" tags="" position="2850,2000" size="100,200">(if:$wearing is &quot;icloak&quot;)[
+(t8n-arrive: &quot;instant&quot;)(t8n-depart: &quot;instant&quot;)(goto:&quot;Title Screen&quot;)</tw-passagedata><tw-passagedata pid="196" name="Stanley&#39;s Apartment" tags="" position="2850,2000" size="100,200">(if:$wearing is &quot;icloak&quot;)[
 \You go over to Stanley&#39;s apartment and knock on the door.
 
 (font:&quot;HKNova&quot;)[Stanley opened the door, and to his surprise, saw no one there. Stanley looked around trying to find someone nearby but didn&#39;t see anyone. Stanley came to the logical conclusion that it must&#39;ve been the wind.]
