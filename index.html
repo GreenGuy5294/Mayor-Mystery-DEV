@@ -1078,10 +1078,10 @@ The two of you arrive at the elevator, and two security guards are standing besi
 
 &quot;Jed, what are you doing?&quot; the secretary asks. &quot;When I said there&#39;s no going back, there&#39;s no going back. We can&#39;t give up now!&quot;
 
-[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="63" name="City Hall Maintenance Room" tags="" position="3450,3025" size="100,100">(if:$visitsMegaToilet is 9)[The final bathroom. It&#39;s all come to this. Whatever happens, Jed, don&#39;t forget the amazing time we had together flushing all those toilets. Whatever happens next can&#39;t be better than that.](else:)[You go into the maintenance room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.]
+[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="63" name="City Hall Maintenance Room" tags="" position="3450,3075" size="100,100">(if:$visitsMegaToilet is 9)[The final bathroom. It&#39;s all come to this. Whatever happens, Jed, don&#39;t forget the amazing time we had together flushing all those toilets. Whatever happens next can&#39;t be better than that.](else:)[You go into the maintenance room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.]
 
 (if:$visitsMegaToilet is 9)[[[Flush the Toilet-&gt;The Final Flush]]](else:)[[[Flush the Toilet-&gt;City Hall Toilet]]]
-[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="64" name="City Hall Secret Room" tags="" position="3525,3150" size="100,100">(if:$INV contains &quot;letter&quot; and ($INV contains &quot;key&quot; or $FUN is not 4))[
+[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="64" name="City Hall Secret Room" tags="" position="3525,3200" size="100,100">(if:$INV contains &quot;letter&quot; and ($INV contains &quot;key&quot; or $FUN is not 4))[
 \You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
 
 &quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
@@ -1125,7 +1125,7 @@ The two of you start to walk around toward the front of the elevator. But before
 
 &quot;This is a restricted area. Only certified persons are allowed.&quot; They rip off your plumber nametag. &quot;We know about your little setup. You two are under arrest for fraud and trespassing.&quot;
 
-[[Continue-&gt;Trespassing Ending]]]]</tw-passagedata><tw-passagedata pid="65" name="City Hall Toilet" tags="" position="3625,3025" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
+[[Continue-&gt;Trespassing Ending]]]]</tw-passagedata><tw-passagedata pid="65" name="City Hall Toilet" tags="" position="3625,3075" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
 \(set:$STATS&#39;s 6th to it + 1)
 \(set: $toilets to it + (a:&quot;CityHall&quot;))
 \(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.
@@ -1136,7 +1136,7 @@ The two of you start to walk around toward the front of the elevator. But before
 
 &quot;Looks like we&#39;ll have to call a real plumber once this is over,&quot; the secretary quips.]
 
-[[Continue-&gt;City Hall Maintenance Room]] </tw-passagedata><tw-passagedata pid="66" name="Trespassing Ending" tags="" position="3250,3175" size="200,100">(unless:$ENDINGS contains &quot;Trespassing&quot;)[(set:$ENDINGS to it + (a:&quot;Trespassing&quot;))]
+[[Continue-&gt;City Hall Maintenance Room]] </tw-passagedata><tw-passagedata pid="66" name="Trespassing Ending" tags="" position="3250,3225" size="200,100">(unless:$ENDINGS contains &quot;Trespassing&quot;)[(set:$ENDINGS to it + (a:&quot;Trespassing&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Trespassing&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
 \Next thing you know, you&#39;re inside a holding cell. &quot;We&#39;ll be back to you in a couple hours,&quot; the guards tell you.
@@ -1149,7 +1149,7 @@ After what feels like an eternity, you hear a loud booming sound while you were 
 
 However, you quickly realized the atmosphere was off. The sky was a dark red, and you noticed that many other buildings had damage done to them as well. You couldn&#39;t shake the feeling that you could&#39;ve prevented this. (if: $INV does not contain &quot;letter&quot;)[Maybe now you see why you shouldn&#39;t have thrown away that letter.](else:)[Did the mayor have something to do with this? Perhaps you&#39;ll never know.]
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="67" name="City Hall Confrontation" tags="" position="3525,3325" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed.&quot;
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="67" name="City Hall Confrontation" tags="" position="3525,3375" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed.&quot;
 
 You turn around and security has already grabbed the secretary and pulled her away. The door then shuts, leaving you, the mayor, and a couple of security guards alone in the room.
 
@@ -1169,7 +1169,7 @@ The mayor turns around and looks at the TV, down at the panel, then back to you.
 
 [[&quot;Go ahead and arrest me.&quot;-&gt;Arrest]]
 [[&quot;I&#39;ll join you.&quot;-&gt;Evil Ending]]
-[[&quot;I choose the third option... FIGHT!&quot;-&gt;Fight!]]</tw-passagedata><tw-passagedata pid="68" name="Arrest" tags="" position="3300,3325" size="100,100">Wait, what? You&#39;re arresting yourself? You&#39;d rather do that than fight him?
+[[&quot;I choose the third option... FIGHT!&quot;-&gt;Fight!]]</tw-passagedata><tw-passagedata pid="68" name="Arrest" tags="" position="3300,3375" size="100,100">Wait, what? You&#39;re arresting yourself? You&#39;d rather do that than fight him?
 
 &quot;Wait, what?&quot; the mayor says. &quot;You&#39;re arresting yourself? You&#39;d rather do that than join me?&quot;
 
@@ -1179,7 +1179,7 @@ Jed, you do realize you actually had a third option, right? You saw that, didn&#
 
 The two guards grab you by your arms and drag you out of the room.
 
-[[Continue-&gt;Trespassing Ending]] </tw-passagedata><tw-passagedata pid="69" name="Evil Ending" tags="" position="3750,3150" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
+[[Continue-&gt;Trespassing Ending]] </tw-passagedata><tw-passagedata pid="69" name="Evil Ending" tags="" position="3750,3200" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Evil&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
 \Jed... what have you done? 
@@ -1206,7 +1206,7 @@ You then hear a giant booming sound coming from the surface. You and the mayor r
 
 There you go, Jed. Was that worth it?
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="70" name="Fight!" tags="" position="3750,3325" size="100,100">Alright, Jed. We&#39;re about to go into a - dare I say - //epic// fight scene. But first, we&#39;re going to need to choose a weapon! What do you choose?
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="70" name="Fight!" tags="" position="3750,3375" size="100,100">Alright, Jed. We&#39;re about to go into a - dare I say - //epic// fight scene. But first, we&#39;re going to need to choose a weapon! What do you choose?
 
 (if:$INV contains all of (a:&quot;burger&quot;,&quot;soda&quot;,&quot;fries&quot;))[(link-reveal-goto:&quot;Burgerocity Meal Combo&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;meal combo&quot;)(unless:$mayorFights contains &quot;meal combo&quot;)[(set:$mayorFights to it + (a:&quot;meal combo&quot;))]]
 ]
@@ -1222,7 +1222,7 @@ There you go, Jed. Was that worth it?
 \(if:$INV contains &quot;wrench&quot;)[(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)(unless:$mayorFights contains &quot;wrench&quot;)[(set:$mayorFights to it + (a:&quot;wrench&quot;))]]
 ]
 \(if:$INV contains &quot;lightsaber&quot;)[(link-reveal-goto:&quot;Strange Device&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;lightsaber&quot;)(unless:$mayorFights contains &quot;lightsaber&quot;)[(set:$mayorFights to it + (a:&quot;lightsaber&quot;))]]
-]</tw-passagedata><tw-passagedata pid="71" name="The City Hall Fight" tags="" position="3750,3500" size="100,100">(if:$weapon is &quot;meal combo&quot;)[You pull out one of Burgerocity&#39;s signature burgers and shove it into the right guard&#39;s mouth. The mayor steps back, while the second guard jumps toward you. You smack them across the head with your order of fries and they fall down.
+]</tw-passagedata><tw-passagedata pid="71" name="The City Hall Fight" tags="" position="3750,3550" size="100,100">(if:$weapon is &quot;meal combo&quot;)[You pull out one of Burgerocity&#39;s signature burgers and shove it into the right guard&#39;s mouth. The mayor steps back, while the second guard jumps toward you. You smack them across the head with your order of fries and they fall down.
 
 &quot;I choose option 3!&quot; you yell.
 
@@ -1280,7 +1280,7 @@ While the mayor looks around for a fire extinguisher, you run out of the room, w
 
 While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
 
-[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="72" name="Normal Ending" tags="" position="3400,3500" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
+[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="72" name="Normal Ending" tags="" position="3400,3550" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
 \(set:$JOURNAL to it + (a:&quot;NormalRoute&quot;))
 \When you exit City Hall, you notice a large gathering of people outside in the walkway. A commotion has begun due to the large amount of smoke pouring from the building.
 
@@ -1842,7 +1842,7 @@ There&#39;s only two more to go after this one. Godspeed, Jed!]
 \(if:$toilets does not contain $previousPassage)[(set:$toilets to it + (a:$previousPassage))]
 \(set:$STATS&#39;s 6th to it + 1)
 
-(link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="110" name="The Final Flush" tags="" position="4075,3150" size="100,100">You flush the toilet. And...
+(link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="110" name="The Final Flush" tags="" position="4050,3200" size="100,100">You flush the toilet. And...
 
 Nothing? Nothing special happens?
 
@@ -1853,7 +1853,7 @@ Well this is a big giant letdown.
 Oh well, let&#39;s go defeat the mayor... or whatever...
 
 [[Continue-&gt;The Toilet Ending]] 
-\(set:$STATS&#39;s 6th to it + 1)</tw-passagedata><tw-passagedata pid="111" name="The Toilet Ending" tags="" position="4025,3325" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
+\(set:$STATS&#39;s 6th to it + 1)</tw-passagedata><tw-passagedata pid="111" name="The Toilet Ending" tags="" position="4000,3375" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Toilet&quot;))
 \(font:&quot;Raleway&quot;)[
 \(unless:$wearing is &quot;icloak&quot;)[
@@ -2127,7 +2127,7 @@ The two enter the building, and are met with a staircase with a sign that says: 
 
 Well Jed, here we are! Just down those stairs, you will meet the narrator. Let&#39;s just hope that nothing goes wrong...
 
-[[Continue-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="127" name="Buy Tokens" tags="" position="3877,1994" size="100,100">(set:$visitsTokens to it + 1)
+[[Continue-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="127" name="Buy Tokens" tags="" position="3900,1950" size="100,100">(set:$visitsTokens to it + 1)
 \&quot;Welcome back, Jed!&quot; the arcade worker greets. &quot;(if:$visitsTokens is 1)[I haven&#39;t seen you in a while! ]How many tokens you want?&quot;
 
 Current funds: $(if:$MONEY &gt; 999)[(digit-format:&quot;###,###&quot;,$MONEY)](else:)[$MONEY]
@@ -2139,21 +2139,25 @@ Current tokens: (if:$tokens &gt; 999)[(digit-format:&quot;###,###&quot;,$tokens)
 (if:$MONEY &gt;= 80)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;100 Tokens - $80&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 100)(set:$MONEY to it - 80)(set:$STATS&#39;s 3rd to it + 80)(set:$visitsTokens to it - 1)]](else:)[[[100 Tokens - $80-&gt;Too Poor]]]
 (if:$MONEY &gt;= 250)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;500 Tokens - $250&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 500)(set:$MONEY to it - 250)(set:$STATS&#39;s 3rd to it + 250)(set:$visitsTokens to it - 1)]](else:)[[[500 Tokens - $250-&gt;Too Poor]]]
 
-[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="128" name="Arcade Games" tags="" position="3875,2275" size="100,100">(if:$wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;arcade&quot;)[You enter the games area of the arcade. You see a boy playing a 2-player game by himself. &quot;Ugh, I need help to beat this!&quot; he complains.](else:)[A little fun to help relieve stress won&#39;t hurt, right? Let&#39;s just be sure not to spend too much time in here, we do have a mission to finish.]
+[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="128" name="Arcade Games" tags="" position="3900,2250" size="100,100">(if:$wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;arcade&quot;)[You enter the games area of the arcade. You see a boy playing a 2-player game by himself. &quot;Ugh, I need help to beat this!&quot; he complains.](else:)[A little fun to help relieve stress won&#39;t hurt, right? Let&#39;s just be sure not to spend too much time in here, we do have a mission to finish.]
 
 Current tokens: (if:$tokens &gt; 999)[(digit-format:&quot;###,###&quot;,$tokens)](else:)[$tokens]
 Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$tickets)](else:)[$tickets]
 
 (if:$FUN is 14)[
 (if:$tokens &gt;= 1)[[[The Token Muncher - 1 Token-&gt;Arcade Muncher Game]]](else:)[[[The Token Muncher - 1 Token-&gt;Too Poor]]]]
-\(if:$tokens &gt;= 4)[[[Brenton&#39;s Button Masher 5000 - 4 Tokens-&gt;Arcade Mashing Game]]](else:)[[[Brenton&#39;s Button Masher 5000 - 4 Tokens-&gt;Too Poor]]]
+\(if:$tokens &gt;= 3)[[[Cassidy&#39;s Challenge Fishing - 3 Tokens-&gt;Arcade Strongman Game]]](else:)[[[Cassidy&#39;s Challenge Fishing - 3 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 3)[[[Romeo&#39;s Recreational Fishing - 3 Tokens-&gt;Arcade Fishing Game]]](else:)[[[Romeo&#39;s Recreational Fishing - 3 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 4)[[[The Giganto Big Wheel - 4 Tokens-&gt;Arcade Wheel Game]]](else:)[[[The Giganto Big Wheel - 4 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 5)[[[Brenton&#39;s Button Masher 5000 - 5 Tokens-&gt;Arcade Mashing Game]]](else:)[[[Brenton&#39;s Button Masher 5000 - 5 Tokens-&gt;Too Poor]]]
 \(if:$seenSteve and (history:) does not contain &quot;Masher Tickets&quot;)[
 [[Look Under Button Game-&gt;Masher Tickets]]]
-(if:$tokens &gt;= 4)[[[Romeo&#39;s Recreational Fishing - 4 Tokens-&gt;Arcade Fishing Game]]](else:)[[[Romeo&#39;s Recreational Fishing - 4 Tokens-&gt;Too Poor]]]
-(if:$tokens &gt;= 5)[[[The Giganto Big Wheel - 5 Tokens-&gt;Arcade Wheel Game]]](else:)[[[The Giganto Big Wheel - 5 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 5)[[[Clobber-A-Robber - 5 Tokens-&gt;Arcade Mole Game]]](else:)[[[Clobber-A-Robber - 5 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 5)[[[Tick-Tock Takedown - 6 Tokens-&gt;Arcade Bomb Game]]](else:)[[[Tick-Tock Takedown - 6 Tokens -&gt;Too Poor]]]
+(if:$tokens &gt;= 0)[[[Run-of-the-Mill Road Skills - 7 Tokens-&gt;Arcade Racing Game]]](else:)[[[Run-of-the-Mill Road Skills - 7 Tokens -&gt;Too Poor]]]
 \(if:$wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;arcade&quot;)[
 [[Help the Boy-&gt;SuperJed Arcade]]]
-[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="129" name="Spend Tickets" tags="" position="3876,2139" size="100,100">&quot;Here&#39;s where you can redeem your tickets. What&#39;d you want?&quot;
+[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="129" name="Spend Tickets" tags="" position="3900,2100" size="100,100">&quot;Here&#39;s where you can redeem your tickets. What&#39;d you want?&quot;
 
 Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$tickets)](else:)[$tickets]
 
@@ -2169,13 +2173,13 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 (if:$CLOSET does not contain &quot;icloak&quot; and $tickets &gt;= 2500)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - 2,500 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;icloak&quot;))(set:$tickets to it - 2500)]](else:)[(if:$CLOSET contains &quot;icloak&quot;)[WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - Owned](else:)[[[WACKY STEVE&#39;S INVISIBILITY CLOAK OF MAGICAL WONDERS - 2,500 Tickets-&gt;Too Poor]]]]
 (if:$INV does not contain &quot;bear&quot; and $tickets &gt;= 2500)[[[Giant Stuffed Teddy Bear - 2,500 Tickets-&gt;Arcade Buy Bear]]](else:)[(if:$INV contains &quot;bear&quot;)[Giant Stuffed Teddy Bear - Sold Out](else:)[[[Giant Stuffed Teddy Bear - 2,500 Tickets-&gt;Too Poor]]]]
 
-[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="130" name="Arcade Wheel Game" tags="" position="3880,2418" size="100,100">(set:$tokens to it - 5)(set:$wheelresult to (random:1,50))
+[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="130" name="Arcade Wheel Game" tags="" position="3900,2400" size="100,100">(set:$tokens to it - 4)(set:$wheelresult to (random:1,50))
 \You spin the Giganto Big Wheel and...
 
-(live:0.1s)[(if:time &lt; 5s)[(either:&quot;JACKPOT! You won 500 tickets! Congrats!&quot;,&quot;You won 200 tickets! Awesome!&quot;,&quot;You won 100 tickets! Pretty good!&quot;,&quot;You won 50 tickets! Not bad!&quot;,&quot;You won 20 tickets. Could be worse.&quot;,&quot;You won 5 tickets... ouch...&quot;)](else:)[
-\(if:$wheelresult is 1)[JACKPOT! You won 500 tickets! Congrats!](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[You won 200 tickets! Awesome!](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[You won 100 tickets! Pretty good!](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[You won 50 tickets! Not bad!](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[You won 20 tickets. Could be worse.](if:$wheelresult &gt; 45)[You won 5 tickets... ouch...]
+(live:0.1s)[(if:time &lt; 5s)[(either:&quot;JACKPOT! You won 2000 tickets! Congrats!&quot;,&quot;You won 500 tickets! Awesome!&quot;,&quot;You won 200 tickets! Pretty good!&quot;,&quot;You won 100 tickets! Not bad!&quot;,&quot;You won 50 tickets. Could be worse.&quot;,&quot;You won 5 tickets... ouch...&quot;)](else:)[
+\(if:$wheelresult is 1)[JACKPOT! You won 2000 tickets! Congrats!](if:$wheelresult &gt; 1 and $wheelresult &lt; 9)[You won 500 tickets! Awesome!](if:$wheelresult &gt; 8 and $wheelresult &lt; 17)[You won 200 tickets! Pretty good!](if:$wheelresult &gt; 16 and $wheelresult &lt; 31)[You won 100 tickets! Not bad!](if:$wheelresult &gt; 30 and $wheelresult &lt; 50)[You won 50 tickets. Could be worse.](if:$wheelresult is 50)[You won 5 tickets... ouch...]
 
-(link-reveal-goto:&quot;Continue&quot;,&quot;Arcade Games&quot;)[(if:$wheelresult is 1)[(set:$tickets to it + 500)(set:$STATS&#39;s 5th to it + 500)](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[(set:$tickets to it + 200)(set:$STATS&#39;s 5th to it + 200)](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[(set:$tickets to it + 100)(set:$STATS&#39;s 5th to it + 100)](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[(set:$tickets to it + 50)(set:$STATS&#39;s 5th to it + 50)](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[(set:$tickets to it + 20)(set:$STATS&#39;s 5th to it + 20)](if:$wheelresult &gt; 45)[(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]](stop:)]]</tw-passagedata><tw-passagedata pid="131" name="Arcade Fishing Game" tags="" position="3883,2560" size="100,100">(set:$tokens to it - 4)(set:$fishCount to 0)
+(link-reveal-goto:&quot;Continue&quot;,&quot;Arcade Games&quot;)[(if:$wheelresult is 1)[(set:$tickets to it + 2000)(set:$STATS&#39;s 5th to it + 2000)](if:$wheelresult &gt; 1 and $wheelresult &lt; 9)[(set:$tickets to it + 500)(set:$STATS&#39;s 5th to it + 500)](if:$wheelresult &gt; 8 and $wheelresult &lt; 17)[(set:$tickets to it + 200)(set:$STATS&#39;s 5th to it + 200)](if:$wheelresult &gt; 16 and $wheelresult &lt; 31)[(set:$tickets to it + 100)(set:$STATS&#39;s 5th to it + 100)](if:$wheelresult &gt; 30 and $wheelresult &lt; 50)[(set:$tickets to it + 50)(set:$STATS&#39;s 5th to it + 50)](if:$wheelresult is 50)[(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]](stop:)]]</tw-passagedata><tw-passagedata pid="131" name="Arcade Fishing Game" tags="" position="3900,2550" size="100,100">(set:$tokens to it - 3)(set:$fishCount to 0)
 \Alright Jed, pay attention, you have to reel in the fish at the right time.(set:$isFish to false)
 
 |fish&gt;[(live:0.5s)[(set:$fishCount to it + 1)(if:(random:1,20) is 1 or $fishCount is 20)[(set:$isFish to true)DO IT, JED! DO IT NOW!](else:)[(set:$isFish to false)Keep waiting...]]
@@ -2183,7 +2187,7 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 (link:&quot;Reel In&quot;)[(replace:?fish)[
 \(if:$isFish)[(if:(random:1,15) is 2)[Congratulations! You reeled in a giant fish and got 300 tickets!(set:$tickets to it + 300)(set:$STATS&#39;s 5th to it + 300)](else:)[Congrats! You got the fish and got 150 tickets!(set:$tickets to it + 150)(set:$STATS&#39;s 5th to it + 150)]](else:)[Sorry, Jed. You didn&#39;t reel in at the correct time. You only get 5 tickets...(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]
 
-[[Continue-&gt;Arcade Games]]]]]</tw-passagedata><tw-passagedata pid="132" name="Arcade Buy Bear" tags="" position="4038,2133" size="100,100">(set:$INV to it + (a:&quot;bear&quot;))(set:$tickets to it - 2500)
+[[Continue-&gt;Arcade Games]]]]]</tw-passagedata><tw-passagedata pid="132" name="Arcade Buy Bear" tags="" position="4050,2100" size="100,100">(set:$INV to it + (a:&quot;bear&quot;))(set:$tickets to it - 2500)
 \&quot;Here you go, Jed!&quot; the arcade worker says. &quot;The giant bear! Good job getting enough tickets!&quot; They hand you the bear. &quot;I don&#39;t know what you plan on doing this with, but I&#39;m sure anyone you gave this to would instantly become your best friend!&quot;
 
 [[Continue-&gt;Spend Tickets]] </tw-passagedata><tw-passagedata pid="133" name="Rafael Bear" tags="" position="2400,2550" size="100,100">You show Rafael the bear you won at the arcade.
@@ -2217,7 +2221,7 @@ You take a closer look at the vest Ted gave you. It looks exactly like the purpl
 
 &quot;My girlfriend has been wanting something like that but... I don&#39;t want to take yours! I&#39;ll just go to the arcade and get my own! I&#39;ve been meaning to go back there someday, so here&#39;s a good excuse. But thank you for offering!&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="136" name="Arcade Mashing Game" tags="" position="4043,2413" size="100,100">(set:$tokens to it - 4)
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="136" name="Arcade Mashing Game" tags="" position="4050,2400" size="100,100">(set:$tokens to it - 5)
 \When the timer starts, you&#39;ll have 5 seconds to mash the button as much as you can.
 \(set:$clicks to 0)
 \(live:5s)[(if:time&gt;1s and time&lt;6s)[
@@ -2447,7 +2451,7 @@ People start running. No one seems to come to Jed for help anymore. As Jed may n
 
 It looks like you bit off more than you can chew. (if:$FUN is 6)[I warned you about this cape. I can&#39;t believe you let it get to your head.]
 
-[[The End-&gt;Waiting Room Entrance]]]</tw-passagedata><tw-passagedata pid="150" name="SuperJed Arcade" tags="" position="4045,2281" size="100,100">(set:$citizensHelped to it + (a:&quot;arcade&quot;))(set:$lastLocation to &quot;arcade&quot;)
+[[The End-&gt;Waiting Room Entrance]]]</tw-passagedata><tw-passagedata pid="150" name="SuperJed Arcade" tags="" position="4050,2250" size="100,100">(set:$citizensHelped to it + (a:&quot;arcade&quot;))(set:$lastLocation to &quot;arcade&quot;)
 \&quot;I&#39;ll help you!&quot; you shout to the boy. You run over to him. &quot;SuperJed to the rescue!&quot; 
 
 &quot;Wow, a real superhero! Okay, here you go!&quot; The boy then inserts tokens into the Player 2 slot for you. &quot;Let&#39;s go!&quot;
@@ -2457,7 +2461,7 @@ The two of you then play the game as best you can. Level after level, enemy afte
 &quot;Thanks, SuperJed! You&#39;re really good at arcade games. Here, you can have half the tickets!&quot; He then hands you 250 tickets.
 \(set:$tickets to it + 250)(set:$STATS&#39;s 5th to it + 250)
 
-(if:$citizensHelped&#39;s length is 3)[[[Continue-&gt;SuperJed Ending]]](else:)[[[Continue-&gt;Arcade Games]]]</tw-passagedata><tw-passagedata pid="151" name="Arcade Muncher Game" tags="" position="3875,2825" size="100,100">(set:$tokens to it - 1)(set:$visitsTokenMuncher to it + 1)
+(if:$citizensHelped&#39;s length is 3)[[[Continue-&gt;SuperJed Ending]]](else:)[[[Continue-&gt;Arcade Games]]]</tw-passagedata><tw-passagedata pid="151" name="Arcade Muncher Game" tags="" position="4050,2550" size="100,100">(set:$tokens to it - 1)(set:$visitsTokenMuncher to it + 1)
 \You insert a token into the Token Muncher. 
 \(if:$visitsTokenMuncher &lt;= 3)[It only gives you 5 tickets.(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)]
 \(if:$visitsTokenMuncher is 4)[This time it gives you 10 tickets.(set:$tickets to it + 10)(set:$STATS&#39;s 5th to it + 10)]
@@ -2948,6 +2952,8 @@ Outfits Owned: (print:$CLOSET&#39;s length + 2)/12
 (if:$anomalies&#39;s length is 16 and $CLOSET&#39;s length is 10 and $mayorFights&#39;s length is 8)[Wow! You did it! Sunglasses emoji
 
 ]]
+\(if:$anomalies&#39;s length is 16 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
+[[Exit-&gt;Stats Complete]]]
 \[[Return-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="190" name="Throw Away Key" tags="" position="1900,2850" size="100,100">(if:$INV contains &quot;letter&quot;)[
 \Jed, you fool! You were supposed to throw away the letter, not the key! There&#39;s no way you could&#39;ve made that mistake, unless-
 
@@ -2959,7 +2965,7 @@ You did this on purpose didn&#39;t you? Not even as blunt of a hook as &quot;ALI
 \(set:$INV to it - (a:&quot;key&quot;))
 \(set:$STATS&#39;s 2nd to it + 1)
 
-[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="191" name="Gameshow Intro" tags="" position="800,3600" size="100,100">(set:$questions to (shuffled:...(range:1,11)))
+[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="191" name="Gameshow Intro" tags="" position="800,3600" size="100,100">(set:$questions to (shuffled:...(range:1,12)))
 \(set:$questionNum to 1)
 \(set:$qwords to (a:&quot;First question, worth $20: &quot;,&quot;Question number 2, worth $50: &quot;,&quot;Third question, now worth $80: &quot;,&quot;You&#39;re almost there! Fourth question for $150: &quot;,&quot;Final question, for 200 big ones, $500 all together: &quot;))
 \Jed ticks the box marked &quot;yes.&quot; Suddenly, Jed finds himself in a live gameshow set, with a host and a studio audience.
@@ -3304,7 +3310,7 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
 (link-reveal-goto: $curQ&#39;s 2nd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 2)]
 (link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
-(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="216" name="Gameshow Win" tags="" position="1700,3750" size="100,100">&quot;CONGRATULATIONS!&quot; the host shouted. &quot;You answered all 5 questions correctly, and won the big prize of $500!&quot;
+(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="216" name="Gameshow Win" tags="" position="1850,3600" size="100,100">&quot;CONGRATULATIONS!&quot; the host shouted. &quot;You answered all 5 questions correctly, and won the big prize of $500!&quot;
 \(set:$winnings to 500)
 
 The crowd began shouting and cheering as loud as they could. They started to chant. &quot;Jed! Jed! Jed! Jed!&quot;
@@ -3392,7 +3398,7 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 \(set:$curQ to (shuffled:...$options))
 \(set: _i to 0)
 \(for: each _item, ...$curQ)[(set:_i to it + 1)(if:_item is $options&#39;s 1st)[(set:$correct to _i)]]
-\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) What&#39;s the name of the book you forgot to return to the library?
+\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) What&#39;s the name of the book you forgot to return to the library?&quot;
 \(set:$questionNum to it + 1)
 
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
@@ -3404,7 +3410,7 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 \(set:$curQ to (shuffled:...$options))
 \(set: _i to 0)
 \(for: each _item, ...$curQ)[(set:_i to it + 1)(if:_item is $options&#39;s 1st)[(set:$correct to _i)]]
-\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) What&#39;s inside that cardboard box in the back of the hardware store?
+\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) What&#39;s inside that cardboard box in the back of the hardware store?&quot;
 \(set:$questionNum to it + 1)
 
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
@@ -3416,7 +3422,7 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 \(set:$curQ to (shuffled:...$options))
 \(set: _i to 0)
 \(for: each _item, ...$curQ)[(set:_i to it + 1)(if:_item is $options&#39;s 1st)[(set:$correct to _i)]]
-\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) How many toilets are there in Webster Groves?
+\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) How many toilets are there in Webster Groves?&quot;
 \(set:$questionNum to it + 1)
 
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
@@ -4536,7 +4542,7 @@ Uh, Jed... did you just win? Did you stop the whole thing? I... well I don&#39;t
 
 &quot;$s[YOU WILL KNOW WHAT TO DO WHEN YOU HAVE THEM ALL. HERE IS SOMETHING THAT WILL HELP YOU: IN THE ARCADE, LOOK UNDER THE MASHING GAME. GOODBYE, JED. I WILL SEE YOU SOON...]&quot;
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="298" name="Masher Tickets" tags="" position="4050,2550" size="100,100">(set:$tickets to it + 500)
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="298" name="Masher Tickets" tags="" position="3900,3000" size="100,100">(set:$tickets to it + 500)
 \Jed looked under the button-mashing game. There, he found a wad of 500 tickets with a note next to it that has the letters &quot;WS.&quot;
 
 [[Continue-&gt;Arcade Games]] </tw-passagedata><tw-passagedata pid="299" name="WACKY STEVE Ending" tags="" position="4500,1300" size="200,100">(unless:$ENDINGS contains &quot;WACKY STEVE&quot;)[(set:$ENDINGS to it + (a:&quot;WACKY STEVE&quot;))]
@@ -4842,7 +4848,7 @@ Jed was then knocked out by one of the gang members. When he came to, he was tie
 
 (link-reveal-goto:&#39;&quot;I don\&#39;t work for anyone!&quot;&#39;,&quot;Interrogate 2&quot;)[(set:$prevAnswer to &quot;workNoone&quot;)]
 (link-reveal-goto:&#39;&quot;I work for your enemy!&quot;&#39;,&quot;Interrogation Over&quot;)[(set:$prevAnswer to &quot;workEnemy&quot;)]
-(link-reveal-goto:&#39;&quot;I\&#39;m currently unemployed.&quot;&#39;,&quot;Interrogate 2&quot;)[(set:$prevAnswer to &quot;workUnemployed&quot;)]</tw-passagedata><tw-passagedata pid="324" name="Trailer Secret" tags="" position="4025,2825" size="100,100">Jed, why did you score 0 points on that minigame? Do you not realize you need to click the button to win?
+(link-reveal-goto:&#39;&quot;I\&#39;m currently unemployed.&quot;&#39;,&quot;Interrogate 2&quot;)[(set:$prevAnswer to &quot;workUnemployed&quot;)]</tw-passagedata><tw-passagedata pid="324" name="Trailer Secret" tags="" position="4050,3000" size="100,100">Jed, why did you score 0 points on that minigame? Do you not realize you need to click the button to win?
 
 What? You saw a video that told you to buy those things, come here, and score 0 tickets on this machine? So that something cool would happen? 
 
@@ -5031,7 +5037,100 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 ]
 \(if:$storeCardQuest contains &quot;ask&quot; and $INV does not contain &quot;documents&quot;)[[[Search for Documents-&gt;Search Documents]]
 ]
-\[[Back-&gt;Jed&#39;s Bedroom]]</tw-passagedata></tw-storydata>
+\[[Back-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="339" name="Arcade Bomb Game" tags="" position="3900,2700" size="100,100">(set:$bombDiffused to false)(set:$tokens to it - 6)(set:$bombInstaFail to false)
+\(set:$failWires to (shuffled:...(a:&quot;red&quot;,&quot;orange&quot;,&quot;yellow&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;indigo&quot;,&quot;violet&quot;,&quot;magenta&quot;,&quot;black&quot;,&quot;white&quot;)))
+\(set:$correctWires to (a:1,2,3,4) of $failWires)
+\(set:$failWires to it - $correctWires)
+\(set:$bombLayout to (random:1,7))
+\(set:$wiresCut to (a:))
+\(set:$loseTransition to (t8n:&quot;rumble&quot;) + (t8n-time:0.5s))
+\|minigame&gt;[Okay, Jed. We all have ten seconds until this bomb goes off.
+
+(if:$bombLayout is 1)[The instructions say to cut the (print:$correctWires&#39;s 1st) wire, the (print:$correctWires&#39;s 2nd) wire, the (print:$correctWires&#39;s 3rd) wire, and the (print:$correctWires&#39;s 4th) wire, in that order.]
+\(if:$bombLayout is 2)[The instructions say to cut the (print:$correctWires&#39;s 2nd) wire, the (print:$correctWires&#39;s 3rd) wire, and the (print:$correctWires&#39;s 4th) wire, all after cutting the (print:$correctWires&#39;s 1st) wire.]
+\(if:$bombLayout is 3)[The instructions say to cut the (print:$correctWires&#39;s 4th) wire, the (print:$correctWires&#39;s 3rd) wire, the (print:$correctWires&#39;s 2nd) wire, and the (print:$correctWires&#39;s 1st) wire in reverse order.]
+\(if:$bombLayout is 4)[The instructions say to cut the (print:$correctWires&#39;s 3rd) and (print:$correctWires&#39;s 4th) wires in that order, but only after cutting the (print:$correctWires&#39;s 1st) and (print:$correctWires&#39;s 2nd) wires in that order.]
+\(if:$bombLayout is 5)[The instructions say to cut the (print:$correctWires&#39;s 1st) wire, then the (print:$correctWires&#39;s 2nd) wire, then don&#39;t cut the (print:$failWires&#39;s 1st) wire, and then cut the (print:$correctWires&#39;s 4th) wire after cutting the (print:$correctWires&#39;s 3rd) wire.]
+\(if:$bombLayout is 6)[The instructions say to cut the (print:$failWires&#39;s 1st) wire, then the (print:$failWires&#39;s 2nd) wi- oh, sorry, that&#39;s the wrong part. We need the (print:$failWires&#39;s 3rd) wire, then t- no, I&#39;m sorry, that&#39;s wrong again. We need to cut the (print:$correctWires&#39;s 1st), (print:$correctWires&#39;s 2nd), (print:$correctWires&#39;s 3rd), and (print:$correctWires&#39;s 4th) wires, in that order.]
+\(if:$bombLayout is 7)[The instructions say to save the (print:$correctWires&#39;s 4th) wire for last, and to cut the (print:$correctWires&#39;s 1st) wire, the (print:$correctWires&#39;s 2nd) wire, and then the (print:$correctWires&#39;s 3rd) wire.]
+
+(live:0s)[TIME LEFT: (digit-format:&quot;#0.00&quot;,(10s - time)/1000)s]
+
+(link-reveal:&quot;Black Wire&quot;)[(set:$wiresCut to it + (a:&quot;black&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;black&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Blue Wire&quot;)[(set:$wiresCut to it + (a:&quot;blue&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;blue&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Green Wire&quot;)[(set:$wiresCut to it + (a:&quot;green&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;green&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Indigo Wire&quot;)[(set:$wiresCut to it + (a:&quot;indigo&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;indigo&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Magenta Wire&quot;)[(set:$wiresCut to it + (a:&quot;magenta&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;magenta&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Orange Wire&quot;)[(set:$wiresCut to it + (a:&quot;orange&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;orange&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Red Wire&quot;)[(set:$wiresCut to it + (a:&quot;red&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;red&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Violet Wire&quot;)[(set:$wiresCut to it + (a:&quot;violet&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;violet&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;White Wire&quot;)[(set:$wiresCut to it + (a:&quot;white&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;white&quot;)[(set:$bombInstaFail to true)]]
+(link-reveal:&quot;Yellow Wire&quot;)[(set:$wiresCut to it + (a:&quot;yellow&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;yellow&quot;)[(set:$bombInstaFail to true)]]]
+\(live:0s)[(if:(time&gt;10s and not $bombDiffused) or $bombInstaFail)[(stop:)(replace:?minigame)[$loseTransition[\
+###BOOM!
+You failed to diffuse the bomb and only got 5 tickets...(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)
+
+[[Continue-&gt;Arcade Games]]]]]
+\(else-if:$correctWires is $wiresCut)[(stop:)(replace:?minigame)[(t8n:&quot;dissolve&quot;)[Congratulations, you succesfully diffused the bomb and got 250 tickets!(set:$tickets to it + 300)(set:$STATS&#39;s 5th to it + 300)
+
+[[Continue-&gt;Arcade Games]]]]]]</tw-passagedata><tw-passagedata pid="340" name="Arcade Mole Game" tags="" position="4050,2700" size="100,100">Alright Jed, as soon as they start popping up you&#39;ll have ten seconds to clobber as many robbers as you can! You&#39;ll want to click on all the X&#39;s and avoid the O&#39;s. You can even hit the same one more than once! Good luck!(set:$clicks to 0)(set:$tokens to it - 5)
+
+(live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] (live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] (live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]]  
+(live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] (live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] (live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] 
+(live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] (live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] (live:1s)[(if:time &gt;= 5s and &lt;= 15s and (random:1,10) is 1)[(link-repeat:&quot;&amp;#91;X&amp;#93;&quot;)[(set:$clicks to it + 1)]](else:)[(link-repeat:&quot;&amp;#91;O&amp;#93;&quot;)[(set:$clicks to it - 1)]]] 
+
+(live:0s)[(if:time&gt;=15s)[(stop:)(if:$clicks &lt; 0)[(set:$clicks to 0)]
+\Time&#39;s up! You got (print:$clicks * 15) tickets(cond:$clicks is 0,&quot;...&quot;,&quot;!&quot;)
+\(set:$tickets to it + ($clicks * 15))(set:$STATS&#39;s 5th to it + ($clicks * 15))
+
+[[Continue-&gt;Arcade Games]]]]</tw-passagedata><tw-passagedata pid="341" name="Arcade Racing Game" tags="" position="3900,2850" size="100,100">(set:$tokens to it - 7)(set:$racingCurDirection to &quot;straight&quot;)(set:$correctDirection to &quot;straight&quot;)(set:$racingWaiting to false)(set:$racingTimeWindow to 1250)(set:$racingChangeTime to 0)(set:$racingCrash to false)(set:$racingChecking to false)
+\(set:$loseTransition to (t8n:&quot;rumble&quot;) + (t8n-time:0.5s))
+\Alright, looks like in this game we have to drive down this road for as long as we can!
+
+DISTANCE: (live:0s)[(print:(round:time/600)/10)m
+\(if:$racingCrash)[(stop:)]]
+
+(live:0.01s)[(if:$racingWaiting is false)[(set:$racingWaiting to true)(set:$racingChangeTime to time + (random:1000,4000))]
+\(if:time &gt;= $racingChangeTime and $correctDirection is &quot;straight&quot;)[(set:$racingChangeTime to time + $racingTimeWindow)(set:$correctDirection to (either:&quot;left1&quot;,&quot;left2&quot;,&quot;right1&quot;,&quot;right2&quot;))(set:$racingChecking to true)]
+\(if:$racingChecking)[(if:$racingCurDirection is not &quot;straight&quot; and $racingCurDirection is not $correctDirection)[(set:$racingCrash to true)(set:$crashReason to &quot;wrong&quot;)(stop:)](else-if:$racingCurDirection is $correctDirection)[(set:$racingWaiting to false)(set:$racingChecking to false)(set:$correctDirection to &quot;straight&quot;)(set:$racingCurDirection to &quot;straight&quot;)(set:$racingTimeWindow to it - 50)]]
+\(if:time &gt;= $racingChangeTime and $correctDirection is not &quot;straight&quot; and $racingCurDirection is &quot;straight&quot;)[(set:$racingCrash to true)(set:$crashReason to &quot;tooslow&quot;)(stop:)]
+\(if:$correctDirection is &quot;straight&quot;)[Let&#39;s keep going straight for now...](if:$correctDirection is &quot;left2&quot;)[Hard left!](if:$correctDirection is &quot;left1&quot;)[Slight left!](if:$correctDirection is &quot;right1&quot;)[Slight right!](if:$correctDirection is &quot;right2&quot;)[Hard right!]
+\(if:not $racingChecking and $correctDirection is &quot;straight&quot; and $racingCurDirection is not &quot;straight&quot;)[(set:$racingCrash to true)(set:$crashReason to &quot;toofast&quot;)(stop:)]]
+
+(link-repeat:&quot;&lt;&lt;&quot;)[(set:$racingCurDirection to &quot;left2&quot;)] (link-repeat:&quot;&lt;&quot;)[(set:$racingCurDirection to &quot;left1&quot;)] (link-repeat:&quot;&gt;&quot;)[(set:$racingCurDirection to &quot;right1&quot;)] (link-repeat:&quot;&gt;&gt;&quot;)[(set:$racingCurDirection to &quot;right2&quot;)] 
+
+(live:0s)[$loseTransition[(if:$racingCrash)[(stop:)\
+###CRASH!
+(set:$tickets to it + (round:time/400)*5)(set:$STATS&#39;s 5th to it + (round:time/400)*5)(if:$crashReason is &quot;tooslow&quot;)[You didn&#39;t turn fast enough...](if:$crashReason is &quot;toofast&quot;)[You turned too soon...](if:$crashReason is &quot;wrong&quot;)[You didn&#39;t turn the right way...] but you did get (print:(round:time/400)*5) tickets(if:(round:time/600)/10 &gt; $racingHighscore)[ and set a new highscore of (print:(round:time/600)/10) miles
+\(set:$racingHighscore to (round:time/600)/10)]!
+
+[[Continue-&gt;Arcade Games]]]]]</tw-passagedata><tw-passagedata pid="342" name="Question 12" tags="" position="1700,3750" size="100,100">(if:$questionNum is not 1 and $prevAnswer is not $correct)[(go-to:&quot;Gameshow Lose&quot;)]
+\(if:$questionNum is 6)[(go-to:&quot;Gameshow Win&quot;)]
+\(set:$options to (a:&quot;Buster Burgermann&quot;,&quot;Buster Bergdorf&quot;,&quot;Buster Bergeron&quot;,&quot;Buster Bergstrom&quot;))
+\(set:$curQ to (shuffled:...$options))
+\(set: _i to 0)
+\(for: each _item, ...$curQ)[(set:_i to it + 1)(if:_item is $options&#39;s 1st)[(set:$correct to _i)]]
+\(if:$questionNum is 1)[(cond:$prevAnswer is &quot;yes&quot;,&#39;&quot;That\&#39;s the spirit!&quot; the host exclaims. &quot;&#39;,&#39;&quot;Too bad, we\&#39;re starting anyway!&quot; the host exclaims. &quot;&#39;)](else:)[&quot;That&#39;s correct, (either:&quot;good job&quot;,&quot;congrats&quot;,&quot;good on ya&quot;,&quot;keep it going&quot;,&quot;well done&quot;)! ](print: ($questionNum) of $qwords) (cond:$BUSTER,&quot;What is your spouse&#39;s birth name&quot;,&quot;What is the name of the cardboard cutout in Burgerocity&quot;)?&quot;
+\(set:$questionNum to it + 1)
+
+(link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
+(link-reveal-goto: $curQ&#39;s 2nd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 2)]
+(link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
+(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="343" name="Arcade Strongman Game" tags="" position="4050,2850" size="100,100">(set:$tokens to it - 3)(set:$strongmanStrength to 0)(set:$strongmanHit to false)
+\Okay Jed, you have to hit down on the button as hard as you can!
+
+(live:0.075s)[Stength: (print:$strongmanStrength+1)
+\(if:$strongmanHit)[(stop:)]
+\(else:)[(set:$strongmanStrength to (it+1)%10)]]
+
+(link:&quot;Hit!&quot;)[(set:$strongmanHit to true)
+\(set:$winnings to (nth:$strongmanStrength + 1,0,5,15,30,45,65,90,125,200,300))
+\(if:$winnings &lt; 90)[You only got $winnings tickets... maybe you can hit harder next time?](else-if:$winnings is 300)[Congratulations! You got the top score of 300 tickets!](else-if:$winnings is 0)[Jed, did you even hit the thing at all? You hit it so little you didn&#39;t get any tickets...](else:)[Good job! You got $winnings tickets!]
+\(set:$tickets to it + $winnings)(set:$STATS&#39;s 5th to it + $winnings)
+
+[[Continue-&gt;Arcade Games]]]</tw-passagedata><tw-passagedata pid="344" name="Stats Complete" tags="" position="4125,4300" size="100,100">(font:&quot;Raleway&quot;)[This doesn&#39;t do anything at the moment lol]
+
+[[Go Back-&gt;Stats Page]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
