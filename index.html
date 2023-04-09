@@ -238,7 +238,7 @@ By Blue Cat and Green Guy
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0)
 \(set: $sidequests to (a:))
-\(set: $PREMIUM to &quot;nope&quot;)
+\(set: $PREMIUM to &quot;yes&quot;) &lt;!--DEBUG--&gt;
 \(set: $ATM to 0)
 \(set: $seenSteve to false)
 \(set: $anomalies to (a:))
@@ -283,6 +283,7 @@ By Blue Cat and Green Guy
 \(set: $fightReject to false)
 \(set: $campPassed to false)
 \(set: $currentPage to $JOURNAL&#39;s length)
+\(set: $strongmanScoreTotal to 0)
 \
 \(if:$visitsJedsToilet &gt; 7)[(set: $visitsJedsToilet to 9)](else:)[(set: $visitsJedsToilet to 0)]
 \(set: $visitsCoffeeMaker to 0)
@@ -1276,9 +1277,12 @@ While the mayor looks around for a fire extinguisher, you run out of the room, w
 
 (if:$weapon is &quot;hammer&quot;)[&quot;What are you going to do&quot; the mayor bellowed, &quot;hammer me to death? You&#39;re a few nails loose if you think you can beat me in combat.&quot;](if:$weapon is &quot;fists&quot;)[&quot;You may have knocked out my guards somehow,&quot; the mayor bellows, &quot;but you won&#39;t beat me //mano a mano//.&quot;](if:$weapon is &quot;crowbar&quot;)[&quot;Nice weapon there Jed,&quot; the mayor bellows, &quot;but I already opened up to you earlier. You&#39;ll find that won&#39;t help you against me.&quot;](if:$weapon is &quot;wrench&quot;)[&quot;Woah there Mr. Mario,&quot; the mayor bellows, &quot;the pipes are in the other room. That wrench won&#39;t help you in a fight against me.&quot;]
 
-&quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and smash your $weapon down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
+(if:$weapon is &quot;fists&quot; and $strongmanScoreTotal &gt; 29)[What the mayor didn&#39;t know is that all of Jed&#39;s practice on Cassidy&#39;s Challenge at the arcade was about to pay off... Jed ran up to the mayor and punched him back as hard as he could. The mayor went flying backwards into the panel. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
-While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
+You run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.] 
+\(else:)[&quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and smash your $weapon down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
+
+While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]]
 
 [[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="72" name="Normal Ending" tags="" position="3400,3550" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
 \(set:$JOURNAL to it + (a:&quot;NormalRoute&quot;))
@@ -2146,7 +2150,7 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 
 (if:$FUN is 14)[
 (if:$tokens &gt;= 1)[[[The Token Muncher - 1 Token-&gt;Arcade Muncher Game]]](else:)[[[The Token Muncher - 1 Token-&gt;Too Poor]]]]
-\(if:$tokens &gt;= 3)[[[Cassidy&#39;s Challenge Fishing - 3 Tokens-&gt;Arcade Strongman Game]]](else:)[[[Cassidy&#39;s Challenge Fishing - 3 Tokens-&gt;Too Poor]]]
+\(if:$tokens &gt;= 3)[[[Cassidy&#39;s Challenge - 3 Tokens-&gt;Arcade Strongman Game]]](else:)[[[Cassidy&#39;s Challenge - 3 Tokens-&gt;Too Poor]]]
 (if:$tokens &gt;= 3)[[[Romeo&#39;s Recreational Fishing - 3 Tokens-&gt;Arcade Fishing Game]]](else:)[[[Romeo&#39;s Recreational Fishing - 3 Tokens-&gt;Too Poor]]]
 (if:$tokens &gt;= 4)[[[The Giganto Big Wheel - 4 Tokens-&gt;Arcade Wheel Game]]](else:)[[[The Giganto Big Wheel - 4 Tokens-&gt;Too Poor]]]
 (if:$tokens &gt;= 5)[[[Brenton&#39;s Button Masher 5000 - 5 Tokens-&gt;Arcade Mashing Game]]](else:)[[[Brenton&#39;s Button Masher 5000 - 5 Tokens-&gt;Too Poor]]]
@@ -2154,7 +2158,7 @@ Current tickets: (if:$tickets &gt; 999)[(digit-format:&quot;###,###&quot;,$ticke
 [[Look Under Button Game-&gt;Masher Tickets]]]
 (if:$tokens &gt;= 5)[[[Clobber-A-Robber - 5 Tokens-&gt;Arcade Mole Game]]](else:)[[[Clobber-A-Robber - 5 Tokens-&gt;Too Poor]]]
 (if:$tokens &gt;= 5)[[[Tick-Tock Takedown - 6 Tokens-&gt;Arcade Bomb Game]]](else:)[[[Tick-Tock Takedown - 6 Tokens -&gt;Too Poor]]]
-(if:$tokens &gt;= 0)[[[Run-of-the-Mill Road Skills - 7 Tokens-&gt;Arcade Racing Game]]](else:)[[[Run-of-the-Mill Road Skills - 7 Tokens -&gt;Too Poor]]]
+(if:$tokens &gt;= 7)[[[Run-of-the-Mill Road Skills - 7 Tokens-&gt;Arcade Racing Game]]](else:)[[[Run-of-the-Mill Road Skills - 7 Tokens -&gt;Too Poor]]]
 \(if:$wearing is &quot;cape&quot; and $citizensHelped does not contain &quot;arcade&quot;)[
 [[Help the Boy-&gt;SuperJed Arcade]]]
 [[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="129" name="Spend Tickets" tags="" position="3900,2100" size="100,100">&quot;Here&#39;s where you can redeem your tickets. What&#39;d you want?&quot;
@@ -4437,7 +4441,7 @@ Hopefully whatever this &quot;National Do Not Call Registry&quot; is isn&#39;t t
 \(else-if:$prankPerson is &quot;random&quot;)[
 \(if:$prankTopic is &quot;food&quot;)[&quot;(either:&quot;I did place an order earlier, who are you guys again? What did I get?&quot;,&quot;I don&#39;t think so. What was it for?&quot;,&quot;Uhh, sorry I think you have the wrong number. I didn&#39;t order the- what was it again?&quot;)&quot;
 
-&quot;It was an order for (print:$rand of (a:&quot;fifty turkey pizzas&quot;,&quot;a Toilet Supreme&quot;,&quot;a giant tub of lard&quot;,&quot;an everything hotdog&quot;))&quot;]
+&quot;It was an order for (print:$rand of (a:&quot;fifty turkey pizzas&quot;,&quot;a Toilet Supreme&quot;,&quot;a giant tub of lard&quot;,&quot;an everything hotdog&quot;)).&quot;]
 \(else-if:$prankTopic is &quot;fridge&quot;)[&quot;(either:&quot;I&#39;m sorry, what did you say?&quot;,&quot;Did you really just try to do that?&quot;,&quot;Who do you think you&#39;re fooling with this?&quot;)&quot;
 
 &quot;I just wanted to ask if your fridge was running. I&#39;m a certified refrigerator catcher.&quot;]
@@ -5126,11 +5130,27 @@ DISTANCE: (live:0s)[(print:(round:time/600)/10)m
 (link:&quot;Hit!&quot;)[(set:$strongmanHit to true)
 \(set:$winnings to (nth:$strongmanStrength + 1,0,5,15,30,45,65,90,125,200,300))
 \(if:$winnings &lt; 90)[You only got $winnings tickets... maybe you can hit harder next time?](else-if:$winnings is 300)[Congratulations! You got the top score of 300 tickets!](else-if:$winnings is 0)[Jed, did you even hit the thing at all? You hit it so little you didn&#39;t get any tickets...](else:)[Good job! You got $winnings tickets!]
-\(set:$tickets to it + $winnings)(set:$STATS&#39;s 5th to it + $winnings)
+\(set:$tickets to it + $winnings)(set:$STATS&#39;s 5th to it + $winnings)(set:$strongmanScoreTotal to it + $strongmanStrength + 1)
 
 [[Continue-&gt;Arcade Games]]]</tw-passagedata><tw-passagedata pid="344" name="Stats Complete" tags="" position="4125,4300" size="100,100">(font:&quot;Raleway&quot;)[This doesn&#39;t do anything at the moment lol]
 
-[[Go Back-&gt;Stats Page]] </tw-passagedata></tw-storydata>
+[[Go Back-&gt;Stats Page]] </tw-passagedata><tw-passagedata pid="345" name="Train Station Phone Test" tags="" position="4350,1100" size="100,100">(if:$visitsPhone is 0)[Okay Jed, I&#39;ve got a great idea. What if we prank called someone? Oh, that could be fun! I don&#39;t think I&#39;ve ever prank called someone before...](else:)[Are we going to prank call someone else now?]
+
+(if:$ENDINGS contains &quot;Supermarket&quot;)[(link-reveal-goto:&quot;Call John Bosco&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;bosco&quot;)]
+]
+\(link-reveal-goto:&quot;Call Josefine&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;josefine&quot;)]
+\(if:(history:) contains &quot;City Hall Confrontation&quot;)[
+(link-reveal-goto:&quot;Call Mayor Dixon&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;mayor&quot;)]]
+(link-reveal-goto:&quot;Call Rafael&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;rafael&quot;)]
+(link-reveal-goto:&quot;Call Random Number&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;random&quot;)]
+\(if:$forkliftPhoneNumber and not $campPassed)[
+[[Call Scotty&#39;s Construction Camp-&gt;Call Scotty]]]
+\(if:$STANLEY)[
+(link-reveal-goto:&quot;Call Stanley&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;stanley&quot;)]]
+(link-reveal-goto:&quot;Call Ted&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;ted&quot;)]
+\(if:$ENDINGS contains &quot;WACKY STEVE&quot;)[
+(link-reveal-goto:&quot;Call WACKY STEVE&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;steve&quot;)]]
+[[Exit-&gt;Train Station]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
