@@ -1415,7 +1415,7 @@ But of course, you can&#39;t sit in one place for long before your basic human n
 ]
 \(if:(history:) contains &quot;Setup VR&quot;)[[[Virtual Reality-&gt;Josefine VR]]
 ]
-\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="75" name="Josefine Small Talk" tags="" position="2700,2400" size="100,100">\(if:$stTopic is 1)[(set:1 of $stJosefine to true)
+\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="75" name="Josefine Small Talk" tags="" position="2700,2400" size="100,100">(if:$stTopic is 1)[(set:1 of $stJosefine to true)
 \&quot;I got an anonymous letter telling me to go to City Hall,&quot; you explain, &quot;what should I do?&quot;
 
 &quot;That&#39;s a little strange... suspicious maybe...  what&#39;s the subject matter?&quot;
@@ -2883,7 +2883,7 @@ Current funds: $$MONEY
 ]
 \(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]]
 ]
-\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="176" name="Confrontation 2" tags="" position="5850,4375" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut? It looks good.&quot;&#39;,&#39;&quot;&#39;)
+\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="176" name="Confrontation 2" tags="" position="5850,4375" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut, Jed? It looks good.&quot;&#39;,&#39;&quot;&#39;)
 
 &quot;HOW&#39;DJA KNOW WE WERE HERE?&quot; Del screams.
 
@@ -2893,7 +2893,7 @@ The mayor then snaps his fingers, and guards enter the room, taking away Del and
 
 (cond:$SKILLS contains &quot;pocs&quot;,&quot;Jed pushes up his sunglasses and strikes a cool pose. &quot;,&quot;&quot;)&quot;You just made a big mistake,&quot; Jed asserts. (cond:$SKILLS contains &quot;rysb&quot;,&#39;&quot;You\&#39;re about to get impeached. I learned what that is from a book I just read earlier.&quot;&#39;,&#39;&quot;Your days of mayoring are over.&quot;&#39;)
 
-&quot;Jed, perhaps there&#39;s been a misunderstanding. Come sit down, have a drink. I&#39;ll explain what I&#39;ve been up to.&quot; (if:$SKILLS contains &quot;eanm&quot;)[
+&quot;Jed, perhaps there&#39;s been a misunderstanding. Come sit down, have a drink.&quot; The mayor gestures towards I&#39;ll explain what I&#39;ve been up to.&quot; (if:$SKILLS contains &quot;eanm&quot;)[
 
 &quot;Actually, I just had a drink with the meal I just ate.&quot;
 
@@ -6271,6 +6271,7 @@ They had no idea where they would go, but one thing was certain: they could neve
 * review any ending from your dream journal
 * teleport to the waiting room from your bed
 * buttons in button area are more specific
+* infinite atm glitch 
 * replay the sequels from the main menu
 * come visit us we are lonely]
 \|bc&gt;[Have fun with this New Content We hope you enjoy it!]
