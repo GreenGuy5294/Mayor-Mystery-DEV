@@ -444,7 +444,8 @@ Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m s
 [[Setup VR Headset-&gt;Setup VR]]]
 \(if:$INV contains &quot;paint&quot;)[
 [[Paint the Walls-&gt;Paint Apartment]]]
-[[Exit-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="2000,800" size="100,100">(font:&quot;Kaushan Script&quot;)[
+[[Exit-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="2000,800" size="100,100">(track:&#39;pipe&#39;,&#39;volume&#39;,&#39;0.5&#39;)
+\(font:&quot;Kaushan Script&quot;)[
 \(if:$FUN is 4)[
 \###Dear Jed Winchester,
 ALIENS. THEY&#39;RE REAL.
@@ -521,7 +522,8 @@ An anonymous help-seeker]]
 \(if:$INV contains all of (a:&quot;WS1&quot;,&quot;WS2&quot;,&quot;WS3&quot;,&quot;WS4&quot;,&quot;WS5&quot;,&quot;WS6&quot;,&quot;WS7&quot;))[
 [[Summon WACKY STEVE-&gt;WACKY STEVE Ending]]]
 [[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="18" name="West Side of Town" tags="" position="6100,1300" size="200,200">(unless:(track:&#39;westside&#39;,&#39;isplaying&#39;))[
-\(after:0.5s)[(track:&#39;eastside&#39;,&#39;volume&#39;,1)(track:&#39;westside&#39;,&#39;playwhenpossible&#39;)]
+\(track:&#39;alleyway&#39;,&#39;fadeout&#39;,0.5)
+\(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;westside&#39;,&#39;volume&#39;,1)(track:&#39;westside&#39;,&#39;playwhenpossible&#39;)]
 \]
 \(else:)[(track:&#39;westside&#39;, &#39;fadeto&#39;, 0.5, 1)]
 \You&#39;re in the West Side of Webster Groves. (cond:$wearing is &quot;3d glasses&quot;,&quot;Everything looks so cool in 3D...&quot;,&quot;For some reason, the sky looks darker than the rest of the town.&quot;)
@@ -911,7 +913,12 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="46" name="Dark Alleyway" tags="" position="6800,1700" size="100,200">(if:$visitsGang is 1)[You start to walk down a dark alleyway. What are you doing back here?]
+\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="46" name="Dark Alleyway" tags="" position="6800,1700" size="100,200">(unless:(track:&#39;westside&#39;,&#39;isplaying&#39;))[
+\(if:(track:&#39;alleyway&#39;,&#39;isplaying&#39;))[(track:&#39;alleyway&#39;,&#39;fadeout&#39;,0.5)]
+\(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;westside&#39;,&#39;volume&#39;,0.5)(track:&#39;westside&#39;,&#39;playwhenpossible&#39;)]
+\]
+\(else:)[(track:&#39;westside&#39;, &#39;fadeto&#39;, 0.5, 0.5)]
+\(if:$visitsGang is 1)[You start to walk down a dark alleyway. What are you doing back here?]
 \(else-if:$visitsGang &gt; 1)[You start to walk down a dark alleyway. This is where the extremely dangerous and criminal gang is. Y&#39;know, the one that&#39;s being hunted down by the police and you are now associated with. That gang.]
 \(else:)[You start to walk down a dark alleyway. (if:$INV contains &quot;buster&quot;)[&quot;Jed, I don&#39;t think we should be going this way,&quot; Buster warns. &quot;(cond:$FUN is 9,&quot;I saw bad stuff happening in West Side on the news this morning!&quot;,&quot;I just have a gut feeling that this is bad...&quot;)&quot;](else:)[(cond:$FUN is 9,&quot;Did you not pay attention to the news this morning? Get out of here!&quot;,&quot;Something tells me you shouldn&#39;t be going this way, Jed. Don&#39;t you know there&#39;s criminal activity in West Side?&quot;)]]
 
@@ -1014,7 +1021,8 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
+\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot; and not $gotToilet)[
@@ -2121,7 +2129,8 @@ Ted smirks. &quot;Alright then. Since you moved in, I knew I would never like yo
 
 &quot;You do you.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="117" name="The Gang" tags="" position="6800,1950" size="100,100">(if:($visitsGang is 0) and ($storeCardQuest does not contain &quot;ask&quot;) and ($wearing is not &quot;cape&quot;))[
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="117" name="The Gang" tags="" position="6800,1950" size="100,100">(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;alleyway&#39;,&#39;play&#39;)]
+\(if:($visitsGang is 0) and ($storeCardQuest does not contain &quot;ask&quot;) and ($wearing is not &quot;cape&quot;))[
 \(set:$visitsGang to 1)
 \(if:$MONEY &gt; 0)[
 \&quot;Well, well, well,&quot; you hear a voice say from further down the alley, &quot;woulda look at who we got here. It&#39;s Mista Goody-Two-Shoes!&quot; Three people then walk out of the darkness: a short person, a tall person, and a third person. &quot;Get his money.&quot;
@@ -2222,7 +2231,8 @@ Surprisingly, there doesn&#39;t seem to be much back here other than a large num
 
 After you exit the store you take a moment to inspect the toaster. It is indeed a normal toaster.
 
-[[Continue-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="120" name="Gang Ending" tags="" position="6800,2400" size="200,100">(unless:$ENDINGS contains &quot;Gang&quot;)[(set:$ENDINGS to it + (a:&quot;Gang&quot;))]
+[[Continue-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="120" name="Gang Ending" tags="" position="6800,2400" size="200,100">(track:&#39;alleyway&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;alleyway&#39;,&#39;playwhenpossible&#39;)]
+\(unless:$ENDINGS contains &quot;Gang&quot;)[(set:$ENDINGS to it + (a:&quot;Gang&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Gang&quot;))
 \&quot;Do you got the goods?&quot; the short one asks.
 
@@ -4263,7 +4273,8 @@ Current funds: $$MONEY
 (if:$FUN is 7)[(if:$MONEY &gt;= 20)[(link-reveal-goto: &#39;Train Pass - $20&#39;,&quot;Train Ride Options&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 20)(set:$STATS&#39;s 3rd to it + 20)]](else:)[[[Train Pass - $20-&gt;Too Poor]]]
 \(unless:$anomalies contains &quot;pass deal&quot;)[(set:$anomalies to it + (a:&quot;pass deal&quot;))]]
 \(else:)[(if:$MONEY &gt;= 80)[(link-reveal-goto: &#39;Train Pass - $80&#39;,&quot;Train Ride Options&quot;)[(set:$INV to it + (a:&quot;train pass new&quot;))(set:$MONEY to it - 80)(set:$STATS&#39;s 3rd to it + 80)]](else:)[[[Train Pass - $80-&gt;Too Poor]]]]
-[[&quot;Nevermind&quot;-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="259" name="Gang Empty" tags="" position="6950,1950" size="100,100">(if:($mugged) or ($ticketPowers is not &quot;unvisited&quot;))[You walk back to where the gang was, but it doesn&#39;t look like anyone is here.](else:)[You walk down the dark alleyway and... and then...
+[[&quot;Nevermind&quot;-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="259" name="Gang Empty" tags="" position="6950,1950" size="100,100">(track:&#39;alleyway&#39;,&#39;volume&#39;,0)(live:0.1s)[(track:&#39;alleyway&#39;,&#39;stop&#39;)]
+\(if:($mugged) or ($ticketPowers is not &quot;unvisited&quot;))[You walk back to where the gang was, but it doesn&#39;t look like anyone is here.](else:)[You walk down the dark alleyway and... and then...
 
 Hmm... okay usually when you go down this alleyway there&#39;s a criminal gang that attacks you, steals your money, etc. etc. I guess you got lucky?]
 
