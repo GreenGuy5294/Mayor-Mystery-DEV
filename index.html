@@ -143,7 +143,7 @@ You&#39;re well known around Webster Groves for being nice to everyone and givin
 (if:$testing is &quot;NA&quot;)[[[Begin-&gt;The Test]]]
 \(if:$testing is &quot;FAIL1&quot;)[[[Begin-&gt;Test2]]]
 \(if:$testing is &quot;FAIL2&quot;)[[[Begin-&gt;Test3]]]</tw-passagedata><tw-passagedata pid="2" name="The Test" tags="" position="1700,400" size="100,100">(track: &#39;adventureawaits&#39;, &#39;fadeout&#39;, 0.5)
-\(after:0.5s)[(group: &#39;playing&#39;, &#39;stop&#39;)(track: &#39;test1&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,true)]
+\(after:0.5s)[(masteraudio: &#39;stopall&#39;)(track: &#39;test1&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,true)]
 \You find yourself in the following scenario:
 \(set:_option1 to 0)(set:_option2 to 0)(set:_option3 to 0)
 \(set: _correct to (random:1,3))
@@ -248,7 +248,7 @@ I get it, though. You&#39;re just having some fun with me before we begin. A lit
 I&#39;ll make you a deal. One last chance to show me whether or not you want to play along. One more test. Let&#39;s go back to the beginning again.
 
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1850,100" size="200,100">===&gt;&lt;===
-(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
+(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
 \(if:(history:) contains &quot;The Beginning&quot; and (random:1,25) is 1)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/VK6qlSj.png&quot;&gt;
 \(set:$theGame to true)](else:)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/0yYRLZ7.png&quot;&gt;
 \(set:$theGame to false)]
@@ -432,7 +432,7 @@ Well, I&#39;m a man of my word. It&#39;s been 30 seconds, here you go.
 Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m serious.
 
 [[The End-&gt;Waiting Room Entrance]]]]]</tw-passagedata><tw-passagedata pid="14" name="Jed&#39;s Apartment" tags="" position="2050,2000" size="100,200">(track:&#39;intro&#39;,&#39;fadeout&#39;,0.5)
-\(after:0.5s)[(unless: (track: &#39;apartment&#39;, &#39;isplaying&#39;))[(masteraudio:&#39;stopall&#39;)(track:&#39;apartment&#39;,&#39;playwhenpossible&#39;)]]
+\(after:0.5s)[(unless: (track: &#39;apartment&#39;, &#39;isplaying&#39;))[(masteraudio:&#39;stopall&#39;)(track:&#39;apartment&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentted&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentstanley&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentted&#39;,&#39;volume&#39;,0)(track:&#39;apartmentstanley&#39;,&#39;volume&#39;,0)]]
 \You&#39;re currently inside your apartment. (either:&quot;Home, sweet home.&quot;,&quot;You know what they say, you can&#39;t investigate a town scandal without proper rest!&quot;,&quot;Wow, you should probably get around to cleaning sometime soon. I mean-&quot;,&quot;It looks especially normal today, almost twice as much as yesterday.&quot;,&quot;The best place to spend a &quot; + (weekday:) + &quot; morning.&quot;,&quot;Its &quot; + $wallColor + &quot; walls bring you great comfort.&quot;) Where would you like to go?
 
 [[Kitchenette-&gt;Jed&#39;s Kitchen]]
@@ -706,8 +706,9 @@ You see how that doesn&#39;t really make sense? Oh well, doesn&#39;t matter too 
 
 (if:$storeCardQuest contains &quot;ask&quot; and $INV does not contain &quot;documents&quot;)[[[Search for Documents-&gt;Search Documents]]
 ]
-\[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="33" name="The Apartment Complex" tags="" position="2300,1700" size="100,200">(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)
-\(after:0.5s)[(unless:(track:&#39;apartment&#39;,&#39;isplaying&#39;))[(masteraudio:&#39;stopall&#39;)(track:&#39;apartment&#39;,&#39;playwhenpossible&#39;)]]
+\[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="33" name="The Apartment Complex" tags="" position="2300,1700" size="100,200">(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;apartmentted&#39;,&#39;fadeto&#39;,0.5,0)(track:&#39;apartmentstanley&#39;,&#39;fadeto&#39;,0.5,0)
+\(if:(track:&#39;apartment&#39;,&#39;isplaying&#39;))[(track:&#39;apartment&#39;,&#39;fadeto&#39;,0.5,1)]
+\(after:0.5s)[(unless:(track:&#39;apartment&#39;,&#39;isplaying&#39;))[(masteraudio:&#39;stopall&#39;)(track:&#39;apartment&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentted&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentstanley&#39;,&#39;playwhenpossible&#39;)]]
 \Here is the apartment complex, the place you live at. It looks incredibly old on the outside.
 
 [[Your Apartment-&gt;Jed&#39;s Apartment]]
@@ -1117,7 +1118,8 @@ Feel free to rest in my waiting room for as long as you need!
 \(if:$STATS&#39;s 13th is 0)[(set:$waitingRoomHintList to it + (a:&quot;prankcalls&quot;))]
 \(if:$anomalies&#39;s length is 0)[(set:$waitingRoomHintList to it + (a:&quot;anomalies&quot;))]
 \(if:$mayorFights&#39;s length &gt; 0 and $mayorFights&#39;s length &lt; 8)[(set:$waitingRoomHintList to it + (a:&quot;mayorfights&quot;))]
-\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(track:&#39;adventureawaits&#39;,&#39;stop&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)
+\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(track:&quot;wr1&quot;,&quot;playwhenpossible&quot;)
+\(track:&#39;adventureawaits&#39;,&#39;stop&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)
 \(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
 \(font:&quot;Raleway&quot;)[
@@ -1565,7 +1567,8 @@ But of course, you can&#39;t sit in one place for long before your basic human n
 
 &quot;Thank you, Josefine!&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="78" name="Ted&#39;s Apartment" tags="" position="2550,2000" size="100,200">(if:$wearing is &quot;icloak&quot;)[
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="78" name="Ted&#39;s Apartment" tags="" position="2550,2000" size="100,200">(track:&#39;apartment&#39;,&#39;fadeto&#39;,0.5,0)(track:&#39;apartmentted&#39;,&#39;fadeto&#39;,0.5,1)
+\(if:$wearing is &quot;icloak&quot;)[
 \You go over to Ted&#39;s apartment and knock on the door.
 
 &quot;Who&#39;s there?&quot; Ted tries to look around for someone. &quot;Dang kids. Always with their ding-dong ditching.&quot; He then goes back into his apartment and shuts the door.
@@ -3189,7 +3192,8 @@ Buster looks at Jed&#39;s warm, friendly smile. There were a few seconds of sile
 Jed picked up Buster and did a big spin with him. Together, they ran off into the woods, never seen by anyone from Webster Groves ever again.&quot;)
 \(if:time&gt;5s)[(goto:&quot;Add Stanley 2&quot;)]]</tw-passagedata><tw-passagedata pid="187" name="Add Stanley 2" tags="" position="7750,1500" size="100,100">(set:$STANLEY to true)
 (set:$STATS&#39;s 9th to it + 1)
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)(goto:&quot;Title Screen&quot;)</tw-passagedata><tw-passagedata pid="188" name="Stanley&#39;s Apartment" tags="" position="2850,2000" size="100,200">(if:$wearing is &quot;icloak&quot;)[
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)(goto:&quot;Title Screen&quot;)</tw-passagedata><tw-passagedata pid="188" name="Stanley&#39;s Apartment" tags="" position="2850,2000" size="100,200">(track:&#39;apartment&#39;,&#39;fadeto&#39;,0.5,0)(track:&#39;apartmentstanley&#39;,&#39;fadeto&#39;,0.5,1)
+\(if:$wearing is &quot;icloak&quot;)[
 \You go over to Stanley&#39;s apartment and knock on the door.
 
 (font:&quot;HKNova&quot;)[Stanley opened the door, and to his surprise, saw no one there. Stanley looked around trying to find someone nearby but didn&#39;t see anyone. Stanley came to the logical conclusion that it must&#39;ve been the wind.]
@@ -5665,7 +5669,7 @@ Jed Winchester is now the mayor of Webster Groves. After helping uncover the Dix
 
 Jed has been running the town, using his mayoral powers for the good of the community.
 
-[[Continue-&gt;Start 3 Cont]]</tw-passagedata><tw-passagedata pid="363" name="READ ME" tags="" position="800,300" size="200,200">Hey, this is Green Guy here! Glad you enjoyed our game enough to check it out in the source code. HOWEVER, THERE ARE MASSIVE SPOILERS HERE! Please don&#39;t ruin the game for yourself! Come back when you&#39;ve 100%ed the game, trust me.</tw-passagedata><tw-passagedata pid="364" name="Start 3 Cont" tags="" position="4800,4250" size="100,100">Or at least, that&#39;s how it was before the apocolypse happened.
+[[Continue-&gt;Start 3 Cont]]</tw-passagedata><tw-passagedata pid="363" name="READ ME" tags="" position="800,300" size="200,200">Hey, this is Green Guy here! Glad you enjoyed our game enough to check it out in the source code. HOWEVER, THERE ARE MASSIVE SPOILERS HERE! Please don&#39;t ruin the game for yourself! Come back when you&#39;ve 100%ed the game, trust me. If you&#39;re stuck, just keep trying to make forward progress. The game will help you with the final stretches.</tw-passagedata><tw-passagedata pid="364" name="Start 3 Cont" tags="" position="4800,4250" size="100,100">Or at least, that&#39;s how it was before the apocolypse happened.
 
 The world has been completely overrun by zombies, Webster Groves included.
 
@@ -7366,6 +7370,8 @@ test3: audio/Test3.mp3
 slam: audio/Slam.mp3
 adventureawaits: audio/Adventure Awaits.mp3
 apartment: audio/Apartment Complex.mp3
+apartmentted: audio/Apartment Complex - Ted.mp3
+apartmentstanley: audio/Apartment Complex - Stanley.mp3
 buster: audio/Buster.mp3
 basement: audio/City Hall Basement.mp3
 cityhall: audio/City Hall.mp3
@@ -7376,6 +7382,7 @@ fight: audio/Fight.mp3
 intro: audio/Intro.mp3
 happyending: audio/NormalRoute End.mp3
 westside: audio/West Side.mp3
+wr1: audio/Waiting Room 1.mp3
 pass: audio/Pass.mp3
 trainride10: audio/Train Ride 10s.mp3
 popper: audio/Party Popper.mp3
@@ -7389,6 +7396,8 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;test3&#39;,&#39;loop&#39;,true)\
 (track:&#39;adventureawaits&#39;,&#39;loop&#39;,true)\
 (track:&#39;apartment&#39;,&#39;loop&#39;,true)\
+(track:&#39;apartmentted&#39;,&#39;loop&#39;,true)\
+(track:&#39;apartmentstanley&#39;,&#39;loop&#39;,true)\
 (track:&#39;buster&#39;,&#39;loop&#39;,true)\
 (track:&#39;basement&#39;,&#39;loop&#39;,true)\
 (track:&#39;cityhall&#39;,&#39;loop&#39;,true)\
@@ -7398,6 +7407,7 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;fight&#39;,&#39;loop&#39;,true)\
 (track:&#39;happyending&#39;,&#39;loop&#39;,true)\
 (track:&#39;westside&#39;,&#39;loop&#39;,true)\
+(track:&#39;wr1&#39;,&#39;loop&#39;,true)\
 (track: &#39;adventureawaits&#39;, &#39;playwhenpossible&#39;)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
