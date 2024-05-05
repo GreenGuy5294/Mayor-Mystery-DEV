@@ -278,7 +278,7 @@ By Blue Cat and Green Guy
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0)
 \(set: $sidequests to (a:))
-\(set: $PREMIUM to &quot;yes&quot;) &lt;!--DEBUG set to nope--&gt;
+\(set: $PREMIUM to &quot;nope&quot;)
 \(set: $ATM to 0)
 \(set: $seenSteve to false)
 \(set: $anomalies to (a:))
@@ -795,7 +795,8 @@ I see how it is. Go along, Jed. Watch what happens when you decide to neglect th
 
 (if:$storeCardQuest contains &quot;ask&quot; and $INV does not contain &quot;documents&quot;)[[[Search for Documents-&gt;Search Documents]]
 ]
-\[[Continue-&gt;Jed&#39;s Bedroom]]]</tw-passagedata><tw-passagedata pid="37" name="Neglect" tags="" position="2150,3150" size="200,100">You woke up after a while. How long has it been?
+\[[Continue-&gt;Jed&#39;s Bedroom]]]</tw-passagedata><tw-passagedata pid="37" name="Neglect" tags="" position="2150,3150" size="200,100">(track:&#39;apartment&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;evilending&#39;,&#39;playwhenpossible&#39;)]
+\You woke up after a while. How long has it been?
 
 You look at your phone... Oh goodness! You somehow slept for 4 days straight! 
 
@@ -1027,7 +1028,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
 [[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
-\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)
+\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;evilending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot; and not $gotToilet)[
@@ -1297,7 +1298,8 @@ The two of you start to walk around toward the front of the elevator. But before
 
 &quot;Looks like we&#39;ll have to call a real plumber once this is over,&quot; the secretary quips.]
 
-[[Continue-&gt;City Hall Maintenance Room]] </tw-passagedata><tw-passagedata pid="66" name="Trespassing Ending" tags="" position="3350,3200" size="200,100">(unless:$ENDINGS contains &quot;Trespassing&quot;)[(set:$ENDINGS to it + (a:&quot;Trespassing&quot;))]
+[[Continue-&gt;City Hall Maintenance Room]] </tw-passagedata><tw-passagedata pid="66" name="Trespassing Ending" tags="" position="3350,3200" size="200,100">(track:&#39;confrontation&#39;,&#39;fadeout&#39;,0.5)(track:&#39;basement&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;evilending&#39;,&#39;playwhenpossible&#39;)]
+\(unless:$ENDINGS contains &quot;Trespassing&quot;)[(set:$ENDINGS to it + (a:&quot;Trespassing&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Trespassing&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
 \Next thing you know, you&#39;re inside a holding cell. &quot;We&#39;ll be back to you in a couple hours,&quot; the guards tell you.
@@ -1341,7 +1343,8 @@ Jed, you do realize you actually had a third option, right? You saw that, didn&#
 
 The two guards grab you by your arms and drag you out of the room.
 
-[[Continue-&gt;Trespassing Ending]] </tw-passagedata><tw-passagedata pid="69" name="Evil Ending" tags="" position="3750,3200" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
+[[Continue-&gt;Trespassing Ending]] </tw-passagedata><tw-passagedata pid="69" name="Evil Ending" tags="" position="3750,3200" size="200,100">(track:&#39;confrontation&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;evilending&#39;,&#39;playwhenpossible&#39;)]
+\(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Evil&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
 \Jed... what have you done? 
@@ -7395,6 +7398,7 @@ fight: audio/Fight.mp3
 intro: audio/Intro.mp3
 happyending: audio/NormalRoute End.mp3
 sadending: audio/Happy Ending but it&#39;s Sad Now.mp3
+evilending: audio/Evil Ending.mp3
 wr1: audio/Waiting Room 1.mp3
 
 slam: audio/Slam.mp3
@@ -7424,6 +7428,7 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;fight&#39;,&#39;loop&#39;,true)\
 (track:&#39;happyending&#39;,&#39;loop&#39;,true)\
 (track:&#39;sadending&#39;,&#39;loop&#39;,true)\
+(track:&#39;evilending&#39;,&#39;loop&#39;,true)\
 (track:&#39;westside&#39;,&#39;loop&#39;,true)\
 (track:&#39;wr1&#39;,&#39;loop&#39;,true)\
 (track: &#39;adventureawaits&#39;, &#39;playwhenpossible&#39;)</tw-passagedata></tw-storydata>
