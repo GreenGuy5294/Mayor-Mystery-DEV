@@ -278,7 +278,7 @@ By Blue Cat and Green Guy
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0)
 \(set: $sidequests to (a:))
-\(set: $PREMIUM to &quot;nope&quot;)
+\(set: $PREMIUM to &quot;yes&quot;) &lt;!--DEBUG set to nope--&gt;
 \(set: $ATM to 0)
 \(set: $seenSteve to false)
 \(set: $anomalies to (a:))
@@ -506,10 +506,10 @@ An anonymous help-seeker]]
 \(if:$escapadeArrow contains &quot;arrow&quot;)[
 [[Button Area-&gt;Button Area]]](else-if:$escapadeArrow contains &quot;paint&quot; and contains &quot;seen&quot;)[
 [[Follow the Arrow™-&gt;Button Area]]]
-[[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="17" name="Town Square" tags="" position="4000,1300" size="200,200">(unless:(track:&#39;cityhall&#39;,&#39;isplaying&#39;))[
-\(after:0.5s)[(track:&#39;eastside&#39;,&#39;volume&#39;,1)(track:&#39;cityhall&#39;,&#39;playwhenpossible&#39;)]
+[[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="17" name="Town Square" tags="" position="4000,1300" size="200,200">(unless:(track:&#39;townsquare&#39;,&#39;isplaying&#39;))[(track:&#39;cityhall&#39;,&#39;fadeout&#39;,0.5)
+\(after:0.5s)[(track:&#39;eastside&#39;,&#39;volume&#39;,1)(track:&#39;townsquare&#39;,&#39;playwhenpossible&#39;)]
 \]
-\(else:)[(track:&#39;cityhall&#39;, &#39;fadeto&#39;, 0.5, 1)]
+\(else:)[(track:&#39;townsquare&#39;, &#39;fadeto&#39;, 0.5, 1)]
 \You&#39;re in the Webster Groves Town Square. (cond:$wearing is &quot;3d glasses&quot;,&quot;Everything looks so cool in 3D...&quot;,&quot;The scenery looks absolutely beautiful.&quot;) 
 \(set:$previousPassage to (passage:)&#39;s name)
 
@@ -823,7 +823,10 @@ Jed was at a loss for words. Jed wondered what could have caused all of this. An
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="39" name="City Hall" tags="" position="3600,1700" size="100,200">(set:$visitsCityHall to it + 1)
+\[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="39" name="City Hall" tags="" position="3600,1700" size="100,200">(unless:(track:&#39;cityhall&#39;,&#39;isplaying&#39;))[(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)
+\(after:0.5s)[(track:&#39;cityhall&#39;,&#39;playwhenpossible&#39;)]
+\]
+\(set:$visitsCityHall to it + 1)
 \(if: $visitsCityHall is 1)[
 \You enter the Webster Groves City Hall. It&#39;s a beautiful building. The room you&#39;re standing in is nothing short of luxurious, with lots of decorations and a lot more open space. There are quite a few hallways that branch off of the lobby.
 
@@ -945,7 +948,8 @@ Quirb, Theep, Thurm, Jacob
 \(else:)[
 \Hello player. So this is a bit awkward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with (if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J2&quot;)[5](else:)[4] options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
 
-(link-reveal-goto:&quot;Continue&quot;,&quot;Title Screen&quot;)[(track:&#39;adventureawaits&#39;, &#39;fadeto&#39;, 0.5, 1)]</tw-passagedata><tw-passagedata pid="49" name="Train Ride" tags="" position="4000,850" size="100,100">(track:&#39;eastside&#39;,&#39;fadeout&#39;,3)(track:&#39;cityhall&#39;,&#39;fadeout&#39;,3)(track:&#39;westside&#39;,&#39;fadeout&#39;,3)(track:&#39;trainride10&#39;,&#39;play&#39;)
+(link-reveal-goto:&quot;Continue&quot;,&quot;Title Screen&quot;)[(track:&#39;adventureawaits&#39;, &#39;fadeto&#39;, 0.5, 1)]</tw-passagedata><tw-passagedata pid="49" name="Train Ride" tags="" position="4000,850" size="100,100">(if:$PREMIUM is &quot;yes&quot;)[(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;trainride1&#39;,&#39;play&#39;)]
+\(else:)[(track:&#39;eastside&#39;,&#39;fadeout&#39;,3)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,3)(track:&#39;westside&#39;,&#39;fadeout&#39;,3)(track:&#39;trainride10&#39;,&#39;play&#39;)]
 \(set:$STATS&#39;s 7th to it + 1)
 \(if:$PREMIUM is &quot;yes&quot; and $INV does not contain &quot;busterShop&quot;)[(set:$trainTime to 1s)(set:$traintext to (either:&quot;Wow, looks like we&#39;re already here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh, we stopped moving? That was so soon I didn&#39;t even notice!&quot;,&quot;Alright, this new \&quot;express train\&quot; thing is working quite nicely!&quot;,&quot;Very shortly after, the train came to a stop and pulled into the station.&quot;))](else:)[(set:$trainTime to 10s)(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh, we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))]
 \(if:$STATS&#39;s 7th &gt;= 20 and $PREMIUM is &quot;nope&quot;)[(set:$PREMIUM to &quot;ready&quot;)]
@@ -965,7 +969,7 @@ $traintext
 \[[Continue-&gt;East Side of Town]]
 \]
 \(if:$LOC is &quot;Town Square&quot;)[
-\(track:&#39;cityhall&#39;,&#39;fadein&#39;,2)
+\(track:&#39;townsquare&#39;,&#39;fadein&#39;,2)
 \[[Continue-&gt;Town Square]]
 \]
 \(if:$LOC is &quot;West Side&quot;)[
@@ -1023,7 +1027,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
 [[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
-\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)
+\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot; and not $gotToilet)[
@@ -1803,7 +1807,7 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;I already talked to the person who was holding onto it for me,&quot; Josefine responds, &quot;so now we&#39;re just waiting for snail mail! Should arrive in your mailbox in a day or two.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="93" name="Train Station" tags="" position="4000,600" size="200,200">(track:&#39;eastside&#39;,&#39;fadeto&#39;,0.5,0.25)(track:&#39;cityhall&#39;,&#39;fadeto&#39;,0.5,0.25)(track:&#39;westside&#39;,&#39;fadeto&#39;,0.5,0.25)
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="93" name="Train Station" tags="" position="4000,600" size="200,200">(track:&#39;eastside&#39;,&#39;fadeto&#39;,0.5,0.25)(track:&#39;townsquare&#39;,&#39;fadeto&#39;,0.5,0.25)(track:&#39;westside&#39;,&#39;fadeto&#39;,0.5,0.25)
 \(set:$visitsTrainStation to it + 1)
 \(if:$wearing is &quot;icloak&quot;)[Jed temporarily took off his invisibility cloak while inside the train station.
 
@@ -4060,6 +4064,7 @@ She scans all of your winning tickets. &quot;Looks like your total came to $$win
 
 She scans all of your winning tickets. &quot;Looks like your total came to $$winningTickets. Hope you didn&#39;t spend any more than that!&quot;]
 \(set:$MONEY to it + $winningTickets)(set:$winningTickets to 0)
+\(if:$MONEY &gt; 999999)[(set:$MONEY to 999999)]
 
 [[Continue-&gt;Gas Station Checkout]] </tw-passagedata><tw-passagedata pid="243" name="Lotto Backroom" tags="" position="6650,2700" size="100,100">(set:$peopleHere to (a:&quot;Rafael&quot;,&quot;Josefine&quot;))
 \(if:$STANLEY)[(set:$peopleHere to it + (a:&quot;Stanley&quot;))]
@@ -4192,11 +4197,13 @@ However, slapping the toaster seemed to make it work. It started to shake, and a
 
 You smile with glee... you know exactly what to do now...
 
-[[Continue-&gt;Give Away Food]]</tw-passagedata><tw-passagedata pid="251" name="Give Away Food" tags="" position="1700,3150" size="100,100">Jed quickly set up a small stand in Town Square to give away food that he made using his toaster. Once he eventually got someone to realize that it was actually free food and not a trick, word started to spread and Jed was able to reach many people with his food stand.
+[[Continue-&gt;Give Away Food]]</tw-passagedata><tw-passagedata pid="251" name="Give Away Food" tags="" position="1700,3150" size="100,100">(track:&#39;apartment&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;happyending&#39;,&#39;play&#39;)]
+\Jed quickly set up a small stand in Town Square to give away food that he made using his toaster. Once he eventually got someone to realize that it was actually free food and not a trick, word started to spread and Jed was able to reach many people with his food stand.
 
 He began to do this every morning. After a couple of days, he got picked up by the local news. Every day, Jed would bring different things that he duplicated using the toaster. It became part of his daily routine: get ready, make food, and go to Town Square.
 
-[[Continue-&gt;Toaster Ending]]</tw-passagedata><tw-passagedata pid="252" name="Toaster Ending" tags="" position="1600,3300" size="200,100">(unless:$ENDINGS contains &quot;Toaster&quot;)[(set:$ENDINGS to it + (a:&quot;Toaster&quot;))]
+[[Continue-&gt;Toaster Ending]]</tw-passagedata><tw-passagedata pid="252" name="Toaster Ending" tags="" position="1600,3300" size="200,100">(track:&#39;happyending&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;sadending&#39;,&#39;play&#39;)]
+\(unless:$ENDINGS contains &quot;Toaster&quot;)[(set:$ENDINGS to it + (a:&quot;Toaster&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Toaster&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
 \On the fifth day, Jed began his routine like normal. However, no one came to his stand. In fact, he noticed that the people who usually walked past his stand weren&#39;t even here in Town Square at all. He packed up early and went home. Bored, he turned on the news.
@@ -4247,6 +4254,7 @@ Wow. What a rip-off.
 \(if:$ENDINGS contains &quot;WACKY STEVE&quot;)[
 (link-reveal-goto:&quot;Call WACKY STEVE&quot;,&quot;Choose Prank&quot;)[(set:$prankPerson to &quot;steve&quot;)]]
 [[Exit-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="257" name="Train Station ATM" tags="" position="4300,900" size="100,100">(if:$POSTGAME is true)[(set:$ATM to 999999)]
+\(if:$MONEY &gt; 999999)[(set:$MONEY to 999999)]
 \(set:$visitsATM to it + 1)
 \(if:$visitsATM is 1)[You walk up to the $LOC Train Station ATM. Here you can withdraw or deposit money from your bank account.
 
@@ -7367,24 +7375,33 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 [[Back-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="439" name="hal.tracks" tags="" position="200,100" size="100,100">test1: audio/Test1.mp3
 test2: audio/Test2.mp3
 test3: audio/Test3.mp3
-slam: audio/Slam.mp3
 adventureawaits: audio/Adventure Awaits.mp3
+
 apartment: audio/Apartment Complex.mp3
 apartmentted: audio/Apartment Complex - Ted.mp3
 apartmentstanley: audio/Apartment Complex - Stanley.mp3
+
 buster: audio/Buster.mp3
 basement: audio/City Hall Basement.mp3
 cityhall: audio/City Hall.mp3
 confrontation: audio/Confrontation.mp3
 alleyway: audio/Dark Alleyway.mp3
+
 eastside: audio/East Side.mp3
+townsquare: audio/Town Square.mp3
+westside: audio/West Side.mp3
+
 fight: audio/Fight.mp3
 intro: audio/Intro.mp3
 happyending: audio/NormalRoute End.mp3
-westside: audio/West Side.mp3
+sadending: audio/Happy Ending but it&#39;s Sad Now.mp3
 wr1: audio/Waiting Room 1.mp3
+
+slam: audio/Slam.mp3
 pass: audio/Pass.mp3
+
 trainride10: audio/Train Ride 10s.mp3
+trainride1: audio/Train Ride 1s.mp3
 popper: audio/Party Popper.mp3
 pipe: audio/Metal Pipe.mp3</tw-passagedata><tw-passagedata pid="440" name="Audio Settings" tags="" position="2250,250" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
@@ -7406,6 +7423,7 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;eastside&#39;,&#39;loop&#39;,true)\
 (track:&#39;fight&#39;,&#39;loop&#39;,true)\
 (track:&#39;happyending&#39;,&#39;loop&#39;,true)\
+(track:&#39;sadending&#39;,&#39;loop&#39;,true)\
 (track:&#39;westside&#39;,&#39;loop&#39;,true)\
 (track:&#39;wr1&#39;,&#39;loop&#39;,true)\
 (track: &#39;adventureawaits&#39;, &#39;playwhenpossible&#39;)</tw-passagedata></tw-storydata>
