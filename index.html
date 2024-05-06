@@ -192,7 +192,7 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option2 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option2 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option2 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option2 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option2 is 4)[[[_fail4-&gt;Test2 Failed]]]
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
-&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(track:&#39;intro&#39;,&#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(masteraudio:&#39;stopall&#39;)(track:&#39;intro&#39;,&#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \(set:$maxfun to 16)
 \(if:$escapadeArrow contains &quot;ready&quot;)[(set:$escapadeArrow to it + (a:&quot;paint&quot;))]
 \(unless:$nextFun is 0)[
@@ -272,7 +272,7 @@ By Blue Cat and Green Guy
 \(set: $tickets to 0)
 \(set: $gotToilet to false)
 \(set: $sequel to true)
-\(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
+\(set: $STATS to (a:0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0)) &lt;!--DEBUG--&gt;
 \(set: $mayorFights to (a:))
 \(set: $STANLEY to false)
 \(set: $escapadeArrow to (a:))
@@ -933,11 +933,15 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 [[Go Back-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="About" tags="title" position="2400,100" size="100,100">=&gt;&lt;=
 Written and Developed by Blue Cat Productions and Green Guy.
 
+Music by Green Guy.
+
 Illustrations by Wiz.
+
 
 Originally created for the Beepbox Discord Text Adventure Event.
 v1.0 released on July 9, 2022.
 v1.1 released on June 1, 2023. (&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=kizGoaWhpWc&quot;&gt;Trailer&lt;/a&gt;)
+v1.2 released on DATE IN FUTURE
 
 Playtesters:
 Quirb, Theep, Thurm, Jacob
@@ -1962,7 +1966,8 @@ Store card debt: $(if:5000 - $storeCard &gt; 999)[(digit-format:&quot;###,###&qu
 (if:$storeCard &gt;= 399)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &#39;VR Headset - $399 (Store Card)&#39;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;vr headset&quot;))(set:$storeCard to it - 399)(set:$STATS&#39;s 12th to it + 399)(set:$visitsElectronics to it - 1)]](else:)[(if:$MONEY &gt;= 399)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &#39;VR Headset - $399&#39;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;vr headset&quot;))(set:$MONEY to it - 399)(set:$STATS&#39;s 3rd to it + 399)(set:$visitsElectronics to it - 1)]](else:)[[[VR Headset - $399-&gt;Too Poor]]]]
 (if:$storeCard &gt;= 699)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &#39;27&quot; Washer &amp; Dryer Set - $699 (Store Card)&#39;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;electronic&quot;))(set:$storeCard to it - 699)(set:$STATS&#39;s 12th to it + 699)(set:$visitsElectronics to it + 1)]](else:)[(if:$MONEY &gt;= 699)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &#39;27&quot; Washer &amp; Dryer Set - $699&#39;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;electronic&quot;))(set:$MONEY to it - 699)(set:$STATS&#39;s 3rd to it + 699)(set:$visitsElectronics to it - 1)]](else:)[[[27&quot; Washer &amp; Dryer Set - $699-&gt;Too Poor]]]]
 
-[[Exit-&gt;Electronics Store]] </tw-passagedata><tw-passagedata pid="99" name="Train Ride Bloomhurst Lake" tags="" position="4450,600" size="100,100">(set:$STATS&#39;s 7th to it + 1)
+[[Exit-&gt;Electronics Store]] </tw-passagedata><tw-passagedata pid="99" name="Train Ride Bloomhurst Lake" tags="" position="4450,600" size="100,100">(track:&#39;eastside&#39;,&#39;fadeout&#39;,3)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,3)(track:&#39;westside&#39;,&#39;fadeout&#39;,3)(track:&#39;trainride20&#39;,&#39;play&#39;)(track:&#39;bhlake&#39;,&#39;volume&#39;,0.25)
+\(set:$STATS&#39;s 7th to it + 1)
 \(if:$STATS&#39;s 7th is 15 and $PREMIUM is &quot;nope&quot;)[(set:$PREMIUM to &quot;ready&quot;)]
 \Jed (cond:$INV contains &quot;buster&quot;,&quot;and Buster &quot;,&quot;&quot;)got on the train, and shortly after it began to move. 
 
@@ -1971,10 +1976,13 @@ During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the
 
 Hey, Jed, I don&#39;t think that you should&#39;ve gotten on this train. I didn&#39;t say anything earlier because it hadn&#39;t clicked for me yet, but now I think I remember what Bloomhurst Lake is. And I don&#39;t think what we&#39;re going to see is going to be pretty.]
 \(if:time &gt; 20s)[
+\(track:&#39;bhlake&#39;,&#39;fadein&#39;,2)
 
 Well, looks like the train has stopped. Let&#39;s be careful out here.
 
-[[Continue-&gt;Bloomhurst Lake]](stop:)]]</tw-passagedata><tw-passagedata pid="100" name="Bloomhurst Lake" tags="" position="7300,1300" size="200,200">(set:$visitsBL to it + 1)
+[[Continue-&gt;Bloomhurst Lake]](stop:)]]</tw-passagedata><tw-passagedata pid="100" name="Bloomhurst Lake" tags="" position="7300,1300" size="200,200">(track:&#39;bhlake&#39;, &#39;fadeto&#39;, 0.5, 1)
+\(if:$visitsBL is 3)[(track:&#39;bhlake&#39;,&#39;volume&#39;,0.5)(track:&#39;bhlake2&#39;,&#39;volume&#39;,0.5)(track:&#39;bhlake2&#39;,&#39;playwhenpossible&#39;)]
+\(set:$visitsBL to it + 1)
 \Youre in Bloomhurst Lake a small town outside of Webster Groves. The town is build around a lake of the same name. The sky feels very warm and your happy to be here.
 \(if:$visitsBL is 1)[
 
@@ -2029,7 +2037,7 @@ Curent Funds: $(if:$MONEY &gt; 999 or $MONEY &lt; -999)[(digit-format:&quot;###,
 [[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="107" name="Glitch Ending" tags="" position="7300,1700" size="200,100">Double-click this passage to edit it.
 \(unless:$ENDINGS contains &quot;Glitch&quot;)[(set:$ENDINGS to it + (a:&quot;Glitch&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Glitch&quot;))
-\(after:10s)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)(goto:&quot;Waiting Room Entrance&quot;)]
+\(after:10s)[(track:&#39;bhlake&#39;,&#39;stop&#39;)(track:&#39;bhlake2&#39;,&#39;stop&#39;)(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)(goto:&quot;Waiting Room Entrance&quot;)]
 
 Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="3000,3500" size="100,100">(set:$visitsMegaToilet to it + 1)
 \(if:$visitsMegaToilet is 1)[Oh, so now that I&#39;ve stopped you from flushing your own toilet, you&#39;re gonna go and flush someone else&#39;s toilet? You&#39;re that petty?]
@@ -2710,6 +2718,7 @@ By Kaffemik Studios
 
 [[Start-&gt;Begin2]]
 [[About-&gt;About2]]
+[[Audio-&gt;Audio2]]
 [[Exit-&gt;Exit2]]</tw-passagedata><tw-passagedata pid="149" name="Begin2" tags="" position="5700,2650" size="100,100">(font:&quot;Roboto Mono&quot;)[
 \Good [INSERT TIME OF DAY]. If you are receiving this message, that means you have been randomly selected to participate in Mayor Mystery&#39;s AB Testing program. We have developed a new version of the game based on player feedback. Currently, only the normal route is available in this version. Once you finish your playthrough, there will be a link to a survey at the end where you can input your thoughts about this new version.
 
@@ -2718,6 +2727,9 @@ Whenever you are ready to begin, click the link below.]
 [[Begin-&gt;Begin2 Cont]]</tw-passagedata><tw-passagedata pid="150" name="About2" tags="" position="5850,2650" size="100,100">=&gt;&lt;=
 Written and Developed by Harrison Buffington and Delaney Stroud. 
 Mayor Mystery Written and Developed by Blue Cat Productions and Green Guy.
+
+New Music by Palmer Dion Quigley.
+Based on the Original Music by Green Guy.
 
 New Graphic Design by Ettie Rupp.
 Original Illustrations by Wiz.
@@ -7393,6 +7405,8 @@ alleyway: audio/Dark Alleyway.mp3
 eastside: audio/East Side.mp3
 townsquare: audio/Town Square.mp3
 westside: audio/West Side.mp3
+bhlake: audio/Bloomhurst Lake.mp3
+bhlake2: audio/Bloomhurst Lake.mp3
 
 fight: audio/Fight.mp3
 intro: audio/Intro.mp3
@@ -7404,6 +7418,7 @@ wr1: audio/Waiting Room 1.mp3
 slam: audio/Slam.mp3
 pass: audio/Pass.mp3
 
+trainride20: audio/Train Ride 20s.mp3
 trainride10: audio/Train Ride 10s.mp3
 trainride1: audio/Train Ride 1s.mp3
 popper: audio/Party Popper.mp3
@@ -7414,7 +7429,7 @@ pipe: audio/Metal Pipe.mp3</tw-passagedata><tw-passagedata pid="440" name="Audio
 \(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)]</tw-passagedata><tw-passagedata pid="441" name="hal.config" tags="" position="400,100" size="100,100">showControls:false
 muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="startup" position="200,300" size="100,100">(track:&#39;test1&#39;,&#39;loop&#39;,true)\
 (track:&#39;test2&#39;,&#39;loop&#39;,true)\
-(track:&#39;test3&#39;,&#39;loop&#39;,true)\
+(track:&#39;test3&#39;,&#39;loop&#39;,false)\
 (track:&#39;adventureawaits&#39;,&#39;loop&#39;,true)\
 (track:&#39;apartment&#39;,&#39;loop&#39;,true)\
 (track:&#39;apartmentted&#39;,&#39;loop&#39;,true)\
@@ -7424,6 +7439,8 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;cityhall&#39;,&#39;loop&#39;,true)\
 (track:&#39;confrontation&#39;,&#39;loop&#39;,true)\
 (track:&#39;alleyway&#39;,&#39;loop&#39;,true)\
+(track:&#39;bhlake&#39;,&#39;loop&#39;,true)\
+(track:&#39;bhlake2&#39;,&#39;loop&#39;,true)\
 (track:&#39;eastside&#39;,&#39;loop&#39;,true)\
 (track:&#39;fight&#39;,&#39;loop&#39;,true)\
 (track:&#39;happyending&#39;,&#39;loop&#39;,true)\
@@ -7431,7 +7448,11 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;evilending&#39;,&#39;loop&#39;,true)\
 (track:&#39;westside&#39;,&#39;loop&#39;,true)\
 (track:&#39;wr1&#39;,&#39;loop&#39;,true)\
-(track: &#39;adventureawaits&#39;, &#39;playwhenpossible&#39;)</tw-passagedata></tw-storydata>
+(track: &#39;adventureawaits&#39;, &#39;playwhenpossible&#39;)</tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
+(cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
+[[Back-&gt;Title Screen 2]] 
+\(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
+\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
