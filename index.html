@@ -248,7 +248,7 @@ I get it, though. You&#39;re just having some fun with me before we begin. A lit
 I&#39;ll make you a deal. One last chance to show me whether or not you want to play along. One more test. Let&#39;s go back to the beginning again.
 
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1850,100" size="200,100">===&gt;&lt;===
-(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
+(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;mm2end&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
 \(if:(history:) contains &quot;The Beginning&quot; and (random:1,25) is 1)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/VK6qlSj.png&quot;&gt;
 \(set:$theGame to true)](else:)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/0yYRLZ7.png&quot;&gt;
 \(set:$theGame to false)]
@@ -371,7 +371,9 @@ By Blue Cat and Green Guy
 [[Audio-&gt;Audio Settings]]
 [[Exit-&gt;Exit]]
 \(font:&quot;HKNova&quot;)[]
-\&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+\&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
+
+[[DEBUG-&gt;Sequels]]</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
 
@@ -2668,7 +2670,8 @@ John doesn&#39;t respond but instead points at the front door. You slowly shuffl
 
 John doesn&#39;t respond but instead points at the front door. You slowly shuffle your way out of the store.
 
-[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">=&gt;&lt;===
+[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)\
+=&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 By Kaffemik Studios
 \(set: $sequel to false)
@@ -2739,17 +2742,19 @@ Mayor Mystery for the Beepbox Discord Text Adventure Event.
 Playtesters:
 Andreas, Minik, Judithe, Lars 
 
-[[Continue-&gt;Title Screen 2]] </tw-passagedata><tw-passagedata pid="151" name="Exit2" tags="" position="6000,2650" size="100,100">(font:&quot;Raleway&quot;)[
+[[Continue-&gt;Title Screen 2]] </tw-passagedata><tw-passagedata pid="151" name="Exit2" tags="" position="6000,2650" size="100,100">(track:&#39;mm2title&#39;, &#39;fadeto&#39;, 0.5, 0.25)
+\(font:&quot;Raleway&quot;)[
 \Woah woah woah, hey! Don&#39;t close the game! Do you know how many people get selected to test the sequel? Yeah, that&#39;s right, a very small number of people, that&#39;s who! I mean, isn&#39;t this just beautiful? It&#39;s red now. That&#39;s awesome. You should totally play this.]
 
-[[Continue-&gt;Title Screen 2]] </tw-passagedata><tw-passagedata pid="152" name="Begin2 Cont" tags="" position="5700,2800" size="100,100">Let&#39;s begin, shall we?
+(link-reveal-goto:&quot;Continue&quot;,&quot;Title Screen 2&quot;)[(track:&#39;mm2title&#39;, &#39;fadeto&#39;, 0.5, 1)]</tw-passagedata><tw-passagedata pid="152" name="Begin2 Cont" tags="" position="5700,2800" size="100,100">Let&#39;s begin, shall we?
 
 #You are Jed Winchester.
 The Jeddest of all Winchesters. The most Jed out of all of us. A million times Jed Winchester. One of the people of all time.
 
 You&#39;re well known around Webster Groves for being Jed Winchester and Jedding all over the place. At this point, you&#39;ve established quite the Jedputation, something that you take great pride in.
 
-[[Begin-&gt;START 2]]</tw-passagedata><tw-passagedata pid="153" name="START 2" tags="" position="5850,2800" size="200,100">(font:&quot;Roboto Mono&quot;)[Due to various complaints made by players, we have decided to remove the testing feature, despite the narrator&#39;s feelings. Your regularly scheduled story will begin now.]
+[[Begin-&gt;START 2]]</tw-passagedata><tw-passagedata pid="153" name="START 2" tags="" position="5850,2800" size="200,100">(track:&#39;mm2title&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2intro&#39;,&#39;playwhenpossible&#39;)]
+\(font:&quot;Roboto Mono&quot;)[Due to various complaints made by players, we have decided to remove the testing feature, despite the narrator&#39;s feelings. Your regularly scheduled story will begin now.]
 \(set:$MONEY to 999)
 
 Jed woke up from his bed feeling Jedder than ever. Jed hopped out of bed and went on to get ready for the day. As Jed was drinking his Jed Coffee™, he noticed the news story on his TV.
@@ -2769,12 +2774,14 @@ An anonymous help-seeker]
 Jed folded the letter and put it in his pocket.
 
 [[Return Home-&gt;Jed&#39;s Apartment 2]]
-[[Go to Town-&gt;LOL]] </tw-passagedata><tw-passagedata pid="155" name="Jed&#39;s Apartment 2" tags="" position="5600,3400" size="100,200">(set:$previousPassage to (passage:)&#39;s name)
+[[Go to Town-&gt;LOL]] </tw-passagedata><tw-passagedata pid="155" name="Jed&#39;s Apartment 2" tags="" position="5600,3400" size="100,200">(unless:(track:&#39;mm2apartment&#39;,&#39;isplaying&#39;))[(track:&#39;mm2intro&#39;,&#39;fadeout&#39;,0.5)(track:&#39;mm2town&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2apartment&#39;,&#39;playwhenpossible&#39;)]]
+\(set:$previousPassage to (passage:)&#39;s name)
 \You&#39;re inside the Jedpartment. (if:$sequelProgress contains &quot;del&quot;)[&quot;(either:&quot;I&#39;m so excited to solve this (color:#ff0000)[Mayor Mystery] with you!&quot;,&quot;I wonder where we get to go next!&quot;,&quot;I&#39;m so glad it&#39;s &quot; + (weekday:) + &quot;, because that means I get to go outside!&quot;,&quot;I can&#39;t wait to see what happens today. I&#39;m so excited!&quot;,&quot;I love you, Jed!&quot;)&quot; Del exclaims.](else:)[(either:&quot;Home, sweet home.&quot;,&quot;You know what they say, you can&#39;t investigate a (color:#ff0000)[Mayor Mystery] without proper rest!&quot;,&quot;Wow, you should probably get around to cleaning sometime soon. I mean-&quot;,&quot;It looks especially Jedtastic today, almost twice as much as yesterday.&quot;,&quot;The best place to spend a &quot; + (weekday:) + &quot; morning.&quot;,&quot;Its red walls bring you great comfort.&quot;)] Where would you like to go?
 
 [[Jedroom-&gt;Jed&#39;s Bedroom 2]]
 [[Bathroom-&gt;Jed&#39;s Bathroom 2]]
-(if:$sequelProgress contains &quot;del&quot;)[[[Exit-&gt;Sequel Town]]](else:)[[[Exit-&gt;LOL]]]</tw-passagedata><tw-passagedata pid="156" name="Sequel Town" tags="" position="5900,3100" size="200,200">(set:$previousPassage to (passage:)&#39;s name)
+(if:$sequelProgress contains &quot;del&quot;)[[[Exit-&gt;Sequel Town]]](else:)[[[Exit-&gt;LOL]]]</tw-passagedata><tw-passagedata pid="156" name="Sequel Town" tags="" position="5900,3100" size="200,200">(unless:(track:&#39;mm2town&#39;,&#39;isplaying&#39;))[(track:&#39;mm2apartment&#39;,&#39;fadeout&#39;,0.5)(track:&#39;mm2city&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2town&#39;,&#39;playwhenpossible&#39;)]]
+\(set:$previousPassage to (passage:)&#39;s name)
 \(if:visits is 1)[(font:&quot;Roboto Mono&quot;)[Welcome to the new version of Webster Groves. To give a more streamlined experience, we have removed most of the optional content.]
 
 ]
@@ -2808,7 +2815,8 @@ Jed explains to Del the (color:#ff0000)[Mayor Mystery] that he has been informed
 [[Exit-&gt;Jed&#39;s Apartment 2]]</tw-passagedata><tw-passagedata pid="160" name="Flush 2" tags="" position="5675,3800" size="100,100">(font:&quot;Roboto Mono&quot;)[Due to high abuse of the toilet feature in the previous game, we have removed it from this game.]
 \(set:$visitFlush2 to true)
 
-[[Continue-&gt;Jed&#39;s Bathroom 2]] </tw-passagedata><tw-passagedata pid="161" name="City Hall 2" tags="" position="5850,3400" size="100,200">(set:$visitsCityHall to it + 1)
+[[Continue-&gt;Jed&#39;s Bathroom 2]] </tw-passagedata><tw-passagedata pid="161" name="City Hall 2" tags="" position="5850,3400" size="100,200">(unless:(track:&#39;mm2city&#39;,&#39;isplaying&#39;))[(track:&#39;mm2town&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2city&#39;,&#39;playwhenpossible&#39;)]]
+\(set:$visitsCityHall to it + 1)
 \(if: $visitsCityHall is 1)[
 \Jed and Del enter the Webster Groves City Hall. It&#39;s a wacky building. The room you&#39;re standing in is nothing short of luxurious, with lots of decorations and a lot more open space. It&#39;s also home to the great (color:#ff0000)[Mayor Mystery] you two have been tasked to solve.
 
@@ -2893,7 +2901,8 @@ Current funds: $$MONEY
 
 &quot;Oh yeah,&quot; Jed says.
 
-[[Continue-&gt;City Hall 2]]]]</tw-passagedata><tw-passagedata pid="167" name="Skill Tree 2" tags="" position="5850,3800" size="100,100">(if:visits is 1)[(set:$skillPoints to 8)(set:$SKILLS to (a:))]
+[[Continue-&gt;City Hall 2]]]]</tw-passagedata><tw-passagedata pid="167" name="Skill Tree 2" tags="" position="5850,3800" size="100,100">(track:&#39;mm2city&#39;,&#39;fadeto&#39;,0.5,0.5)
+\(if:visits is 1)[(set:$skillPoints to 8)(set:$SKILLS to (a:))]
 \Remaining Skill Points: $skillPoints
 
 (if:$skillPoints is 0)[[[Continue-&gt;Elevator 2]]](else:)[
@@ -2967,7 +2976,8 @@ Current funds: $$MONEY
 (if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)(set:$STATS&#39;s 3rd to it + 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
 (if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware 2&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)(set:$STATS&#39;s 3rd to it + 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
 
-[[Exit-&gt;Hardware Store 2]] </tw-passagedata><tw-passagedata pid="171" name="City Hall Basement 2" tags="" position="5850,4075" size="100,100">Jed, Del, and the secretary have arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no particular fashion.
+[[Exit-&gt;Hardware Store 2]] </tw-passagedata><tw-passagedata pid="171" name="City Hall Basement 2" tags="" position="5850,4075" size="100,100">(track:&#39;mm2city&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2basement&#39;,&#39;playwhenpossible&#39;)]
+\Jed, Del, and the secretary have arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no particular fashion.
 
 [[Elevator-&gt;Elevator Back 2]]
 (if:$visitMaintenance2)[[[Maintenance Room-&gt;Too Poor]]](else:)[[[Maintenance Room-&gt;Maintenance Room 2]]]
@@ -3000,7 +3010,8 @@ Current funds: $$MONEY
 ]
 \(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]]
 ]
-\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="176" name="Confrontation 2" tags="" position="5850,4375" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut, Jed? It looks good.&quot;&#39;,&#39;&quot;&#39;)
+\[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="176" name="Confrontation 2" tags="" position="5850,4375" size="100,100">(masteraudio:&#39;stopall&#39;)(track:&#39;mm2confrontation&#39;,&#39;playwhenpossible&#39;)
+\The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut, Jed? It looks good.&quot;&#39;,&#39;&quot;&#39;)
 
 &quot;HOW&#39;DJA KNOW WE WERE HERE?&quot; Del screams.
 
@@ -3042,7 +3053,8 @@ The mayor then snaps his fingers, and guards enter the room, taking away Del and
 
 &quot;Then as the protagonist of this story, I have no choice but to fight you!&quot;
 
-[[Continue-&gt;Fight 2]]</tw-passagedata><tw-passagedata pid="178" name="Fight 2" tags="" position="6000,4075" size="100,100">Jed stands up and pushes the table out of the way. &quot;Let&#39;s do this!&quot; he shouts. (if:$SKILLS contains &quot;dss&quot;)[&quot;Man, it&#39;s a good thing I did some stretches earlier.&quot;]
+[[Continue-&gt;Fight 2]]</tw-passagedata><tw-passagedata pid="178" name="Fight 2" tags="" position="6000,4075" size="100,100">(track:&#39;mm2confrontation&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2fight&#39;,&#39;playwhenpossible&#39;)]
+\Jed stands up and pushes the table out of the way. &quot;Let&#39;s do this!&quot; he shouts. (if:$SKILLS contains &quot;dss&quot;)[&quot;Man, it&#39;s a good thing I did some stretches earlier.&quot;]
 
 The mayor puts out a fist and begins running towards Jed. (cond:$SKILLS contains &quot;c&quot;,&quot;Jed does not react. The mayor hits Jed&#39;s chestplate, which causes the mayor to grab his hand in pain.&quot;,&quot;Jed, however, has ample time to react, and slowly moves out of the way.&quot;)
 
@@ -3058,13 +3070,15 @@ Jed then begins pointing the water gun at all the electronics in the room. Spark
 
 Del and the secretary are in the middle of fighting some of the security guards that dragged them out of the room. (if:$SKILLS contains &quot;ee&quot;)[Jed grabs onto Del and the secretary. &quot;EMERGENCY EJECT!&quot; He pushes a button on his belt, and the three of them fly straight upwards, breaking through the ceiling and layers of ground above them.](else:)[&quot;C&#39;mon, let&#39;s go!&quot; Jed yells. The secretary and Del follow Jed into the elevator, and they go back to the ground floor as fast as they can.]
 
-[[Continue-&gt;The End 2]]</tw-passagedata><tw-passagedata pid="179" name="The End 2" tags="" position="6000,4225" size="100,100">Jed, Del, and the secretary (cond:$SKILLS contains &quot;ee&quot;,&quot;pop out of the floor and begin to &quot;,&quot;&quot;)run out of the city hall as fast as they can. (cond:$SKILLS contains &quot;dkys&quot;,&quot;Gosh, imagine if you tripped now due to not tying your shoes well. That would&#39;ve been awful.&quot;,&quot;&quot;) Once outside, they turn around and look at the city hall, which is emanating smoke.
+[[Continue-&gt;The End 2]]</tw-passagedata><tw-passagedata pid="179" name="The End 2" tags="" position="6000,4225" size="100,100">(track:&#39;mm2fight&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;mm2end&#39;,&#39;playwhenpossible&#39;)]
+\Jed, Del, and the secretary (cond:$SKILLS contains &quot;ee&quot;,&quot;pop out of the floor and begin to &quot;,&quot;&quot;)run out of the city hall as fast as they can. (cond:$SKILLS contains &quot;dkys&quot;,&quot;Gosh, imagine if you tripped now due to not tying your shoes well. That would&#39;ve been awful.&quot;,&quot;&quot;) Once outside, they turn around and look at the city hall, which is emanating smoke.
 
 &quot;Wow, that was really wacky!&quot; Del exclaims. &quot;(cond:$SKILLS contains &quot;ee&quot;,&quot;I&#39;m glad you had that emergency eject to g-&quot;,&quot;I&#39;m glad we were able to get out of there so qui-&quot;)&quot;
 
 City Hall then explodes. 
 
-[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="180" name="Sequel End" tags="" position="6000,4375" size="200,100">(font:&quot;Roboto Mono&quot;)[
+[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="180" name="Sequel End" tags="" position="6000,4375" size="200,100">(track:&#39;mm2end&#39;,&#39;fadeto&#39;,0.5,0.5)
+\(font:&quot;Roboto Mono&quot;)[
 \This is the end of the current sequel content. More will come with future updates.
 
 Please provide feedback of the sequel using &lt;a href=&quot;https://forms.gle/KEhGQv4p3jrLycRJ9&quot; target=&quot;_blank&quot;&gt;this Google form&lt;/a&gt;. We appreciate your feedback on (color:#ff0000)[Mayor Mystery 2]. Your comments are meaningful to us, and integral to the development of this sequel.]
@@ -7296,7 +7310,8 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 (if:$nextFun is 16)[&#39;&#39;New Appliance Interaction - Pressed&#39;&#39;](else:)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;New Appliance Interaction&quot;,&quot;Buttons Postgame&quot;)[(set:$nextFun to 16)]]
 (if:$nextFun is 12)[&#39;&#39;Letter Variant 3 - Pressed&#39;&#39;](else:)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Letter Variant 3&quot;,&quot;Buttons Postgame&quot;)[(set:$nextFun to 12)]]
 
-[[Return-&gt;Button Area]] </tw-passagedata><tw-passagedata pid="432" name="Sequels" tags="" position="2250,100" size="100,100">(font:&quot;Raleway&quot;)[Wanna revisit one of the sequels to Mayor Mystery? (either:&quot;Wait, does Mayor Mystery 3 indirectly canonize Mayor Mystery 2?&quot;,&quot;Got bored of the main game, huh?&quot;,&quot;Wanna get some new skills in Mayor Mystery 2?&quot;,&quot;Wanna find some new dialogue in Mayor Mystery 3?&quot;,&quot;Personally, I&#39;m excited for the release of Mayor Mystery 4: D.&quot;)]
+[[Return-&gt;Button Area]] </tw-passagedata><tw-passagedata pid="432" name="Sequels" tags="" position="2250,100" size="100,100">(masteraudio:&#39;stopall&#39;) &lt;!--DEBUG--&gt;
+\(font:&quot;Raleway&quot;)[Wanna revisit one of the sequels to Mayor Mystery? (either:&quot;Wait, does Mayor Mystery 3 indirectly canonize Mayor Mystery 2?&quot;,&quot;Got bored of the main game, huh?&quot;,&quot;Wanna get some new skills in Mayor Mystery 2?&quot;,&quot;Wanna find some new dialogue in Mayor Mystery 3?&quot;,&quot;Personally, I&#39;m excited for the release of Mayor Mystery 4: D.&quot;)]
 
 [[Mayor Mystery 2-&gt;Title Screen 2]]
 [[Mayor Mystery 3-&gt;TITLE SCREEN 3]] 
@@ -7415,6 +7430,16 @@ sadending: audio/Happy Ending but it&#39;s Sad Now.mp3
 evilending: audio/Evil Ending.mp3
 wr1: audio/Waiting Room 1.mp3
 
+mm2apartment: audio/MM2 Apartment.mp3
+mm2basement: audio/MM2 Basement.mp3
+mm2city: audio/MM2 City Hall.mp3
+mm2confrontation: audio/MM2 Confrontation.mp3
+mm2end: audio/MM2 End.mp3
+mm2fight: audio/MM2 Fight.mp3
+mm2intro: audio/MM2 Intro.mp3
+mm2title: audio/MM2 Title.mp3
+mm2town: audio/MM2 Town Square.mp3
+
 slam: audio/Slam.mp3
 pass: audio/Pass.mp3
 
@@ -7448,7 +7473,15 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;evilending&#39;,&#39;loop&#39;,true)\
 (track:&#39;westside&#39;,&#39;loop&#39;,true)\
 (track:&#39;wr1&#39;,&#39;loop&#39;,true)\
-(track: &#39;adventureawaits&#39;, &#39;playwhenpossible&#39;)</tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
+(track:&#39;mm2apartment&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2basement&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2city&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2confrontation&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2end&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2fight&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2intro&#39;,&#39;loop&#39;,false)\
+(track:&#39;mm2title&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2town&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
 [[Back-&gt;Title Screen 2]] 
 \(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
