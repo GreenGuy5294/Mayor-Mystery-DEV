@@ -1033,7 +1033,8 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(set:$waitingRoomMusic to (random:1,2)
+\(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
 \(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;toiletending&#39;,&#39;fadeout&#39;,1)(track:&#39;evilending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
@@ -1130,7 +1131,7 @@ Feel free to rest in my waiting room for as long as you need!
 \(if:$STATS&#39;s 13th is 0)[(set:$waitingRoomHintList to it + (a:&quot;prankcalls&quot;))]
 \(if:$anomalies&#39;s length is 0)[(set:$waitingRoomHintList to it + (a:&quot;anomalies&quot;))]
 \(if:$mayorFights&#39;s length &gt; 0 and $mayorFights&#39;s length &lt; 8)[(set:$waitingRoomHintList to it + (a:&quot;mayorfights&quot;))]
-\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(track:&quot;wr&quot;+(str:(random:1,2)),&quot;playwhenpossible&quot;)
+\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(track:&quot;wr&quot;+(str:$waitingRoomMusic),&quot;playwhenpossible&quot;)
 \(track:&#39;adventureawaits&#39;,&#39;stop&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)
 \(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
