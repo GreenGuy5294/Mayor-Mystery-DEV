@@ -1988,7 +1988,7 @@ Hey, Jed, I don&#39;t think that you should&#39;ve gotten on this train. I didn&
 Well, looks like the train has stopped. Let&#39;s be careful out here.
 
 [[Continue-&gt;Bloomhurst Lake]](stop:)]]</tw-passagedata><tw-passagedata pid="100" name="Bloomhurst Lake" tags="" position="7300,1300" size="200,200">(track:&#39;bhlake&#39;, &#39;fadeto&#39;, 0.5, 1)
-\(if:$visitsBL is 3)[(track:&#39;bhlake&#39;,&#39;volume&#39;,0.5)(track:&#39;bhlake2&#39;,&#39;volume&#39;,0.5)(track:&#39;bhlake2&#39;,&#39;playwhenpossible&#39;)]
+\(if:$visitsBL is 3)[(track:&#39;bhlake&#39;,&#39;volume&#39;,0.8)(track:&#39;bhlake2&#39;,&#39;volume&#39;,0.2)(track:&#39;bhlake2&#39;,&#39;playwhenpossible&#39;)]
 \(set:$visitsBL to it + 1)
 \Youre in Bloomhurst Lake a small town outside of Webster Groves. The town is build around a lake of the same name. The sky feels very warm and your happy to be here.
 \(if:$visitsBL is 1)[
@@ -3170,7 +3170,7 @@ Jed, did you see that? What the heck just happened?
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
 (link-reveal-goto: $curQ&#39;s 2nd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 2)]
 (link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
-(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="186" name="Add Stanley" tags="" position="7750,1350" size="100,100">(live: 0.5s)[
+(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="186" name="Add Stanley" tags="" position="7750,1350" size="100,100">(live: 0.5s)[(track:&#39;bhlake&#39;,&#39;stop&#39;)(track:&#39;bhlake2&#39;,&#39;stop&#39;)(track:&#39;bhlake&#39;,&#39;play&#39;)
 \(either:&quot;Well Jed, I hope you had fun exploring that broken area. I might as well explain what this place is:
 
 Bloomhurst Lake was going to be a DLC for this game. It would&#39;ve added a completely new area to the game, with its own subareas like Webster Groves. But as we worked on it, we realized a crucial problem: what was the point of this whole area? What would it have done to the game? Sure, there would have been \&quot;more,\&quot; but what good does \&quot;more\&quot; do when it&#39;s not adding to anything? So we threw it away.
