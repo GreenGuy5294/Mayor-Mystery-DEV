@@ -842,7 +842,8 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 \You&#39;re inside the City Hall. (if:$visitsSecretary is 0 or $wearing is &quot;icloak&quot;)[The secretary is focused on her computer.](else:)[The secretary does a small wave to you.]]
 
 (if:$wearing is &quot;icloak&quot;)[[[Walk Past Secretary-&gt;Walk Past]]](else:)[[[Talk to the Secretary-&gt;Talk to Secretary]]]
-[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="40" name="Arcade" tags="" position="3900,1700" size="100,200">You&#39;re inside the Impulse Arcade. (if:(current-date:) contains &quot;Dec 25&quot;)[Thank goodness they&#39;re still open on Christmas Day.](else:)[The smell of burnt pizza and overcrowding brings you great nostalgia.]
+[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="40" name="Arcade" tags="" position="3900,1700" size="100,200">(track:&quot;arcade&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;townsquare&quot;,&quot;playwhenpossible&quot;)]
+\You&#39;re inside the Impulse Arcade. (if:(current-date:) contains &quot;Dec 25&quot;)[Thank goodness they&#39;re still open on Christmas Day.](else:)[The smell of burnt pizza and overcrowding brings you great nostalgia.]
 \(set:$previousPassage to (passage:)&#39;s name)
 
 (if:$wearing is &quot;icloak&quot;)[(link-goto:&quot;Buy Tokens&quot;,&quot;Ghost Purchase&quot;)](else:)[[[Buy Tokens-&gt;Buy Tokens]]]
@@ -898,7 +899,8 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="44" name="Barber Shop" tags="" position="5900,1700" size="100,200">(if:$wearing is &quot;cape&quot; or $citizensHelped contains &quot;barber&quot;)[
+\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="44" name="Barber Shop" tags="" position="5900,1700" size="100,200">(unless:(track:&quot;westside&quot;,&quot;isplaying&quot;))[(track:&quot;superjed&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&quot;stopall&quot;)(track:&quot;westside&quot;,&quot;playwhenpossible&quot;)]]
+\(if:$wearing is &quot;cape&quot; or $citizensHelped contains &quot;barber&quot;)[
 \(unless:$citizensHelped contains &quot;barber&quot;)[You&#39;re inside the West Side Barber Shop. It doesn&#39;t look like there&#39;s anyone working here at the moment. Despite this, a man is sitting in one of the chairs, waiting for someone. &quot;Is there anyone here to help me?&quot;]
 \(else:)[You&#39;re inside the West Side Barber Shop. It doesn&#39;t look like there&#39;s anyone working here at the moment.]]
 \(else:)[You&#39;re inside the West Side Barber Shop. (if:$wearing is &quot;icloak&quot;)[&quot;Did someone just come in?&quot; the barber asks.](else:)[&quot;Hey Jed, what are you doing back here?&quot; the barber greets.]]
@@ -1119,7 +1121,7 @@ I hope you&#39;re having fun. Discovering new things. Checking out the world. (e
 Feel free to rest in my waiting room for as long as you need!
 \(set:$visitsWaitingRoom to 1000)]]]]]
 
-[[Continue-&gt;Waiting Room]]
+(link-reveal-goto:&quot;Continue&quot;,&quot;Waiting Room&quot;)[(masteraudio:&quot;stopall&quot;)]
 \(set:$waitingRoomHintList to (a:))
 \(if:$STATS&#39;s 1st is 0)[(set:$waitingRoomHintList to it + (a:&quot;worldendings&quot;))]
 \(if:$STATS&#39;s 2nd is 0)[(set:$waitingRoomHintList to it + (a:&quot;thrownaway&quot;))]
@@ -1660,7 +1662,8 @@ The librarian types into her computer, &quot;Sorry, Jed. That book is so old it&
 
 (if:$FUN is 13)[[[Look at Computer-&gt;Fun BBTA]]
 ]
-\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="81" name="Bookshelves" tags="" position="1100,2250" size="100,100">(set:_book1 to &quot;//[[What to do if the World is Ending-&gt;Book 1]]//&quot;)
+\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="81" name="Bookshelves" tags="" position="1100,2250" size="100,100">(unless:(track:&quot;eastside&quot;,&quot;isplaying&quot;))[(track:&quot;superjed&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&quot;stopall&quot;)(track:&quot;eastside&quot;,&quot;playwhenpossible&quot;)]]
+\(set:_book1 to &quot;//[[What to do if the World is Ending-&gt;Book 1]]//&quot;)
 \(set:_book2 to &quot;//[[Magic Recliner Couches-&gt;Book 2]]//&quot;)
 \(set:_book3 to &quot;//[[Starch &amp; Crinkle Visit the Big City-&gt;Book 3]]//&quot;)
 \(set:_book4 to &quot;//[[Vela-&gt;Book 4]]//&quot;)
@@ -2704,7 +2707,7 @@ John doesn&#39;t respond but instead points at the front door. You slowly shuffl
 
 John doesn&#39;t respond but instead points at the front door. You slowly shuffle your way out of the store.
 
-[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)\
+[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(masteraudio:&quot;stopall&quot;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)\
 =&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 By Kaffemik Studios
@@ -3470,7 +3473,7 @@ SEE ITS RESULTS TOMORROW]
 [[Return-&gt;Button Area]] </tw-passagedata><tw-passagedata pid="203" name="Eat Fridge" tags="" position="1750,2250" size="100,100">(if:$furnitureEaten&#39;s length is 0)[
 \Jed felt extremely hungry this morning. More hungry than usual. Simply getting a meal out of his fridge would not be enough to satisfy his hunger. So, Jed did what anyone in his scenario would do and eat the fridge.]
 \(else-if:$furnitureEaten&#39;s length is 1)[
-\The (print:$furnitureEaten&#39;s 1st) was not enough to satisfy Jed&#39;s hunger. Looking for something more to eat, Jed noticed the fridge. However, Jead realized that nothing inside the fridge would satisfy his hunger. So of course, he opted to eat the entire fridge.](else:)[
+\The (print:$furnitureEaten&#39;s 1st) was not enough to satisfy Jed&#39;s hunger. Looking for something more to eat, Jed noticed the fridge. However, Jed realized that nothing inside the fridge would satisfy his hunger. So of course, he opted to eat the entire fridge.](else:)[
 \Even after eating his (print:$furnitureEaten&#39;s 1st) and his (print:$furnitureEaten&#39;s 2nd), Jed&#39;s hunger was still not satisfied. Of course, the next logical step would be to go to the fridge. This was not because it has more food, but because its the biggest appliance Jed owns. 
 
 &quot;Yes...&quot; Jed thought. &quot;This will do quite nicely.&quot;]
