@@ -192,7 +192,7 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option2 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option2 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option2 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option2 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option2 is 4)[[[_fail4-&gt;Test2 Failed]]]
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
-&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(masteraudio:&#39;stopall&#39;)(track:&#39;intro&#39;,&#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(masteraudio:&#39;stopall&#39;)(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&#39;intro&#39;,&#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \(set:$maxfun to 16)
 \(if:$escapadeArrow contains &quot;ready&quot;)[(set:$escapadeArrow to it + (a:&quot;paint&quot;))]
 \(unless:$nextFun is 0)[
@@ -255,7 +255,7 @@ I&#39;ll make you a deal. One last chance to show me whether or not you want to 
 By Blue Cat and Green Guy
 \(if:visits is 1)[
 \(set: $MASTERVOLUME to 0.5)
-\(set: $ENDINGS to (a:))
+\(set: $ENDINGS to (a:)) 
 \(set: $FUN to 0)
 \(set: $MAILBOX to &quot;empty&quot;)
 \(set: $TestFinish to 0)
@@ -278,7 +278,7 @@ By Blue Cat and Green Guy
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0) 
 \(set: $sidequests to (a:))
-\(set: $PREMIUM to &quot;nope&quot;)
+\(set: $PREMIUM to &quot;nope&quot;) 
 \(set: $ATM to 0)
 \(set: $seenSteve to false)
 \(set: $anomalies to (a:))
@@ -287,6 +287,7 @@ By Blue Cat and Green Guy
 \(set: $forkliftPhoneNumber to false)
 \(set: $JOURNAL to (a:&quot;intro&quot;))
 \(set: $SFX to true)
+\(set: $loadGame to 1)
 \]
 \(set: $toilets to (a:))
 \(set: $testing to &quot;NA&quot;)
@@ -364,7 +365,7 @@ By Blue Cat and Green Guy
 \(else:)[
 \(if:$TestFinish is 3)[[[Start-&gt;More Tests?]]]
 \(else:)[[[Start-&gt;The Beginning]]]]
-\(if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J2&quot;)[
+\(if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J3&quot;)[
 [[Save &amp; Load-&gt;Save/Load]]]
 \(if:$POSTGAME is true)[
 [[Extras-&gt;Sequels]]]
@@ -374,8 +375,10 @@ By Blue Cat and Green Guy
 \(font:&quot;HKNova&quot;)[]
 \&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 \(if:$SFX and $theGame)[(after:0.5s)[(track:&#39;vineboom&#39;,&#39;play&#39;)]]
+\(if:$loadGame is 2)[(go-to:&quot;Title Screen 2&quot;)]
+\(if:$loadGame is 3)[(go-to:&quot;TITLE SCREEN 3&quot;)]
 
-&lt;!-- [[DEBUG-&gt;Sequels]] --&gt;</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+[[DEBUG-&gt;Sequels]]</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
 
@@ -959,7 +962,7 @@ Quirb, Theep, Thurm, Jacob
 \(unless:(history:) contains &quot;The Beginning&quot;)[
 \Hello? You haven&#39;t even played the game and you&#39;re ready to quit? I... well... I don&#39;t know what to say. Go ahead and close the tab I guess... Twine can&#39;t close the game for you.]
 \(else:)[
-\Hello player. So this is a bit awkward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with (if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J2&quot;)[5](else:)[4] options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
+\Hello player. So this is a bit awkward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with (if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J3&quot;)[5](else:)[4] options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
 
 (link-reveal-goto:&quot;Continue&quot;,&quot;Title Screen&quot;)[(track:&#39;adventureawaits&#39;, &#39;fadeto&#39;, 0.5, 1)]</tw-passagedata><tw-passagedata pid="49" name="Train Ride" tags="" position="4000,850" size="100,100">(if:$PREMIUM is &quot;yes&quot;)[(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(if:$SFX)[(track:&#39;trainride1&#39;,&#39;stop&#39;)(track:&#39;trainride1&#39;,&#39;play&#39;)]]
 \(else:)[(track:&#39;eastside&#39;,&#39;fadeout&#39;,3)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,3)(track:&#39;westside&#39;,&#39;fadeout&#39;,3)(if:$SFX)[(track:&#39;trainride10&#39;,&#39;stop&#39;)(track:&#39;trainride10&#39;,&#39;play&#39;)]]
@@ -1041,7 +1044,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 [[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(set:$waitingRoomMusic to (random:1,2))
 \(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
-\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;toiletending&#39;,&#39;fadeout&#39;,1)(track:&#39;cult2&#39;,&#39;fadeout&#39;,1)(track:&#39;evilending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;apartmentend&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)(track:&#39;wackysteve&#39;,&#39;fadeout&#39;,1)
+\(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;toiletending&#39;,&#39;fadeout&#39;,1)(track:&#39;cult2&#39;,&#39;fadeout&#39;,1)(track:&#39;evilending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;apartmentend&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)(track:&#39;wackysteve&#39;,&#39;fadeout&#39;,1)(track:&#39;outside&#39;,&#39;fadeout&#39;,1)(track:&#39;superend&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot; and not $gotToilet)[
@@ -2066,11 +2069,11 @@ Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Ar
 \(if:$visitsMegaToilet is 8)[
 \(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)
 \(after:0.6s)[(track:&#39;toiletinterlude&#39;,&#39;playwhenpossible&#39;)]
-\Do you think there&#39;s actually an ending to all this? Sure, it&#39;s called the Toilet //Ending//, but how do we know that it upholds that title? Is it just a trust thing we have to do? Do you have trust in the Toilet Ending, Jed?
+\Hold on for a second. Jed, I’ll be honest. I’m beginning to have doubts. Do you think there’s actually an end to all of this? Perhaps this is all for naught. I mean, sure, it’s called the Toilet //Ending//, but how are we supposed to know that it upholds its title? Is this just a trust thing we have to do, place trust in the Toilet Ending? Do you have trust in the Toilet Ending, Jed?
 
-Oh, why am I asking you? You had trust in it from the very start. It was I who was unfaithful. You&#39;ve pulled me along this amazing journey. And I truly mean journey, because our destination, while elusive and mystical, is belittled in comparison to the adventure we&#39;ve had together. The character growth. The toilet flushing. 
+Wait a minute. Why am I asking you? You had trust in the Toilet Ending from the very start of it all. And I have been unfaithful. Even so, you’ve pulled me along for this amazing journey. And when I say journey, I truly mean it, because our destination, while elusive and mystical, is belittled in comparison to this adventure searching for toilets around Webster Groves that we’ve had together. It’s had everything. Challenge. Distant travel. Character growth. Toilet flushing.
 
-There&#39;s only two more to go after this one. Godspeed, Jed!]
+There’s only two more toilets to go after this one. Godspeed, Jed!]
 \(if:$visitsMegaToilet is 9)[There is only more toilet left. One more toilet left in the game after this. Do you (cond:(history:) contains any of (a:&quot;City Hall Maintenance Room&quot;,&quot;CH Maintenance Room Cloak&quot;),&quot;remember&quot;,&quot;know&quot;) where it is? I don&#39;t want to give away the answer, but to find it you&#39;re going to have to go underground.]
 
 [[Flush the Toilet-&gt;Mega-Toilet]] </tw-passagedata><tw-passagedata pid="109" name="Mega-Toilet" tags="" position="3000,3650" size="100,100">(track:&#39;toiletinterlude&#39;,&#39;fadeout&#39;,2)
@@ -2610,7 +2613,7 @@ You then fly up to the spaceship and uppercut it so hard, it spins off up into t
 
 [[Continue-&gt;Jed Woke Up]]]
 \(else:)[
-\(track:&quot;superjed&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;sadending&quot;,&quot;playwhenpossible&quot;)]
+\(track:&quot;superjed&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;superend&quot;,&quot;playwhenpossible&quot;)]
 \(unless:$ENDINGS contains &quot;SuperJed&quot;)[(set:$ENDINGS to it + (a:&quot;SuperJed&quot;))]
 \(set:$JOURNAL to it + (a:&quot;SuperJed&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
@@ -2707,7 +2710,7 @@ John doesn&#39;t respond but instead points at the front door. You slowly shuffl
 
 John doesn&#39;t respond but instead points at the front door. You slowly shuffle your way out of the store.
 
-[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(masteraudio:&quot;stopall&quot;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)\
+[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(unless:(track:&quot;mm2title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)]]\
 =&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 By Kaffemik Studios
@@ -2754,9 +2757,11 @@ By Kaffemik Studios
 \(set: $visitsTokens to 0)
 \(set: $visitsBreakRoom to 0)
 \(set: $visitsTokenMuncher to 0)
+\(set: $loadGame to 2)
 
 
 [[Start-&gt;Begin2]]
+[[Save &amp; Load-&gt;Save/Load 2]]
 [[About-&gt;About2]]
 [[Audio-&gt;Audio2]]
 [[Exit-&gt;Exit2]]</tw-passagedata><tw-passagedata pid="149" name="Begin2" tags="" position="5700,2650" size="100,100">(font:&quot;Roboto Mono&quot;)[
@@ -3043,9 +3048,9 @@ Current funds: $$MONEY
 
 [[Continue-&gt;Confrontation 2]]</tw-passagedata><tw-passagedata pid="175" name="Save/Load" tags="" position="2100,100" size="100,100">(font:&quot;Raleway&quot;)[(if:visits is 1)[Hey, you! Look at this IMPORTANT NOTICE: Some mobile browsers will delete web cookies automatically, which is how Mayor Mystery saves your data. If you plan on being here long term, you might wanna use a desktop!](else:)[(either:&quot;You know, you should be lucky. There were people in the past who could never save their Mayor Mystery game in their lifetime.&quot;,&quot;(cond:visits is 1,&#39;Here to load your save, huh?&#39;,&#39;Here to save your game, huh?&#39;) Be sure to come back soon. Specifically next Tuesday. I&#39;m not gonna spoil anything.&quot;,&quot;Good morning, Jed! Don&#39;t worry, I totally haven&#39;t touched your save data! Wink!&quot;,&quot;Jed, this is very important. Don&#39;t alter your save data after midnight. It spoils the cookies if you do that, and then the game refuses to eat them.&quot;,&quot;Did I ever tell you the story of the man who tried to manage his save data, but then his computer exploded? Well, let&#39;s just say you might want to be careful.&quot;)]]
 
-(if:(history:) contains &quot;The Beginning&quot;)[(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J2&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
+(if:(history:) contains &quot;The Beginning&quot;)[(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J3&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
 ]
-\(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]]
+\(if: (saved-games: ) contains &quot;Slot J3&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J3&quot;)(go-to:&quot;Title Screen&quot;)]]
 ]
 \[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="176" name="Confrontation 2" tags="" position="5850,4375" size="100,100">(masteraudio:&#39;stopall&#39;)(track:&#39;mm2confrontation&#39;,&#39;playwhenpossible&#39;)
 \The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut, Jed? It looks good.&quot;&#39;,&#39;&quot;&#39;)
@@ -3395,7 +3400,7 @@ Jed just returned a blank stare at Stanley.
 You take the trash bag outside to the dumpster before the smoke detectors went off. After returning to the apartment, you feel a sudden wave of relief. What would have happened when you ate the cereal? Perhaps this was for the best.
 \(set:$INV to it - (a:&quot;cereal&quot;))
 
-[[Back-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="196" name="Explosion Ending" tags="" position="1975,3300" size="200,100">(track:&#39;apartment&#39;,&#39;fadeout&#39;,0.5s)(after:0.5s)[(track:&#39;apartmentend&#39;,&#39;playwhenpossible&#39;)]
+[[Back-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="196" name="Explosion Ending" tags="" position="1975,3300" size="200,100">(track:&#39;apartment&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(masteraudio:&quot;stopall&quot;)(track:&#39;apartmentend&#39;,&#39;playwhenpossible&#39;)]
 \(unless:$ENDINGS contains &quot;Explosion&quot;)[(set:$ENDINGS to it + (a:&quot;Explosion&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Explosion&quot;))
 \Jed, for whatever reason, decided that eating this cereal was a good idea. He took the bowl and headed over to the couch to watch some television.
@@ -4373,7 +4378,7 @@ Hmm... okay usually when you go down this alleyway there&#39;s a criminal gang t
 &quot;It&#39;s so nice to meet you, Wacky Steve!&quot; the third one says.
 
 [[&quot;Thank you, I will use this wisely.&quot;-&gt;Take Ticket]]
-[[&quot;No, I&#39;m SuperJed!&quot;-&gt;Reject Ticket]]</tw-passagedata><tw-passagedata pid="261" name="Jed Woke Up" tags="" position="4550,2650" size="100,100">(track:&quot;superjed&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;playwhenpossible&quot;)]
+[[&quot;No, I&#39;m SuperJed!&quot;-&gt;Reject Ticket]]</tw-passagedata><tw-passagedata pid="261" name="Jed Woke Up" tags="" position="4550,2650" size="100,100">(track:&quot;superjed&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,1)(track:&quot;adventureawaits&quot;,&quot;playwhenpossible&quot;)]
 \(set:$hours to 31)
 \Jed woke up. He is famous.
 
@@ -4385,7 +4390,7 @@ Tonight, Jed has an important interview with a local talk show. This interview r
 
 Jed cracked his eyes open, knowing today is his last chance to prepare for the interview. He has 30 hours left. Jed must choose his actions wisely.
 
-[[Start Preparing!-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="262" name="Apartment Kyle" tags="" position="4550,2800" size="100,100">(unless:(track:&quot;apartment&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;apartment&quot;,&quot;playwhenpossible&quot;)]
+[[Start Preparing!-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="262" name="Apartment Kyle" tags="" position="4550,2800" size="100,100">(unless:(track:&quot;apartment&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;apartment&quot;,&quot;playwhenpossible&quot;)]]
 \(set:$hours to it - 1)(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
@@ -4427,21 +4432,11 @@ Jed walked in, sat down across from the host, and shook his hand. &quot;Nice to 
 
 (if:$INV contains &quot;buster&quot;)[Jed, Buster, and Kyle](else:)[Jed and Kyle] were then prompted to take their places for the broadcast.
 
-[[Continue-&gt;Kyle Ending]]</tw-passagedata><tw-passagedata pid="267" name="Kyle Ending" tags="" position="4700,3400" size="200,100">(track:&quot;townsquare&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;sadending&quot;,&quot;playwhenpossible&quot;)]
+[[Continue-&gt;Kyle Broadcast]]</tw-passagedata><tw-passagedata pid="267" name="Kyle Ending" tags="" position="4850,3400" size="200,100">(track:&quot;townsquare&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;superend&quot;,&quot;playwhenpossible&quot;)]
 \(unless:$ENDINGS contains &quot;Kyle&quot;)[(set:$ENDINGS to it + (a:&quot;Kyle&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Kyle&quot;))
 \(set:$STATS&#39;s 1st to it + 1)
-\A moment after seating, the studio lights brightened and the cameras clicked on. &quot;Good evening, everyone,&quot; said Kyle, looking up to the camera. &quot;Welcome back to Stay Up Late With Kyle. Tonight, I have the pleasure of interviewing Jed Winchester, who you may know better as SuperJed.&quot;
-
-Kyle motioned to Jed, who smiled and waved to the camera. &quot;Hello!&quot;(if:$INV contains &quot;buster&quot;)[
-
-&quot;And his husband, Buster.&quot;
-
-Buster stared motionlessly into the camera.]
-
-&quot;Well, I&#39;m sure we&#39;ll have a lot to discuss, so we might as well dive right in. So you&#39;re a superhero. Tell me about that.&quot;
-
-It was then that a wall was blown off of the soundstage. It appears that aliens have attacked again. &quot;So you&#39;ve come back for seconds,&quot; Jed quipped.
+\It was then that a wall was blown off of the soundstage. It appears that aliens have attacked again. &quot;So you&#39;ve come back for seconds,&quot; Jed quipped.
 
 &quot;Quick, do your thing!&quot; Kyle shouted. &quot;Camera 2, get on him!&quot;
 
@@ -4780,6 +4775,7 @@ You then remember (if:$FUN is 4)[the key you got in the mail earlier today. You 
 Good, hopefully you&#39;re gonna play by the rules this time around.
 
 [[Continue-&gt;City Hall]] </tw-passagedata><tw-passagedata pid="286" name="CH Toilet Cloak" tags="" position="3450,2450" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
+\(if:$SFX)[(track:&#39;flush&#39;,&#39;play&#39;)]
 \(set:$STATS&#39;s 6th to it + 1)
 \(set: $toilets to it + (a:&quot;CityHall&quot;))
 \(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.]]
@@ -5615,12 +5611,15 @@ Oh, what is with people trying to get secrets from videos? There&#39;s no way th
 
 (either:&quot;Jed it sounds like you&#39;re walking right into a prank.&quot;,&quot;If something actually happens I&#39;ll bite my tongue. (set:$secretEndingProgress to it + (a:&#39;tongue&#39;))&quot;,&quot;Yeah, as if. Sounds like a joke to waste our time.&quot;,&quot;Jed, are you really gonna trust some random person in the arcade about this?&quot;)
 
-[[Continue-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="346" name="Somewhere" tags="" position="7350,1850" size="100,100">Well Jed, I hope you had fun explor- Wait, where are you going?
+[[Continue-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="346" name="Somewhere" tags="" position="7350,1850" size="100,100">(track:&#39;bhlake&#39;,&#39;fadeout&#39;,1)(track:&#39;bhlake2&#39;,&#39;fadeout&#39;,1)
+\Well Jed, I hope you had fun explor- Wait, where are you going?
 
 Jed, you&#39;re walking towards nothing. There&#39;s nothing back there. I&#39;m not even trying to hide anything, there&#39;s just nothing left in this part of the story. What are you trying to do?
 
 [[Back-&gt;Bloomhurst Lake]] 
-(font:&quot;Raleway&quot;)[[[Somewhere-&gt;Somewhere Cont]]]</tw-passagedata><tw-passagedata pid="347" name="Somewhere Cont" tags="" position="7500,1850" size="100,100">Jed, this is a waste of time. This place was never finished. There are only scraps of a forgotten DLC I was creating. How are you even able to wander over there? Normally you are only allowed to move to places that have meaning, but you somehow... broke that... How? That should be impossible...
+(font:&quot;Raleway&quot;)[[[Somewhere-&gt;Somewhere Cont]]]</tw-passagedata><tw-passagedata pid="347" name="Somewhere Cont" tags="" position="7500,1850" size="100,100">(track:&#39;outside&#39;,&#39;volume&#39;,0.5)
+\(track:&#39;outside&#39;,&#39;fadein&#39;,5)
+\Jed, this is a waste of time. This place was never finished. There are only scraps of a forgotten DLC I was creating. How are you even able to wander over there? Normally you are only allowed to move to places that have meaning, but you somehow... broke that... How? That should be impossible...
 
 ...
 
@@ -5632,7 +5631,8 @@ Jed? Hello? Jed?
 
 Where did you go?
 
-(font:&quot;Raleway&quot;)[[[Somewhere-&gt;Somewhere Cont Cont]]]</tw-passagedata><tw-passagedata pid="348" name="Somewhere Cont Cont" tags="" position="7350,2000" size="100,100">(font:&quot;Raleway&quot;)[
+(font:&quot;Raleway&quot;)[[[Somewhere-&gt;Somewhere Cont Cont]]]</tw-passagedata><tw-passagedata pid="348" name="Somewhere Cont Cont" tags="" position="7350,2000" size="100,100">(track:&#39;outside&#39;,&#39;fadeto&#39;,5,1)
+\(font:&quot;Raleway&quot;)[
 \Hey, Jed! You may remember me from that waiting room I always set up for you after you get an ending. You probably have some questions, so I&#39;ll begin with why I am here.
 
 This place, &quot;Mayor Mystery,&quot; is something that the narrator has been working on for a while. When getting closer to the release, the narrator chose me to be the one who creates and manages the &quot;waiting room,&quot; along with the game menus and such. It does get a little boring, so I spend my free time trying to understand how this clockwork ticks. Sometimes I like to make things more interesting for you and me by changing small things in the story, which you might&#39;ve noticed already...
@@ -5748,8 +5748,9 @@ This place is how I communicate with the world. It allows me to see what&#39;s g
 
 (font:&quot;Georgia&quot;)[[[Continue-&gt;TITLE SCREEN 3]]]]
 \]
-\]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">===&gt;&lt;===
-&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/ebgLH66.png&quot;&gt;
+\]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">(unless:(track:&quot;mm3title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]]\
+===&gt;&lt;===
+&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/ZfnWBcO.png&quot;&gt;
 By Blue Cat and Green Guy
 \(set:$rescued to (a:&quot;Mei&quot;))
 \(set:$INV to (a:))
@@ -5757,15 +5758,19 @@ By Blue Cat and Green Guy
 \(set:$LOC to &quot;Town Square&quot;)
 \(set:$needCheck to true)
 \(set:$randOf to (macro:[(output-data:(either:&quot;the remains of&quot;,&quot;what used to be&quot;,&quot;what once was&quot;,&quot;what&#39;s left of&quot;,&quot;the desolate remains of&quot;))]))
+\(set:$loadGame to 3)
 
 [[Start-&gt;Start 3]]
+[[Save &amp; Load-&gt;Save/Load 3]]
 [[About-&gt;About 3]]
+[[Audio-&gt;Audio 3]]
 [[Exit-&gt;Exit 3]]</tw-passagedata><tw-passagedata pid="360" name="About 3" tags="" position="5150,4100" size="100,100">=&gt;&lt;=
 (set:$months to (dm:&quot;Jan&quot;,&quot;January&quot;,&quot;Feb&quot;,&quot;February&quot;,&quot;Mar&quot;,&quot;March&quot;,&quot;Apr&quot;,&quot;April&quot;,&quot;May&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;June&quot;,&quot;Jul&quot;,&quot;July&quot;,&quot;Aug&quot;,&quot;August&quot;,&quot;Sep&quot;,&quot;September&quot;,&quot;Oct&quot;,&quot;October&quot;,&quot;Nov&quot;,&quot;November&quot;,&quot;Dec&quot;,&quot;December&quot;))
 \(if:$mm3date is 0)[(set:$mm3date to ((5thto7th of (current-date:)) of $months) + &quot; &quot; + (str:(monthday:)) + &quot;, &quot; + (4thlasttolast of (current-date:)))]
 \Written and Developed by Blue Cat Productions and Green Guy.
 
-Title Screen Art by Green Guy.
+Music and Title Screen Art by Green Guy.
+
 
 v1.0 realesaed on $mm3date.
 
@@ -7384,8 +7389,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 (if:$nextFun is 16)[&#39;&#39;New Appliance Interaction - Pressed&#39;&#39;](else:)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;New Appliance Interaction&quot;,&quot;Buttons Postgame&quot;)[(set:$nextFun to 16)]]
 (if:$nextFun is 12)[&#39;&#39;Letter Variant 3 - Pressed&#39;&#39;](else:)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Letter Variant 3&quot;,&quot;Buttons Postgame&quot;)[(set:$nextFun to 12)]]
 
-[[Return-&gt;Button Area]] </tw-passagedata><tw-passagedata pid="432" name="Sequels" tags="" position="2250,100" size="100,100">(masteraudio:&#39;stopall&#39;) &lt;!--DEBUG--&gt;
-\(font:&quot;Raleway&quot;)[Wanna revisit one of the sequels to Mayor Mystery? (either:&quot;Wait, does Mayor Mystery 3 indirectly canonize Mayor Mystery 2?&quot;,&quot;Got bored of the main game, huh?&quot;,&quot;Wanna get some new skills in Mayor Mystery 2?&quot;,&quot;Wanna find some new dialogue in Mayor Mystery 3?&quot;,&quot;Personally, I&#39;m excited for the release of Mayor Mystery 4: D.&quot;)]
+[[Return-&gt;Button Area]] </tw-passagedata><tw-passagedata pid="432" name="Sequels" tags="" position="2250,100" size="100,100">(font:&quot;Raleway&quot;)[Wanna revisit one of the sequels to Mayor Mystery? (either:&quot;Wait, does Mayor Mystery 3 indirectly canonize Mayor Mystery 2?&quot;,&quot;Got bored of the main game, huh?&quot;,&quot;Wanna get some new skills in Mayor Mystery 2?&quot;,&quot;Wanna find some new dialogue in Mayor Mystery 3?&quot;,&quot;Personally, I&#39;m excited for the release of Mayor Mystery 4: D.&quot;)]
 
 [[Mayor Mystery 2-&gt;Title Screen 2]]
 [[Mayor Mystery 3-&gt;TITLE SCREEN 3]] 
@@ -7520,6 +7524,9 @@ cult1: audio/Cult Bass.mp3
 cult2: audio/Cult Plainchant.mp3
 
 superjed: audio/SuperJed.mp3
+superend: audio/SuperJed Ending.mp3
+
+outside: audio/Outside the Game.mp3
 
 mm2apartment: audio/MM2 Apartment.mp3
 mm2basement: audio/MM2 Basement.mp3
@@ -7530,6 +7537,8 @@ mm2fight: audio/MM2 Fight.mp3
 mm2intro: audio/MM2 Intro.mp3
 mm2title: audio/MM2 Title.mp3
 mm2town: audio/MM2 Town Square.mp3
+
+mm3title: audio/MM3 Title.mp3
 
 slam: audio/Slam.mp3
 pass: audio/Pass.mp3
@@ -7583,11 +7592,44 @@ muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="st
 (track:&#39;apartmentend&#39;,&#39;loop&#39;,true)\
 (track:&#39;rpgfight&#39;,&#39;loop&#39;,true)\
 (track:&#39;arcade&#39;,&#39;loop&#39;,true)\
-(track:&#39;wackysteve&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
+(track:&#39;wackysteve&#39;,&#39;loop&#39;,true)\
+(track:&#39;outside&#39;,&#39;loop&#39;,true)\
+(track:&#39;superend&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm3title&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
+(cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
 [[Back-&gt;Title Screen 2]] 
 \(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
-\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)]</tw-passagedata></tw-storydata>
+\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata><tw-passagedata pid="444" name="Kyle Broadcast" tags="" position="4700,3400" size="100,100">(set:$interviewAnswers to (shuffled:&#39;&quot;I\&#39;m SuperJed!&quot;&#39;,&#39;&quot;Yes, although this is only a recent endevour.&quot;&#39;,&#39;&quot;Well, at its core, it\&#39;s about dreaming big.&quot;&#39;,&#39;&quot;Oh Kyle, you all are the real heros!&quot;&#39;))
+\A moment after seating, the studio lights brightened and the cameras clicked on. &quot;Good evening, everyone,&quot; said Kyle, looking up to the camera. &quot;Welcome back to Stay Up Late With Kyle. Tonight, I have the pleasure of interviewing Jed Winchester, who you may know better as SuperJed.&quot;
+
+Kyle motioned to Jed, who smiled and waved to the camera. &quot;Hello!&quot;(if:$INV contains &quot;buster&quot;)[
+
+&quot;And his husband, Buster.&quot;
+
+Buster stared motionlessly into the camera.]
+
+&quot;Well, I&#39;m sure we&#39;ll have a lot to discuss, so we might as well dive right in. So you&#39;re a superhero. Tell me about that.&quot;
+
+(link-goto:$interviewAnswers&#39;s 1st,&quot;Kyle Ending&quot;)
+(link-goto:$interviewAnswers&#39;s 2nd,&quot;Kyle Ending&quot;)
+(link-goto:$interviewAnswers&#39;s 3rd,&quot;Kyle Ending&quot;)
+(link-goto:$interviewAnswers&#39;s 4th,&quot;Kyle Ending&quot;)</tw-passagedata><tw-passagedata pid="445" name="Save/Load 2" tags="" position="6150,2800" size="100,100">(font:&quot;Raleway&quot;)[(unless:(history:) contains &quot;Save/Load&quot;)[Hey, you! Look at this IMPORTANT NOTICE: Some mobile browsers will delete web cookies automatically, which is how Mayor Mystery saves your data. If you plan on being here long term, you might wanna use a desktop!](else:)[(either:&quot;You know, you should be lucky. There were people in the past who could never save their Mayor Mystery game in their lifetime.&quot;,&quot;(cond:visits is 1,&#39;Here to load your save, huh?&#39;,&#39;Here to save your game, huh?&#39;) Be sure to come back soon. Specifically next Tuesday. I&#39;m not gonna spoil anything.&quot;,&quot;Good morning, Jed! Don&#39;t worry, I totally haven&#39;t touched your save data! Wink!&quot;,&quot;Jed, this is very important. Don&#39;t alter your save data after midnight. It spoils the cookies if you do that, and then the game refuses to eat them.&quot;,&quot;Did I ever tell you the story of the man who tried to manage his save data, but then his computer exploded? Well, let&#39;s just say you might want to be careful.&quot;)]]
+
+(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J3&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
+(if: (saved-games: ) contains &quot;Slot J3&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J3&quot;)(go-to:&quot;Title Screen 2&quot;)]]
+]
+\[[Back to Menu-&gt;Title Screen 2]]</tw-passagedata><tw-passagedata pid="446" name="Save/Load 3" tags="" position="5300,4100" size="100,100">(font:&quot;Raleway&quot;)[(unless:(history:) contains &quot;Save/Load&quot;)[Hey, you! Look at this IMPORTANT NOTICE: Some mobile browsers will delete web cookies automatically, which is how Mayor Mystery saves your data. If you plan on being here long term, you might wanna use a desktop!](else:)[(either:&quot;You know, you should be lucky. There were people in the past who could never save their Mayor Mystery game in their lifetime.&quot;,&quot;(cond:visits is 1,&#39;Here to load your save, huh?&#39;,&#39;Here to save your game, huh?&#39;) Be sure to come back soon. Specifically next Tuesday. I&#39;m not gonna spoil anything.&quot;,&quot;Good morning, Jed! Don&#39;t worry, I totally haven&#39;t touched your save data! Wink!&quot;,&quot;Jed, this is very important. Don&#39;t alter your save data after midnight. It spoils the cookies if you do that, and then the game refuses to eat them.&quot;,&quot;Did I ever tell you the story of the man who tried to manage his save data, but then his computer exploded? Well, let&#39;s just say you might want to be careful.&quot;)]]
+
+(link:&quot;Save Game&quot;)[(if:(save-game:&quot;Slot J3&quot;))[(font:&quot;Raleway&quot;)[Game saved!]](else:)[(font:&quot;Raleway&quot;)[Oops! Something went wrong.]]]
+(if: (saved-games: ) contains &quot;Slot J3&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J3&quot;)(go-to:&quot;Title Screen 3&quot;)]]
+]
+\[[Back to Menu-&gt;TITLE SCREEN 3]]</tw-passagedata><tw-passagedata pid="447" name="Audio 3" tags="" position="5300,4250" size="100,100">=&gt;&lt;=
+(cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
+(cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
+[[Back-&gt;TITLE SCREEN 3]] 
+\(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
+\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
