@@ -377,8 +377,52 @@ By Blue Cat and Green Guy
 \(if:$SFX and $theGame)[(after:0.5s)[(track:&#39;vineboom&#39;,&#39;play&#39;)]]
 \(if:$loadGame is 2)[(go-to:&quot;Title Screen 2&quot;)]
 \(if:$loadGame is 3)[(go-to:&quot;TITLE SCREEN 3&quot;)]
-
-&lt;!-- [[DEBUG-&gt;Sequels]] --&gt;</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+\
+\&lt;!-- [[DEBUG-&gt;Sequels]] --&gt;
+\
+\(track:&#39;test1&#39;,&#39;loop&#39;,true)\
+(track:&#39;test2&#39;,&#39;loop&#39;,true)\
+(track:&#39;test3&#39;,&#39;loop&#39;,false)\
+(track:&#39;adventureawaits&#39;,&#39;loop&#39;,true)\
+(track:&#39;apartment&#39;,&#39;loop&#39;,true)\
+(track:&#39;apartmentted&#39;,&#39;loop&#39;,true)\
+(track:&#39;apartmentstanley&#39;,&#39;loop&#39;,true)\
+(track:&#39;buster&#39;,&#39;loop&#39;,true)\
+(track:&#39;basement&#39;,&#39;loop&#39;,true)\
+(track:&#39;cityhall&#39;,&#39;loop&#39;,true)\
+(track:&#39;confrontation&#39;,&#39;loop&#39;,true)\
+(track:&#39;alleyway&#39;,&#39;loop&#39;,true)\
+(track:&#39;bhlake&#39;,&#39;loop&#39;,true)\
+(track:&#39;bhlake2&#39;,&#39;loop&#39;,true)\
+(track:&#39;eastside&#39;,&#39;loop&#39;,true)\
+(track:&#39;fight&#39;,&#39;loop&#39;,true)\
+(track:&#39;happyending&#39;,&#39;loop&#39;,true)\
+(track:&#39;sadending&#39;,&#39;loop&#39;,true)\
+(track:&#39;evilending&#39;,&#39;loop&#39;,true)\
+(track:&#39;toiletinterlude&#39;,&#39;loop&#39;,true)\
+(track:&#39;toiletending&#39;,&#39;loop&#39;,true)\
+(track:&#39;westside&#39;,&#39;loop&#39;,true)\
+(track:&#39;wr1&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2apartment&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2basement&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2city&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2confrontation&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2end&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2fight&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2intro&#39;,&#39;loop&#39;,false)\
+(track:&#39;mm2title&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm2town&#39;,&#39;loop&#39;,true)\
+(track:&#39;cult1&#39;,&#39;loop&#39;,true)\
+(track:&#39;cult2&#39;,&#39;loop&#39;,true)\
+(track:&#39;apartmentend&#39;,&#39;loop&#39;,true)\
+(track:&#39;rpgfight&#39;,&#39;loop&#39;,true)\
+(track:&#39;arcade&#39;,&#39;loop&#39;,true)\
+(track:&#39;wackysteve&#39;,&#39;loop&#39;,true)\
+(track:&#39;outside&#39;,&#39;loop&#39;,true)\
+(track:&#39;superend&#39;,&#39;loop&#39;,true)\
+(track:&#39;upstairs&#39;,&#39;loop&#39;,true)\
+(track:&#39;upstairs2&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm3title&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
 
@@ -1140,7 +1184,7 @@ Feel free to rest in my waiting room for as long as you need!
 \(if:$STATS&#39;s 13th is 0)[(set:$waitingRoomHintList to it + (a:&quot;prankcalls&quot;))]
 \(if:$anomalies&#39;s length is 0)[(set:$waitingRoomHintList to it + (a:&quot;anomalies&quot;))]
 \(if:$mayorFights&#39;s length &gt; 0 and $mayorFights&#39;s length &lt; 8)[(set:$waitingRoomHintList to it + (a:&quot;mayorfights&quot;))]
-\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(track:&quot;wr&quot;+(str:$waitingRoomMusic),&quot;playwhenpossible&quot;)
+\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(if:(track:&#39;upstairs2&#39;,&#39;isplaying&#39;) or (track:&#39;upstairs&#39;,&#39;isplaying&#39;))[(track:&#39;upstairs&#39;,&#39;fadeout&#39;,0.5)(track:&#39;upstairs2&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&quot;wr&quot;+(str:$waitingRoomMusic),&quot;playwhenpossible&quot;)]](else:)[(track:&quot;wr&quot;+(str:$waitingRoomMusic),&quot;playwhenpossible&quot;)]
 \(track:&#39;adventureawaits&#39;,&#39;stop&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)
 \(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
@@ -1162,7 +1206,7 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 \(else:)[
 \(link-reveal-goto:&quot;Restart&quot;,&quot;Title Screen&quot;)[]
 \]
-\(if:$anomalies&#39;s length &gt; 0 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
+\(unless:$anomalies&#39;s length &gt; 0 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
 [[Continue-&gt;Stats Complete]]]</tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="2200,1950" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
 \(if:$MAILBOX is &quot;deed&quot;)[You reach into your mailbox and find a letter signed by Josefine. You open it up, and inside is the deed to the empty store in Town Square.
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
@@ -5462,7 +5506,8 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 
 [Test]&lt;gg|[Test]&lt;bc|
 
-|gg&gt;[Ok, looking for a hint, a- wait. You&#39;ve gotten this far and you haven&#39;t even beaten the game yet? Solved the titular Mayor Mystery? (text-style:&quot;flat&quot;)[I guess maybe we did add too much fluff...]]</tw-passagedata><tw-passagedata pid="338" name="Worthy Test" tags="" position="4125,4200" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+|gg&gt;[Ok, looking for a hint, a- wait. You&#39;ve gotten this far and you haven&#39;t even beaten the game yet? Solved the titular Mayor Mystery? (text-style:&quot;flat&quot;)[I guess maybe we did add too much fluff...]]</tw-passagedata><tw-passagedata pid="338" name="Worthy Test" tags="" position="4125,4200" size="100,100">(track:&quot;wr&quot;+(str:$waitingRoomMusic),&quot;fadeout&quot;,0.5)(track:&#39;upstairs2&#39;,&#39;volume&#39;,1)(track:&#39;upstairs&#39;,&#39;volume&#39;,0)(after:0.5s)[(track:&#39;upstairs&#39;,&#39;playwhenpossible&#39;)(track:&#39;upstairs2&#39;,&#39;playwhenpossible&#39;)]
+\(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \(if:visits is 1)[
 \(font:&quot;Raleway&quot;)[You hear voices begin to speak at you, but you can&#39;t see where they&#39;re coming from...]
@@ -5513,7 +5558,7 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 \(else:)[
 \|gg&gt;[Welcome back, Jed... have you finished?]
 
-(if:$ENDINGS&#39;s length is 25)[
+(unless:$ENDINGS&#39;s length is 25)[
 \|bc&gt;[the answer is..... yes !! you may now enter,,,]
 
 |gg&gt;[oh sick come on in!]
@@ -5549,7 +5594,8 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 \(if:$endingsHint is &quot;Secret&quot;)[How about you give the v1.1 trailer another watch?]
 \]
 
-[[Return-&gt;Waiting Room]]]]</tw-passagedata><tw-passagedata pid="339" name="GG and BC" tags="" position="3975,4350" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+[[Return-&gt;Waiting Room]]]]</tw-passagedata><tw-passagedata pid="339" name="GG and BC" tags="" position="3975,4350" size="100,100">(track:&#39;upstairs2&#39;,&#39;fadeout&#39;,0.5)(track:&#39;upstairs&#39;,&#39;fadeto&#39;,0.5,1)
+\(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \|gg&gt;[welcome to our humble abode tm]
 
@@ -5739,7 +5785,8 @@ This place is how I communicate with the world. It allows me to see what&#39;s g
 |bc&gt;[Huzzah! Brilliant!]
 
 [[Continue-&gt;Loading Screen]]</tw-passagedata><tw-passagedata pid="358" name="Loading Screen" tags="" position="4275,4050" size="100,100">=&gt;&lt;=
-(font:&quot;Trebuchet MS&quot;)[
+(track:&#39;upstairs&#39;,&#39;fadeout&#39;,0.5)
+\(font:&quot;Trebuchet MS&quot;)[
 \(set:$loadingProgress to 0)
 \Please wait while Mayor Mystery 3 is being made.
 
@@ -5843,7 +5890,8 @@ Looks like you&#39;ve got a job to do...
 
 The other person hangs up on you.
 
-[[Continue-&gt;Train Station Phone]]</tw-passagedata><tw-passagedata pid="367" name="GGBC PostGame" tags="" position="3825,4200" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+[[Continue-&gt;Train Station Phone]]</tw-passagedata><tw-passagedata pid="367" name="GGBC PostGame" tags="" position="3825,4200" size="100,100">(track:&quot;wr&quot;+(str:$waitingRoomMusic),&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;upstairs&quot;,&#39;playwhenpossible&#39;)]
+\(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \(if:$funFactPos is 0 or 16)[(set:$funfacts to (shuffled:...(range:1,16)))(set:$funFactPos to 1)](else:)[(set:$funFactPos to it + 1)]
 \(set:$curFact to ($funFactPos) of $funfacts)
@@ -5900,7 +5948,8 @@ They began trying to convice people to move out of Webster Groves before it was 
 
 Of course, they quickly got labelled as conspiracy theorists and lost any reputation they once had. Cheri lost her job. Jed lost his title of eerdowell. From then on it was Jed and Cheri versus the world. The knowledge that Webster Groves as they knew it and there was nothing they could do to convice the others continued to haunt them...
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="372" name="Input Joke 3" tags="" position="4950,4400" size="100,100">This is a story that you interact with by entering simple English commands! Input your command and press &quot;Submit!&quot;
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="372" name="Input Joke 3" tags="" position="4950,4400" size="100,100">(track:&#39;mm3title&#39;,&#39;fadeout&#39;,0.5)
+\This is a story that you interact with by entering simple English commands! Input your command and press &quot;Submit!&quot;
 
 |input1&gt;[(input: bind _input, &quot;X=&quot;)
 (link:&quot;Submit&quot;)[(replace:?input1)[(if:_input is &quot;&quot;)[Please input a command and try again.](else:)[_input
@@ -5913,7 +5962,8 @@ I&#39;m sorry, I don&#39;t understand the command &quot;_input.&quot; Please try
 I&#39;m sorry, I don&#39;t understand the command &quot;_input.&quot; Please try again.]
 
 (input: bind _input, &quot;X=&quot;)
-[[Submit-&gt;Town Square 3]]]]]]]]</tw-passagedata><tw-passagedata pid="373" name="Town Square 3" tags="" position="5000,4800" size="200,200">(set:1 of $visits3 to it + 1)(set:$LOC to &quot;Town Square&quot;)
+[[Submit-&gt;Town Square 3]]]]]]]]</tw-passagedata><tw-passagedata pid="373" name="Town Square 3" tags="" position="5000,4800" size="200,200">(unless:(track:&#39;mm3title&#39;,&#39;isplaying&#39;))[(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]
+\(set:1 of $visits3 to it + 1)(set:$LOC to &quot;Town Square&quot;)
 \(if:1 of $visits3 is 1)[(font:&quot;Trebuchet MS&quot;)[ok this isnt working. welp. if it aint broke dont fix it]
 
 ]
@@ -6479,7 +6529,8 @@ It was the next morning after everyone left that Webster Groves blew up, complet
 They had no idea where they would go, but one thing was certain: they could never come back.
 
 (if:$POSTGAME is true)[[[The End-&gt;Title Screen]]](else:)[[[The End-&gt;GG and BC 3]]]
-\(set: $loadGame to 1)</tw-passagedata><tw-passagedata pid="418" name="GG and BC 3" tags="" position="4950,5650" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+\(set: $loadGame to 1)</tw-passagedata><tw-passagedata pid="418" name="GG and BC 3" tags="" position="4950,5650" size="100,100">(track:&#39;mm3title&#39;,&#39;fadeout&#39;,1)
+\(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \(set:$POSTGAME to true)
 \|gg&gt;[yay you beat it]
@@ -7535,6 +7586,9 @@ superend: audio/SuperJed Ending.mp3
 
 outside: audio/Outside the Game.mp3
 
+upstairs: audio/Upstairs.mp3
+upstairs2: audio/Outside Upstairs.mp3
+
 mm2apartment: audio/MM2 Apartment.mp3
 mm2basement: audio/MM2 Basement.mp3
 mm2city: audio/MM2 City Hall.mp3
@@ -7564,47 +7618,7 @@ buy: audio/Purchase.mp3</tw-passagedata><tw-passagedata pid="440" name="Audio Se
 [[Back-&gt;Title Screen]] 
 \(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
 \(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata><tw-passagedata pid="441" name="hal.config" tags="" position="400,100" size="100,100">showControls:false
-muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="startup" position="200,300" size="100,100">(track:&#39;test1&#39;,&#39;loop&#39;,true)\
-(track:&#39;test2&#39;,&#39;loop&#39;,true)\
-(track:&#39;test3&#39;,&#39;loop&#39;,false)\
-(track:&#39;adventureawaits&#39;,&#39;loop&#39;,true)\
-(track:&#39;apartment&#39;,&#39;loop&#39;,true)\
-(track:&#39;apartmentted&#39;,&#39;loop&#39;,true)\
-(track:&#39;apartmentstanley&#39;,&#39;loop&#39;,true)\
-(track:&#39;buster&#39;,&#39;loop&#39;,true)\
-(track:&#39;basement&#39;,&#39;loop&#39;,true)\
-(track:&#39;cityhall&#39;,&#39;loop&#39;,true)\
-(track:&#39;confrontation&#39;,&#39;loop&#39;,true)\
-(track:&#39;alleyway&#39;,&#39;loop&#39;,true)\
-(track:&#39;bhlake&#39;,&#39;loop&#39;,true)\
-(track:&#39;bhlake2&#39;,&#39;loop&#39;,true)\
-(track:&#39;eastside&#39;,&#39;loop&#39;,true)\
-(track:&#39;fight&#39;,&#39;loop&#39;,true)\
-(track:&#39;happyending&#39;,&#39;loop&#39;,true)\
-(track:&#39;sadending&#39;,&#39;loop&#39;,true)\
-(track:&#39;evilending&#39;,&#39;loop&#39;,true)\
-(track:&#39;toiletinterlude&#39;,&#39;loop&#39;,true)\
-(track:&#39;toiletending&#39;,&#39;loop&#39;,true)\
-(track:&#39;westside&#39;,&#39;loop&#39;,true)\
-(track:&#39;wr1&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2apartment&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2basement&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2city&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2confrontation&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2end&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2fight&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2intro&#39;,&#39;loop&#39;,false)\
-(track:&#39;mm2title&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm2town&#39;,&#39;loop&#39;,true)\
-(track:&#39;cult1&#39;,&#39;loop&#39;,true)\
-(track:&#39;cult2&#39;,&#39;loop&#39;,true)\
-(track:&#39;apartmentend&#39;,&#39;loop&#39;,true)\
-(track:&#39;rpgfight&#39;,&#39;loop&#39;,true)\
-(track:&#39;arcade&#39;,&#39;loop&#39;,true)\
-(track:&#39;wackysteve&#39;,&#39;loop&#39;,true)\
-(track:&#39;outside&#39;,&#39;loop&#39;,true)\
-(track:&#39;superend&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm3title&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
+muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="startup" position="200,300" size="100,100"></tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
 (cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
 [[Back-&gt;Title Screen 2]] 
