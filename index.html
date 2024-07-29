@@ -4169,7 +4169,8 @@ She scans all of your winning tickets. &quot;Looks like your total came to $$win
 
 &quot;Jed, you done messed up,&quot; the cashier says, &quot;now //you&#39;re// Webster Groves&#39; biggest gambler.&quot; She pulls out her phone and takes a picture of you.
 
-[[Continue-&gt;Gambling Ending]]</tw-passagedata><tw-passagedata pid="244" name="Gambling Ending" tags="" position="6500,2850" size="200,100">(unless:$ENDINGS contains &quot;Gambling&quot;)[(set:$ENDINGS to it + (a:&quot;Gambling&quot;))]
+[[Continue-&gt;Gambling Ending]]</tw-passagedata><tw-passagedata pid="244" name="Gambling Ending" tags="" position="6500,2850" size="200,100">(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;sadending&#39;,&#39;playwhenpossible&#39;)]
+\(unless:$ENDINGS contains &quot;Gambling&quot;)[(set:$ENDINGS to it + (a:&quot;Gambling&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Gambling&quot;))
 \A group of guards runs into the employee backroom. &quot;You&#39;re coming with us, sir!&quot; they shout. They pull up your arms and drag you out of the gas station into a helicopter.
 
@@ -4620,7 +4621,7 @@ You then hang up the phone.]
 
 &quot;I&#39;m pretty sure there is no real restaurant that sells (print:$rand of (a:&quot;&#39;turkey pizzas.&#39;&quot;,&quot;a &#39;Toilet Supreme.&#39;&quot;,&quot;giant tubs of lard.&quot;,&quot;an &#39;everything hotdog.&#39;&quot;))&quot;
 
-&quot;You better believe we&#39;re real! Jedidediah&#39;s Trash Bin! Come on down, kids eat free on Tuesdays!&quot;
+&quot;You better believe we&#39;re real! Jedidiah&#39;s Trash Bin! Come on down, kids eat free on Tuesdays!&quot;
 
 Ted then hangs up on you.]
 \(else-if:$prankTopic is &quot;fridge&quot;)[&quot;Yeah, nice try. That&#39;s one of the oldest tricks in the book.&quot;
@@ -4958,7 +4959,7 @@ Jed picked up Buster and began to carry him around.
 [[Eat a Picnic-&gt;Bald Picnic]]
 [[Go to the Arcade-&gt;Bald Arcade]]
 [[Go Shopping for Hats-&gt;Hats Bald]]</tw-passagedata><tw-passagedata pid="299" name="Bald Picnic" tags="" position="1100,3300" size="100,100">(track:&#39;cult2&#39;,&#39;fadeout&#39;,0.5)(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;arcade&#39;,&#39;fadeout&#39;,0.5)
-\(after:0.5s)[(track:&#39;townsquare&#39;,&#39;volume&#39;,1)(track:&#39;townsquare&#39;,&#39;playwhenpossible&#39;)]
+\(after:0.51s)[(track:&#39;townsquare&#39;,&#39;volume&#39;,1)(track:&#39;townsquare&#39;,&#39;playwhenpossible&#39;)]
 \(set:$cultActivities to it + (a:&quot;picnic&quot;))
 \&quot;Let&#39;s go have a picnic,&quot; you say.
 
@@ -4976,7 +4977,7 @@ Jed mostly spent the time asking about self-care tips to help him with his new b
 \(unless:$cultActivities contains &quot;arcade&quot;)[[[Go to the Arcade-&gt;Bald Arcade]]
 ]
 \(unless:$cultActivities contains &quot;hats&quot;)[[[Go Shopping for Hats-&gt;Hats Bald]]]]</tw-passagedata><tw-passagedata pid="300" name="Bald Arcade" tags="" position="1250,3300" size="100,100">(track:&#39;cult2&#39;,&#39;fadeout&#39;,0.5)(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;arcade&#39;,&#39;fadeout&#39;,0.5)
-\(after:0.5s)[(track:&#39;arcade&#39;,&#39;playwhenpossible&#39;)]
+\(after:0.51s)[(track:&#39;arcade&#39;,&#39;playwhenpossible&#39;)]
 \(set:$cultActivities to it + (a:&quot;arcade&quot;))
 \&quot;Let&#39;s go to the arcade,&quot; you say.
 
@@ -4994,7 +4995,7 @@ At the end of the day, you all get your tickets together. However, instead of ge
 \(unless:$cultActivities contains &quot;arcade&quot;)[[[Go to the Arcade-&gt;Bald Arcade]]
 ]
 \(unless:$cultActivities contains &quot;hats&quot;)[[[Go Shopping for Hats-&gt;Hats Bald]]]]</tw-passagedata><tw-passagedata pid="301" name="Hats Bald" tags="" position="1250,3150" size="100,100">(track:&#39;cult2&#39;,&#39;fadeout&#39;,0.5)(track:&#39;westside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;arcade&#39;,&#39;fadeout&#39;,0.5)
-\(after:0.5s)[(track:&#39;westside&#39;,&#39;volume&#39;,1)(track:&#39;westside&#39;,&#39;playwhenpossible&#39;)]
+\(after:0.51s)[(track:&#39;westside&#39;,&#39;volume&#39;,1)(track:&#39;westside&#39;,&#39;playwhenpossible&#39;)]
 \(set:$cultActivities to it + (a:&quot;hats&quot;))
 \&quot;Let&#39;s go shopping for hats,&quot; you say.
 
