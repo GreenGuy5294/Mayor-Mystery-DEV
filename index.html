@@ -955,7 +955,7 @@ v1.1 released on June 1, 2023. (&lt;a target=&quot;_blank&quot; href=&quot;https
 v1.2 released on DATE IN FUTURE
 
 Playtesters:
-Quirb, Theep, Thurm, Jacob
+Ezra, Hailey, Harieiv, Jacob, Lenny, Quirb, Theep, Thurm
 
 [[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="48" name="Exit" tags="" position="2400,250" size="100,100">(track:&#39;adventureawaits&#39;, &#39;fadeto&#39;, 0.5, 0.25)
 \(font:&quot;Raleway&quot;)[
@@ -5346,7 +5346,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(set:$bombLayout to (random:1,7))
 \(set:$wiresCut to (a:))
 \(set:$loseTransition to (t8n:&quot;rumble&quot;) + (t8n-time:0.5s))
-\|minigame&gt;[Okay, Jed. We all have ten seconds until this bomb goes off.
+\|minigame&gt;[Okay, Jed. We all have fifteen seconds until this bomb goes off.
 
 (if:$bombLayout is 1)[The instructions say to cut the (print:$correctWires&#39;s 1st) wire, the (print:$correctWires&#39;s 2nd) wire, the (print:$correctWires&#39;s 3rd) wire, and the (print:$correctWires&#39;s 4th) wire, in that order.]
 \(if:$bombLayout is 2)[The instructions say to cut the (print:$correctWires&#39;s 2nd) wire, the (print:$correctWires&#39;s 3rd) wire, and the (print:$correctWires&#39;s 4th) wire, all after cutting the (print:$correctWires&#39;s 1st) wire.]
@@ -5356,7 +5356,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(if:$bombLayout is 6)[The instructions say to cut the (print:$failWires&#39;s 1st) wire, then the (print:$failWires&#39;s 2nd) wi- oh, sorry, that&#39;s the wrong part. We need the (print:$failWires&#39;s 3rd) wire, then t- no, I&#39;m sorry, that&#39;s wrong again. We need to cut the (print:$correctWires&#39;s 1st), (print:$correctWires&#39;s 2nd), (print:$correctWires&#39;s 3rd), and (print:$correctWires&#39;s 4th) wires, in that order.]
 \(if:$bombLayout is 7)[The instructions say to save the (print:$correctWires&#39;s 4th) wire for last, and to cut the (print:$correctWires&#39;s 1st) wire, the (print:$correctWires&#39;s 2nd) wire, and then the (print:$correctWires&#39;s 3rd) wire.]
 
-(live:0s)[TIME LEFT: (digit-format:&quot;#0.00&quot;,(10s - time)/1000)s]
+(live:0s)[TIME LEFT: (digit-format:&quot;#0.00&quot;,(15s - time)/1000)s]
 
 (link-reveal:&quot;Black Wire&quot;)[(set:$wiresCut to it + (a:&quot;black&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;black&quot;)[(set:$bombInstaFail to true)]]
 (link-reveal:&quot;Blue Wire&quot;)[(set:$wiresCut to it + (a:&quot;blue&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;blue&quot;)[(set:$bombInstaFail to true)]]
@@ -5368,7 +5368,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 (link-reveal:&quot;Violet Wire&quot;)[(set:$wiresCut to it + (a:&quot;violet&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;violet&quot;)[(set:$bombInstaFail to true)]]
 (link-reveal:&quot;White Wire&quot;)[(set:$wiresCut to it + (a:&quot;white&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;white&quot;)[(set:$bombInstaFail to true)]]
 (link-reveal:&quot;Yellow Wire&quot;)[(set:$wiresCut to it + (a:&quot;yellow&quot;))(if:($wiresCut&#39;s length) of $correctWires is not &quot;yellow&quot;)[(set:$bombInstaFail to true)]]]
-\(live:0s)[(if:(time&gt;10s and not $bombDiffused) or $bombInstaFail)[(stop:)(replace:?minigame)[$loseTransition[\
+\(live:0s)[(if:(time&gt;15s and not $bombDiffused) or $bombInstaFail)[(stop:)(replace:?minigame)[$loseTransition[\
 ###BOOM!
 You failed to diffuse the bomb and only got 5 tickets...(set:$tickets to it + 5)(set:$STATS&#39;s 5th to it + 5)
 
