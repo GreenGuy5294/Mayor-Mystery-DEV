@@ -1156,7 +1156,7 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Enabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to true)]]
 
-(if:($ENDINGS&#39;s length &gt; 2 and (random:1,10) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10) or ($nextFun is -1))[
+(if:($ENDINGS&#39;s length &gt; 5 and (random:1,7) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10) or ($nextFun is -1))[
 \[[Restart-&gt;Title Screen 2]]
 \]
 \(else:)[
@@ -1832,7 +1832,7 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;I already talked to the person who was holding onto it for me,&quot; Josefine responds, &quot;so now we&#39;re just waiting for snail mail! Should arrive in your mailbox in a day or two.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="93" name="Train Station" tags="" position="4000,600" size="200,200">(track:&#39;eastside&#39;,&#39;fadeto&#39;,0.5,0.25)(track:&#39;townsquare&#39;,&#39;fadeto&#39;,0.5,0.25)(track:&#39;westside&#39;,&#39;fadeto&#39;,0.5,0.25)
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="93" name="Train Station" tags="" position="4000,600" size="200,200">(track:&#39;eastside&#39;,&#39;fadeto&#39;,0.5,0.33)(track:&#39;townsquare&#39;,&#39;fadeto&#39;,0.5,0.33)(track:&#39;westside&#39;,&#39;fadeto&#39;,0.5,0.33)
 \(set:$visitsTrainStation to it + 1)
 \(if:$wearing is &quot;icloak&quot;)[Jed temporarily took off his invisibility cloak while inside the train station.
 
@@ -3125,7 +3125,7 @@ City Hall then explodes.
 
 Please provide feedback of the sequel using &lt;a href=&quot;https://forms.gle/KEhGQv4p3jrLycRJ9&quot; target=&quot;_blank&quot;&gt;this Google form&lt;/a&gt;. We appreciate your feedback on (color:#ff0000)[Mayor Mystery 2]. Your comments are meaningful to us, and integral to the development of this sequel.]
 
-(if:$POSTGAME is true)[[[Continue-&gt;Title Screen]]](else:)[[[Continue-&gt;Title Screen]]]</tw-passagedata><tw-passagedata pid="181" name="Stats Page" tags="" position="4125,4050" size="100,100">(font:&quot;Raleway&quot;)[&lt;u&gt;The Paper of Amazing Statistics&lt;/u&gt;
+(if:$POSTGAME is true)[[[Continue-&gt;Title Screen]]](else:)[[[Continue-&gt;Waiting Room Entrance]]]</tw-passagedata><tw-passagedata pid="181" name="Stats Page" tags="" position="4125,4050" size="100,100">(font:&quot;Raleway&quot;)[&lt;u&gt;The Paper of Amazing Statistics&lt;/u&gt;
 
 Times Played: (print:$STATS&#39;s 9th)
 (cond:$anomalies&#39;s length is 0,&quot;?????:&quot;,&quot;Anomalies Witnessed:&quot;) (print:$anomalies&#39;s length)
