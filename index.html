@@ -5642,7 +5642,8 @@ C2 - Bonkernanas
 [[Continue-&gt;Bosco Break Room]]]
 \(else:)[&quot;Do not recognize $vendingSelection. Try again.&quot;
 
-[[Continue-&gt;Vending Selection]]]</tw-passagedata><tw-passagedata pid="343" name="Vending Machine Secret" tags="" position="850,2850" size="100,100">After inputting that code, the vending machine rumbles and opened up, revealing a secret passageway. (if:$secretEndingProgress contains &quot;tongue&quot;)[Alright, I&#39;m a man of word. I just bit my tongue. It hurts.]
+[[Continue-&gt;Vending Selection]]]</tw-passagedata><tw-passagedata pid="343" name="Vending Machine Secret" tags="" position="850,2850" size="100,100">(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)
+\After inputting that code, the vending machine rumbles and opened up, revealing a secret passageway. (if:$secretEndingProgress contains &quot;tongue&quot;)[Alright, I&#39;m a man of word. I just bit my tongue. It hurts.]
 
 &quot;What the heck!?&quot; one of the employees shouts out. &quot;How did you do that?&quot;
 
@@ -5940,7 +5941,8 @@ The figure looks towards both of you and completely stops moving. Suddenly it st
 
 &quot;WHAT IS THAT!? I think that&#39;s our cue to leave!&quot; Jed grabs Cheri and pulls her back into the time machine, enters the present date, and suddenly they are transported back to the tunnel.
 
-[[Continue-&gt;Secret Ending]]</tw-passagedata><tw-passagedata pid="371" name="Secret Ending" tags="" position="850,3150" size="200,100">(unless:$ENDINGS contains &quot;Secret&quot;)[(set:$ENDINGS to it + (a:&quot;Secret&quot;))]
+[[Continue-&gt;Secret Ending]]</tw-passagedata><tw-passagedata pid="371" name="Secret Ending" tags="" position="850,3150" size="200,100">(after:0.5s)[(track:&#39;sadending&#39;,&#39;playwhenpossible&#39;)]
+\(unless:$ENDINGS contains &quot;Secret&quot;)[(set:$ENDINGS to it + (a:&quot;Secret&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Secret&quot;))
 \Jed and Cheri exited the time machine, trying to piece together what they had just seen. They believed that in the future, Webster Groves would be struck by a meteor that would cause some kind of apocolypse. 
 
