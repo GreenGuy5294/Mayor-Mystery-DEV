@@ -3120,6 +3120,7 @@ Del and the secretary are in the middle of fighting some of the security guards 
 City Hall then explodes. 
 
 [[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="180" name="Sequel End" tags="" position="6000,4375" size="200,100">(track:&#39;mm2end&#39;,&#39;fadeto&#39;,0.5,0.5)
+\(set: $loadGame to 1)
 \(font:&quot;Roboto Mono&quot;)[
 \This is the end of the current sequel content. More will come with future updates.
 
@@ -6477,7 +6478,8 @@ It was the next morning after everyone left that Webster Groves blew up, complet
 
 They had no idea where they would go, but one thing was certain: they could never come back.
 
-(if:$POSTGAME is true)[[[The End-&gt;Title Screen]]](else:)[[[The End-&gt;GG and BC 3]]]</tw-passagedata><tw-passagedata pid="418" name="GG and BC 3" tags="" position="4950,5650" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+(if:$POSTGAME is true)[[[The End-&gt;Title Screen]]](else:)[[[The End-&gt;GG and BC 3]]]
+\(set: $loadGame to 1)</tw-passagedata><tw-passagedata pid="418" name="GG and BC 3" tags="" position="4950,5650" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \(set:$POSTGAME to true)
 \|gg&gt;[yay you beat it]
