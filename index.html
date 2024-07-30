@@ -371,7 +371,7 @@ By Blue Cat and Green Guy
 [[Extras-&gt;Sequels]]]
 [[About-&gt;About]]
 [[Audio-&gt;Audio Settings]]
-[[Exit-&gt;Exit]]
+(if:$POSTGAME is true)[(link-reveal-goto:&quot;Save &amp; Exit&quot;,&quot;Real Exit&quot;)[(save-game:&quot;Slot J3&quot;)]](else:)[[[Exit-&gt;Exit]]]
 \(font:&quot;HKNova&quot;)[]
 \&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 \(if:$SFX and $theGame)[(after:0.5s)[(track:&#39;vineboom&#39;,&#39;play&#39;)]]
@@ -5539,7 +5539,7 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 \(if:$endingsHint is &quot;Supermarket&quot;)[(if:$CLOSET contains &quot;vest&quot;)[You should try wearing that purple vest Ted gave you...](else:)[There&#39;s something you can do with the top prizes in the arcade...]]
 \(if:$endingsHint is &quot;Gang&quot;)[There&#39;s technically a way to avoid losing money in the alleyway...]
 \(if:$endingsHint is &quot;TestFailure&quot;)[There&#39;s an ending you can get before the game even starts...]
-\(if:$endingsHint is &quot;SuperJed&quot;)[You&#39;ll need to take the form of an old childhood superhero...]
+\(if:$endingsHint is &quot;SuperJed&quot;)[You&#39;ll need to take the form of an old childhood superhero... (if:$ENDINGS contains &quot;Kyle&quot;)[No cheating with superpowers this time!]]
 \(if:$endingsHint is &quot;Explosion&quot;)[Haven&#39;t you noticed that Bosco&#39;s sells something that&#39;s different from the rest?]
 \(if:$endingsHint is &quot;Toilet&quot;)[Video game characters don&#39;t have to go to the bathroom, but what if you tried?]
 \(if:$endingsHint is &quot;Bald&quot;)[There&#39;s a clique in Webster Groves of bald people that you can get into...]
@@ -5579,7 +5579,7 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 \(if:$endingsHint is &quot;Supermarket&quot;)[(if:$CLOSET contains &quot;vest&quot;)[You should try wearing that purple vest Ted gave you...](else:)[There&#39;s something you can do with the top prizes in the arcade...]]
 \(if:$endingsHint is &quot;Gang&quot;)[There&#39;s technically a way to avoid losing money in the alleyway...]
 \(if:$endingsHint is &quot;TestFailure&quot;)[There&#39;s an ending you can get before the game even starts...]
-\(if:$endingsHint is &quot;SuperJed&quot;)[You&#39;ll need to take the form of an old childhood superhero...]
+\(if:$endingsHint is &quot;SuperJed&quot;)[You&#39;ll need to take the form of an old childhood superhero... (if:$ENDINGS contains &quot;Kyle&quot;)[No cheating with superpowers this time!]]
 \(if:$endingsHint is &quot;Explosion&quot;)[Haven&#39;t you noticed that Bosco&#39;s sells something that&#39;s different from the rest?]
 \(if:$endingsHint is &quot;Toilet&quot;)[Video game characters don&#39;t have to go to the bathroom, but what if you tried?]
 \(if:$endingsHint is &quot;Bald&quot;)[There&#39;s a clique in Webster Groves of bald people that you can get into...]
@@ -5852,7 +5852,7 @@ The world has been completely overrun by zombies, Webster Groves included.
 &quot;Nevermind then. Looks like the original plan is on.&quot; Jed cocks his shotgun.
 
 [[&quot;It&#39;s Time to Rock and Roll, and I&#39;m All Out of Rocks.&quot;-&gt;Start 3 Cont2]]</tw-passagedata><tw-passagedata pid="365" name="Start 3 Cont2" tags="" position="4800,4400" size="100,100">(enchant:?z,(text-style:&quot;fidget&quot;)+(text-style:&quot;italic&quot;))
-\Jed walked out of city hall and began blasting at the zombies. &quot;Like shooting fish in or out of a barrell (they are both easy because I am very skilled at using a weapon).&quot;
+\Jed walked out of city hall and began blasting at the zombies. &quot;Like shooting fish in or out of a barrel (they are both easy because I am very skilled at using a weapon).&quot;
 
 Suddenly, he saw one zombie holding a device in its hands. Suddenly he knew that City Hall was in danger. He turned around to see a giant anvil hanging above it. He quickly ran inside into his office.
 
@@ -6327,7 +6327,7 @@ Lonny mumbles to himself, &quot;So that it can finally go away, dying here in We
 [[Barber Shop-&gt;Barber Shop 3]]
 [[Radio Station-&gt;Radio Station 3]]
 [[Clothing Store-&gt;Clothing Store 3]]
-[[Gas Staton-&gt;Gas Station 3]]
+[[Gas Station-&gt;Gas Station 3]]
 [[Dark Alleyway-&gt;Dark Alleyway 3]]
 [[Train Station-&gt;Train Station 3]]</tw-passagedata><tw-passagedata pid="386" name="Bosco&#39;s 3" tags="" position="3750,5100" size="100,200">You&#39;re inside ($randOf:) Bosco&#39;s Family Food Store.
 
@@ -6552,6 +6552,7 @@ They had no idea where they would go, but one thing was certain: they could neve
 * teleport to the waiting room from your bed
 * buttons in button area are more specific
 * infinite atm glitch 
+* exit button now saves and also works
 * replay the sequels from the main menu
 * come visit us we are lonely]
 \|bc&gt;[Have fun with this New Content We hope you enjoy it!]
@@ -7654,7 +7655,9 @@ Buster stared motionlessly into the camera.]
 (cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
 [[Back-&gt;TITLE SCREEN 3]] 
 \(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
-\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata></tw-storydata>
+\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata><tw-passagedata pid="448" name="Real Exit" tags="" position="2550,100" size="100,100">&lt;script&gt;
+close();
+&lt;/script&gt;</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
