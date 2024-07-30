@@ -1206,7 +1206,7 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 \(else:)[
 \(link-reveal-goto:&quot;Restart&quot;,&quot;Title Screen&quot;)[]
 \]
-\(unless:$anomalies&#39;s length &gt; 0 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
+\(if:$anomalies&#39;s length &gt; 0 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
 [[Continue-&gt;Stats Complete]]]</tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="2200,1950" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
 \(if:$MAILBOX is &quot;deed&quot;)[You reach into your mailbox and find a letter signed by Josefine. You open it up, and inside is the deed to the empty store in Town Square.
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
@@ -5558,7 +5558,7 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 \(else:)[
 \|gg&gt;[Welcome back, Jed... have you finished?]
 
-(unless:$ENDINGS&#39;s length is 25)[
+(if:$ENDINGS&#39;s length is 25)[
 \|bc&gt;[the answer is..... yes !! you may now enter,,,]
 
 |gg&gt;[oh sick come on in!]
