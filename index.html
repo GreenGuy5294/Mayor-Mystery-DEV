@@ -4466,7 +4466,7 @@ Jed cracked his eyes open, knowing today is his last chance to prepare for the i
 \HOURS LEFT: $hours
 
 [[Flush Toilet-&gt;Toilet Kyle]]
-[[Exit-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="266" name="Jed Hurried" tags="" position="4700,3250" size="100,100">(track:&quot;apartment&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;townsquare&quot;,&quot;playwhenpossible&quot;)]
+[[Exit-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="266" name="Jed Hurried" tags="" position="4700,3250" size="100,100">(track:&quot;apartment&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&#39;townsquare&#39;,&#39;volume&#39;,1)(track:&quot;townsquare&quot;,&quot;playwhenpossible&quot;)]
 \...
 
 Jed hurried to the set. He got onto the train and went to Town Square, where the show was being filmed. He went inside the large soundstage. The show he was invited to is known as Stay Up Late With Kyle. Its host, Kyle, is quite well known.
@@ -4869,7 +4869,7 @@ While the mayor looks around for a fire extinguisher, you run out of the room. Y
 
 Uh, Jed... did you just win? Did you stop the whole thing? I... well I don&#39;t know what to say. I don&#39;t know whether to congratulate you or get mad at you.
 
-(if:$ENDINGS contains all of (a:&quot;Explosion&quot;,&quot;Kyle&quot;,&quot;Ghost&quot;) and not $seenSteve)[[[The End-&gt;WACKY STEVE Visit]]](else:)[[[The End-&gt;Waiting Room Entrance]]]</tw-passagedata><tw-passagedata pid="289" name="WACKY STEVE Visit" tags="" position="3800,3850" size="100,100">(track:&quot;sadending&quot;,&quot;fadeout&quot;,0.5)(track:&quot;happyending&quot;,&quot;fadeout&quot;,0.5)(track:&quot;apartmentend&quot;,&quot;fadeout&quot;,0.5)
+(if:$ENDINGS contains all of (a:&quot;Explosion&quot;,&quot;Kyle&quot;,&quot;Ghost&quot;) and not $seenSteve)[[[The End-&gt;WACKY STEVE Visit]]](else:)[[[The End-&gt;Waiting Room Entrance]]]</tw-passagedata><tw-passagedata pid="289" name="WACKY STEVE Visit" tags="" position="3800,3850" size="100,100">(track:&quot;sadending&quot;,&quot;fadeout&quot;,0.5)(track:&quot;happyending&quot;,&quot;fadeout&quot;,0.5)(track:&quot;apartmentend&quot;,&quot;fadeout&quot;,0.5)(track:&quot;superend&quot;,&quot;fadeout&quot;,0.5)
 \(after:0.5s)[(track:&quot;wackysteve&quot;,&quot;playwhenpossible&quot;)]
 \(set: $s to (text-style:&quot;expand&quot;))(set:$seenSteve to true)
 \&quot;$s[JED...]&quot; you hear a voice say. &quot;$s[IS THAT YOU JED? CAN YOU HEAR ME, JED?]&quot;
