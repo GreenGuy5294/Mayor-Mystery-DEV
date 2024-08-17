@@ -248,7 +248,7 @@ I get it, though. You&#39;re just having some fun with me before we begin. A lit
 I&#39;ll make you a deal. One last chance to show me whether or not you want to play along. One more test. Let&#39;s go back to the beginning again.
 
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1850,100" size="200,100">===&gt;&lt;===
-(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;mm2end&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
+(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;mm2end&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
 \(if:(history:) contains &quot;The Beginning&quot; and (random:1,25) is 1)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/VK6qlSj.png&quot;&gt;
 \(set:$theGame to true)](else:)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/0yYRLZ7.png&quot;&gt;
 \(set:$theGame to false)]
@@ -273,7 +273,7 @@ By Blue Cat and Green Guy
 \(set: $gotToilet to false)
 \(set: $sequel to true)
 \(set: $STATS to (a:0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
-\(set: $mayorFights to (a:))
+\(set: $mayorFights to (a:)) 
 \(set: $STANLEY to false)
 \(set: $escapadeArrow to (a:))
 \(set: $nextFun to 0) 
@@ -365,8 +365,8 @@ By Blue Cat and Green Guy
 \(else:)[
 \(if:$TestFinish is 3)[[[Start-&gt;More Tests?]]]
 \(else:)[[[Start-&gt;The Beginning]]]]
-\(if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J3&quot;)[
-[[Save &amp; Load-&gt;Save/Load]]]
+\(if:$ENDINGS&#39;s length &gt; 0 or (saved-games:) contains &quot;Slot J3&quot; or (saved-games:) contains &quot;Slot J2&quot;)[
+[[Save &amp; Load-&gt;Save/Load]]] &lt;!--DEBUG--&gt;
 \(if:$POSTGAME is true)[
 [[Extras-&gt;Sequels]]]
 [[About-&gt;About]]
@@ -403,6 +403,9 @@ By Blue Cat and Green Guy
 (track:&#39;toiletending&#39;,&#39;loop&#39;,true)\
 (track:&#39;westside&#39;,&#39;loop&#39;,true)\
 (track:&#39;wr1&#39;,&#39;loop&#39;,true)\
+(track:&#39;wr2&#39;,&#39;loop&#39;,true)\
+(track:&#39;wr3&#39;,&#39;loop&#39;,true)\
+(track:&#39;wr4&#39;,&#39;loop&#39;,true)\
 (track:&#39;mm2apartment&#39;,&#39;loop&#39;,true)\
 (track:&#39;mm2basement&#39;,&#39;loop&#39;,true)\
 (track:&#39;mm2city&#39;,&#39;loop&#39;,true)\
@@ -761,7 +764,7 @@ You see how that doesn&#39;t really make sense? Oh well, doesn&#39;t matter too 
 \[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="33" name="The Apartment Complex" tags="" position="2300,1700" size="100,200">(track:&#39;eastside&#39;,&#39;fadeout&#39;,0.5)(track:&#39;gameshow&#39;,&#39;fadeout&#39;,0.5)(track:&#39;apartmentrafael&#39;,&#39;fadeto&#39;,0.5,0)(track:&#39;apartmentted&#39;,&#39;fadeto&#39;,0.5,0)(track:&#39;apartmentjosie&#39;,&#39;fadeto&#39;,0.5,0)(track:&#39;apartmentstanley&#39;,&#39;fadeto&#39;,0.5,0)
 \(if:(track:&#39;apartment&#39;,&#39;isplaying&#39;))[(track:&#39;apartment&#39;,&#39;fadeto&#39;,0.5,1)]
 \(after:0.5s)[(unless:(track:&#39;apartment&#39;,&#39;isplaying&#39;))[(masteraudio:&#39;stopall&#39;)(track:&#39;apartment&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentrafael&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentted&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentjosie&#39;,&#39;playwhenpossible&#39;)(track:&#39;apartmentstanley&#39;,&#39;playwhenpossible&#39;)]]
-\Here is the apartment complex, the place you live at. It looks incredibly old on the outside.
+\Here is the apartment complex, the place you live at. (if:(random:1,25) is 1)[You know, Jed, I actually find this place quite simple.](else:)[It looks incredibly old on the outside.]
 
 [[Your Apartment-&gt;Jed&#39;s Apartment]]
 [[Visit Rafael-&gt;Rafael&#39;s Apartment]] 
@@ -1086,7 +1089,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(set:$waitingRoomMusic to (random:1,2))
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(set:$waitingRoomMusic to (either:...((range:1,4) - (a:$waitingRoomMusic))))
 \(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
 \(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;toiletending&#39;,&#39;fadeout&#39;,1)(track:&#39;cult2&#39;,&#39;fadeout&#39;,1)(track:&#39;evilending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;apartmentend&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)(track:&#39;wackysteve&#39;,&#39;fadeout&#39;,1)(track:&#39;outside&#39;,&#39;fadeout&#39;,1)(track:&#39;superend&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
@@ -2075,11 +2078,11 @@ But now that makes me wonder, how was the ticket seller able to access this area
 
 Curent Funds: $(if:$MONEY &gt; 999 or $MONEY &lt; -999)[(digit-format:&quot;###,###&quot;,$MONEY)](else:)[$MONEY]
 
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Cat - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy&#39;,&#39;stop&#39;)(track:&#39;buy&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Dog - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy&#39;,&#39;stop&#39;)(track:&#39;buy&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Ferret - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy&#39;,&#39;stop&#39;)(track:&#39;buy&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Hamster - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy&#39;,&#39;stop&#39;)(track:&#39;buy&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
-(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Rabbit - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy&#39;,&#39;stop&#39;)(track:&#39;buy&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Cat - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy2&#39;,&#39;stop&#39;)(track:&#39;buy2&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Dog - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy2&#39;,&#39;stop&#39;)(track:&#39;buy2&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Ferret - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy2&#39;,&#39;stop&#39;)(track:&#39;buy2&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Hamster - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy2&#39;,&#39;stop&#39;)(track:&#39;buy2&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Rabbit - $50&quot;,&quot;BL Pet Store&quot;)[(if:$SFX)[(track:&#39;buy2&#39;,&#39;stop&#39;)(track:&#39;buy2&#39;,&#39;play&#39;)](set:$MONEY to it - 50)(set:$STATS&#39;s 4th to it + 1)]
 
 [[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="104" name="BL Apartments" tags="" position="7600,1650" size="100,100">`(if:$resident)[&quot;Welcome back, Jed,&quot; the man at the counter says.]
 \(else:)[You walk up to the apartment complex. It looks simlar to the one you live in back to Wesbter Groves. When you get to the doors you notice that there is a keycard scanner next to the front door. Perhaps you can find a way to get in...`
@@ -2100,6 +2103,7 @@ Curent Funds: $(if:$MONEY &gt; 999 or $MONEY &lt; -999)[(digit-format:&quot;###,
 \(unless:$ENDINGS contains &quot;Glitch&quot;)[(set:$ENDINGS to it + (a:&quot;Glitch&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Glitch&quot;))
 \(after:10s)[(track:&#39;bhlake&#39;,&#39;stop&#39;)(track:&#39;bhlake2&#39;,&#39;stop&#39;)(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)(goto:&quot;Waiting Room Entrance&quot;)]
+\(track:&#39;bhlake&#39;,&#39;volume&#39;,0.4)(track:&#39;bhlake2&#39;,&#39;volume&#39;,0.4)(track:&#39;bhlake3&#39;,&#39;volume&#39;,0.4)(track:&#39;bhlake3&#39;,&#39;playwhenpossible&#39;)
 
 Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="3000,3500" size="100,100">(unless:$visitsMegaToilet is 8)[(track:&#39;eastside&#39;,&#39;fadeto&#39;,0.5,0.5)(track:&#39;townsquare&#39;,&#39;fadeto&#39;,0.5,0.5)(track:&#39;westside&#39;,&#39;fadeto&#39;,0.5,0.5)]
 \(set:$visitsMegaToilet to it + 1)
@@ -2553,10 +2557,10 @@ Hmm, looks like there must be some kind of anti-cheat...]
 
 &quot;Glen Dixon? I never liked that guy. We went to high school together, he was a jerk. Have fun.](if:$wearing is &quot;vest&quot;)[
 \Hey, that doesn&#39;t look too bad on ya. &#39;Course I wore it better back when I had it.](if:$wearing is &quot;visor&quot;)[
-\&quot;Outfit? That&#39;s just a pair of sunglasses.&quot;](if:$wearing is &quot;ski mask&quot;)[
+\Outfit? That&#39;s just a pair of sunglasses.](if:$wearing is &quot;ski mask&quot;)[
 \You&#39;re pretending to be a robber now?&quot;
 
-&quot;Sure(cond:$joinGang,&quot;...&quot;,&quot;!&quot;)&quot;](if:$wearing is &quot;cape&quot;)[
+&quot;Sure(cond:$joinGang,&quot;...&quot;,&quot;!&quot;)](if:$wearing is &quot;cape&quot;)[
 \What&#39;s this?&quot;
 
 &quot;I&#39;m SuperJed!&quot;
@@ -2586,7 +2590,8 @@ Hmm, looks like there must be some kind of anti-cheat...]
 
 &quot;No, I just got this cool vest from Ted.&quot;
 
-&quot;I bet you could sneak in if you&#39;re confident enough about it!~](if:$wearing is &quot;ski mask&quot;)[
+&quot;I bet you could sneak in if you&#39;re confident enough about it!~](if:$wearing is &quot;visor&quot;)[
+\](if:$wearing is &quot;ski mask&quot;)[
 \Why are you hiding your face?&quot;
 
 &quot;No reason...](if:$wearing is &quot;cape&quot;)[
@@ -2754,7 +2759,7 @@ John doesn&#39;t respond but instead points at the front door. You slowly shuffl
 
 John doesn&#39;t respond but instead points at the front door. You slowly shuffle your way out of the store.
 
-[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(unless:(track:&quot;mm2title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)]]\
+[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(unless:(track:&quot;mm2title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)]]\
 =&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 By Kaffemik Studios
@@ -3096,6 +3101,8 @@ Current funds: $$MONEY
 ]
 \(if: (saved-games: ) contains &quot;Slot J3&quot;)[(link:&quot;Load Game&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J3&quot;)(go-to:&quot;Title Screen&quot;)]]
 ]
+\(if: (saved-games: ) contains &quot;Slot J2&quot;)[(link:&quot;Load Old Save (May Not Work)&quot;)[(link: &quot;--Are You Sure?--&quot;)[(load-game:&quot;Slot J2&quot;)(go-to:&quot;Title Screen&quot;)]]
+] &lt;!--DEBUG--&gt;
 \[[Back to Menu-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="176" name="Confrontation 2" tags="" position="5850,4375" size="100,100">(masteraudio:&#39;stopall&#39;)(track:&#39;mm2confrontation&#39;,&#39;playwhenpossible&#39;)
 \The mayor is sitting inside the room already waiting for you. &quot;Hello, Jed and Del.(cond:$SKILLS contains &quot;gah&quot;,&#39; Did you get a haircut, Jed? It looks good.&quot;&#39;,&#39;&quot;&#39;)
 
@@ -3163,7 +3170,7 @@ Del and the secretary are in the middle of fighting some of the security guards 
 
 City Hall then explodes. 
 
-[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="180" name="Sequel End" tags="" position="6000,4375" size="200,100">(track:&#39;mm2end&#39;,&#39;fadeto&#39;,0.5,0.5)
+[[The End-&gt;Sequel End]]</tw-passagedata><tw-passagedata pid="180" name="Sequel End" tags="" position="6000,4375" size="200,100">(track:&#39;mm2end&#39;,&#39;fadeout&#39;,0.5)
 \(set: $loadGame to 1)
 \(font:&quot;Roboto Mono&quot;)[
 \This is the end of the current sequel content. More will come with future updates.
@@ -3234,7 +3241,7 @@ Jed, did you see that? What the heck just happened?
 (link-reveal-goto: $curQ&#39;s 1st,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 1)]
 (link-reveal-goto: $curQ&#39;s 2nd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 2)]
 (link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
-(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="186" name="Add Stanley" tags="" position="7750,1350" size="100,100">(live: 0.5s)[(masteraudio:&quot;stopall&quot;)(set:$buggedMusic to (random:1,8))
+(link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="186" name="Add Stanley" tags="" position="7750,1350" size="100,100">(live: 0.5s)[(masteraudio:&quot;stopall&quot;)(set:$buggedMusic to (either:...((range:1,8) - (a:$buggedMusic))))
 \(if:$buggedMusic is 1)[(track:&quot;apartment&quot;,&quot;play&quot;)](if:$buggedMusic is 2)[(track:&quot;eastside&quot;,&quot;play&quot;)](if:$buggedMusic is 3)[(track:&quot;westside&quot;,&quot;play&quot;)](if:$buggedMusic is 4)[(track:&quot;townsquare&quot;,&quot;play&quot;)](if:$buggedMusic is 5)[(track:&quot;cityhall&quot;,&quot;play&quot;)](if:$buggedMusic is 6)[(track:&quot;confrontation&quot;,&quot;play&quot;)](if:$buggedMusic is 7)[(track:&quot;happyending&quot;,&quot;play&quot;)](if:$buggedMusic is 8)[(track:&quot;slam&quot;,&quot;play&quot;)]
 \(either:&quot;Well Jed, I hope you had fun exploring that broken area. I might as well explain what this place is:
 
@@ -3416,7 +3423,8 @@ Jed just returned a blank stare at Stanley.
 
 &quot;Have you been inside Bosco&#39;s?&quot;
 
-(font:&quot;HKNova&quot;)[&quot;Nope.&quot;]](if:$wearing is &quot;ski mask&quot;)[
+(font:&quot;HKNova&quot;)[&quot;Nope.&quot;]](if:$wearing is &quot;visor&quot;)[
+\](if:$wearing is &quot;ski mask&quot;)[
 \(font:&quot;HKNova&quot;)[&quot;Please don&#39;t hurt me!&quot; cried Stanley, &quot;I don&#39;t have any money! If you really must take something, I have a buc-&quot;]
 
 &quot;Hey, woah woah woah, calm down. It&#39;s just me, Jed.&quot;
@@ -5443,7 +5451,7 @@ DISTANCE: (live:0s)[(print:(round:time/600)/10)m
 \(if:$correctDirection is &quot;straight&quot;)[Let&#39;s keep going straight for now...](if:$correctDirection is &quot;left2&quot;)[Hard left!](if:$correctDirection is &quot;left1&quot;)[Slight left!](if:$correctDirection is &quot;right1&quot;)[Slight right!](if:$correctDirection is &quot;right2&quot;)[Hard right!]
 \(if:not $racingChecking and $correctDirection is &quot;straight&quot; and $racingCurDirection is not &quot;straight&quot;)[(set:$racingCrash to true)(set:$crashReason to &quot;toofast&quot;)(stop:)]]
 
-(link-repeat:&quot;&lt;&lt;&quot;)[(set:$racingCurDirection to &quot;left2&quot;)] (link-repeat:&quot;&lt;&quot;)[(set:$racingCurDirection to &quot;left1&quot;)] (link-repeat:&quot;&gt;&quot;)[(set:$racingCurDirection to &quot;right1&quot;)] (link-repeat:&quot;&gt;&gt;&quot;)[(set:$racingCurDirection to &quot;right2&quot;)] 
+(link-repeat:&quot;&lt;&lt;&quot;)[(set:$racingCurDirection to &quot;left2&quot;)] (link-repeat:&quot;&lt;-&quot;)[(set:$racingCurDirection to &quot;left1&quot;)] (link-repeat:&quot;-&gt;&quot;)[(set:$racingCurDirection to &quot;right1&quot;)] (link-repeat:&quot;&gt;&gt;&quot;)[(set:$racingCurDirection to &quot;right2&quot;)] 
 
 (live:0s)[$loseTransition[(if:$racingCrash)[(stop:)\
 ###CRASH!
@@ -5802,7 +5810,7 @@ This place is how I communicate with the world. It allows me to see what&#39;s g
 
 (font:&quot;Georgia&quot;)[[[Continue-&gt;TITLE SCREEN 3]]]]
 \]
-\]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">(unless:(track:&quot;mm3title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]]\
+\]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">(unless:(track:&quot;mm3title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]]\
 ===&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/ZfnWBcO.png&quot;&gt;
 By Blue Cat and Green Guy
@@ -5826,7 +5834,7 @@ By Blue Cat and Green Guy
 Music and Title Screen Art by Green Guy.
 
 
-v1.0 realesaed on $mm3date.
+v1.0 released on $mm3date.
 
 Special thanks to
 You, the player :)
@@ -7537,7 +7545,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(if:$closetHint is &quot;arcade&quot;)[There&#39;s some outfits in the Impulse Arcade you haven&#39;t bought yet.]
 \(if:$closetHint is &quot;vest&quot;)[Have you tried getting that big stuffed bear from the arcade?]]]]
 
-[[Continue-&gt;Stats Page]]</tw-passagedata><tw-passagedata pid="438" name="Hails" tags="" position="850,650" size="100,100">I had to make this so Hail&#39;s save isnt corrupted LOL
+[[Continue-&gt;Stats Page]]</tw-passagedata><tw-passagedata pid="438" name="Hails" tags="" position="850,650" size="100,100">I had to make this so Hails&#39;s save isnt corrupted LOL
 
 (set: $ENDINGS to (a:&quot;TestFailure&quot;,&quot;NormalRoute&quot;,&quot;Neglect&quot;,&quot;Trespassing&quot;,&quot;Toilet&quot;,&quot;Explosion&quot;,&quot;Glitch&quot;,&quot;Sunglasses&quot;,&quot;Capitalism&quot;,&quot;Supermarket&quot;,&quot;SuperJed&quot;,&quot;Gang&quot;,&quot;Evil&quot;,&quot;Construction&quot;,&quot;Prank&quot;,&quot;Ghost&quot;,&quot;Narrator&quot;,&quot;Marriage&quot;,&quot;Toaster&quot;,&quot;Kyle&quot;))
 
@@ -7567,6 +7575,7 @@ townsquare: audio/Town Square.mp3
 westside: audio/West Side.mp3
 bhlake: audio/Bloomhurst Lake.mp3
 bhlake2: audio/Bloomhurst Lake.mp3
+bhlake3: audio/Bloomhurst Lake.mp3
 
 fight: audio/Fight.mp3
 intro: audio/Intro.mp3
@@ -7577,6 +7586,8 @@ apartmentend: audio/Apartment Ending.mp3
 
 wr1: audio/Waiting Room 1.mp3
 wr2: audio/Waiting Room 2.mp3
+wr3: audio/Waiting Room 3.mp3
+wr4: audio/Waiting Room 4.mp3
 
 toiletinterlude: audio/Toilet Interlude.mp3
 toiletending: audio/Toilet Ending.mp3
@@ -7615,7 +7626,8 @@ popper: audio/Party Popper.mp3
 pipe: audio/Metal Pipe.mp3
 flush: audio/Toilet Flush.mp3
 vineboom: audio/Vine Boom.mp3
-buy: audio/Purchase.mp3</tw-passagedata><tw-passagedata pid="440" name="Audio Settings" tags="" position="2250,250" size="100,100">=&gt;&lt;=
+buy: audio/Purchase.mp3
+buy2: audio/PurchaseBL.mp3</tw-passagedata><tw-passagedata pid="440" name="Audio Settings" tags="" position="2250,250" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
 (cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
 [[Back-&gt;Title Screen]] 
