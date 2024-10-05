@@ -142,7 +142,7 @@ You&#39;re well known around Webster Groves for being nice to everyone and givin
 
 (if:$testing is &quot;NA&quot;)[[[Begin-&gt;The Test]]]
 \(if:$testing is &quot;FAIL1&quot;)[[[Begin-&gt;Test2]]]
-\(if:$testing is &quot;FAIL2&quot;)[[[Begin-&gt;Test3]]]</tw-passagedata><tw-passagedata pid="2" name="The Test" tags="" position="1700,400" size="100,100">(track: &#39;adventureawaits&#39;, &#39;fadeout&#39;, 0.5)
+\(if:$testing is &quot;FAIL2&quot;)[[[Begin-&gt;Test3]]]</tw-passagedata><tw-passagedata pid="2" name="The Test" tags="" position="1700,400" size="100,100">(track: &#39;adventureawaits&#39;, &#39;fadeout&#39;, 0.5)(track: &#39;reprise&#39;, &#39;fadeout&#39;, 0.5)
 \(after:0.5s)[(masteraudio: &#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,0)(track: &#39;test1&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,true)]
 \You find yourself in the following scenario:
 \(set:_option1 to 0)(set:_option2 to 0)(set:_option3 to 0)
@@ -192,7 +192,7 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option2 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option2 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option2 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option2 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option2 is 4)[[[_fail4-&gt;Test2 Failed]]]
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
-&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(masteraudio:&#39;stopall&#39;)(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&#39;intro&#39;,&#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1750,800" size="200,100">(masteraudio:&#39;stopall&#39;)(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;reprise&quot;,&quot;volume&quot;,0)(track:&#39;intro&#39;,&#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \(set:$maxfun to 16)
 \(if:$escapadeArrow contains &quot;ready&quot;)[(set:$escapadeArrow to it + (a:&quot;paint&quot;))]
 \(unless:$nextFun is 0)[
@@ -248,7 +248,7 @@ I get it, though. You&#39;re just having some fun with me before we begin. A lit
 I&#39;ll make you a deal. One last chance to show me whether or not you want to play along. One more test. Let&#39;s go back to the beginning again.
 
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1850,100" size="200,100">===&gt;&lt;===
-(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;mm2end&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)(track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)]]
+(unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;huzzah&quot;,&quot;fadeout&quot;,0.5)(track:&quot;mm2end&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)(track:&#39;reprise&#39;,&#39;volume&#39;,0)(if:$REPRISE is true)[(track:&#39;adventureawaits&#39;,&#39;volume&#39;,0)(track:&#39;reprise&#39;,&#39;volume&#39;,1)](track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)(track:&#39;reprise&#39;,&#39;playwhenpossible&#39;)]]
 \(if:(history:) contains &quot;The Beginning&quot; and (random:1,25) is 1)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/VK6qlSj.png&quot;&gt;
 \(set:$theGame to true)](else:)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/0yYRLZ7.png&quot;&gt;
 \(set:$theGame to false)]
@@ -288,6 +288,7 @@ By Blue Cat and Green Guy
 \(set: $JOURNAL to (a:&quot;intro&quot;))
 \(set: $SFX to true)
 \(set: $loadGame to 1)
+\(set: $REPRISE to false)
 \]
 \(set: $toilets to (a:))
 \(set: $testing to &quot;NA&quot;)
@@ -378,7 +379,7 @@ By Blue Cat and Green Guy
 \(if:$loadGame is 2)[(go-to:&quot;Title Screen 2&quot;)]
 \(if:$loadGame is 3)[(go-to:&quot;TITLE SCREEN 3&quot;)]
 \
-\&lt;!-- [[DEBUG-&gt;Sequels]] --&gt;
+[[DEBUG-&gt;Sequels]]
 \
 \(track:&#39;test1&#39;,&#39;loop&#39;,true)\
 (track:&#39;test2&#39;,&#39;loop&#39;,true)\
@@ -425,7 +426,10 @@ By Blue Cat and Green Guy
 (track:&#39;superend&#39;,&#39;loop&#39;,true)\
 (track:&#39;upstairs&#39;,&#39;loop&#39;,true)\
 (track:&#39;upstairs2&#39;,&#39;loop&#39;,true)\
-(track:&#39;mm3title&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
+(track:&#39;boscosbasement&#39;,&#39;loop&#39;,true)\
+(track:&#39;future&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm3title&#39;,&#39;loop&#39;,true)\
+(track:&#39;mm3area&#39;,&#39;loop&#39;,true)</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">(track: &#39;test3&#39;, &#39;playwhenpossible&#39;,&#39;loop&#39;,false)
 \You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
 
@@ -1090,7 +1094,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
 [[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="4000,3800" size="200,200">(set:$waitingRoomMusic to (either:...((range:1,4) - (a:$waitingRoomMusic))))
-\(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)
+\(track:&#39;popper&#39;,&#39;volume&#39;,&#39;0.5&#39;)(track:&quot;huzzah&quot;,&quot;fadeout&quot;,0.5)
 \(track:&#39;happyending&#39;,&#39;fadeout&#39;,1)(track:&#39;toiletending&#39;,&#39;fadeout&#39;,1)(track:&#39;cult2&#39;,&#39;fadeout&#39;,1)(track:&#39;evilending&#39;,&#39;fadeout&#39;,1)(track:&#39;confrontation&#39;,&#39;fadeout&#39;,1)(track:&#39;basement&#39;,&#39;fadeout&#39;,1)(track:&#39;apartment&#39;,&#39;fadeout&#39;,1)(track:&#39;apartmentend&#39;,&#39;fadeout&#39;,1)(track:&#39;buster&#39;,&#39;fadeout&#39;,1)(track:&#39;alleyway&#39;,&#39;fadeout&#39;,1)(track:&#39;sadending&#39;,&#39;fadeout&#39;,1)(track:&#39;wackysteve&#39;,&#39;fadeout&#39;,1)(track:&#39;outside&#39;,&#39;fadeout&#39;,1)(track:&#39;superend&#39;,&#39;fadeout&#39;,1)
 \(set:$visitsWaitingRoom to it + 1)(set:$STATS&#39;s 9th to it + 1)
 \(font:&quot;Raleway&quot;)[
@@ -2759,7 +2763,7 @@ John doesn&#39;t respond but instead points at the front door. You slowly shuffl
 
 John doesn&#39;t respond but instead points at the front door. You slowly shuffle your way out of the store.
 
-[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(unless:(track:&quot;mm2title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)]]\
+[[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(unless:(track:&quot;mm2title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;reprise&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;reprise&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)]]\
 =&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
 By Kaffemik Studios
@@ -4449,7 +4453,7 @@ Tonight, Jed has an important interview with a local talk show. This interview r
 
 Jed cracked his eyes open, knowing today is his last chance to prepare for the interview. He has 30 hours left. Jed must choose his actions wisely.
 
-[[Start Preparing!-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="262" name="Apartment Kyle" tags="" position="4550,2800" size="100,100">(unless:(track:&quot;apartment&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;apartment&quot;,&quot;playwhenpossible&quot;)]]
+[[Start Preparing!-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="262" name="Apartment Kyle" tags="" position="4550,2800" size="100,100">(unless:(track:&quot;apartment&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;reprise&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;reprise&quot;,&quot;volume&quot;,0)(track:&quot;apartment&quot;,&quot;playwhenpossible&quot;)]]
 \(set:$hours to it - 1)(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
@@ -5272,7 +5276,7 @@ Let&#39;s see if this camp is really worth that $200...
 Glad you see how much of a waste of money this thing is. Now, let&#39;s get back to doing some prank calls and then continue the mission, okay?
 
 [[Continue-&gt;Train Station Phone]] </tw-passagedata><tw-passagedata pid="321" name="Construction Camp" tags="" position="4600,900" size="100,100">(set:$campPassed to true)
-\Jed spent the next three days at Scotty&#39;s Construction Vehicle Camp, learning the ins and outs of all the different construction vehicles. He got one-on-one lessons in the forklift, excavator, bulldozer, crane, and others.
+\Jed spent the next three days at Scotty&#39;s Construction Vehicle Camp, where he began to learn the ins and outs of all the different construction vehicles. He got one-on-one lessons in the forklift, excavator, bulldozer, crane, and others. He slowly became more aware of the intricacies of all the vehicles 
 
 Jed was not that good at handling the vehicles. In fact, he had to spend more time than usual to get a hang of the equipment. During one of the lessons, the teacher left early and had to be replaced by someone else.
 
@@ -5810,7 +5814,7 @@ This place is how I communicate with the world. It allows me to see what&#39;s g
 
 (font:&quot;Georgia&quot;)[[[Continue-&gt;TITLE SCREEN 3]]]]
 \]
-\]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">(unless:(track:&quot;mm3title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]]\
+\]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">(unless:(track:&quot;mm3title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;reprise&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;reprise&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]]\
 ===&gt;&lt;===
 &lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/ZfnWBcO.png&quot;&gt;
 By Blue Cat and Green Guy
@@ -5911,7 +5915,8 @@ The other person hangs up on you.
 
 |gg&gt;[dykg: (print:($curFact - 8) of (a:&quot;you just lost &#39;&#39;The Game&#39;&#39;&quot;,&quot;Every copy of Mayor Mystery is personalized.&quot;,&quot;you can actually buy a toilet hat from the prank calls! just go to tinyurl.com/5n6rbde5&quot;,&quot;the supermarket ending was one of the first ending ideas, but the last one implemented in the original game&quot;,&quot;before the closet, there was a post office where you could mail stuff to yourself and get it the next playthrough&quot;,&quot;in the original version, nothing except the vr headset could be bought from the hardware store, even through cheating&quot;,&quot;we started the v1.1 update as a way to hide a single joke&quot;,&quot;the game master&#39;s original nickname was gm, however Gym is funnier and also sounds better next to jed&quot;))]]
 
-[[Back-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="368" name="Bosco&#39;s Hallway" tags="" position="700,3000" size="100,100">Jed and Cheri enter the space revealed by the vending machine. It&#39;s somewhat like a tunnel, although the walls, ceiling, and floor make up a circle together, somewhat like a large pipe. There are chalk writings all over the walls of what looks like complex math equations.
+[[Back-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="368" name="Bosco&#39;s Hallway" tags="" position="700,3000" size="100,100">(track:&quot;boscosbasement&quot;,&quot;playwhenpossible&quot;)
+\Jed and Cheri enter the space revealed by the vending machine. It&#39;s somewhat like a tunnel, although the walls, ceiling, and floor make up a circle together, somewhat like a large pipe. There are chalk writings all over the walls of what looks like complex math equations.
 
 &quot;I wonder if John knows about this,&quot; Cheri wonders. &quot;Should we even tell him?&quot;
 
@@ -5935,7 +5940,8 @@ Suddenly, Jed and Cheri reached a door. It required a passcode, but fortunately 
 
 Jed and Cheri enter the time machine. Cheri begins to press buttons and suddenly Jed and Cheri are transported...
 
-[[Continue-&gt;Into the Future]]</tw-passagedata><tw-passagedata pid="370" name="Into the Future" tags="" position="700,3150" size="100,100">After what felt like a few seconds, the machine stops shaking. &quot;Where are we?&quot; Jed asks.
+[[Continue-&gt;Into the Future]]</tw-passagedata><tw-passagedata pid="370" name="Into the Future" tags="" position="700,3150" size="100,100">(track:&quot;boscosbasement&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;future&quot;,&quot;playwhenpossible&quot;)]
+\After what felt like a few seconds, the machine stops shaking. &quot;Where are we?&quot; Jed asks.
 
 &quot;If I did everything right,&quot; Cheri explains, &quot;we should be about 10 years into the future. Let&#39;s go check it out!&quot; 
 
@@ -5949,7 +5955,7 @@ The figure looks towards both of you and completely stops moving. Suddenly it st
 
 &quot;WHAT IS THAT!? I think that&#39;s our cue to leave!&quot; Jed grabs Cheri and pulls her back into the time machine, enters the present date, and suddenly they are transported back to the tunnel.
 
-[[Continue-&gt;Secret Ending]]</tw-passagedata><tw-passagedata pid="371" name="Secret Ending" tags="" position="850,3150" size="200,100">(after:0.5s)[(track:&#39;sadending&#39;,&#39;playwhenpossible&#39;)]
+[[Continue-&gt;Secret Ending]]</tw-passagedata><tw-passagedata pid="371" name="Secret Ending" tags="" position="850,3150" size="200,100">(track:&quot;future&quot;,&quot;fadeout&quot;)(after:0.5s)[(track:&#39;sadending&#39;,&#39;playwhenpossible&#39;)]
 \(unless:$ENDINGS contains &quot;Secret&quot;)[(set:$ENDINGS to it + (a:&quot;Secret&quot;))]
 \(set:$JOURNAL to it + (a:&quot;Secret&quot;))
 \Jed and Cheri exited the time machine, trying to piece together what they had just seen. They believed that in the future, Webster Groves would be struck by a meteor that would cause some kind of apocolypse. 
@@ -5972,7 +5978,7 @@ I&#39;m sorry, I don&#39;t understand the command &quot;_input.&quot; Please try
 I&#39;m sorry, I don&#39;t understand the command &quot;_input.&quot; Please try again.]
 
 (input: bind _input, &quot;X=&quot;)
-[[Submit-&gt;Town Square 3]]]]]]]]</tw-passagedata><tw-passagedata pid="373" name="Town Square 3" tags="" position="5000,4800" size="200,200">(unless:(track:&#39;mm3title&#39;,&#39;isplaying&#39;))[(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]
+[[Submit-&gt;Town Square 3]]]]]]]]</tw-passagedata><tw-passagedata pid="373" name="Town Square 3" tags="" position="5000,4800" size="200,200">(unless:(track:&#39;mm3area&#39;,&#39;isplaying&#39;))[(track:&#39;mm3area&#39;,&#39;playwhenpossible&#39;)](track:&#39;mm3area&#39;,&#39;fadeto&#39;,0.5,1)
 \(set:1 of $visits3 to it + 1)(set:$LOC to &quot;Town Square&quot;)
 \(if:1 of $visits3 is 1)[(font:&quot;Trebuchet MS&quot;)[ok this isnt working. welp. if it aint broke dont fix it]
 
@@ -5987,7 +5993,7 @@ I&#39;m sorry, I don&#39;t understand the command &quot;_input.&quot; Please try
 [[Port-&gt;Port 3]]
 [[Train Station-&gt;Train Station 3]]</tw-passagedata><tw-passagedata pid="374" name="City Hall 3" tags="" position="4550,5100" size="100,200">You walk back up to City Hall. What once was a beautiful building was now destroyed, crushed by a zombie anvil. There is almost no sign of the building that was once here.
 
-[[Exit-&gt;Town Square 3]] </tw-passagedata><tw-passagedata pid="375" name="Empty Store 3" tags="" position="4950,5100" size="100,200">(set:$needCheck to false)
+[[Exit-&gt;Town Square 3]] </tw-passagedata><tw-passagedata pid="375" name="Empty Store 3" tags="" position="4950,5100" size="100,200">(set:$needCheck to false)(track:&#39;mm3area&#39;,&#39;fadeto&#39;,0.5,0.5)
 \(if:length of $rescued is 1)[
 \You enter the empty store to see Mei setting up some places to sit.
 
@@ -6320,7 +6326,8 @@ Lonny mumbles to himself, &quot;So that it can finally go away, dying here in We
 \(if:$LOC is &quot;Town Square&quot;)[ the screen being smashed into.]
 \(if:$LOC is &quot;West Side&quot;)[ what look like gunshot holes all around it.]
 
-[[Continue-&gt;Train Station 3]]</tw-passagedata><tw-passagedata pid="384" name="East Side 3" tags="" position="3900,4800" size="200,200">(set:$LOC to &quot;East Side&quot;)(set:$needCheck to true)
+[[Continue-&gt;Train Station 3]]</tw-passagedata><tw-passagedata pid="384" name="East Side 3" tags="" position="3900,4800" size="200,200">(track:&#39;mm3area&#39;,&#39;fadeto&#39;,0.5,1)
+\(set:$LOC to &quot;East Side&quot;)(set:$needCheck to true)
 \You&#39;re in the East Side of Webster Groves. The weather feels nice, given the circumstances.
 
 [[Apartment Complex-&gt;Apartment Complex 3]]
@@ -6328,7 +6335,8 @@ Lonny mumbles to himself, &quot;So that it can finally go away, dying here in We
 [[Post Office-&gt;Post Office 3]]
 [[Library-&gt;Library 3]]
 [[Electronics Store-&gt;Electronics 3]] 
-[[Train Station-&gt;Train Station 3]]</tw-passagedata><tw-passagedata pid="385" name="West Side 3" tags="" position="6200,4800" size="200,200">(set:$LOC to &quot;West Side&quot;)(set:$needCheck to true)
+[[Train Station-&gt;Train Station 3]]</tw-passagedata><tw-passagedata pid="385" name="West Side 3" tags="" position="6200,4800" size="200,200">(track:&#39;mm3area&#39;,&#39;fadeto&#39;,0.5,1)
+\(set:$LOC to &quot;West Side&quot;)(set:$needCheck to true)
 \You&#39;re in the West Side of Webster Groves. (if:$rescued does not contain &quot;Rafael&quot;)[You can very faintly here music playing in the background.](else:)[The sky is darker than you remember it.]
 
 [[Burgerocity-&gt;Burgerocity 3]]
@@ -6496,7 +6504,8 @@ Mario looks at you confused. &quot;You&#39;re lettin&#39; me escape, too?&quot;
 
 &quot;No man left behind.&quot; You give Mario a pat on the back. He walks of into the alleyway.
 
-[[Continue-&gt;Dark Alleyway 3]]] </tw-passagedata><tw-passagedata pid="409" name="Walking Animation" tags="" position="5250,4400" size="100,100">You begin walking through the tunnels...
+[[Continue-&gt;Dark Alleyway 3]]] </tw-passagedata><tw-passagedata pid="409" name="Walking Animation" tags="" position="5250,4400" size="100,100">(track:&#39;mm3area&#39;,&#39;fadeto&#39;,0.5,0.5)
+\You begin walking through the tunnels...
 \(live:0s)[(if:time&gt;2s)[(if:$LOC is &quot;East Side&quot;)[(go-to:&quot;East Side 3&quot;)](if:$LOC is &quot;Town Square&quot;)[(go-to:&quot;Town Square 3&quot;)](if:$LOC is &quot;West Side&quot;)[(go-to:&quot;West Side 3&quot;)]]]</tw-passagedata><tw-passagedata pid="410" name="Checkout Desk 3" tags="" position="6550,5350" size="100,100">You hop over the checkout desk to look for items. The cash register that used to be here is gone, and a chunk of the counter is missing from where it was. You see lots of wrappers for snacks and drink bottles lying all about the floor. (unless:$INV contains &quot;skeleton key&quot;)[You can also see a ring of keys hung on a hook behind the counter, one which appears to be a skeleton key.]
 
 (unless:$INV contains &quot;skeleton key&quot;)[(link-reveal-goto:&quot;Grab Keys&quot;,&quot;Checkout Desk 3&quot;)[(set:$INV to it + (a:&quot;skeleton key&quot;))]
@@ -6520,7 +6529,8 @@ He gasps. &quot;Really? Okay, I&#39;ll go there right away. Thanks for letting m
 
 (unless:$INV contains &quot;floaty&quot;)[(link-reveal-goto:&quot;Grab Floaty&quot;,&quot;Prize Counter 3&quot;)[(set:$INV to it + (a:&quot;floaty&quot;))]
 ]
-\[[Back-&gt;Arcade 3]] </tw-passagedata><tw-passagedata pid="416" name="Ending 1 3" tags="" position="4950,5350" size="100,100">Jed takes one final look around the empty store room. &quot;I think this is everyone now...&quot; he says. 
+\[[Back-&gt;Arcade 3]] </tw-passagedata><tw-passagedata pid="416" name="Ending 1 3" tags="" position="4950,5350" size="100,100">(track:&#39;mm3area&#39;,&#39;fadeout&#39;,3)
+\Jed takes one final look around the empty store room. &quot;I think this is everyone now...&quot; he says. 
 
 Mei also begins counting heads. &quot;Yeah... I guess it really is...&quot;
 
@@ -6530,22 +6540,20 @@ Mei also begins counting heads. &quot;Yeah... I guess it really is...&quot;
 
 &quot;That sounds good,&quot; Jed says. &quot;Of course we&#39;ll have to remain flexible and open to improvisation. We have no idea what we&#39;ll find outside of town...&quot;
 
-[[Continue-&gt;The End 3]]</tw-passagedata><tw-passagedata pid="417" name="The End 3" tags="" position="4900,5500" size="200,100">Jed and the others left the empty store, grabbing their belongings and valuables. They began the trek out of town, going around the port and along the river. There was an aura of melancholy and sorrow around the group. No one wanted to speak. Everyone was lost in their own thoughts, perhaps reliving the memories of their soon-to-be-former home. 
+[[Continue-&gt;The End 3 Part 1]]</tw-passagedata><tw-passagedata pid="417" name="The End 3 Part 2" tags="" position="4900,5650" size="200,100">Jed thought about his time in Webster Groves. How he started as just an average guy who took the opportunity to help when he could, to stopping an alien invasion, to becoming mayor, to helping keep Webster Groves as safe as possible during the zombie invasion. It was unfortunate that not everyone could be saved, and that now the town itself could not be saved, but this was out of Jed&#39;s hands. At the very least, he had to tell himself that for the betterment of his mental health. 
 
-Jed thought about his time in Webster Groves. How he started as just an average guy who took the opportunity to help when he could, to stopping an alien invasion, to becoming mayor, to helping keep Webster Groves as safe as possible during the zombie invasion. It was unfortunate that not everyone could be saved, and that now the town itself could not be saved, but this was out of Jed&#39;s hands. At the very least, he had to tell himself that for the betterment of his mental health. 
-
-It was the next morning after everyone left that Webster Groves blew up, completely destroying everything. All that was left was a gigantic crater where the town used to be, with no signs of life or infrastructure anywhere. 
+It was the next morning after everyone left that the town was gone. All that remains is a crater where it once sat. No more signs of life or infrastructure. Everything that was left behind by its citizens has now vanished and only exists in memories. Webster Groves was no more.
 
 They had no idea where they would go, but one thing was certain: they could never come back.
 
 (if:$POSTGAME is true)[[[The End-&gt;Title Screen]]](else:)[[[The End-&gt;GG and BC 3]]]
-\(set: $loadGame to 1)</tw-passagedata><tw-passagedata pid="418" name="GG and BC 3" tags="" position="4950,5650" size="100,100">(track:&#39;mm3title&#39;,&#39;fadeout&#39;,1)
+\(set: $loadGame to 1)</tw-passagedata><tw-passagedata pid="418" name="GG and BC 3" tags="" position="4950,5800" size="100,100">(track:&#39;mm3end&#39;,&#39;fadeout&#39;,1)
 \(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
-\(set:$POSTGAME to true)
+\(set:$POSTGAME to true)(set: $REPRISE to true)
 \|gg&gt;[yay you beat it]
 
-|bc&gt;[Congration !! You have &quot;Mayored 3&quot; this &quot;Mystery!&quot;]
+|bc&gt;[Congration !! You have &quot;Mayored 3&quot; this &quot;Mystery!&quot; (link-repeat:&quot;Click here for Fanfare&#39;s!&quot;)[(track:&quot;huzzah&quot;,&quot;volume&quot;,0.5)(track:&quot;huzzah&quot;,&quot;stop&quot;)(track:&quot;huzzah&quot;,&quot;play&quot;)]]
 
 |gg&gt;[sorry that game was kinda sad. i think i cried while making it lol]
 
@@ -6562,6 +6570,7 @@ They had no idea where they would go, but one thing was certain: they could neve
 * infinite atm glitch 
 * exit button now saves and also works
 * replay the sequels from the main menu
+* speaking of menu: new menu music (toggle it in audio settings (eat your heart out palmer
 * come visit us we are lonely]
 \|bc&gt;[Have fun with this New Content We hope you enjoy it!]
 
@@ -7553,6 +7562,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 test2: audio/Test2.mp3
 test3: audio/Test3.mp3
 adventureawaits: audio/Adventure Awaits.mp3
+reprise: audio/Adventure Awaits Reprise.mp3
 
 apartment: audio/Apartment Complex.mp3
 apartmentrafael: audio/Apartment Complex - Rafael.mp3
@@ -7603,6 +7613,9 @@ outside: audio/Outside the Game.mp3
 upstairs: audio/Upstairs.mp3
 upstairs2: audio/Outside Upstairs.mp3
 
+boscosbasement: audio/Boscos Basement.mp3
+future: audio/The Future.mp3
+
 mm2apartment: audio/MM2 Apartment.mp3
 mm2basement: audio/MM2 Basement.mp3
 mm2city: audio/MM2 City Hall.mp3
@@ -7614,6 +7627,10 @@ mm2title: audio/MM2 Title.mp3
 mm2town: audio/MM2 Town Square.mp3
 
 mm3title: audio/MM3 Title.mp3
+mm3area: audio/MM3 Areas.mp3
+mm3end: audio/MM3 Ending.mp3
+
+huzzah: audio/Huzzah.mp3
 
 slam: audio/Slam.mp3
 pass: audio/Pass.mp3
@@ -7630,9 +7647,15 @@ buy: audio/Purchase.mp3
 buy2: audio/PurchaseBL.mp3</tw-passagedata><tw-passagedata pid="440" name="Audio Settings" tags="" position="2250,250" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
 (cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
+\(if:$POSTGAME is true)[
+(if:$REPRISE is true)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Menu Music: Orchestral&quot;,&quot;Audio Settings&quot;)[(set:$REPRISE to false)]]
+\(if:$REPRISE is false)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Menu Music: Original&quot;,&quot;Audio Settings&quot;)[(set:$REPRISE to true)]]
+\]
 [[Back-&gt;Title Screen]] 
 \(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
-\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata><tw-passagedata pid="441" name="hal.config" tags="" position="400,100" size="100,100">showControls:false
+\(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]
+\(if:$REPRISE is true)[(track:&#39;adventureawaits&#39;,&#39;volume&#39;,0)(track:&#39;reprise&#39;,&#39;volume&#39;,1)](else:)[(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)(track:&#39;reprise&#39;,&#39;volume&#39;,0)]
+\]</tw-passagedata><tw-passagedata pid="441" name="hal.config" tags="" position="400,100" size="100,100">showControls:false
 muteOnBlur:false</tw-passagedata><tw-passagedata pid="442" name="Loops" tags="startup" position="200,300" size="100,100"></tw-passagedata><tw-passagedata pid="443" name="Audio2" tags="" position="6150,2650" size="100,100">=&gt;&lt;=
 (cycling-link: 2bind $mvchoice, &quot;Music Volume: 50%&quot;, &quot;Music Volume: 40%&quot;, &quot;Music Volume: 30%&quot;, &quot;Music Volume: 20%&quot;, &quot;Music Volume: 10%&quot;, &quot;Music Volume: 0%&quot;, &quot;Music Volume: 100%&quot;, &quot;Music Volume: 90%&quot;, &quot;Music Volume: 80%&quot;, &quot;Music Volume: 70%&quot;,&quot;Music Volume: 60%&quot;)
 (cycling-link: 2bind $sfxchoice, &quot;Sound Effects: On&quot;, &quot;Sound Effects: Off&quot;)
@@ -7669,7 +7692,12 @@ Buster stared motionlessly into the camera.]
 \(set:_mvdecode to (dm:&quot;Music Volume: 50%&quot;,0.5, &quot;Music Volume: 40%&quot;,0.4,&quot;Music Volume: 30%&quot;, 0.3,&quot;Music Volume: 20%&quot;, 0.2,&quot;Music Volume: 10%&quot;, 0.1,&quot;Music Volume: 0%&quot;, 0.0,&quot;Music Volume: 100%&quot;, 1.0,&quot;Music Volume: 90%&quot;, 0.9,&quot;Music Volume: 80%&quot;, 0.8,&quot;Music Volume: 70%&quot;,0.7,&quot;Music Volume: 60%&quot;,0.6))
 \(live:0s)[(masteraudio:&#39;volume&#39;,$mvchoice of _mvdecode)(if:$sfxchoice is &quot;Sound Effects: On&quot;)[(set:$SFX to true)](if:$sfxchoice is &quot;Sound Effects: Off&quot;)[(set:$SFX to false)]]</tw-passagedata><tw-passagedata pid="448" name="Real Exit" tags="" position="2550,100" size="100,100">&lt;script&gt;
 close();
-&lt;/script&gt;</tw-passagedata></tw-storydata>
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="449" name="The End 3 Part 1" tags="" position="4950,5500" size="100,100">(track:&#39;mm3area&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&quot;mm3end&quot;,&quot;playwhenpossible&quot;)]
+\Jed had finished grabbing all of the townsfolk, completing his final walk around Webster Groves. It was time to set off, and find safety in another place.
+
+Jed and the others left the empty store, grabbing their belongings and valuables. They began the trek out of town, going around the port and along the river. There was an aura of melancholy and sorrow around the group. No one wanted to speak. Everyone was lost in their own thoughts, perhaps reliving the memories of their soon-to-be-former home. 
+
+[[Continue-&gt;The End 3 Part 2]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
